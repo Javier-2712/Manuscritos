@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN-en" xml:lang="EN-en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Javier Rodríguez">
+<meta name="description" content="Cálculos y análisis de los datos de diversidad alfa y beta de los coprófagos en diferentes localidades y paisajes del Magdalena.">
+
+<title>Diversidad beta - manuscrito: coprófagos del Magdalena</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="copros-manuscrito_files/libs/clipboard/clipboard.min.js"></script>
+<script src="copros-manuscrito_files/libs/quarto-html/quarto.js"></script>
+<script src="copros-manuscrito_files/libs/quarto-html/popper.min.js"></script>
+<script src="copros-manuscrito_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="copros-manuscrito_files/libs/quarto-html/anchor.min.js"></script>
+<link href="copros-manuscrito_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="copros-manuscrito_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="copros-manuscrito_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="copros-manuscrito_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="copros-manuscrito_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #2CB7E8;
+    }
+    </style>
+
+<script src="copros-manuscrito_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="copros-manuscrito_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="stile-justify.css">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Diversidad beta - manuscrito: coprófagos del Magdalena</h1>
+                  <div>
+        <div class="description">
+          Cálculos y análisis de los datos de diversidad alfa y beta de los coprófagos en diferentes localidades y paisajes del Magdalena.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  <div class="quarto-title-meta-author">
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Affiliation</div>
+    
+      <div class="quarto-title-meta-contents">
+      Javier Rodríguez 
+    </div>
+      <div class="quarto-title-meta-contents">
+          <p class="affiliation">
+              <a href="http://grupogien.jimdofree.com/">
+              Grupo GIEN
+              </a>
+            </p>
+        </div>
+      </div>
+
+  <div class="quarto-title-meta">
+
+        
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menú Flotante</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos">Objetivos</a>
+  <ul>
+  <li><a href="#cargar-las-librerías" id="toc-cargar-las-librerías" class="nav-link" data-scroll-target="#cargar-las-librerías">1. Cargar las librerías</a></li>
+  <li><a href="#cargar-la-base-de-datos" id="toc-cargar-la-base-de-datos" class="nav-link" data-scroll-target="#cargar-la-base-de-datos">2. Cargar la base de datos</a></li>
+  <li><a href="#diversidades-alfa-y-gamma" id="toc-diversidades-alfa-y-gamma" class="nav-link" data-scroll-target="#diversidades-alfa-y-gamma">3. Diversidades Alfa y Gamma</a>
+  <ul class="collapse">
+  <li><a href="#diversidades-alfa---estimadores-clásicos" id="toc-diversidades-alfa---estimadores-clásicos" class="nav-link" data-scroll-target="#diversidades-alfa---estimadores-clásicos">3.1 Diversidades Alfa - Estimadores clásicos</a></li>
+  <li><a href="#diversidades-alfa---curvas-rad-localidades" id="toc-diversidades-alfa---curvas-rad-localidades" class="nav-link" data-scroll-target="#diversidades-alfa---curvas-rad-localidades">3.2 Diversidades alfa - Curvas RAD (Localidades)</a></li>
+  <li><a href="#diversidades-alfa---curvas-rad-paisajes" id="toc-diversidades-alfa---curvas-rad-paisajes" class="nav-link" data-scroll-target="#diversidades-alfa---curvas-rad-paisajes">3.3 Diversidades alfa - Curvas RAD (Paisajes)</a></li>
+  <li><a href="#valoración-de-la-diversidad-alfa-en-cuatro-pasos-según-chao-et-al.-2020." id="toc-valoración-de-la-diversidad-alfa-en-cuatro-pasos-según-chao-et-al.-2020." class="nav-link" data-scroll-target="#valoración-de-la-diversidad-alfa-en-cuatro-pasos-según-chao-et-al.-2020.">3.4 Valoración de la diversidad alfa en cuatro pasos, según Chao <em>et al</em>. (2020).</a></li>
+  <li><a href="#diversidades-gamma" id="toc-diversidades-gamma" class="nav-link" data-scroll-target="#diversidades-gamma">3.5 Diversidades gamma</a></li>
+  </ul></li>
+  <li><a href="#diversidad-beta-general" id="toc-diversidad-beta-general" class="nav-link" data-scroll-target="#diversidad-beta-general">4. Diversidad Beta General</a>
+  <ul class="collapse">
+  <li><a href="#la-diversidad-beta-con-datos-de-abundancia-según-withaker-1960" id="toc-la-diversidad-beta-con-datos-de-abundancia-según-withaker-1960" class="nav-link" data-scroll-target="#la-diversidad-beta-con-datos-de-abundancia-según-withaker-1960">4.1 La diversidad beta con datos de abundancia según Withaker (1960)</a></li>
+  </ul></li>
+  <li><a href="#diversidad-beta-por-paisaje-de-montañas-y-de-lomeríos-norte-y-sur" id="toc-diversidad-beta-por-paisaje-de-montañas-y-de-lomeríos-norte-y-sur" class="nav-link" data-scroll-target="#diversidad-beta-por-paisaje-de-montañas-y-de-lomeríos-norte-y-sur">5. Diversidad Beta por paisaje de montañas y de lomeríos (Norte y Sur)</a>
+  <ul class="collapse">
+  <li><a href="#resumen-diversidad-beta-general-vs.-entre-paisajes-con-datos-binarios-familia-de-baselga-2010" id="toc-resumen-diversidad-beta-general-vs.-entre-paisajes-con-datos-binarios-familia-de-baselga-2010" class="nav-link" data-scroll-target="#resumen-diversidad-beta-general-vs.-entre-paisajes-con-datos-binarios-familia-de-baselga-2010">5.1 Resumen: Diversidad beta general vs.&nbsp;entre paisajes con datos binarios (Familia de Baselga 2010)</a></li>
+  </ul></li>
+  <li><a href="#diversidad-beta-entre-pares-de-localidades" id="toc-diversidad-beta-entre-pares-de-localidades" class="nav-link" data-scroll-target="#diversidad-beta-entre-pares-de-localidades">6. Diversidad beta entre pares de localidades</a>
+  <ul class="collapse">
+  <li><a href="#clasificación-de-localidades-según-podani" id="toc-clasificación-de-localidades-según-podani" class="nav-link" data-scroll-target="#clasificación-de-localidades-según-podani">6.1 Clasificación de localidades según Podani</a></li>
+  <li><a href="#comparación-de-parejas-de-localidades-según-podani" id="toc-comparación-de-parejas-de-localidades-según-podani" class="nav-link" data-scroll-target="#comparación-de-parejas-de-localidades-según-podani">6.2 Comparación de parejas de localidades según Podani</a></li>
+  <li><a href="#comparación-de-parejas-de-localidades-según-baselga" id="toc-comparación-de-parejas-de-localidades-según-baselga" class="nav-link" data-scroll-target="#comparación-de-parejas-de-localidades-según-baselga">6.3 Comparación de parejas de localidades según Baselga</a></li>
+  </ul></li>
+  <li><a href="#enlaces-de-soporte-para-los-cálculos-de-diversidad-beta" id="toc-enlaces-de-soporte-para-los-cálculos-de-diversidad-beta" class="nav-link" data-scroll-target="#enlaces-de-soporte-para-los-cálculos-de-diversidad-beta">Enlaces de soporte para los cálculos de diversidad beta</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="copro5.jpg" class="img-fluid" width="294"></p>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="resumen" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<div style="text-align: justify">
+
+<p>El presente análisis de <strong>diversidad alfa y beta</strong> se realiza con los datos obtenidos de abundancia para 22 especies de escarabajos coprófagos, colectados en seis (6) localidades del Departamento del Magdalena. En este sentido, el enfoque de este análisis consiste en evaluar los patrones de diversidad (alfa y beta). Para el caso alfa (diversidad local), se utiliza las propuestas de Withaker (1960) y de Chao et al.&nbsp;(2024), representados por la diversidad alfa clásica y la que se valora en cuatro pasos, respectiamente. La diversidad beta (entre localidades) se enfoca en la comparación de las propuestas de Podani (2011) y de Baselga (2010). A partir de esto se obtuvieron los siguientes resultados:</p>
+<ol type="1">
+<li>La <strong>diversidad alfa</strong> no supera a las 18 especies (Localidad 6), con el menor valor de 9 especies (<a href="#tbl-tbl4">Table&nbsp;4</a>).
+<ul>
+<li><p>Las localidades 4 a 6 son las de mayor proporción de especies abundantes o dominantes, correspondientes al paisaje de lomeríos (<a href="#fig-fig2">Figure&nbsp;2</a> y <a href="#fig-fig3">Figure&nbsp;3</a>).</p></li>
+<li><p>Tanto el paisaje de montañas como el de lomeríos presentan una buena (&gt; 0.9) y solo dos especies sin detectar (paisaje de montañas) (<a href="#tbl-tbl7">Table&nbsp;7</a> y <strong>?@tbl-tbl8</strong>). La mayor riqueza se concentra en el paisaje de lomeríos (<a href="#fig-fig4">Figure&nbsp;4</a> y <a href="#fig-fig5">Figure&nbsp;5</a>).</p></li>
+</ul></li>
+<li>La <strong>diversidad gamma</strong> fue de 22 especies con un estimado o esperado de máximo 24 especies, según el estimador Jack1 (<strong>?@tbl-tbl11</strong>).</li>
+<li><strong>La diversidad beta total, con datos de abundancia</strong> fue de 0.48, con una mayor contribución (LCBD) en las localidades del paisaje de lomeríos (L4, L5 y L6) (<a href="#fig-fig6">Figure&nbsp;6</a>) y de las especies <em>C. aequinoctialis</em>,&nbsp;<em>C. aequinoctialis</em>,&nbsp;<em>C. lituratus</em>,&nbsp;<em>C. septemmaculatus</em>,&nbsp;<em>C. variabilis</em>,&nbsp;<em>E. impressicollis</em>,&nbsp;<em>O. hirculus</em> y&nbsp;<em>U. deavilai</em>.</li>
+<li><strong>La diversidad beta total, con datos binarios</strong> fue casi la mitad con la familia Podani (<strong>?@tbl-tbl10</strong>), comparado a la Familia Baselga (<strong>?@tbl-tbl11</strong>). El mayor aporte para los dos casos lo define el componente de reemplazo o de recambio de especies (<em>Reemp y beta.SIM</em>, respectivamente).</li>
+<li><strong>La diversidad beta para las localidades de montaña (zona Norte) y las localidades de lomeríos (zona Sur), con datos binarios</strong> presentó un patron inverso entre la familia de Podani y la de Baselga (<a href="#tbl-tbl3">Table&nbsp;3</a> y <strong>?@tbl-tbl14</strong>). según Podani se registraron valores de diversidad beta de sorensen de 0.25 y 0.22 para los paisajes de montañas y de lomeríos, respectivamente (<strong>?@tbl-tbl13</strong>). Para el caso de Baselga, se registraron datos de 0.35 y de 0.41 para los paisajes de montañas y de lomeríos, respectivamente (<strong>?@tbl-tbl14</strong>). Es probable que el patrón más acorde con el contexto de los lugares sea el encontrado con la propuesta de Baselga, debido a que en el paisaje de lomeríos o en el Sur, se presentaron mejores condiciones de los parches, con mayor diversidad alfa y beta total. La <strong>?@tbl-tbl15</strong> resume los datos de diversidad beta total y por tipos de paisaje.</li>
+<li><strong>La diversidad beta para pares de localidades, con datos binarios</strong> presentó</li>
+</ol>
+<p><br>
+<br>
+<b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></div></section><b style="color:#1f78b4;">
+</b><section id="introducción" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<div style="text-align: justify">
+
+<p><strong>Whittaker (1960)</strong> fue el primero en definir los términos de diversidades <em>alfa, beta</em> y <em>gamma</em>. Definió a la diversidad <em>alfa</em>, como la diversidad local, a la diversidad <em>gamma</em> como la diversidad regional y la diversidad <em>beta</em> como la relación entre las anteriores, orientada a el cambio o la variación en la composición de las especies en los ensamblajes o las comunidades. Esta diversidad <em>beta</em> también puede brindar información sobre la variedad de lugares o de nichos que se pueden presentar en cada localidad (cuando hay diferencias en la diversidad alfa entre localidades). Las diversidad <em>alfa</em> y <em>gamma</em> son relativas al tamaño de la escala espacial o temporal que se utilice (<em>alfa</em> y <em>gamma</em> por ej. pueden ser desde un bosque hasta un departamento).</p>
+<p>De acuerdo a <strong>Whittaker (1960)</strong>, surgen dos enfoques orientados a las diferencias entre las comunidades evaluadas con la <em>diversidad beta</em>: (1) Un <em>recambio</em>, es decir, el cambio direccional en la composición de de especies a lo largo de un gradiente espacial, temporal o ambiental predefinido. (2) La <em>variación en la composición</em> de especies entre unidades de muestreo, sin referencia a un gradiente explícito (cambio especies o anidamiento).</p>
+<p><strong>Baselga y Gómez-Rodríguez (2019)</strong>, coinciden con la propuesta de Whittaker, debido a que las diferencias entre las comunidades pueden generarse por (1) el <strong><em>recambio</em></strong>, reemplazamiento o sustitución de unas especies por otras (<em>turnover</em> o <em>replacement</em>) y por el (2) <strong><em>anidamiento</em></strong> o <em>nestedness,</em> asociado a la perdida de especies de una comunidad más diversa a otra menos diversa.</p>
+<p><strong>Harrison et al.&nbsp;(1992)</strong>, <strong>Williams (1996)</strong>, <strong>Lennon et al.&nbsp;(2001)</strong>, <strong>Podani (2011)</strong> y <strong>Legendre (2014)</strong> coinciden con la propuesta de Whittaker, enfocando a las diferencias entre comunidades (diversidad beta) por dos procesos principales: (1) el <strong><em>recambio</em></strong> de especies (a veces llamado <strong><em>rotación</em></strong>) y (2) la <strong><em>diferencia de riqueza</em></strong> (ganancia y pérdida de especies, o su caso especial, <strong><em>anidamiento</em></strong>). En este orden de ideas, a continuación se describen aspectos asociados a los atributos de la diversidad beta o de diferencias entre comunidades.</p>
+<ol type="1">
+<li><p>El <strong>reemplazo o recambio de especies</strong> es lo que se observa a lo largo de gradientes ecológicos, en donde algunas especies se encuentran restringidas en un rango limitado del gradiente de acuerdo con su tolerancia y óptimos ecológicos. Algunas especies se observan en un extremo del gradiente, luego desaparecen y son reemplazadas por otras, y así sucesivamente. Las causas de estos patrones incluyen forzamientos ambientales, pero también, potencialmente, competencia y eventos históricos (es decir, perturbaciones y otros procesos que ocurrieron en el pasado y dejaron sus marcas en las comunidades). La configuración de los hábitats, como la presencia de bordes o ecotonos o las presiones antrópicas que modifican el paisaje, pueden repercutir en los procesos de reemplazamiento de especies (Filgeras et al.&nbsp;2016).</p></li>
+<li><p>La <strong>diferencia de riqueza</strong> se refiere al hecho de que puedan existir diferencias en el número de especies entre comunidades. Esto puede ser causado por desapariciones de especies locales, tambien por diferencias en las condiciones abióticas locales que conducen a diferentes números de nichos u otros procesos ecológicos que llevan a las comunidades a un mayor o menor número de especies. En caso de que la diferencia de la riqueza aumente, puede estar directamente relacionado con la riqueza de nichos disponibles, o con procesos de anidamiento cuando hay perdida de especies en algunos lugares.</p></li>
+<li><p>El <strong>anidamiento</strong> es un caso especial de diferencia de riqueza donde las especies en sitios más pobres son un subconjunto estricto de las especies presentes en sitios más ricos.</p></li>
+</ol>
+<p>Los índices de (1) <em>reemplazo</em>, de (2) <em>diferencia de riqueza</em> y de (3) <em>anidamiento</em> no son índices de <em>diversidad beta</em>; pero descomponen coeficientes de disimilitud que pueden usarse para estimar la <em>diversidad beta</em>.</p>
+<p><strong>Legendre (2014)</strong> propone un marco algebraico unificador para comparar las fórmulas publicadas de los tres componentes anteriores, definiendo a dos familias de índices, a las que denominó <strong><em>familias de Podani y de Baselga</em></strong> respectivamente, en honor a los nombres de los autores que abordaron estos índices. En la <strong>familia de Podani</strong>, el índice de diferencia de riqueza representa solo una parte del anidamiento, debido a que no incluye a especies comunes.</p>
+<p>La <strong>familia de Baselga</strong>, define a un índice de <em>reemplazo</em> o recambio comparable a los de Podani. El <em>anidamiento</em> de Baselga es comparable al <em>anidamiento relativizado</em> de <strong>Podani y Schmera (2011)</strong>. Según <strong>Legendre (2014)</strong>, los índices de <em>reemplazo</em> y de <em>diferencia de riqueza</em> de la familia Podani son fáciles de interpretar en términos ecológicos, así como los índices de <em>reemplazo</em> en la familia Baselga. Los índices de <em>anidamiento</em> de Baselga son menos obvios, causando algunas controversias a la hora de analizarlos. <strong>Baselga (2010)</strong> denomina al indice de <em>reemplazo</em> como “recambio” o “rotación”, basado en la similitud de Sorensen o de sorensen y al restarlo con este índice de sorensen, se determina al componente de <em>anidamiento</em>.</p>
+<p>Si <em>a</em> representa a las especies en común, <em>b</em> a las especies presentes en un sitio A y ausentes en un sitio B en comparación, <em>c</em> representa lo opuesto a <em>b</em>, Segun <strong>Borcard et al.&nbsp;(2018)</strong>, Podani y Baselga coinciden en el hecho de que (1) el <em>anidamiento</em> sólo es posible cuando hay especies en común (a &gt; 0), (2) el valor máximo se alcanza cuando b o c es cero. (3) El <em>anidamiento</em> aumenta cuando <em>c</em> aumenta. (4) <em>Podani</em> considera que las especies comunes <em>a</em> contribuyen directamente al <em>anidamiento</em>, al contrario al anidamiento de Baselga. En consecuencia, cuando <em>b = c = 0</em> (no hay especies exclusivas de uno de los dos sitios comparados), <em>Podani</em> alcanza el valor de anidamiento máximo de 1 y <em>Baselga</em> de cero. (5) La contribución de a al <em>anidamiento</em> es clara en el <em>índice de Podani</em>, pero confusa y no monótona en <em>Baselga</em>. (6) El <em>anidamiento</em> de Podani tiene un límite superior fijo y alcanzable de 1; el valor máximo de Baselga cambia para cada par de sitios.</p>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></div></section><b style="color:#1f78b4;">
+</b><section id="objetivos" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<div style="text-align: justify">
+
+<p>El objetivo de este análisis de <em>diversidad beta</em> para el ensamblaje de coprófagos, se orienta en los siguientes aspectos:</p>
+<ul>
+<li><p><strong><em>Determinar la diversidad beta general o total</em></strong>. Para conocer la diversidad beta de la escala general.</p>
+<ul>
+<li><p>Con la propuesta de <strong><em>Whittaker (1960)</em></strong>, que se realiza con datos de abundancias de las especies. Donde <strong><em>β = S/α¯</em></strong>, donde&nbsp;<strong><em>S</em></strong>&nbsp;es la diversidad gamma y&nbsp;<strong><em>α¯</em></strong>&nbsp;es la diversidad alfa o promedio de especies entre las&nbsp;<strong><em>n</em></strong>&nbsp;localidades. Con la propuesta de Legendre (2014), se calcula la diversidad beta (<strong><em>BDtotal</em></strong>), la contribución de las localidades (<strong><em>LCBD</em></strong>) y de las especies (<strong><em>SCBD</em></strong>) a esta diversidad.</p></li>
+<li><p>La propuesta de <strong><em>Baselga (2010)</em></strong> es con datos binarios y se utilizará para medir la diversidad beta general (βSOR), el nivel de recambio (βSIM) y el nivel de anidamiento (βSNE).</p></li>
+</ul></li>
+<li><p><strong><em>Identificar la diversidad beta espacial (paisajes de montañas y de lomeríos)</em></strong>. Se realiza una zonificación de las localidades de acuerdo a su ubicación espacial, para comparar si hay diferencias en los elementos de la diversidad beta, entre las localidades ubicadas en los paisajes de montañas y de lomeríos del departamento.</p>
+<ul>
+<li>Con la propuesta de <strong><em>Podani (2011)</em></strong> se determinará el reemplazo (ReplLCBD) y la diferencia de riqueza (RichDiffLCBD). Permitiendo mapear el patrón espacial, probando la hipótesis de distribución aleatoria de las especies entre las localidades, mediante permutaciones.</li>
+</ul></li>
+<li><p><strong><em>Comparar la diversidad beta entre parejas de localidades</em></strong>. Orientado a evaluar el posible efecto de gradientes ambientales que ocasionen patrones de (1) <em>reemplazamiento</em> o de <em>recambio</em> entre localidades cercanas o las distantes, así como (2) <em>cambios en los valores de riqueza</em> debido a la posible diversidad de nichos disponibles en las localidades o por (3) procesos de <em>anidamiento</em>, bajo la premisa de que las localidades más estructuradas serán las que presenten mayor riqueza y patrones de anidamiento (<em>Baselga et al.&nbsp;2010</em>).</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="mapa1.jpg" class="img-fluid figure-img" width="564"></p>
+<p></p><figcaption class="figure-caption"><strong>Figura</strong>. Spatial distribution of TDF in the Northern Caribbean region of Colombia. L1: Monato, L2: Villa Lorena, L3: Patagonia, L4: Italy, L5: El Trébol, L6: Tacaloa. The dotted line represents the localities in the mountain landscape (L1, L2 and L3) and the dotted line represents the localities in the hills landscape (L4, L5 and L6).</figcaption><p></p>
+</figure>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="cargar-las-librerías" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="cargar-las-librerías">1. Cargar las librerías</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se requiere cargar las librerías para el análisis de diversidad alfa, gamma y beta, por descomposición de las escalas alfa y gamma.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="cargar-la-base-de-datos" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="cargar-la-base-de-datos">2. Cargar la base de datos</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><strong>2.1 Datos de abundancia</strong>. Como el análisis de diversidad beta se realizará con datos de abundancia y de presencia-ausencia, inicialmente se requiere cargar la base de datos con valores de abundancia.</p>
+<div class="cell">
+
+</div>
+<p><strong>2.2 Datos de binarios</strong>. Se requiere transformar los datos a un formato binario o de presencia-ausencia, con el paquete <strong>caret</strong>.</p>
+<div class="cell">
+
+</div>
+<p>Posteriormente se incorpora la clasificación de los bosques o localidades por dos <strong>paisajes de lomerío</strong> y <strong>de montaña</strong>, respectivamente, para evaluar cómo es el recambio y el anidamiento de estos sectores.</p>
+<div class="cell">
+
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="diversidades-alfa-y-gamma" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="diversidades-alfa-y-gamma">3. Diversidades Alfa y Gamma</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>De acuerdo a la propuesta de <strong>Whittaker (1960)</strong>, el cálculo de la diversidad beta se deriva de las diversidades alfa y gamma, como <strong><em>β = S/α¯</em></strong>, donde <strong><em>S</em></strong> es la diversidad gamma y <strong><em>α¯</em></strong> es la diversidad alfa o promedio de especies entre las <strong><em>n</em></strong> localidades.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="diversidades-alfa---estimadores-clásicos" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="diversidades-alfa---estimadores-clásicos">3.1 Diversidades Alfa - Estimadores clásicos</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La <a href="#tbl-tbl1">Table&nbsp;1</a> muestra que el mayor número de especies (N0 o diversidad alfa de Whittaker) se presenta en las localidades L6, L4 y L1, respectivamente. La mayor diversidad asociada a taxones abundantes (N1), los muy abundantes o dominantes (N2) se presenta en L2 , L4, esto se refleja en la entropía de Shannon (H y Hb2) y en los valores de equidad de pielou, de Shannon y de Simpson (J, E10 y E20).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl1" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table&nbsp;1:  Alpha diversity estimators </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> N0 </th>
+   <th style="text-align:right;"> N1 </th>
+   <th style="text-align:right;"> N2 </th>
+   <th style="text-align:right;"> H </th>
+   <th style="text-align:right;"> Hb2 </th>
+   <th style="text-align:right;"> N1b2 </th>
+   <th style="text-align:right;"> J </th>
+   <th style="text-align:right;"> E10 </th>
+   <th style="text-align:right;"> E20 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> L1 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 5.71 </td>
+   <td style="text-align:right;"> 3.74 </td>
+   <td style="text-align:right;"> 1.74 </td>
+   <td style="text-align:right;"> 2.51 </td>
+   <td style="text-align:right;"> 5.71 </td>
+   <td style="text-align:right;"> 0.66 </td>
+   <td style="text-align:right;"> 0.41 </td>
+   <td style="text-align:right;"> 0.27 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> L2 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 6.61 </td>
+   <td style="text-align:right;"> 5.59 </td>
+   <td style="text-align:right;"> 1.89 </td>
+   <td style="text-align:right;"> 2.72 </td>
+   <td style="text-align:right;"> 6.61 </td>
+   <td style="text-align:right;"> 0.86 </td>
+   <td style="text-align:right;"> 0.73 </td>
+   <td style="text-align:right;"> 0.62 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> L3 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 4.79 </td>
+   <td style="text-align:right;"> 3.92 </td>
+   <td style="text-align:right;"> 1.57 </td>
+   <td style="text-align:right;"> 2.26 </td>
+   <td style="text-align:right;"> 4.79 </td>
+   <td style="text-align:right;"> 0.68 </td>
+   <td style="text-align:right;"> 0.48 </td>
+   <td style="text-align:right;"> 0.39 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> L4 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 6.83 </td>
+   <td style="text-align:right;"> 5.14 </td>
+   <td style="text-align:right;"> 1.92 </td>
+   <td style="text-align:right;"> 2.77 </td>
+   <td style="text-align:right;"> 6.83 </td>
+   <td style="text-align:right;"> 0.73 </td>
+   <td style="text-align:right;"> 0.49 </td>
+   <td style="text-align:right;"> 0.37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> L5 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 2.49 </td>
+   <td style="text-align:right;"> 1.65 </td>
+   <td style="text-align:right;"> 0.91 </td>
+   <td style="text-align:right;"> 1.31 </td>
+   <td style="text-align:right;"> 2.49 </td>
+   <td style="text-align:right;"> 0.35 </td>
+   <td style="text-align:right;"> 0.19 </td>
+   <td style="text-align:right;"> 0.13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> L6 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 4.60 </td>
+   <td style="text-align:right;"> 2.83 </td>
+   <td style="text-align:right;"> 1.53 </td>
+   <td style="text-align:right;"> 2.20 </td>
+   <td style="text-align:right;"> 4.60 </td>
+   <td style="text-align:right;"> 0.53 </td>
+   <td style="text-align:right;"> 0.26 </td>
+   <td style="text-align:right;"> 0.16 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig1">Figure&nbsp;1</a> muestra la relación inversa entre los valores de riqueza o del número de especies de coprófagos (N0), principalmente con los estimadores de equidad o de uniformidad, lo cual puede asociarse a que el aumento de taxones se correlacione con patrones de dominancia. Es así como las localidades más ricas en especies L6, L4 y L1, presentan las especies con mayor dominancia (<a href="#tbl-tbl4">Table&nbsp;4</a>). El resto de estimadores de diversidad (N1 y N2), de entropía (H y Hb2), así como de equidad (J, E10 y E20), presentan marcadas relaciones positivas o directas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig1-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Relationships between alpha diversity estimators for the six locations evaluated.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="diversidades-alfa---curvas-rad-localidades" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="diversidades-alfa---curvas-rad-localidades">3.2 Diversidades alfa - Curvas RAD (Localidades)</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para propósitos de este documento se realizarán los diagramas con las quince (15) especies de coprófagos más abundantes en las localidades evaluadas. Este diagrama permite hacer una exploración de los patrones de abundancia de los principales taxones de las muestras en comparación, como complemento a los modelos paraétricos a realizar.</p>
+<p>Se filtran los datos de abundancia por cada paisaje de montañas y de lomeríos. Posteriormente se inserta una columna de rangos de abundancia y otra columna de abundancia relativa. Finalmente se filtran a los 15 taxones más abundantes, para que las curvas no se saturen.</p>
+<div class="cell">
+
+</div>
+<p>Se observa que las localidades 4 a 6 (localidades de lomeríos) son las de mayor proporción de especies abundantes o dominantes (<a href="#fig-fig2">Figure&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Range-abundance pattern for localities, with the 15 most abundant coprophagous species</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="diversidades-alfa---curvas-rad-paisajes" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="diversidades-alfa---curvas-rad-paisajes">3.3 Diversidades alfa - Curvas RAD (Paisajes)</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div class="cell">
+
+</div>
+<p>El paisaje con mayor proporción de taxones dominantes es el de <strong>Lomeríos</strong> (<a href="#fig-fig3">Figure&nbsp;3</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig3-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Range abundance pattern for the two landscapes</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="valoración-de-la-diversidad-alfa-en-cuatro-pasos-según-chao-et-al.-2020." class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="valoración-de-la-diversidad-alfa-en-cuatro-pasos-según-chao-et-al.-2020.">3.4 Valoración de la diversidad alfa en cuatro pasos, según Chao <em>et al</em>. (2020).</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Este procedimiento permite calcular los siguientes cuatro pasos o insumos:&nbsp;<strong>(1) la completitud o integridad de la muestra</strong>,&nbsp;<strong>(2) la diversidad asintótica</strong>,&nbsp;<strong>(3) la diversidad no asintótica</strong>&nbsp;y&nbsp;<strong>(4) la uniformidad de las abundancias</strong>&nbsp;(<a href="https://esj-journals.onlinelibrary.wiley.com/doi/10.1111/1440-1703.12102">Chao et al.&nbsp;2020</a>).</p>
+<p><b style="color:#2ca25f;"></b></p><b style="color:#2ca25f;">
+</b><section id="valoración-por-tipos-de-paisajes" class="level5"><b style="color:#2ca25f;">
+<h5 class="anchored" data-anchor-id="valoración-por-tipos-de-paisajes">3.4.1 Valoración por tipos de paisajes</h5>
+</b><p><b style="color:#2ca25f;"></b></p>
+<p>Primero se corre el procedimiento, con el comando <strong>iNEXT4steps</strong>, el cual general los insumos de diversidad en los cuatro pasos propuestos por <strong>Chao et al.&nbsp;(2020)</strong>.</p>
+<div class="cell">
+
+</div>
+<p><strong>Paso 1</strong>. El <strong>perfil de completitud</strong> indica que las dos muestras (paisajes) son completas en los tres ordenes de diversidad “q” (completitud &gt; 0.9) (<a href="#tbl-tbl2">Table&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl2" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table&nbsp;2:  Perfil de completitud entre paisajes de montañas y de lomeríos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Assemblage </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:right;"> 1.00 </td>
+   <td style="text-align:right;"> 1.00 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mountains </td>
+   <td style="text-align:right;"> 0.92 </td>
+   <td style="text-align:right;"> 0.99 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>–</p>
+<p><strong>Paso 2</strong>. El <strong>perfil asintótico</strong> muestra la relación entre la diversidad observada y la estimada, en ese sentido, la diferencia define a la <strong>diversidad no detectada</strong> (sin.det). Solo en el paisaje de montañas se muetran dos especies sin detectar (<a href="#tbl-tbl3">Table&nbsp;3</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl3" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table&nbsp;3:  Perfil asintótico entre paisajes de montañas y de lomeríos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Assemblage </th>
+   <th style="text-align:left;"> Diversity </th>
+   <th style="text-align:right;"> Observed </th>
+   <th style="text-align:right;"> Estimator </th>
+   <th style="text-align:right;"> s.e. </th>
+   <th style="text-align:right;"> LCL </th>
+   <th style="text-align:right;"> UCL </th>
+   <th style="text-align:right;"> sin.det </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:left;"> Species richness </td>
+   <td style="text-align:right;"> 21.00 </td>
+   <td style="text-align:right;"> 21.00 </td>
+   <td style="text-align:right;"> 0.62 </td>
+   <td style="text-align:right;"> 21.00 </td>
+   <td style="text-align:right;"> 22.21 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:left;"> Shannon diversity </td>
+   <td style="text-align:right;"> 7.04 </td>
+   <td style="text-align:right;"> 7.06 </td>
+   <td style="text-align:right;"> 0.10 </td>
+   <td style="text-align:right;"> 6.86 </td>
+   <td style="text-align:right;"> 7.26 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:left;"> Simpson diversity </td>
+   <td style="text-align:right;"> 4.83 </td>
+   <td style="text-align:right;"> 4.84 </td>
+   <td style="text-align:right;"> 0.09 </td>
+   <td style="text-align:right;"> 4.67 </td>
+   <td style="text-align:right;"> 5.01 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mountains </td>
+   <td style="text-align:left;"> Species richness </td>
+   <td style="text-align:right;"> 17.00 </td>
+   <td style="text-align:right;"> 18.50 </td>
+   <td style="text-align:right;"> 4.56 </td>
+   <td style="text-align:right;"> 17.00 </td>
+   <td style="text-align:right;"> 27.43 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mountains </td>
+   <td style="text-align:left;"> Shannon diversity </td>
+   <td style="text-align:right;"> 6.76 </td>
+   <td style="text-align:right;"> 6.88 </td>
+   <td style="text-align:right;"> 0.27 </td>
+   <td style="text-align:right;"> 6.36 </td>
+   <td style="text-align:right;"> 7.41 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mountains </td>
+   <td style="text-align:left;"> Simpson diversity </td>
+   <td style="text-align:right;"> 5.09 </td>
+   <td style="text-align:right;"> 5.13 </td>
+   <td style="text-align:right;"> 0.22 </td>
+   <td style="text-align:right;"> 4.71 </td>
+   <td style="text-align:right;"> 5.56 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>–</p>
+<p><strong>Paso 3</strong>. El <strong>análisis no asintótico</strong>, compara a los paisajes con una cobertura similar de 0.999, definiendo al paisaje de lomeríos como la de mayor diversidad, en terminos de la riqueza de taxones (q= 0) (<a href="#tbl-tbl4">Table&nbsp;4</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl4" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table&nbsp;4:  Perfil no asintótico de los periodos climáticos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.999 </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:right;"> 20.16 </td>
+   <td style="text-align:right;"> 7.02 </td>
+   <td style="text-align:right;"> 4.83 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mountains </td>
+   <td style="text-align:right;"> 18.29 </td>
+   <td style="text-align:right;"> 6.84 </td>
+   <td style="text-align:right;"> 5.11 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>–</p>
+<p><strong>Paso 4</strong>. El <strong>patrón de uniformidad</strong> es muy similar entre paisajes (<a href="#tbl-tbl5">Table&nbsp;5</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl5" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table&nbsp;5:  Perfil de uniformidad por periodos climáticos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Pielou J' </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:right;"> 0.65 </td>
+   <td style="text-align:right;"> 0.31 </td>
+   <td style="text-align:right;"> 0.20 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mountains </td>
+   <td style="text-align:right;"> 0.66 </td>
+   <td style="text-align:right;"> 0.34 </td>
+   <td style="text-align:right;"> 0.24 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>–</p>
+<p>La <strong>curva de rarefacción y extrapolación</strong>, muestra que no hay diferencias entre la diversidad encontrada en cada tipo de paisaje, a pesar que la riqueza es superior en la época de lluvias (<a href="#fig-fig4">Figure&nbsp;4</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Rarefaction profile and extrapolation by landscape types</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Estas curvas complementan al <strong>perfil no asintótico</strong> relacionado en la <a href="#tbl-tbl4">Table&nbsp;4</a>. Se observa que todas alcanzan la cobertura máxima de 1 (eje x de <a href="#fig-fig5">Figure&nbsp;5</a>) y que no hay diferencias apreciables entre la diversiad de cada paisaje comparado.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig5-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;5: Non-asymptotic diversity profile for the two landscapes compared</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="diversidades-gamma" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="diversidades-gamma">3.5 Diversidades gamma</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>De acuerdo a <strong>Whittaker (1960)</strong>, la <em>diversidad gamma</em>, corresponde al número total de especies observadas en las localidades evaluadas (<strong><em>gamma.obs</em></strong>), para este trabajo corresponde a un total de 22 especies de coprófagos. La función <strong>specpool( )</strong> del paquete <strong>vegan</strong> realiza la proyección de las especies esperadas (<strong><em>gamma.est</em></strong>), basado en las menos frecuentes (especies observadas en sólo una o dos localiades). De acuerdo a los estimadores de <em>diversidad gamma</em> (chao, jack1 y boot) de la <a href="#tbl-tbl6">Table&nbsp;6</a>, muestra que se espera un máximo de 24 especies (2 más que las encontradas en las 6 localidades).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="tbl-tbl6" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Table&nbsp;6:  Estimadores de diversidad gamma, n= localidades, chao, jack1 y boot (bootstrap)= diversidad esperada y ee= error estándar de los estimadores </caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> Riqueza </th>
+   <th style="text-align:right;"> chao </th>
+   <th style="text-align:right;"> ee.chao </th>
+   <th style="text-align:right;"> jack1 </th>
+   <th style="text-align:right;"> ee.jack1 </th>
+   <th style="text-align:right;"> boot </th>
+   <th style="text-align:right;"> de.boot </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 22.6 </td>
+   <td style="text-align:right;"> 1.13 </td>
+   <td style="text-align:right;"> 23.7 </td>
+   <td style="text-align:right;"> 1.18 </td>
+   <td style="text-align:right;"> 23.1 </td>
+   <td style="text-align:right;"> 1.1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="diversidad-beta-general" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="diversidad-beta-general">4. Diversidad Beta General</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="la-diversidad-beta-con-datos-de-abundancia-según-withaker-1960" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="la-diversidad-beta-con-datos-de-abundancia-según-withaker-1960">4.1 La diversidad beta con datos de abundancia según Withaker (1960)</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div style="text-align: justify">
+
+<p>Se utilizará el comando <strong>beta.div()</strong> del paquete <strong>adespatial</strong>, se calcula la <em>diversidad beta total</em> (<strong>BDtotal</strong>) y la suma total de cuadrados de <em>Y</em> (<strong>SStotal</strong>) que es la suma de los valores al cuadrado en la <strong>matriz S</strong> (matriz de desviaciones al cuadrado de los valores de abundancia de las especies). Además se obtiene la descomposición de la <em>diversidad beta</em> en <strong>LCBD</strong> (contribución de las localidades a la diversidad beta) y <strong>SCBD</strong> (contribución relativa de las especies a la diversidad beta).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  SStotal   BDtotal 
+2.3857817 0.4771563 </code></pre>
+</div>
+</div>
+<p><strong>a.</strong> <strong><em>Diversidad beta total (BDtotal)</em></strong>. Se obtiene un <strong><em>SStotal</em></strong>= 2.38 y un <strong><em>BDtotal</em></strong>= 0.477.</p>
+<p><strong>b. Contribución de las especies a la diversidad beta (SCBD).</strong> Siete especies tienen un <strong>SCBD</strong> superior al SCBD medio, representadas por cuatro de las seis especies del género Canthon (<em>Canthon aequinoctialis</em> - <em>C. aequinoctialis</em> - Canaeq, <em>C. lituratus</em> - Canlit, <em>C. septemmaculatus</em> - Cansep, <em>C. variabilis</em> - Canvar, <em>Eurysternus impressicollis</em> - Eurimp, <em>Onthophagus hirculus</em> - Onthir y <em>Uroxys deavilai</em> - Urodea) (<a href="#tbl-tbl7">Table&nbsp;7</a>). Las abundancias de estas especies transformadas por Hellinger, varían más entre las localidades, lo que las puede hacer interesantes como indicadores ecológicos.</p>
+<p><strong>c.&nbsp;Contribución de las localidades a la diversidad beta (LCBD).</strong> Se observa que los mayores valores de <strong><em>LCBD</em></strong> se concentran en el paisaje de lomeríos, representada por las localidades L4, L5 y L6 (LCBD = 0.18, 0.175 y 0.23 respectivamente), que corresponden a los lugares con mayor abundancia de individuos y riqueza de especies (ver N0 en la <a href="#tbl-tbl7">Table&nbsp;7</a>), aunque las pruebas permutacionales (<strong><em>p.adjust</em></strong>), no encuentran diferencias significativas entre las localidades (valores p&gt; 0.05), por lo que se puede asumir que no hay diferencias importantes entre las abundancias de las especies para cada localidad.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>character(0)</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-fig6">Figure&nbsp;6</a> muestra la distribución espacial de los aportes de las seis localidades a la diversidad beta (<strong>LCBD</strong>), basados en un cálculo de la abundancia de especies transformadas por Hellinger. Los tamaños de los circulos son proporcionales a los valores de <strong>LCBD</strong>; por lo tanto, las burbujas más grandes corresponden a los sitios que más contribuyen a la diversidad beta general del conjunto de datos. En este sentido, similar al resultado anterior, se observa que las <strong>localidades L4, L5 y L6</strong> (Paisaje de <strong>lomeríos</strong>), son las que más aportan a esta diversidad, orientada al cambio en la composición de especies entre localdiades (Whittaker 1970).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;6: Contribution of localities to beta diversity - LCBD. Mountain landscape (L1 to L3) and Hills landscape (L4 to L6).</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></div></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="diversidad-beta-por-paisaje-de-montañas-y-de-lomeríos-norte-y-sur" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="diversidad-beta-por-paisaje-de-montañas-y-de-lomeríos-norte-y-sur">5. Diversidad Beta por paisaje de montañas y de lomeríos (Norte y Sur)</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="resumen-diversidad-beta-general-vs.-entre-paisajes-con-datos-binarios-familia-de-baselga-2010" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="resumen-diversidad-beta-general-vs.-entre-paisajes-con-datos-binarios-familia-de-baselga-2010">5.1 Resumen: Diversidad beta general vs.&nbsp;entre paisajes con datos binarios (Familia de Baselga 2010)</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La <a href="#tbl-tbl7">Table&nbsp;7</a> resume los resultados de ls diversidad beta total o de las seis localidades y de la diversidad beta entre los dos paisajes, mostrando que la diversidad beta entre las seis localidades fue baja (0,56 o del 56%). El paisaje de montañas, presentó el valor más alto de diversidad beta (0.41 o del 41%). Para todos los casos el recambio es el componente de diversidad dominante (<a href="#tbl-tbl7">Table&nbsp;7</a>).</p>
+<div id="tbl-tbl7" class="cell tbl-parent quarto-layout-panel anchored">
+<div class="panel-caption table-caption">
+<p>Table&nbsp;7: Beta diversity parameters. (a) Beta diversity by landscape and locality scales. (b) Contribution of species and localities to beta diversity.</p>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-tbl7-1" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-tbl7" style="flex-basis: 100.0%;justify-content: center;">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>(a)  </caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Beta by scales</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Escale </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> General.beta </th>
+   <th style="text-align:right;"> Turnover </th>
+   <th style="text-align:right;"> Nestedness </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Localities </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0.56 </td>
+   <td style="text-align:right;"> 0.43 </td>
+   <td style="text-align:right;"> 0.13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Muntains </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.35 </td>
+   <td style="text-align:right;"> 0.25 </td>
+   <td style="text-align:right;"> 0.10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hills </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.41 </td>
+   <td style="text-align:right;"> 0.27 </td>
+   <td style="text-align:right;"> 0.13 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div id="tbl-tbl7-2" class="quarto-layout-cell quarto-layout-cell-subref anchored" data-ref-parent="tbl-tbl7" style="flex-basis: 100.0%;justify-content: center;">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>(b)  </caption>
+ <thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Contributions from species and localities</div></th>
+</tr>
+  <tr>
+   <th style="text-align:left;"> Contributions </th>
+   <th style="text-align:left;"> Results </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> SCBD </td>
+   <td style="text-align:left;"> Urodea (0.073), Canaeq (0.206), Canlit (0.08), Cansep (0.06), Canvar (0,193), Eurimp (0.107), Onthir (0.125) </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> LCBD </td>
+   <td style="text-align:left;"> L1 (0,14), L2 (0,115), L3 (0,15), L4 (0,18), L5 (0,17), L6 (0,23) </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="diversidad-beta-entre-pares-de-localidades" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="diversidad-beta-entre-pares-de-localidades">6. Diversidad beta entre pares de localidades</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="clasificación-de-localidades-según-podani" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="clasificación-de-localidades-según-podani">6.1 Clasificación de localidades según Podani</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div style="text-align: justify">
+
+<p>Los patrones de clasificación de las localidades son similares entre la propuesta de Podani y la de Baselga. Para la proyección de los dendogramas, se utilizará la propuesta de Podani, con el comando&nbsp;<strong><em>beta.div.comp</em></strong>, del paquete adespatial, para calcular la disimilitud de sorensen (o de Sorensen), en componentes de&nbsp;<strong><em>recambio</em></strong>&nbsp;y de&nbsp;<strong><em>diferencia de riqueza</em></strong> (similar al anidamiento de Baselga, pero más amplio) segun <strong>Legendre (2014)</strong>.</p>
+<div class="cell">
+
+</div>
+<p>En la <a href="#fig-fig7">Figure&nbsp;7</a> se observa que el patrón de diversidad beta general es similar al que se presenta en el cambio de riqueza (incluye al anidamiento), con las formación de dos grupos, separando a las localidades L2 y L3, correspondientes al paisaje de montañas.</p>
+<p>Hay un cambio de riqueza que incorpora al anidamiento, muy similar entre las localidades 1 y 4 (paisajes de montañas y de lomeríos, respectivamente) (<a href="#fig-fig7">Figure&nbsp;7</a> c). Según <strong>Baselga et al (2019)</strong>, si el patrón de anidamiento es el que domina, los lugares con mayor riqueza de especies, son los de mayor interés de conservación, ya que pueden ser los que están surtiendo de especies al resto de lugares por su proceso de anidamiento.Las localidades 1 y 4 (Aracataca y Sabanas de San Ángel) son las de mayor riqueza, despues de la localidad 6 (Sta Barbara de Pinto). Los niveles de recambio de especies fueron menos marcados, registrandose el mayor recambio entre las localidades 3 y 6 (paisajes de montañas y de lomeríos), el menor recambio lo presentó la localidad 5 (<a href="#fig-fig7">Figure&nbsp;7</a> b).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig7" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig7-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;7: Clustering using the average linkage of the components of (a), (d) general beta diversity, (b), (e) turnover, (c) richness change, and (f) nestedness. Sorensen distance and upgma clustering method.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></div></section><b style="color:#fc8d62;">
+</b><section id="comparación-de-parejas-de-localidades-según-podani" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="comparación-de-parejas-de-localidades-según-podani">6.2 Comparación de parejas de localidades según Podani</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig8" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig8-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Beta diversity of dung beetles for combinations of locality pairs, according to the Podani family.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig8">Figure&nbsp;8</a> muestra que el recambio es el que domina en comparación al anidamiento por diferencia de especies, principalmente entre las parejas de localidades L1-L4, L2-L5 y L4-L5. La diversidad por diferencia de riqueza fue menor al recambio, excepto en las parejas L1-L2, L1-L6, L2-L3, L3-L5 y L5-L6.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig9" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig9-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: Beta diversity of dung beetles for combinations of locality pairs, according to the Podani family.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig9">Figure&nbsp;9</a> <strong>muestra de una manera más clara que la anterior</strong>, que el recambio es el que domina en comparación al anidamiento por diferencia de especies, principalmente entre las parejas de localidades L1-L4, L2-L5 y L4-L5. La diversidad por diferencia de riqueza fue menor al recambio, excepto en las parejas L1-L2, L1-L6, L2-L3, L3-L5 y L5-L6.</p>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="comparación-de-parejas-de-localidades-según-baselga" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="comparación-de-parejas-de-localidades-según-baselga">6.3 Comparación de parejas de localidades según Baselga</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Las <a href="#fig-fig8">Figure&nbsp;8</a> y <a href="#fig-fig9">Figure&nbsp;9</a>, muestran una dominancia del recambio, en comparación al anidamiento, principalmente entre las parejas de localidades L1-L4, L2-L5, L4-L5, influyendo sobre los mayores valores de diversidad beta genaral.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>La <a href="#fig-fig10">Figure&nbsp;10</a> muestra que el recambio es el que domina en comparación al anidamiento por diferencia de especies, principalmente entre las localidades 3 a 5. La diversidad por anidamiento fue muy baja.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig10" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig10-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: Beta diversity of dung beetles for combinations of locality pairs, according to the Baselga family.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>La <a href="#fig-fig11">Figure&nbsp;11</a> muestra que el recambio es el que domina en comparación al anidamiento por diferencia de especies, principalmente entre las localidades 3 a 5. La diversidad por anidamiento fue muy baja.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig11" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="copros-manuscrito_files/figure-html/fig-fig11-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;11: Beta diversity of dung beetles for combinations of locality pairs, according to the Baselga family.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="enlaces-de-soporte-para-los-cálculos-de-diversidad-beta" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="enlaces-de-soporte-para-los-cálculos-de-diversidad-beta">Enlaces de soporte para los cálculos de diversidad beta</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><a href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/j.2041-210X.2012.00224.x">Enlace</a> Artículo en html de <em>Baselga y Olme (2012)</em>. betapart: an R package for the study of beta diversity.</p>
+<p><a href="https://rdrr.io/cran/betapart/man/beta.multi.html">Paquete Betapar</a> Componentes del paquete <code>betapart</code>, para calcular la diversidad beta en sus componentes de anidamiento y de recambio.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></div></section><b style="color:#fc8d62;">
+
+</b></main><b style="color:#fc8d62;">
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</b></div><b style="color:#fc8d62;"> <!-- /content -->
+
+
+
+</b></body></html>
