@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ES-es" xml:lang="ES-es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Javier Rodríguez Barrios">
+<meta name="dcterms.date" content="2024-06-17">
+<meta name="description" content="Análisis de datos de diversidad beta, de acuerdo a los requerimientos del manuscrito de Lenin Florez">
+
+<title>Asesoría 2. Análisis de diversidad beta</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="beta_files/libs/clipboard/clipboard.min.js"></script>
+<script src="beta_files/libs/quarto-html/quarto.js"></script>
+<script src="beta_files/libs/quarto-html/popper.min.js"></script>
+<script src="beta_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="beta_files/libs/quarto-html/anchor.min.js"></script>
+<link href="beta_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="beta_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="beta_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="beta_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="beta_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #2ca25f;
+    }
+    </style>
+
+<script src="beta_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="beta_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="stile-justify.css">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Asesoría 2. Análisis de diversidad beta</h1>
+            <p class="subtitle lead">Diversidad beta con datos Mesozoplancton</p>
+                  <div>
+        <div class="description">
+          Análisis de datos de diversidad beta, de acuerdo a los requerimientos del manuscrito de Lenin Florez
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor/a</div>
+      <div class="quarto-title-meta-contents">
+               <p>Javier Rodríguez Barrios </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 17, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menú flotante</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#paso-a-paso-para-la-organización-de-los-datos." id="toc-paso-a-paso-para-la-organización-de-los-datos." class="nav-link" data-scroll-target="#paso-a-paso-para-la-organización-de-los-datos.">Paso a paso para la organización de los datos.</a>
+  <ul>
+  <li><a href="#paso-1.-cargar-librerías" id="toc-paso-1.-cargar-librerías" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías">Paso 1. Cargar Librerías</a></li>
+  <li><a href="#paso-2.-base-de-datos-de-los-taxones" id="toc-paso-2.-base-de-datos-de-los-taxones" class="nav-link" data-scroll-target="#paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</a></li>
+  <li><a href="#paso-3.-diversidad-beta-general" id="toc-paso-3.-diversidad-beta-general" class="nav-link" data-scroll-target="#paso-3.-diversidad-beta-general"><strong>Paso 3. Diversidad beta general</strong></a>
+  <ul class="collapse">
+  <li><a href="#diversidad-beta-con-datos-de-abundancia" id="toc-diversidad-beta-con-datos-de-abundancia" class="nav-link" data-scroll-target="#diversidad-beta-con-datos-de-abundancia">3.1 Diversidad beta con datos de abundancia</a></li>
+  <li><a href="#diversidad-beta-general-con-datos-binarios-familia-de-baselga-2010" id="toc-diversidad-beta-general-con-datos-binarios-familia-de-baselga-2010" class="nav-link" data-scroll-target="#diversidad-beta-general-con-datos-binarios-familia-de-baselga-2010">3.2 Diversidad beta general con datos binarios (Familia de Baselga 2010)</a></li>
+  </ul></li>
+  <li><a href="#paso-4.-diversidad-beta-por-parejas-sitios-con-datos-binarios-familia-de-baselga-2010" id="toc-paso-4.-diversidad-beta-por-parejas-sitios-con-datos-binarios-familia-de-baselga-2010" class="nav-link" data-scroll-target="#paso-4.-diversidad-beta-por-parejas-sitios-con-datos-binarios-familia-de-baselga-2010"><strong>Paso 4.</strong> Diversidad beta por parejas sitios con datos binarios (Familia de Baselga 2010)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p><img src="image.png" class="img-fluid"></p>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="resumen" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>El presente ejercicio consiste en el procesamiento inicial de los datos entregados por el profesor Lenin Florez para dar respuesta al siguiente requerimiento:</p>
+<p><strong>12. Results. It is suggested to calculate Shannon-Wiener diversity index and Pielou evenness index values to assess zooplankton diversity.</strong></p>
+<p>A pesar de que el enfoque es hacia la diversidad alfa, se realizará el procedimiento para evaluar la <strong>diversidad beta</strong> a dos escalas: <strong>(1) Beta total o general</strong> con datos de abundancia y con datos binarios y <strong>(2) Beta entre parejas de sitios</strong> con datos binarios o de presencia-ausencia.</p>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="paso-a-paso-para-la-organización-de-los-datos." class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="paso-a-paso-para-la-organización-de-los-datos.">Paso a paso para la organización de los datos.</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="paso-1.-cargar-librerías" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías">Paso 1. Cargar Librerías</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se cargan las librerías para el análisis de diversidad beta, especialmente la <strong>betapart</strong>, para la propuesta de Baselga (2010) con datos binarios y la <strong>adespatial</strong>, para la diversidad beta con datos de abundancias.</p>
+<div class="cell">
+
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="paso-2.-base-de-datos-de-los-taxones" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se utilizará la base de datos con los 13 grupos biológicos que se relacionan a continuación (<a href="#tbl-tbl1">Tabla&nbsp;1</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl1" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;1:  Base de datos biológicos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Estación </th>
+   <th style="text-align:right;"> Calanoida </th>
+   <th style="text-align:right;"> Cyclopoida </th>
+   <th style="text-align:right;"> Harpacticoida </th>
+   <th style="text-align:right;"> Huevos de peces </th>
+   <th style="text-align:right;"> Larva de crustaceo </th>
+   <th style="text-align:right;"> Larva Nauplio </th>
+   <th style="text-align:right;"> Larva Zoea </th>
+   <th style="text-align:right;"> Larvas de Crustaceo </th>
+   <th style="text-align:right;"> Larvas de peces </th>
+   <th style="text-align:right;"> Luciferidae </th>
+   <th style="text-align:right;"> Otros </th>
+   <th style="text-align:right;"> Quetognatos </th>
+   <th style="text-align:right;"> Sergestidae </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> St.2 </td>
+   <td style="text-align:right;"> 13300 </td>
+   <td style="text-align:right;"> 428 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 2562 </td>
+   <td style="text-align:right;"> 12411 </td>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 86 </td>
+   <td style="text-align:right;"> 1219 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.4 </td>
+   <td style="text-align:right;"> 11006 </td>
+   <td style="text-align:right;"> 947 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 135 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 282 </td>
+   <td style="text-align:right;"> 406 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:right;"> 11659 </td>
+   <td style="text-align:right;"> 234 </td>
+   <td style="text-align:right;"> 385 </td>
+   <td style="text-align:right;"> 397 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.7 </td>
+   <td style="text-align:right;"> 288 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 124 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.9 </td>
+   <td style="text-align:right;"> 1615 </td>
+   <td style="text-align:right;"> 125 </td>
+   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.13 </td>
+   <td style="text-align:right;"> 3911 </td>
+   <td style="text-align:right;"> 237 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 92 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 250 </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 27 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.15 </td>
+   <td style="text-align:right;"> 3362 </td>
+   <td style="text-align:right;"> 307 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 179 </td>
+   <td style="text-align:right;"> 202 </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Si los nombres de los taxones son demasiado largos, se pueden abreviar con el número de letras que se requiera (ej: minlength = 4), esto para que las figuras que incluyan a los taxones, no queden tan saturadas de texto (<a href="#tbl-tbl2">Tabla&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl2" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;2:  Base de datos biológicos con nombres abreviados </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Estación </th>
+   <th style="text-align:right;"> Clnd </th>
+   <th style="text-align:right;"> Cycl </th>
+   <th style="text-align:right;"> Hrpc </th>
+   <th style="text-align:right;"> Hvdp </th>
+   <th style="text-align:right;"> Lrdc </th>
+   <th style="text-align:right;"> LrvN </th>
+   <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> LrdC </th>
+   <th style="text-align:right;"> Lrdp </th>
+   <th style="text-align:right;"> Lcfr </th>
+   <th style="text-align:right;"> Otrs </th>
+   <th style="text-align:right;"> Qtgn </th>
+   <th style="text-align:right;"> Srgs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> St.2 </td>
+   <td style="text-align:right;"> 13300 </td>
+   <td style="text-align:right;"> 428 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 2562 </td>
+   <td style="text-align:right;"> 12411 </td>
+   <td style="text-align:right;"> 30 </td>
+   <td style="text-align:right;"> 86 </td>
+   <td style="text-align:right;"> 1219 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.4 </td>
+   <td style="text-align:right;"> 11006 </td>
+   <td style="text-align:right;"> 947 </td>
+   <td style="text-align:right;"> 33 </td>
+   <td style="text-align:right;"> 135 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 282 </td>
+   <td style="text-align:right;"> 406 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 98 </td>
+   <td style="text-align:right;"> 11659 </td>
+   <td style="text-align:right;"> 234 </td>
+   <td style="text-align:right;"> 385 </td>
+   <td style="text-align:right;"> 397 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.7 </td>
+   <td style="text-align:right;"> 288 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 124 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 59 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.9 </td>
+   <td style="text-align:right;"> 1615 </td>
+   <td style="text-align:right;"> 125 </td>
+   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.13 </td>
+   <td style="text-align:right;"> 3911 </td>
+   <td style="text-align:right;"> 237 </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 92 </td>
+   <td style="text-align:right;"> 110 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 250 </td>
+   <td style="text-align:right;"> 81 </td>
+   <td style="text-align:right;"> 27 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.15 </td>
+   <td style="text-align:right;"> 3362 </td>
+   <td style="text-align:right;"> 307 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 179 </td>
+   <td style="text-align:right;"> 202 </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>A continuación se genera una tabla con los nombres completos de los taxones y al frente sus nombres abreviados (<a href="#tbl-tbl3">Tabla&nbsp;3</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl3" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;3:  Base de datos biológicos con nombres abreviados </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Taxones </th>
+   <th style="text-align:left;"> Abreviaturas </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Calanoida </td>
+   <td style="text-align:left;"> Clnd </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cyclopoida </td>
+   <td style="text-align:left;"> Cycl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Harpacticoida </td>
+   <td style="text-align:left;"> Hrpc </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Huevos de peces </td>
+   <td style="text-align:left;"> Hvdp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larva de crustaceo </td>
+   <td style="text-align:left;"> Lrdc </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larva Nauplio </td>
+   <td style="text-align:left;"> LrvN </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larva Zoea </td>
+   <td style="text-align:left;"> LrvZ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larvas de Crustaceo </td>
+   <td style="text-align:left;"> LrdC </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larvas de peces </td>
+   <td style="text-align:left;"> Lrdp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Luciferidae </td>
+   <td style="text-align:left;"> Lcfr </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Otros </td>
+   <td style="text-align:left;"> Otrs </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Quetognatos </td>
+   <td style="text-align:left;"> Qtgn </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sergestidae </td>
+   <td style="text-align:left;"> Srgs </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La <a href="#tbl-tbl4">Tabla&nbsp;4</a> muestra la forma binaria para el cálculo de índices beta de esta tipología de valores.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl4" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;4:  Datos binarios de presencia-ausencia de las las familias de invertebrados en los tres sitios evaluados </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Sitio </th>
+   <th style="text-align:right;"> Clnd </th>
+   <th style="text-align:right;"> Cycl </th>
+   <th style="text-align:right;"> Hrpc </th>
+   <th style="text-align:right;"> Hvdp </th>
+   <th style="text-align:right;"> Lrdc </th>
+   <th style="text-align:right;"> LrvN </th>
+   <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> LrdC </th>
+   <th style="text-align:right;"> Lrdp </th>
+   <th style="text-align:right;"> Lcfr </th>
+   <th style="text-align:right;"> Otrs </th>
+   <th style="text-align:right;"> Qtgn </th>
+   <th style="text-align:right;"> Srgs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> St.2 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.4 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.7 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.9 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.13 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.15 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="paso-3.-diversidad-beta-general" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="paso-3.-diversidad-beta-general"><strong>Paso 3. Diversidad beta general</strong></h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>–</p>
+<p><b style="color:#1b9e77;"></b></p><b style="color:#1b9e77;">
+</b><section id="diversidad-beta-con-datos-de-abundancia" class="level4"><b style="color:#1b9e77;">
+<h4 class="anchored" data-anchor-id="diversidad-beta-con-datos-de-abundancia">3.1 Diversidad beta con datos de abundancia</h4>
+</b><p><b style="color:#1b9e77;"></b></p>
+<p>Se utilizará el comando <strong>beta.div()</strong> del paquete <strong>adespatial</strong>, se calcula la <em>diversidad beta total</em> (<strong>BDtotal</strong>) y la suma total de cuadrados de <em>Y</em> (<strong>SStotal</strong>) que es la suma de los valores al cuadrado en la <strong>matriz S</strong>, Está asiciada a la <strong>varianza de Y</strong> o de la matriz de taxones (matriz de desviaciones al cuadrado de los valores de abundancia de las especies). Ap partir de la descomposición de <strong>SStotal</strong> se obtienen la descomposición de la <em>diversidad beta</em> en <strong>LCBD</strong> (contribución de las localidades a la diversidad beta) y <strong>SCBD</strong> (contribución relativa de las especies a la diversidad beta).</p>
+<p>Para este ejercicio, <strong>SStotal</strong> es de 0.92 (92% de variación de las abundancias de las familias de macroinvertebrados) y la <strong>Diversidad Beta</strong> total es 0.18 (18%), lo cual muestra una baja variabilidad en la composición de taxones entre localidades, quizá debido a la resolución de Familias, que es muy general para medir esta diversidad, así como la corta distancia que se presenta entre los sitios evaluados.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>SStotal BDtotal 
+   0.92    0.18 </code></pre>
+</div>
+</div>
+<p>Las abundancias de los taxones transformados con Hellinger: <strong>Calanoidea (Clnd), Larva de crutáceo (Lrdc), Luciferidae (Lcfr)</strong>, son las que varían más entre los tres sitios evaluados que los hace interesantes como potenciales indicadores ecológicos, según la propuesta de Borcard et al.&nbsp;(2018).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Clnd Lrdc Lcfr 
+0.10 0.13 0.50 </code></pre>
+</div>
+</div>
+<p>Las pruebas de permutación con el <strong>estadístico “holm”</strong> muestran que los valores <strong>LCBD</strong> de los sitios no son significativos, por lo cual se puede decir que las diferencias en el aporte a la diversidad beta para cada sitio, son solo cualitativas, como se verá en la siguiente figura.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7722 1.0000 1.0000 1.0000 1.0000 1.0000</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-fig1">Figura&nbsp;1</a> muestra la distribución espacial de los aportes de las seis localidades a la diversidad beta (<strong>LCBD</strong>), basados en un cálculo de la abundancia de los grupos taxonómicos transformados por Hellinger. Los tamaños de los circulos son proporcionales a los valores de <strong>LCBD</strong>; por lo tanto, las burbujas más grandes corresponden a los sitios que más contribuyen a la diversidad beta general del conjunto de datos. En este sentido, los <strong>sitios 7, 4 y 2</strong> son aportan a esta diversidad, orientada al cambio en la composición de de familias entre localdiades (<strong>Whittaker 1970</strong>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="beta_files/figure-html/fig-fig1-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;1: Aportes de diversidad beta general con datos de abundancia (LCBD) por cada sitio evaluado.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p><b style="color:#1b9e77;"></b></p><b style="color:#1b9e77;">
+</b></section><b style="color:#1b9e77;">
+</b><section id="diversidad-beta-general-con-datos-binarios-familia-de-baselga-2010" class="level4"><b style="color:#1b9e77;">
+<h4 class="anchored" data-anchor-id="diversidad-beta-general-con-datos-binarios-familia-de-baselga-2010">3.2 Diversidad beta general con datos binarios (Familia de Baselga 2010)</h4>
+</b><p><b style="color:#1b9e77;"></b></p>
+<p>Se calculará la diversidad beta general, con la propuesta de <em>Baselga (2010)</em>, producto de las combinaciones de los tres sitios, teniendo en cuenta lo siguente: <strong>beta.SIM - βSIM</strong>. Valor del componente de <em>recambio</em>. <strong>beta.SNE - βSNE</strong>. Valor del componente de <em>anidamiento</em>, medido como fracción resultante de anidamiento de la disimilitud de Sorensen. <strong>beta.SOR - βSOR</strong>. Valor de la <em>diversidad beta general</em>, medida como disimilitud de Sorensen. <strong>beta.SOR = beta.SIM + beta.SNE</strong> o <strong>βSOR = βSIM + βSME</strong></p>
+<p>El paquete <strong><em>betapart</em></strong> permite calcular disimilitudes por pares (matrices de distancias) y por múltiples sitios, separando a los componentes resultantes de <em>recambio</em> y de anidamiento de la <em>diversidad beta</em> taxonómica (basada en incidencia y abundancia), la diversaidad funcional y la filogenética.</p>
+<p>La <a href="#tbl-tbl5">Tabla&nbsp;5</a> y la <a href="#fig-fig2">Figura&nbsp;2</a> muestran que la <em>diversidad beta general</em> (<strong><em>beta.SOR</em></strong>) es baja, pues solo alcanza el 0.20 (20% de similitud de las familias entre las tres localidades).</p>
+<p>Esto se demuestra por el dominio en el componente de anidamiento, frente al recambio. Quizá con una mayor resolución taxonómica, se puedan viasualizar patrones de recambio que se asocien a una mayor diversidad beta.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl5" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;5:  Diversidad beta general. </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> x </th>
+   <th style="text-align:left;"> Parámetros </th>
+   <th style="text-align:right;"> Valor </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> beta.SIM </td>
+   <td style="text-align:left;"> Recambio </td>
+   <td style="text-align:right;"> 0.0819672 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> beta.SNE </td>
+   <td style="text-align:left;"> Anidamiento </td>
+   <td style="text-align:right;"> 0.1237065 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> beta.SOR </td>
+   <td style="text-align:left;"> Beta total </td>
+   <td style="text-align:right;"> 0.2056738 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig2">Figura&nbsp;2</a> muestra de forma gráfica a los valores de la <a href="#tbl-tbl5">Tabla&nbsp;5</a>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="beta_files/figure-html/fig-fig2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2: Aportes de diversidad beta general con datos binarios en sus componentes de recambio y de anidamiento.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="paso-4.-diversidad-beta-por-parejas-sitios-con-datos-binarios-familia-de-baselga-2010" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="paso-4.-diversidad-beta-por-parejas-sitios-con-datos-binarios-familia-de-baselga-2010"><strong>Paso 4.</strong> Diversidad beta por parejas sitios con datos binarios (Familia de Baselga 2010)</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><strong>Nota</strong>: Con solo seis sitios y con una resolución taxonómica gruesa, los resultados a esta escala de parejas de localidades pueden dar valores de cero en algunas de las combinaciones, como ocurre con el componente de <strong>recambio</strong> entre los sitios 2 con 4 y 7 y otras combinaciones de estos lugares con el resto de sitios (<strong>?@tbl-6</strong> y <a href="#fig-fig4">Figura&nbsp;3</a>). Para el caso del recambio, los valores de cero furon muy poco frecuentes.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>La <span class="citation" data-cites="ftbl-tbl6">@ftbl-tbl6</span> muestra el patrón de <strong>diversidad beta</strong> entre parejas de localidades, en donde el mayor valor se presenta entre el sitio 2 con 9 y 15, el sitio 4 con 15 y el sitio 7 con el 15.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl6" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;6:  Resumen de las seis primeras combinaciones de parejas de sitios, utilizadas para la figura 3. </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Sitios </th>
+   <th style="text-align:left;"> Parámetros </th>
+   <th style="text-align:right;"> Valores </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> St.2-St.4 </td>
+   <td style="text-align:left;"> Beta </td>
+   <td style="text-align:right;"> 0.0434783 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.2-St.7 </td>
+   <td style="text-align:left;"> Beta </td>
+   <td style="text-align:right;"> 0.0400000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.2-St.9 </td>
+   <td style="text-align:left;"> Beta </td>
+   <td style="text-align:right;"> 0.1304348 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.2-St.13 </td>
+   <td style="text-align:left;"> Beta </td>
+   <td style="text-align:right;"> 0.0833333 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.2-St.15 </td>
+   <td style="text-align:left;"> Beta </td>
+   <td style="text-align:right;"> 0.1818182 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> St.4-St.7 </td>
+   <td style="text-align:left;"> Beta </td>
+   <td style="text-align:right;"> 0.0833333 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>En la <a href="#fig-fig4">Figura&nbsp;3</a> se logra observar la dominancia del <strong>recambio</strong> en los sitios 2 al 4 y sus combinaciones con la mayoría de sitios, del sitio 7 al 15 predomina el <strong>anidamiento</strong>. Es importante mencionar que lugares con un recambio importante pueden obedecer a barreras ambientales o antrópicas que promueves procesos de diversificación, comparado a los lugares en donde el anidamiento sea frecuente, para lo cual puede haber pocos cambios en la composición taxonómica, pero si en la riqueza de los grupos.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="beta_files/figure-html/fig-fig4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;3: Diversidad beta general, por recambio y por anidamiento entre parejas de localidades.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig5">Figura&nbsp;4</a> presenta otra forma de comparar a las localidades. Llama la atención, que en los tres componentes de diversidad beta, se forman dos grupos, un grupo conformado por los sitios 15 y 9 y otro por los sitios 2, 4 y 7.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="beta_files/figure-html/fig-fig5-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4: Clasificación de las localidades de acuerdo a su diversidad beta general, por recambio y por anidamiento.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
