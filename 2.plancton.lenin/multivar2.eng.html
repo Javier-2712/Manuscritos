@@ -1,0 +1,2341 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ES-es" xml:lang="ES-es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Javier Rodríguez Barrios">
+<meta name="dcterms.date" content="2024-07-18">
+<meta name="description" content="Análisis de escalamientos (nmds), de correspondencias simples (ca), de clúester (cla) y discriminantes (lda) para la exploración de los datos, así como las pruebas de hipótesis de diferencias entre sitios (manovas y permanovas) de acuerdo a los requerimientos del manuscrito de Lenin Florez.">
+
+<title>Asesoría 3. Análisis de gradientes y conglomerados</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="multivar2.eng_files/libs/clipboard/clipboard.min.js"></script>
+<script src="multivar2.eng_files/libs/quarto-html/quarto.js"></script>
+<script src="multivar2.eng_files/libs/quarto-html/popper.min.js"></script>
+<script src="multivar2.eng_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="multivar2.eng_files/libs/quarto-html/anchor.min.js"></script>
+<link href="multivar2.eng_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="multivar2.eng_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="multivar2.eng_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="multivar2.eng_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="multivar2.eng_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #2b8cbe;
+    }
+    </style>
+
+<script src="multivar2.eng_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="multivar2.eng_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="stile-justify.css">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Asesoría 3. Análisis de gradientes y conglomerados</h1>
+            <p class="subtitle lead">Técnicas de ordenación y de clasificación con datos Mesozoplancton</p>
+                  <div>
+        <div class="description">
+          Análisis de escalamientos (nmds), de correspondencias simples (ca), de clúester (cla) y discriminantes (lda) para la exploración de los datos, así como las pruebas de hipótesis de diferencias entre sitios (manovas y permanovas) de acuerdo a los requerimientos del manuscrito de Lenin Florez.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Autor/a</div>
+      <div class="quarto-title-meta-contents">
+               <p>Javier Rodríguez Barrios </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Fecha de publicación</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 18, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menú flotante</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#análisis-de-componentes-principales-pca" id="toc-análisis-de-componentes-principales-pca" class="nav-link" data-scroll-target="#análisis-de-componentes-principales-pca">1. Análisis de Componentes Principales (PCA)</a>
+  <ul>
+  <li><a href="#paso-1.-cargar-librerías" id="toc-paso-1.-cargar-librerías" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías">Paso 1. Cargar Librerías</a></li>
+  <li><a href="#paso-2.-base-de-datos-de-los-taxones" id="toc-paso-2.-base-de-datos-de-los-taxones" class="nav-link" data-scroll-target="#paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</a></li>
+  <li><a href="#paso-3.-exploración-de-relaciones-biol-vs.-biol4" id="toc-paso-3.-exploración-de-relaciones-biol-vs.-biol4" class="nav-link" data-scroll-target="#paso-3.-exploración-de-relaciones-biol-vs.-biol4">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</a></li>
+  </ul></li>
+  <li><a href="#escalamiento-multidimensional-no-métrico-nmds" id="toc-escalamiento-multidimensional-no-métrico-nmds" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-nmds">2. Escalamiento Multidimensional no Métrico (NMDS)</a>
+  <ul>
+  <li><a href="#paso-1.-cargar-librerías-1" id="toc-paso-1.-cargar-librerías-1" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</a></li>
+  <li><a href="#paso-2.-nmds" id="toc-paso-2.-nmds" class="nav-link" data-scroll-target="#paso-2.-nmds">Paso 2. NMDS</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-correspondencia-simple-ca" id="toc-análisis-de-correspondencia-simple-ca" class="nav-link" data-scroll-target="#análisis-de-correspondencia-simple-ca">3. Análisis de Correspondencia Simple (CA)</a>
+  <ul>
+  <li><a href="#paso-1.-cargar-librerías-2" id="toc-paso-1.-cargar-librerías-2" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías-2">Paso 1. Cargar Librerías</a></li>
+  <li><a href="#paso-2.-ca-con-el-paquete-ggplo2" id="toc-paso-2.-ca-con-el-paquete-ggplo2" class="nav-link" data-scroll-target="#paso-2.-ca-con-el-paquete-ggplo2">Paso 2. CA con el paquete ggplo2</a></li>
+  </ul></li>
+  <li><a href="#escalamiento-multidimensional-no-métrico-nmds-1" id="toc-escalamiento-multidimensional-no-métrico-nmds-1" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-nmds-1">4. Escalamiento Multidimensional no Métrico (NMDS)</a>
+  <ul>
+  <li><a href="#paso-1.-cargar-la-base-de-datos" id="toc-paso-1.-cargar-la-base-de-datos" class="nav-link" data-scroll-target="#paso-1.-cargar-la-base-de-datos">Paso 1. Cargar la base de datos</a></li>
+  <li><a href="#paso-2.-base-de-datos-de-los-taxones-1" id="toc-paso-2.-base-de-datos-de-los-taxones-1" class="nav-link" data-scroll-target="#paso-2.-base-de-datos-de-los-taxones-1">Paso 2. Base de datos de los taxones</a></li>
+  <li><a href="#paso-3.-exploración-de-relaciones-biol-vs.-biol4-1" id="toc-paso-3.-exploración-de-relaciones-biol-vs.-biol4-1" class="nav-link" data-scroll-target="#paso-3.-exploración-de-relaciones-biol-vs.-biol4-1">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</a></li>
+  <li><a href="#paso-4.-nmds" id="toc-paso-4.-nmds" class="nav-link" data-scroll-target="#paso-4.-nmds">Paso 4. NMDS</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-clúster-cla" id="toc-análisis-de-clúster-cla" class="nav-link" data-scroll-target="#análisis-de-clúster-cla">5. Análisis de Clúster (CLA)</a>
+  <ul>
+  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">Cargar Librerías</a></li>
+  <li><a href="#paso-1.-distancia-entre-observaciones" id="toc-paso-1.-distancia-entre-observaciones" class="nav-link" data-scroll-target="#paso-1.-distancia-entre-observaciones">Paso 1. Distancia entre observaciones</a></li>
+  <li><a href="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" id="toc-paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" class="nav-link" data-scroll-target="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste">Paso 2. Elección del método de agrupación de mayor ajuste</a>
+  <ul>
+  <li><a href="#cálculo-de-los-siete-dendogramas" id="toc-cálculo-de-los-siete-dendogramas" class="nav-link" data-scroll-target="#cálculo-de-los-siete-dendogramas">2.1 Cálculo de los siete dendogramas</a></li>
+  <li><a href="#cálculo-de-las-correlaciones-cofenéticas" id="toc-cálculo-de-las-correlaciones-cofenéticas" class="nav-link" data-scroll-target="#cálculo-de-las-correlaciones-cofenéticas">2.2 Cálculo de las correlaciones cofenéticas</a></li>
+  </ul></li>
+  <li><a href="#paso-3.-número-de-groups-formados" id="toc-paso-3.-número-de-groups-formados" class="nav-link" data-scroll-target="#paso-3.-número-de-groups-formados">Paso 3. Número de Groups formados</a>
+  <ul>
+  <li><a href="#niveles-de-fusión" id="toc-niveles-de-fusión" class="nav-link" data-scroll-target="#niveles-de-fusión">3.1 Niveles de fusión</a></li>
+  <li><a href="#método-de-silueta" id="toc-método-de-silueta" class="nav-link" data-scroll-target="#método-de-silueta">3.2 Método de silueta</a></li>
+  <li><a href="#dendograma-jerárquico-final" id="toc-dendograma-jerárquico-final" class="nav-link" data-scroll-target="#dendograma-jerárquico-final">3.3 Dendograma jerárquico final</a></li>
+  <li><a href="#dendograma-no-jerárquico-final" id="toc-dendograma-no-jerárquico-final" class="nav-link" data-scroll-target="#dendograma-no-jerárquico-final">3.4 Dendograma no jerárquico final</a></li>
+  </ul></li>
+  <li><a href="#paso-4.-aporte-de-las-variables-a-la-clasificación" id="toc-paso-4.-aporte-de-las-variables-a-la-clasificación" class="nav-link" data-scroll-target="#paso-4.-aporte-de-las-variables-a-la-clasificación">Paso 4. Aporte de las variables a la clasificación</a></li>
+  </ul></li>
+  <li><a href="#análisis-discriminante-lineal-lda" id="toc-análisis-discriminante-lineal-lda" class="nav-link" data-scroll-target="#análisis-discriminante-lineal-lda">6. Análisis Discriminante Lineal (LDA)</a>
+  <ul>
+  <li><a href="#cargar-librerías-1" id="toc-cargar-librerías-1" class="nav-link" data-scroll-target="#cargar-librerías-1">Cargar Librerías</a></li>
+  <li><a href="#paso-1.-selección-de-una-muestra-aleatoria-para-el-lda" id="toc-paso-1.-selección-de-una-muestra-aleatoria-para-el-lda" class="nav-link" data-scroll-target="#paso-1.-selección-de-una-muestra-aleatoria-para-el-lda">Paso 1. selección de una muestra aleatoria para el lda</a></li>
+  <li><a href="#paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas" id="toc-paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas" class="nav-link" data-scroll-target="#paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas">Paso 2. Supuestos de normalidad y homogeneidad de covarianzas</a>
+  <ul>
+  <li><a href="#supuesto-1.-normalidad-multivariada" id="toc-supuesto-1.-normalidad-multivariada" class="nav-link" data-scroll-target="#supuesto-1.-normalidad-multivariada">Supuesto 1. Normalidad multivariada</a></li>
+  <li><a href="#supuesto-2.-homogeneidad-de-covarianzas-esfericidad" id="toc-supuesto-2.-homogeneidad-de-covarianzas-esfericidad" class="nav-link" data-scroll-target="#supuesto-2.-homogeneidad-de-covarianzas-esfericidad">Supuesto 2. Homogeneidad de covarianzas (esfericidad)</a></li>
+  </ul></li>
+  <li><a href="#paso-3.-análisis-discriminante-lineal-de-fisher" id="toc-paso-3.-análisis-discriminante-lineal-de-fisher" class="nav-link" data-scroll-target="#paso-3.-análisis-discriminante-lineal-de-fisher">Paso 3. Análisis discriminante lineal de Fisher</a></li>
+  <li><a href="#paso-4.-visualización-grafica-del-lda" id="toc-paso-4.-visualización-grafica-del-lda" class="nav-link" data-scroll-target="#paso-4.-visualización-grafica-del-lda">Paso 4. Visualización grafica del LDA</a></li>
+  </ul></li>
+  <li><a href="#manovas---groups-taxonómicos-de-biol2" id="toc-manovas---groups-taxonómicos-de-biol2" class="nav-link" data-scroll-target="#manovas---groups-taxonómicos-de-biol2">7. Manovas - Groups Taxonómicos de biol2</a>
+  <ul>
+  <li><a href="#paso-1.-análisis-de-varinaza-multivariado---manova" id="toc-paso-1.-análisis-de-varinaza-multivariado---manova" class="nav-link" data-scroll-target="#paso-1.-análisis-de-varinaza-multivariado---manova">Paso 1. Análisis de Varinaza Multivariado - MANOVA</a>
+  <ul>
+  <li><a href="#respuesta-de-cada-variable-a-las-diferencias-entre-station" id="toc-respuesta-de-cada-variable-a-las-diferencias-entre-station" class="nav-link" data-scroll-target="#respuesta-de-cada-variable-a-las-diferencias-entre-station">1.1 Respuesta de cada variable a las diferencias entre Station</a></li>
+  <li><a href="#cuatro-tipos-de-manova" id="toc-cuatro-tipos-de-manova" class="nav-link" data-scroll-target="#cuatro-tipos-de-manova">1.2 Cuatro tipos de MANOVA</a></li>
+  <li><a href="#supuesto-de-normalidad-de-los-residuales-del-manova" id="toc-supuesto-de-normalidad-de-los-residuales-del-manova" class="nav-link" data-scroll-target="#supuesto-de-normalidad-de-los-residuales-del-manova">1.3. Supuesto de normalidad de los residuales del MANOVA</a></li>
+  <li><a href="#supuesto-de-independencia" id="toc-supuesto-de-independencia" class="nav-link" data-scroll-target="#supuesto-de-independencia">1.4. Supuesto de independencia</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#permanovas---groups-taxonómicos" id="toc-permanovas---groups-taxonómicos" class="nav-link" data-scroll-target="#permanovas---groups-taxonómicos">8. Permanovas - Groups Taxonómicos</a>
+  <ul>
+  <li><a href="#permanova-1.-análisis-de-similitudes---anosim" id="toc-permanova-1.-análisis-de-similitudes---anosim" class="nav-link" data-scroll-target="#permanova-1.-análisis-de-similitudes---anosim">Permanova 1. Análisis de Similitudes - ANOSIM</a>
+  <ul>
+  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
+  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  <li><a href="#paso-3.-figura-del-anosim" id="toc-paso-3.-figura-del-anosim" class="nav-link" data-scroll-target="#paso-3.-figura-del-anosim">Paso 3. Figura del ANOSIM</a></li>
+  </ul></li>
+  <li><a href="#permanova-2.-permanova-de-un-factor-una-vía" id="toc-permanova-2.-permanova-de-un-factor-una-vía" class="nav-link" data-scroll-target="#permanova-2.-permanova-de-un-factor-una-vía">Permanova 2. Permanova de un factor (una vía)</a>
+  <ul>
+  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
+  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  </ul></li>
+  <li><a href="#permanova-3.-permanova-de-dos-factores-dos-vías" id="toc-permanova-3.-permanova-de-dos-factores-dos-vías" class="nav-link" data-scroll-target="#permanova-3.-permanova-de-dos-factores-dos-vías">Permanova 3. Permanova de dos factores (dos vías)</a>
+  <ul>
+  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
+  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  </ul></li>
+  <li><a href="#permanova-4.-permanova-de-dos-factores-dos-vías" id="toc-permanova-4.-permanova-de-dos-factores-dos-vías" class="nav-link" data-scroll-target="#permanova-4.-permanova-de-dos-factores-dos-vías">Permanova 4. Permanova de dos factores (dos vías)</a>
+  <ul>
+  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
+  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://cdnb.20m.es/sites/113/2023/01/Calanus-minor1_1300px-620x454.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Imagen tomada de <a href="https://blogs.20minutos.es/ciencia-para-llevar-csic/2023/01/24/plancton-un-mundo-en-una-cucharadita-de-agua-de-mar/">Albert Calbet</a></figcaption><p></p>
+</figure>
+</div>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="resumen" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>El presente ejercicio consiste en el procesamiento inicial de los datos entregados por el <strong>profesor Lenin Florez</strong> para dar respuesta al siguiente requerimiento:</p>
+<p><strong>13.The zooplankton community structure requires further exploration. I suggest applying hierarchical cluster analysis or NMDS ordination to better visualize separation between sampling events based on mesozooplankton abundance data.</strong></p>
+<p>Para este requerimiento, planteo realizar la propuesta de <strong>Borcard et al.&nbsp;(2018)</strong>, con ténicas de ordenación sin restricciones (unconstrained), de clasificación y de pruebas de hipótesis multivariadas.</p>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="análisis-de-componentes-principales-pca" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="análisis-de-componentes-principales-pca">1. Análisis de Componentes Principales (PCA)</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-cargar-librerías" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías">Paso 1. Cargar Librerías</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Librerías requeridas para el PCA.</p>
+<div class="cell">
+
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-base-de-datos-de-los-taxones" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La <a href="#tbl-tbl1">Tabla&nbsp;1</a> muestra la oranización de los Groups de taxones (13), para los diferentes sitios o Station (6), los Sizes (2) y los Layerss (2).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl1" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;1:  Base de datos biológicos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Station </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:left;"> Groups </th>
+   <th style="text-align:right;"> Abundance </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> Quetognatos </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 30.29749 </td>
+   <td style="text-align:right;"> 34.69981 </td>
+   <td style="text-align:right;"> 21.417828 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> Sergestidae </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 29.40959 </td>
+   <td style="text-align:right;"> 25.83323 </td>
+   <td style="text-align:right;"> 15.085254 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> Luciferidae </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 29.59008 </td>
+   <td style="text-align:right;"> 12.38513 </td>
+   <td style="text-align:right;"> 5.729643 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> Calanoida </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 30.29749 </td>
+   <td style="text-align:right;"> 34.69981 </td>
+   <td style="text-align:right;"> 21.417828 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> Cyclopoida </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 29.40959 </td>
+   <td style="text-align:right;"> 25.83323 </td>
+   <td style="text-align:right;"> 15.085254 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> Harpacticoida </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 29.59008 </td>
+   <td style="text-align:right;"> 12.38513 </td>
+   <td style="text-align:right;"> 5.729643 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Si los nombres de los taxones son demasiado largos, se pueden abreviar con el número de letras que se requiera (ej: minlength = 4), esto para que las figuras que incluyan a los taxones, no queden tan saturadas de texto (<a href="#tbl-tbl2">Tabla&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl2" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;2:  Abbreviations usadas para los Groups taxonómicos </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Groups </th>
+   <th style="text-align:left;"> Abbreviations </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Quetognatos </td>
+   <td style="text-align:left;"> Qtgn </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sergestidae </td>
+   <td style="text-align:left;"> Srgs </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Luciferidae </td>
+   <td style="text-align:left;"> Lcfr </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Calanoida </td>
+   <td style="text-align:left;"> Clnd </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cyclopoida </td>
+   <td style="text-align:left;"> Cycl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Harpacticoida </td>
+   <td style="text-align:left;"> Hrpc </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larvas de peces </td>
+   <td style="text-align:left;"> Lrdp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Huevos de peces </td>
+   <td style="text-align:left;"> Hvdp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larva Nauplio </td>
+   <td style="text-align:left;"> LrvN </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Larva Zoea </td>
+   <td style="text-align:left;"> LrvZ </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Otros </td>
+   <td style="text-align:left;"> Otrs </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>En la <a href="#tbl-tbl3">Tabla&nbsp;3</a> <strong>Ref</strong> corresponde a la primera letra de la Station, el Size y el Layers. Ej. <strong>22P</strong> corresponde a la Station <strong>2</strong>, el Size <strong>2</strong>50 y el Layers <strong>p</strong>rofundidad.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl3" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;3:  Base de datos con taxones abreviados y referencias de los sitios </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Ref </th>
+   <th style="text-align:left;"> Station </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+   <th style="text-align:right;"> Qtgn </th>
+   <th style="text-align:right;"> Srgs </th>
+   <th style="text-align:right;"> Lcfr </th>
+   <th style="text-align:right;"> Clnd </th>
+   <th style="text-align:right;"> Cycl </th>
+   <th style="text-align:right;"> Hrpc </th>
+   <th style="text-align:right;"> Lrdp </th>
+   <th style="text-align:right;"> Hvdp </th>
+   <th style="text-align:right;"> LrvN </th>
+   <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> Otrs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.88 </td>
+   <td style="text-align:right;"> 25.26 </td>
+   <td style="text-align:right;"> 14.40 </td>
+   <td style="text-align:right;"> 84 </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 12672 </td>
+   <td style="text-align:right;"> 408 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 135 </td>
+   <td style="text-align:right;"> 56 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.75 </td>
+   <td style="text-align:right;"> 23.27 </td>
+   <td style="text-align:right;"> 13.35 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1096 </td>
+   <td style="text-align:right;"> 984 </td>
+   <td style="text-align:right;"> 568 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2488 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.40 </td>
+   <td style="text-align:right;"> 19.97 </td>
+   <td style="text-align:right;"> 10.53 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 355 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.99 </td>
+   <td style="text-align:right;"> 28.66 </td>
+   <td style="text-align:right;"> 17.02 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10672 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.38 </td>
+   <td style="text-align:right;"> 17.34 </td>
+   <td style="text-align:right;"> 8.76 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 10680 </td>
+   <td style="text-align:right;"> 928 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 120 </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.52 </td>
+   <td style="text-align:right;"> 21.89 </td>
+   <td style="text-align:right;"> 12.11 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2240 </td>
+   <td style="text-align:right;"> 246 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-exploración-de-relaciones-biol-vs.-biol4" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-3.-exploración-de-relaciones-biol-vs.-biol4">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La <a href="#fig-fig1">Figura&nbsp;1</a> muestra que hay pocas relaciones lineales</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig1-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;1: Relaciones de las variables ambientales y los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig2">Figura&nbsp;2</a> muestra la relación de las variables biológicas con la transformación de Hellinger, pero las relaciones lineales siguen siendo bajas. En este sentido, no es recomendable realizar el <strong>PCA</strong>. Se recomienda un <strong>NMDS</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2: Relaciones de las variables ambientales y los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="escalamiento-multidimensional-no-métrico-nmds" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-nmds">2. Escalamiento Multidimensional no Métrico (NMDS)</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se aplicará esta técnica para explorar los gradientes en la ordenación de los sitios o Station, su relación con los trece Groups taxonómicos y las variables ambientales. Se utilizará la distancia Bray Curtis, para la asociación de los datos.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-cargar-librerías-1" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-nmds" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-2.-nmds">Paso 2. NMDS</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sitio </th>
+   <th style="text-align:right;"> NMDS1 </th>
+   <th style="text-align:right;"> NMDS2 </th>
+   <th style="text-align:left;"> Station </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:right;"> -0.1964112 </td>
+   <td style="text-align:right;"> -0.1917069 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:right;"> -0.5560553 </td>
+   <td style="text-align:right;"> -0.4986542 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:right;"> -0.4383616 </td>
+   <td style="text-align:right;"> 0.6431930 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:right;"> -1.2923563 </td>
+   <td style="text-align:right;"> -0.1067045 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Surface </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:right;"> -0.0721078 </td>
+   <td style="text-align:right;"> 0.1171290 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:right;"> -0.6403648 </td>
+   <td style="text-align:right;"> 0.2974482 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>A continuación se extraen las coordenadas de las Station, Sizes, Layerss, Groups taxonómicos y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>L <a href="#fig-fig3">Figura&nbsp;3</a>, muestra la ordenación del NMDS para las referencias de las Station, con los Groups taxonómicos y las variables ambientales. No se logra apreciar un gradiente claro, aunque las Station 9, 13 y 15 son las que agrupan mayor cantidad de taxones, asociadas a mayor Temperature y Salinity.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig3-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;3: ordenación de de las Station, con los Groups taxonómicos y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig4">Figura&nbsp;4</a> muestra la diferenciación por Station, se logra observar un gradiente horizontal, en donde algunas Station muestran diferencias por sus Groups taxonómicos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig5">Figura&nbsp;5</a> que la composición taxonómica con 250 micras, se encuentra anidada en 500 micras.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig5-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;5: ordenación de de las Station, con los Groups taxonómicos entre dos categorías de Size</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Similar a la <a href="#fig-fig5">Figura&nbsp;5</a>, la <a href="#fig-fig6">Figura&nbsp;6</a>, muestra ausencia de diferencias en la composición taxonómica entre Layerss.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig6" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig6-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;6: ordenación de de las Station, con los Groups taxonómicos entre Layerss de superficie y de Layers</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig7">Figura&nbsp;7</a> complementa a la <span class="citation" data-cites="fi4">@fi4</span>, al incorporar las variables ambientales en la caracterización de las Station y de los Groups taxonómicos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig7" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig7-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;7: ordenación de de las Station, con los Groups taxonómicos y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="análisis-de-correspondencia-simple-ca" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="análisis-de-correspondencia-simple-ca">3. Análisis de Correspondencia Simple (CA)</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>En este análisis se explora una propuesta complementaria a la realizada con el NMDS, con la diferencia de que se utilizará a la <strong>distancia chi cuadrado</strong>, para relacionar a las localidades y a los Groups taxonómicos.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-cargar-librerías-2" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías-2">Paso 1. Cargar Librerías</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-ca-con-el-paquete-ggplo2" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-2.-ca-con-el-paquete-ggplo2">Paso 2. CA con el paquete ggplo2</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se utiliza la <strong>distancia Chi Cuadrado</strong> con las trece variables biológicas. La varanza capturada por los dos primeros ejes canónicos es de 0.86 (86%).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>La <a href="#fig-fig8">Figura&nbsp;8</a> no muestra un gradiente muy claro en la caracterización de los Groups taxonómicos para las Station evaluadas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig8" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig8-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;8: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig9">Figura&nbsp;9</a> tampoco permite visualizar un gradiente claro en la ordenación de los sitios y de los taxones.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig9" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig9-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;9: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="escalamiento-multidimensional-no-métrico-nmds-1" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-nmds-1">4. Escalamiento Multidimensional no Métrico (NMDS)</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Esta técnica se aplicará, para evaluar otra base de datos, que no relaciona a los trece Groups taxonómicos, pero si a los datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-cargar-la-base-de-datos" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-la-base-de-datos">Paso 1. Cargar la base de datos</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-base-de-datos-de-los-taxones-1" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-2.-base-de-datos-de-los-taxones-1">Paso 2. Base de datos de los taxones</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Base de datos con los datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas. (<a href="#tbl-tbl4">Tabla&nbsp;4</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl4" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;4:  Base de datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas. </caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Stations </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:right;"> Period </th>
+   <th style="text-align:right;"> Abundance </th>
+   <th style="text-align:right;"> Biomass </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4.501723 </td>
+   <td style="text-align:right;"> 0.1147933 </td>
+   <td style="text-align:right;"> 29.97106 </td>
+   <td style="text-align:right;"> 26.28779 </td>
+   <td style="text-align:right;"> 15.23075 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4.318765 </td>
+   <td style="text-align:right;"> 0.1147933 </td>
+   <td style="text-align:right;"> 29.98770 </td>
+   <td style="text-align:right;"> 26.69368 </td>
+   <td style="text-align:right;"> 15.52944 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 15.720304 </td>
+   <td style="text-align:right;"> 10.8987720 </td>
+   <td style="text-align:right;"> 30.11647 </td>
+   <td style="text-align:right;"> 33.95946 </td>
+   <td style="text-align:right;"> 20.92512 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 376.190539 </td>
+   <td style="text-align:right;"> 10.8987720 </td>
+   <td style="text-align:right;"> 30.13961 </td>
+   <td style="text-align:right;"> 34.04838 </td>
+   <td style="text-align:right;"> 20.98512 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 28.179135 </td>
+   <td style="text-align:right;"> 0.5760857 </td>
+   <td style="text-align:right;"> 29.92421 </td>
+   <td style="text-align:right;"> 33.53299 </td>
+   <td style="text-align:right;"> 20.67232 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 38.975961 </td>
+   <td style="text-align:right;"> 0.5760857 </td>
+   <td style="text-align:right;"> 29.94042 </td>
+   <td style="text-align:right;"> 33.80792 </td>
+   <td style="text-align:right;"> 20.87408 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>En la <a href="#tbl-tbl5">Tabla&nbsp;5</a> <strong>Ref</strong> corresponde a la primera letra de la Station, el Size, la Layers y la época. Ej. <strong>225P1</strong> corresponde a la Station <strong>2</strong>, el Size <strong>2</strong>50 y el Layers <strong>P</strong>rofundidad y a la Época <strong>1</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl5" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;5:  Base de datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas, que incorpora referencias de los sitios </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Ref </th>
+   <th style="text-align:left;"> Stations </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:left;"> Period </th>
+   <th style="text-align:right;"> Abundance </th>
+   <th style="text-align:right;"> Biomass </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 225D1 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 251.11 </td>
+   <td style="text-align:right;"> 2.53 </td>
+   <td style="text-align:right;"> 29.90 </td>
+   <td style="text-align:right;"> 25.91 </td>
+   <td style="text-align:right;"> 14.89 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 225S2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 460.55 </td>
+   <td style="text-align:right;"> 4.07 </td>
+   <td style="text-align:right;"> 29.77 </td>
+   <td style="text-align:right;"> 24.31 </td>
+   <td style="text-align:right;"> 14.08 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 250D1 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 568.05 </td>
+   <td style="text-align:right;"> 0.20 </td>
+   <td style="text-align:right;"> 29.40 </td>
+   <td style="text-align:right;"> 19.97 </td>
+   <td style="text-align:right;"> 10.53 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 250S2 </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 28.50 </td>
+   <td style="text-align:right;"> 32.22 </td>
+   <td style="text-align:right;"> 29.99 </td>
+   <td style="text-align:right;"> 28.66 </td>
+   <td style="text-align:right;"> 17.02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 425D1 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 914.15 </td>
+   <td style="text-align:right;"> 0.28 </td>
+   <td style="text-align:right;"> 29.38 </td>
+   <td style="text-align:right;"> 17.34 </td>
+   <td style="text-align:right;"> 8.76 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 425S2 </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 477.33 </td>
+   <td style="text-align:right;"> 0.50 </td>
+   <td style="text-align:right;"> 29.61 </td>
+   <td style="text-align:right;"> 23.23 </td>
+   <td style="text-align:right;"> 13.08 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-exploración-de-relaciones-biol-vs.-biol4-1" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-3.-exploración-de-relaciones-biol-vs.-biol4-1">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Pocas relaciones lineales</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-4.-nmds" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-4.-nmds">Paso 4. NMDS</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.078</strong> (7%), denotando una buena configuración para este análisis.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>La <a href="#fig-fig10">Figura&nbsp;10</a> muestra un patrón poco claro en la ordenación de las variables y las localidades.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig10" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig10-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;10: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig11">Figura&nbsp;11</a> muestra poca diferenciación entre las Station, con las variables que las caracterizan.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig11" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="multivar2.eng_files/figure-html/fig-fig11-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;11: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="análisis-de-clúster-cla" class="level2"><b style="color:#fc8d62;">
+<h2 class="anchored" data-anchor-id="análisis-de-clúster-cla">5. Análisis de Clúster (CLA)</h2>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Este análisis fue solicitado por los evaluadores, basado en la Abundance de los trece Groups taxonómicos, se pretende clasificar a las localidades en Groups y compararlos con las Station del estudio.</p>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="cargar-librerías" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="cargar-librerías">Cargar Librerías</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se cargan las librerías requeridas para el análisis.</p>
+<div class="cell">
+
+</div>
+<p>La <a href="#tbl-tbl6">Tabla&nbsp;6</a>, es la misma <a href="#tbl-tbl3">Tabla&nbsp;3</a> utilizada al inicio de este reporte, para el NMDS y CA.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl6" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;6:  Base de datos con taxones abreviados y referencias de los sitios </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> Ref </th>
+   <th style="text-align:left;"> Station </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+   <th style="text-align:right;"> Qtgn </th>
+   <th style="text-align:right;"> Srgs </th>
+   <th style="text-align:right;"> Lcfr </th>
+   <th style="text-align:right;"> Clnd </th>
+   <th style="text-align:right;"> Cycl </th>
+   <th style="text-align:right;"> Hrpc </th>
+   <th style="text-align:right;"> Lrdp </th>
+   <th style="text-align:right;"> Hvdp </th>
+   <th style="text-align:right;"> LrvN </th>
+   <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> Otrs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.88 </td>
+   <td style="text-align:right;"> 25.26 </td>
+   <td style="text-align:right;"> 14.40 </td>
+   <td style="text-align:right;"> 84 </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 12672 </td>
+   <td style="text-align:right;"> 408 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 135 </td>
+   <td style="text-align:right;"> 56 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.75 </td>
+   <td style="text-align:right;"> 23.27 </td>
+   <td style="text-align:right;"> 13.35 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1096 </td>
+   <td style="text-align:right;"> 984 </td>
+   <td style="text-align:right;"> 568 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2488 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.40 </td>
+   <td style="text-align:right;"> 19.97 </td>
+   <td style="text-align:right;"> 10.53 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 355 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.99 </td>
+   <td style="text-align:right;"> 28.66 </td>
+   <td style="text-align:right;"> 17.02 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10672 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.38 </td>
+   <td style="text-align:right;"> 17.34 </td>
+   <td style="text-align:right;"> 8.76 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 10680 </td>
+   <td style="text-align:right;"> 928 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 120 </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.52 </td>
+   <td style="text-align:right;"> 21.89 </td>
+   <td style="text-align:right;"> 12.11 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2240 </td>
+   <td style="text-align:right;"> 246 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>En la siguiente figura se observa que las localidades 2 y 4 son las que presentan los taxones con los mayores valores de Abundance.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>La Salinity y la Density son variables derivadas, que presentan un patrón entre las localidades, inverso al de los taxones.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-1.-distancia-entre-observaciones" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-distancia-entre-observaciones">Paso 1. Distancia entre observaciones</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se aplicará la distancia Bray Curtis para las variables biológicas, dada la poca linealidad en sus relaciones.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste">Paso 2. Elección del método de agrupación de mayor ajuste</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<section id="cálculo-de-los-siete-dendogramas" class="level4">
+<h4 class="anchored" data-anchor-id="cálculo-de-los-siete-dendogramas">2.1 Cálculo de los siete dendogramas</h4>
+<div class="cell">
+
+</div>
+</section>
+<section id="cálculo-de-las-correlaciones-cofenéticas" class="level4">
+<h4 class="anchored" data-anchor-id="cálculo-de-las-correlaciones-cofenéticas">2.2 Cálculo de las correlaciones cofenéticas</h4>
+<div class="cell">
+
+</div>
+<p>El método de <strong>agrupación UPGMA</strong> es el que presentó el mejor ajuste cofenético.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Met </th>
+   <th style="text-align:right;"> Cofen </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> upgma </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0.917 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> upgmc </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0.897 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> compl </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0.842 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> wpgma </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0.841 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> simple </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.787 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> wpgmc </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0.760 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ward </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 0.711 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-número-de-groups-formados" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-3.-número-de-groups-formados">Paso 3. Número de Groups formados</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<section id="niveles-de-fusión" class="level4">
+<h4 class="anchored" data-anchor-id="niveles-de-fusión">3.1 Niveles de fusión</h4>
+<div class="cell">
+
+</div>
+<p>Esta ténica muestra que la mayor amplitud se presenta en la formación de <strong>tres Groups</strong> o clúester, que reunen a las observaciones clasificadas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="método-de-silueta" class="level4">
+<h4 class="anchored" data-anchor-id="método-de-silueta">3.2 Método de silueta</h4>
+<div class="cell">
+
+</div>
+<p>Esta ténica muestra que la mayor amplitud se presenta en la formación de <strong>diez Groups</strong> o clúester, que reunen a las observaciones clasificadas.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> Silueta-Número óptimo de Clusters k= 10 
+ Con una aplitud promedio de silueta 0.3891467 </code></pre>
+</div>
+</div>
+</section>
+<section id="dendograma-jerárquico-final" class="level4">
+<h4 class="anchored" data-anchor-id="dendograma-jerárquico-final">3.3 Dendograma jerárquico final</h4>
+<p>Dendograma generado con el método upgma, la distancia Bray y los tres Groups formados.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="dendograma-no-jerárquico-final" class="level4">
+<h4 class="anchored" data-anchor-id="dendograma-no-jerárquico-final">3.4 Dendograma no jerárquico final</h4>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> grp </th>
+   <th style="text-align:left;"> Ref </th>
+   <th style="text-align:left;"> Station </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.88 </td>
+   <td style="text-align:right;"> 25.26 </td>
+   <td style="text-align:right;"> 14.40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.75 </td>
+   <td style="text-align:right;"> 23.27 </td>
+   <td style="text-align:right;"> 13.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.40 </td>
+   <td style="text-align:right;"> 19.97 </td>
+   <td style="text-align:right;"> 10.53 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.99 </td>
+   <td style="text-align:right;"> 28.66 </td>
+   <td style="text-align:right;"> 17.02 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.38 </td>
+   <td style="text-align:right;"> 17.34 </td>
+   <td style="text-align:right;"> 8.76 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.52 </td>
+   <td style="text-align:right;"> 21.89 </td>
+   <td style="text-align:right;"> 12.11 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-4.-aporte-de-las-variables-a-la-clasificación" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-4.-aporte-de-las-variables-a-la-clasificación">Paso 4. Aporte de las variables a la clasificación</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>En rojo se identifica a los Groups taxonómicos que por su patrón de Abundance, aportan a la clasificación de los sitios.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-59-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Para este caso, el aporte de los taxones se da para las Station.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="análisis-discriminante-lineal-lda" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="análisis-discriminante-lineal-lda">6. Análisis Discriminante Lineal (LDA)</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Este análisis se realiza para intentar optimizar la separación de las Station, por la información de las Abundances de los diferentes Groups taxonómicos. Se incorpora a la variante de discriminante canónico, para analizar el aporte de los taxones en la clasificación.</p>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="cargar-librerías-1" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="cargar-librerías-1">Cargar Librerías</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se cargan diferentes librerías requeridas para el lda.</p>
+<div class="cell">
+
+</div>
+<p>La <a href="#tbl-tbl6">Tabla&nbsp;6</a>, es la misma <a href="#tbl-tbl6">Tabla&nbsp;6</a> utilizada para la mayoría de los análisis anteriores.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-tbl7" class="anchored">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla&nbsp;7:  Base de datos con taxones abreviados y referencias de los sitios </caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> Ref </th>
+   <th style="text-align:left;"> Station </th>
+   <th style="text-align:left;"> Size </th>
+   <th style="text-align:left;"> Layers </th>
+   <th style="text-align:right;"> Temperature </th>
+   <th style="text-align:right;"> Salinity </th>
+   <th style="text-align:right;"> Density </th>
+   <th style="text-align:right;"> Qtgn </th>
+   <th style="text-align:right;"> Srgs </th>
+   <th style="text-align:right;"> Lcfr </th>
+   <th style="text-align:right;"> Clnd </th>
+   <th style="text-align:right;"> Cycl </th>
+   <th style="text-align:right;"> Hrpc </th>
+   <th style="text-align:right;"> Lrdp </th>
+   <th style="text-align:right;"> Hvdp </th>
+   <th style="text-align:right;"> LrvN </th>
+   <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> Otrs </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:left;"> 22D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.88 </td>
+   <td style="text-align:right;"> 25.26 </td>
+   <td style="text-align:right;"> 14.40 </td>
+   <td style="text-align:right;"> 84 </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 12672 </td>
+   <td style="text-align:right;"> 408 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 68 </td>
+   <td style="text-align:right;"> 135 </td>
+   <td style="text-align:right;"> 56 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:left;"> 22S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.75 </td>
+   <td style="text-align:right;"> 23.27 </td>
+   <td style="text-align:right;"> 13.35 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1096 </td>
+   <td style="text-align:right;"> 984 </td>
+   <td style="text-align:right;"> 568 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2488 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:left;"> 25D </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.40 </td>
+   <td style="text-align:right;"> 19.97 </td>
+   <td style="text-align:right;"> 10.53 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 355 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:left;"> 25S </td>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> 500 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.99 </td>
+   <td style="text-align:right;"> 28.66 </td>
+   <td style="text-align:right;"> 17.02 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 10672 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:left;"> 42D </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Depth </td>
+   <td style="text-align:right;"> 29.38 </td>
+   <td style="text-align:right;"> 17.34 </td>
+   <td style="text-align:right;"> 8.76 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 368 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 10680 </td>
+   <td style="text-align:right;"> 928 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 120 </td>
+   <td style="text-align:right;"> 280 </td>
+   <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 200 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:left;"> 42S </td>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> 250 μm </td>
+   <td style="text-align:left;"> Surface </td>
+   <td style="text-align:right;"> 29.52 </td>
+   <td style="text-align:right;"> 21.89 </td>
+   <td style="text-align:right;"> 12.11 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2240 </td>
+   <td style="text-align:right;"> 246 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>Se vuelve a mostrar la resolución de los taxones y de las variables ambientales para clasificar a las Station o sitios de muestreo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-67-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-1.-selección-de-una-muestra-aleatoria-para-el-lda" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-selección-de-una-muestra-aleatoria-para-el-lda">Paso 1. selección de una muestra aleatoria para el lda</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p><strong>División de los datos en conjuntos de entrenamiento y prueba</strong>. Se recomienda estandarizar o normalizar las variables predictoras (Abundances de taxones) para que no haya un efecto de la escala. Algunos autores recomiendan dividir los datos de entrenamiento en un 60% y los datos de la prueba en 40% <a href="https://finnstats.com/2021/05/02/linear-discriminant-analysis/">FINNSTATS</a> o datos de entrenamiento en un 80% y los de prueba en un 20%. <a href="http://www.sthda.com/english/articles/36-classification-methods-essentials/146-discriminant-analysis-essentials-in-r/">STHDA</a>. Se utilizará la segunda propuesta para este ejercicio.</p>
+<p><strong>1.&nbsp;División de los datos en conjuntos de entrenamiento y prueba</strong></p>
+<div class="cell">
+
+</div>
+<ol start="2" type="1">
+<li><strong>Normalizar los datos. Las variables categóricas (Station) se ignoran automáticamente.</strong></li>
+</ol>
+<div class="cell">
+
+</div>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas">Paso 2. Supuestos de normalidad y homogeneidad de covarianzas</h3>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="supuesto-1.-normalidad-multivariada" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="supuesto-1.-normalidad-multivariada">Supuesto 1. Normalidad multivariada</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Este es uno de los requisitos que deben presentar los datos, para utilizar al lda como un modelo lineal. En caso de que no se cumpla este supuesto o no se pueda ejecutar, puede usarse el lda como un análisis exploratorio.</p>
+<div class="cell">
+
+</div>
+<p>Se corrió el diagnóstico de normalidad multivariada para cada Station, pero las muestras son matrices singulares, todas las matrices son singulares, impidiendo la ejecución del procedimiento.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="supuesto-2.-homogeneidad-de-covarianzas-esfericidad" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="supuesto-2.-homogeneidad-de-covarianzas-esfericidad">Supuesto 2. Homogeneidad de covarianzas (esfericidad)</h4>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se realizaron dos anovas permutacionales, las cuales permitieron demostrar que se cumple el supuesto de homogeneidad de covarianzas (valor p es mayor a 0.05).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: Distances
+          Df  Sum Sq Mean Sq F value Pr(&gt;F)
+Groups     5  51.679 10.3357  1.7301 0.1787
+Residuals 18 107.535  5.9742               </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Permutation test for homogeneity of multivariate dispersions
+Permutation: free
+Number of permutations: 999
+
+Response: Distances
+          Df  Sum Sq Mean Sq      F N.Perm Pr(&gt;F)
+Groups     5  51.679 10.3357 1.7301    999  0.137
+Residuals 18 107.535  5.9742                     </code></pre>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-análisis-discriminante-lineal-de-fisher" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-3.-análisis-discriminante-lineal-de-fisher">Paso 3. Análisis discriminante lineal de Fisher</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se analizará el desempeño del modelo discriminante lineal, para clasificar a las seis Station, basado en las Abundances de los Groups taxonómicos.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   2    4    7    9   13   15 
+0.17 0.17 0.17 0.17 0.17 0.17 </code></pre>
+</div>
+</div>
+<p>La función de desempeño, genera la siguiente tabla de contingencia, en la que a excepción de la Station 2 (la más diferente), muestra una mezcla de observaciones que no permiten diferenciar claramente a la Station, eso se da por la similitud en la composición y Abundance de los Groups taxonómicos entre Station.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>       group
+Station 2 4 7 9 13 15
+     2  4 0 0 0  0  0
+     4  0 2 1 0  1  0
+     7  0 1 2 1  0  0
+     9  0 0 1 1  0  2
+     13 0 1 0 0  3  0
+     15 0 0 1 1  0  2</code></pre>
+</div>
+</div>
+<p>El siguiente resultado muestra el porcentaje de acierto en la clasificación de las Station, el cual es bajo en la mayoría de los casos.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  2   4   7   9  13  15 
+100  50  50  25  75  50 </code></pre>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-4.-visualización-grafica-del-lda" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-4.-visualización-grafica-del-lda">Paso 4. Visualización grafica del LDA</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Se utilizará el paquete ggplot2 como se ha venido empleando en las diferentes técnicas, debido a su buen nivel de resolución para visualizar patrones en los datos.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>La siguiente figura corrobora la separación de la Station 2, debido a su diferencia en la composición y Abundance de taxones encontrados. El resto de localidades presentan una mezcla o mayor similitud taxonómica.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Ref"         "Station"     "Size"        "Layers"      "Temperature"
+ [6] "Salinity"    "Density"     "Qtgn"        "Srgs"        "Lcfr"       
+[11] "Clnd"        "Cycl"        "Hrpc"        "Lrdp"        "Hvdp"       
+[16] "LrvN"        "LrvZ"        "Otrs"       </code></pre>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>El siguiente <strong>análisis discriminante canónico</strong>, permite demostrar que la diferencia de la Station 2, se debe a la composición y Abundance de taxones como <strong>Srgs, Lcfr, Lrdp y Hvdp</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="manovas---groups-taxonómicos-de-biol2" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="manovas---groups-taxonómicos-de-biol2">7. Manovas - Groups Taxonómicos de biol2</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>El siguiente manova se emplea para probar la hipótesis de diferencias entre las Station, de acuerdo a la Abundance y composición de los Groups taxonómicos. Como es un modelo lineal paramétrico, se deben probar los supuestos paramétricos encontrando que no se cumple la normalidad multivariada de los residuales, por lo cual, posteriormente se realizaran permanovas que no requieren este supuesto.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-análisis-de-varinaza-multivariado---manova" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-análisis-de-varinaza-multivariado---manova">Paso 1. Análisis de Varinaza Multivariado - MANOVA</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<section id="respuesta-de-cada-variable-a-las-diferencias-entre-station" class="level4">
+<h4 class="anchored" data-anchor-id="respuesta-de-cada-variable-a-las-diferencias-entre-station">1.1 Respuesta de cada variable a las diferencias entre Station</h4>
+<div class="cell">
+
+</div>
+<p>solo tres taxones muestran significancia para diferenciar a las Station (valor p &lt; 0,05)</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Taxa </th>
+   <th style="text-align:right;"> Valores </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Lcf </td>
+   <td style="text-align:right;"> 0.0095 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Otrs </td>
+   <td style="text-align:right;"> 0.0279 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> LrvN </td>
+   <td style="text-align:right;"> 0.0422 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Qtgn </td>
+   <td style="text-align:right;"> 0.0549 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> LrvZ </td>
+   <td style="text-align:right;"> 0.0668 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cycl </td>
+   <td style="text-align:right;"> 0.1085 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hvdp </td>
+   <td style="text-align:right;"> 0.2080 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Clnd </td>
+   <td style="text-align:right;"> 0.3225 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lrdp </td>
+   <td style="text-align:right;"> 0.4135 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Srgs </td>
+   <td style="text-align:right;"> 0.4342 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hrpc </td>
+   <td style="text-align:right;"> 0.7067 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="cuatro-tipos-de-manova" class="level4">
+<h4 class="anchored" data-anchor-id="cuatro-tipos-de-manova">1.2 Cuatro tipos de MANOVA</h4>
+<p>Solo el test de Roy muestra diferencias significativas en la Abundance y composición para las Station en comparación (valor p &lt; 0.05)</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>          Df Pillai approx F num Df den Df Pr(&gt;F)
+Station    5 2.5409   1.1272     55     60 0.3243
+Residuals 18                                     </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Df     Wilks approx F num Df den Df Pr(&gt;F)
+Station    5 0.0088717   1.3111     55 40.617 0.1844
+Residuals 18                                        </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Df Hotelling-Lawley approx F num Df den Df  Pr(&gt;F)  
+Station    5           13.728   1.5975     55     32 0.07816 .
+Residuals 18                                                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          Df    Roy approx F num Df den Df    Pr(&gt;F)    
+Station    5 10.117   11.037     11     12 0.0001167 ***
+Residuals 18                                            
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="supuesto-de-normalidad-de-los-residuales-del-manova" class="level4">
+<h4 class="anchored" data-anchor-id="supuesto-de-normalidad-de-los-residuales-del-manova">1.3. Supuesto de normalidad de los residuales del MANOVA</h4>
+<p>No se cumple el supuesto de normalidad multivariada sobre los residuales del Manova (W = 0.65, p-value = 2.8e-06). En este sentido, el MANOVA no puede ser utilizado para probar diferencias entre la Station.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  Z
+W = 0.6573, p-value = 2.885e-06</code></pre>
+</div>
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-93-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="supuesto-de-independencia" class="level4">
+<h4 class="anchored" data-anchor-id="supuesto-de-independencia">1.4. Supuesto de independencia</h4>
+<p>Se cumple este supuesto (valor p &gt; 0.05).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1      -0.3499029      2.694424   0.534
+ Alternative hypothesis: rho != 0</code></pre>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="permanovas---groups-taxonómicos" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="permanovas---groups-taxonómicos">8. Permanovas - Groups Taxonómicos</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Esta prueba de hipótesis se realiza, debido a que no se cumplieron algunos supuestos del MANOVA. Se analizarán diferentes variantes como el ANOSIM y el PERMANOVA de uno y varios factores.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="permanova-1.-análisis-de-similitudes---anosim" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-1.-análisis-de-similitudes---anosim">Permanova 1. Análisis de Similitudes - ANOSIM</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se realiza la transformación de hellinger, debido a que logra linealizar las Abundances de los taxones, permitiendo encontrar diferencias entre algunas de las Station en comparación.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se presentan pocas diferencias entre las Station de acuerdo a las Groups taxonómicos seleccionados (R= 0.21, p= 0.012).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+anosim(x = biol2.dist1, grouping = biol2$Station, permutations = 1000) 
+Dissimilarity: bray 
+
+ANOSIM statistic R: 0.2132 
+      Significance: 0.016983 
+
+Permutation: free
+Number of permutations: 1000
+
+Upper quantiles of permutations (null model):
+  90%   95% 97.5%   99% 
+0.103 0.140 0.170 0.236 
+
+Dissimilarity ranks between and within classes:
+        0%    25%   50%    75% 100%   N
+Between  1  77.25 145.5 212.25  276 240
+2       64 168.25 196.0 214.75  250   6
+4       20 142.50 177.5 211.00  254   6
+7       24  34.25  50.0  69.50  119   6
+9       50  55.50  91.5 119.25  157   6
+13       3 118.00 132.5 141.00  192   6
+15      10  64.75  72.0  75.50   77   6</code></pre>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="paso-3.-figura-del-anosim" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-3.-figura-del-anosim">Paso 3. Figura del ANOSIM</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="multivar2.eng_files/figure-html/unnamed-chunk-97-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="permanova-2.-permanova-de-un-factor-una-vía" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-2.-permanova-de-un-factor-una-vía">Permanova 2. Permanova de un factor (una vía)</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>De acuerdo a la teoría, esta prueba suele ser más robsta que el anosim, para encontrar diferencias entre los Groups en comparación.</p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Linealización de las Abundances de los Groups taxonómicos.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se presentan diferencias entre las Station similar al anosim (Seudo F= 2.73; g.l.= 5, 18; p= 0.012).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = biol2.dist1 ~ biol2$Station, permutations = 1000)
+              Df SumOfSqs      R2      F   Pr(&gt;F)   
+biol2$Station  5   1.3909 0.43156 2.7331 0.004995 **
+Residual      18   1.8320 0.56844                   
+Total         23   3.2229 1.00000                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Para este caso, cinco taxones presentan un aporte significativo en las diferencias entre las Station en comparación.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation: free
+Number of permutations: 1000
+
+Terms added sequentially (first to last)
+
+          Df SumsOfSqs MeanSqs F.Model      R2   Pr(&gt;F)    
+Qtgn       1    0.2409 0.24085  4.0729 0.07473 0.033966 *  
+Srgs       1    0.2460 0.24598  4.1596 0.07632 0.033966 *  
+Lcfr       1    1.1133 1.11332 18.8267 0.34544 0.000999 ***
+Clnd       1    0.0923 0.09229  1.5607 0.02864 0.177822    
+Cycl       1    0.0509 0.05093  0.8613 0.01580 0.462537    
+Hrpc       1    0.0993 0.09926  1.6786 0.03080 0.151848    
+Lrdp       1    0.1921 0.19211  3.2486 0.05961 0.028971 *  
+Hvdp       1    0.1660 0.16595  2.8063 0.05149 0.039960 *  
+LrvN       1    0.1010 0.10096  1.7073 0.03133 0.160839    
+LrvZ       1    0.1305 0.13051  2.2070 0.04050 0.102897    
+Otrs       1    0.0811 0.08106  1.3708 0.02515 0.251748    
+Residuals 12    0.7096 0.05914         0.22018             
+Total     23    3.2229                 1.00000             
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="permanova-3.-permanova-de-dos-factores-dos-vías" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-3.-permanova-de-dos-factores-dos-vías">Permanova 3. Permanova de dos factores (dos vías)</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para este caso se evalúan las diferencias en la Abundance y composición de los Groups taxonómicos entre Station (factor 1) y los Sizes (factor 2).</p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Linealización de las Abundances de los Groups taxonómicos.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se presentan diferencias entre las Station y entre los Sizes, pero no en la interacción entre los dos factores.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = biol2.dist1 ~ biol2$Station * biol2$Size, permutations = 1000)
+                         Df SumOfSqs      R2      F   Pr(&gt;F)    
+biol2$Station             5   1.3909 0.43156 3.5679 0.000999 ***
+biol2$Size                1   0.4665 0.14474 5.9830 0.003996 ** 
+biol2$Station:biol2$Size  5   0.4299 0.13340 1.1029 0.381618    
+Residual                 12   0.9356 0.29030                    
+Total                    23   3.2229 1.00000                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<hr>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="permanova-4.-permanova-de-dos-factores-dos-vías" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-4.-permanova-de-dos-factores-dos-vías">Permanova 4. Permanova de dos factores (dos vías)</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para este caso se evalúan las diferencias en la Abundance y composición de los Groups taxonómicos entre Station (factor 1) y los Layerss de Layers (factor 2).</p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Linealización de las Abundances de los Groups taxonómicos.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se presentan diferencias entre las Station y entre los Layerss, pero no en la interacción entre los dos factores.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = biol2.dist1 ~ biol2$Station * biol2$Layers, permutations = 1000)
+                           Df SumOfSqs      R2      F  Pr(&gt;F)  
+biol2$Station               5   1.3909 0.43156 2.9092 0.01099 *
+biol2$Layers                1   0.2793 0.08666 2.9209 0.05395 .
+biol2$Station:biol2$Layers  5   0.4053 0.12576 0.8478 0.57343  
+Residual                   12   1.1474 0.35602                 
+Total                      23   3.2229 1.00000                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
