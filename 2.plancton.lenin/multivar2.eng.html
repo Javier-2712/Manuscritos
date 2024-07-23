@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-07-18">
-<meta name="description" content="Análisis de escalamientos (nmds), de correspondencias simples (ca), de clúester (cla) y discriminantes (lda) para la exploración de los datos, así como las pruebas de hipótesis de diferencias entre sitios (manovas y permanovas) de acuerdo a los requerimientos del manuscrito de Lenin Florez.">
+<meta name="dcterms.date" content="2024-07-23">
+<meta name="description" content="Scaling analysis (nmds), simple correspondences (ca), cluster (cla) and discriminant analysis (lda) for data exploration, as well as hypothesis testing of differences between sites (manonovas and permanovas) according to the requirements of the manuscript of Lenin Florez.">
 
-<title>Asesoría 3. Análisis de gradientes y conglomerados</title>
+<title>Advice 3. Gradient and cluster analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,11 +54,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Asesoría 3. Análisis de gradientes y conglomerados</h1>
-            <p class="subtitle lead">Técnicas de ordenación y de clasificación con datos Mesozoplancton</p>
+      <h1 class="title">Advice 3. Gradient and cluster analysis</h1>
+            <p class="subtitle lead">Ordination and classification techniques with Mesozoplankton data</p>
                   <div>
         <div class="description">
-          Análisis de escalamientos (nmds), de correspondencias simples (ca), de clúester (cla) y discriminantes (lda) para la exploración de los datos, así como las pruebas de hipótesis de diferencias entre sitios (manovas y permanovas) de acuerdo a los requerimientos del manuscrito de Lenin Florez.
+          Scaling analysis (nmds), simple correspondences (ca), cluster (cla) and discriminant analysis (lda) for data exploration, as well as hypothesis testing of differences between sites (manonovas and permanovas) according to the requirements of the manuscript of Lenin Florez.
         </div>
       </div>
                 </div>
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Fecha de publicación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 18, 2024</p>
+        <p class="date">July 23, 2024</p>
       </div>
     </div>
     
@@ -92,91 +92,91 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
-  <li><a href="#análisis-de-componentes-principales-pca" id="toc-análisis-de-componentes-principales-pca" class="nav-link" data-scroll-target="#análisis-de-componentes-principales-pca">1. Análisis de Componentes Principales (PCA)</a>
+  <li><a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca">1. Principal Component Analysis (PCA)</a>
+  <ul>
+  <li><a href="#step-1.-load-libraries" id="toc-step-1.-load-libraries" class="nav-link" data-scroll-target="#step-1.-load-libraries">Step 1. Load Libraries</a></li>
+  <li><a href="#step-2.-taxa-database" id="toc-step-2.-taxa-database" class="nav-link" data-scroll-target="#step-2.-taxa-database">Step 2. Taxa database</a></li>
+  <li><a href="#pstep-3.-exploration-of-biol-vs.-relationships-biol4" id="toc-pstep-3.-exploration-of-biol-vs.-relationships-biol4" class="nav-link" data-scroll-target="#pstep-3.-exploration-of-biol-vs.-relationships-biol4">PStep 3. Exploration of biol vs.&nbsp;relationships biol4</a></li>
+  </ul></li>
+  <li><a href="#non-metric-multidimensional-scaling-nmds" id="toc-non-metric-multidimensional-scaling-nmds" class="nav-link" data-scroll-target="#non-metric-multidimensional-scaling-nmds">2. Non-Metric Multidimensional Scaling (NMDS)</a>
   <ul>
   <li><a href="#paso-1.-cargar-librerías" id="toc-paso-1.-cargar-librerías" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías">Paso 1. Cargar Librerías</a></li>
-  <li><a href="#paso-2.-base-de-datos-de-los-taxones" id="toc-paso-2.-base-de-datos-de-los-taxones" class="nav-link" data-scroll-target="#paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</a></li>
-  <li><a href="#paso-3.-exploración-de-relaciones-biol-vs.-biol4" id="toc-paso-3.-exploración-de-relaciones-biol-vs.-biol4" class="nav-link" data-scroll-target="#paso-3.-exploración-de-relaciones-biol-vs.-biol4">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</a></li>
+  <li><a href="#step-2.-nmds" id="toc-step-2.-nmds" class="nav-link" data-scroll-target="#step-2.-nmds">Step 2. NMDS</a></li>
   </ul></li>
-  <li><a href="#escalamiento-multidimensional-no-métrico-nmds" id="toc-escalamiento-multidimensional-no-métrico-nmds" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-nmds">2. Escalamiento Multidimensional no Métrico (NMDS)</a>
+  <li><a href="#simple-correspondence-analysis-ca" id="toc-simple-correspondence-analysis-ca" class="nav-link" data-scroll-target="#simple-correspondence-analysis-ca">3. Simple Correspondence Analysis (CA)</a>
   <ul>
   <li><a href="#paso-1.-cargar-librerías-1" id="toc-paso-1.-cargar-librerías-1" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</a></li>
-  <li><a href="#paso-2.-nmds" id="toc-paso-2.-nmds" class="nav-link" data-scroll-target="#paso-2.-nmds">Paso 2. NMDS</a></li>
+  <li><a href="#step-2.-ca-with-ggplot2-package" id="toc-step-2.-ca-with-ggplot2-package" class="nav-link" data-scroll-target="#step-2.-ca-with-ggplot2-package">Step 2. CA with ggplot2 package</a></li>
   </ul></li>
-  <li><a href="#análisis-de-correspondencia-simple-ca" id="toc-análisis-de-correspondencia-simple-ca" class="nav-link" data-scroll-target="#análisis-de-correspondencia-simple-ca">3. Análisis de Correspondencia Simple (CA)</a>
+  <li><a href="#non-metric-multidimensional-scaling-nmds-1" id="toc-non-metric-multidimensional-scaling-nmds-1" class="nav-link" data-scroll-target="#non-metric-multidimensional-scaling-nmds-1">4. Non-Metric Multidimensional Scaling (NMDS)</a>
   <ul>
-  <li><a href="#paso-1.-cargar-librerías-2" id="toc-paso-1.-cargar-librerías-2" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías-2">Paso 1. Cargar Librerías</a></li>
-  <li><a href="#paso-2.-ca-con-el-paquete-ggplo2" id="toc-paso-2.-ca-con-el-paquete-ggplo2" class="nav-link" data-scroll-target="#paso-2.-ca-con-el-paquete-ggplo2">Paso 2. CA con el paquete ggplo2</a></li>
+  <li><a href="#step-1.-load-the-database" id="toc-step-1.-load-the-database" class="nav-link" data-scroll-target="#step-1.-load-the-database">Step 1. Load the database</a></li>
+  <li><a href="#step-2.-taxa-database-1" id="toc-step-2.-taxa-database-1" class="nav-link" data-scroll-target="#step-2.-taxa-database-1">Step 2. Taxa database</a></li>
+  <li><a href="#step-3.-exploration-of-biol-vs.-relationships-biol4" id="toc-step-3.-exploration-of-biol-vs.-relationships-biol4" class="nav-link" data-scroll-target="#step-3.-exploration-of-biol-vs.-relationships-biol4">Step 3. Exploration of biol vs.&nbsp;relationships biol4</a></li>
+  <li><a href="#step-4.-nmds" id="toc-step-4.-nmds" class="nav-link" data-scroll-target="#step-4.-nmds">Step 4. NMDS</a></li>
   </ul></li>
-  <li><a href="#escalamiento-multidimensional-no-métrico-nmds-1" id="toc-escalamiento-multidimensional-no-métrico-nmds-1" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-nmds-1">4. Escalamiento Multidimensional no Métrico (NMDS)</a>
+  <li><a href="#cluster-analysis-cla" id="toc-cluster-analysis-cla" class="nav-link" data-scroll-target="#cluster-analysis-cla">. Cluster Analysis (CLA)</a>
   <ul>
-  <li><a href="#paso-1.-cargar-la-base-de-datos" id="toc-paso-1.-cargar-la-base-de-datos" class="nav-link" data-scroll-target="#paso-1.-cargar-la-base-de-datos">Paso 1. Cargar la base de datos</a></li>
-  <li><a href="#paso-2.-base-de-datos-de-los-taxones-1" id="toc-paso-2.-base-de-datos-de-los-taxones-1" class="nav-link" data-scroll-target="#paso-2.-base-de-datos-de-los-taxones-1">Paso 2. Base de datos de los taxones</a></li>
-  <li><a href="#paso-3.-exploración-de-relaciones-biol-vs.-biol4-1" id="toc-paso-3.-exploración-de-relaciones-biol-vs.-biol4-1" class="nav-link" data-scroll-target="#paso-3.-exploración-de-relaciones-biol-vs.-biol4-1">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</a></li>
-  <li><a href="#paso-4.-nmds" id="toc-paso-4.-nmds" class="nav-link" data-scroll-target="#paso-4.-nmds">Paso 4. NMDS</a></li>
+  <li><a href="#load-libraries" id="toc-load-libraries" class="nav-link" data-scroll-target="#load-libraries">Load Libraries</a></li>
+  <li><a href="#step-1.-distance-between-observations" id="toc-step-1.-distance-between-observations" class="nav-link" data-scroll-target="#step-1.-distance-between-observations">Step 1. Distance between observations</a></li>
+  <li><a href="#step-2.-choosing-the-best-fitting-clustering-method" id="toc-step-2.-choosing-the-best-fitting-clustering-method" class="nav-link" data-scroll-target="#step-2.-choosing-the-best-fitting-clustering-method">Step 2. Choosing the best-fitting clustering method</a>
+  <ul>
+  <li><a href="#calculation-of-the-seven-dendrograms" id="toc-calculation-of-the-seven-dendrograms" class="nav-link" data-scroll-target="#calculation-of-the-seven-dendrograms">2.1 Calculation of the seven dendrograms</a></li>
+  <li><a href="#calculation-of-cophenetic-correlations" id="toc-calculation-of-cophenetic-correlations" class="nav-link" data-scroll-target="#calculation-of-cophenetic-correlations">2.2 Calculation of cophenetic correlations</a></li>
   </ul></li>
-  <li><a href="#análisis-de-clúster-cla" id="toc-análisis-de-clúster-cla" class="nav-link" data-scroll-target="#análisis-de-clúster-cla">5. Análisis de Clúster (CLA)</a>
+  <li><a href="#step-3.-number-of-groups-formed" id="toc-step-3.-number-of-groups-formed" class="nav-link" data-scroll-target="#step-3.-number-of-groups-formed">Step 3. Number of Groups formed</a>
   <ul>
-  <li><a href="#cargar-librerías" id="toc-cargar-librerías" class="nav-link" data-scroll-target="#cargar-librerías">Cargar Librerías</a></li>
-  <li><a href="#paso-1.-distancia-entre-observaciones" id="toc-paso-1.-distancia-entre-observaciones" class="nav-link" data-scroll-target="#paso-1.-distancia-entre-observaciones">Paso 1. Distancia entre observaciones</a></li>
-  <li><a href="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" id="toc-paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" class="nav-link" data-scroll-target="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste">Paso 2. Elección del método de agrupación de mayor ajuste</a>
-  <ul>
-  <li><a href="#cálculo-de-los-siete-dendogramas" id="toc-cálculo-de-los-siete-dendogramas" class="nav-link" data-scroll-target="#cálculo-de-los-siete-dendogramas">2.1 Cálculo de los siete dendogramas</a></li>
-  <li><a href="#cálculo-de-las-correlaciones-cofenéticas" id="toc-cálculo-de-las-correlaciones-cofenéticas" class="nav-link" data-scroll-target="#cálculo-de-las-correlaciones-cofenéticas">2.2 Cálculo de las correlaciones cofenéticas</a></li>
+  <li><a href="#fusion-levels" id="toc-fusion-levels" class="nav-link" data-scroll-target="#fusion-levels">3.1 Fusion levels</a></li>
+  <li><a href="#silhouette-method" id="toc-silhouette-method" class="nav-link" data-scroll-target="#silhouette-method">3.2 Silhouette method</a></li>
+  <li><a href="#final-hierarchical-dendrogram" id="toc-final-hierarchical-dendrogram" class="nav-link" data-scroll-target="#final-hierarchical-dendrogram">3.3 Final hierarchical dendrogram</a></li>
+  <li><a href="#final-non-hierarchical-dendrogram" id="toc-final-non-hierarchical-dendrogram" class="nav-link" data-scroll-target="#final-non-hierarchical-dendrogram">3.4 Final non-hierarchical dendrogram</a></li>
   </ul></li>
-  <li><a href="#paso-3.-número-de-groups-formados" id="toc-paso-3.-número-de-groups-formados" class="nav-link" data-scroll-target="#paso-3.-número-de-groups-formados">Paso 3. Número de Groups formados</a>
-  <ul>
-  <li><a href="#niveles-de-fusión" id="toc-niveles-de-fusión" class="nav-link" data-scroll-target="#niveles-de-fusión">3.1 Niveles de fusión</a></li>
-  <li><a href="#método-de-silueta" id="toc-método-de-silueta" class="nav-link" data-scroll-target="#método-de-silueta">3.2 Método de silueta</a></li>
-  <li><a href="#dendograma-jerárquico-final" id="toc-dendograma-jerárquico-final" class="nav-link" data-scroll-target="#dendograma-jerárquico-final">3.3 Dendograma jerárquico final</a></li>
-  <li><a href="#dendograma-no-jerárquico-final" id="toc-dendograma-no-jerárquico-final" class="nav-link" data-scroll-target="#dendograma-no-jerárquico-final">3.4 Dendograma no jerárquico final</a></li>
+  <li><a href="#step-4.-contribution-of-the-variables-to-the-classification" id="toc-step-4.-contribution-of-the-variables-to-the-classification" class="nav-link" data-scroll-target="#step-4.-contribution-of-the-variables-to-the-classification">Step 4. Contribution of the variables to the classification</a></li>
   </ul></li>
-  <li><a href="#paso-4.-aporte-de-las-variables-a-la-clasificación" id="toc-paso-4.-aporte-de-las-variables-a-la-clasificación" class="nav-link" data-scroll-target="#paso-4.-aporte-de-las-variables-a-la-clasificación">Paso 4. Aporte de las variables a la clasificación</a></li>
+  <li><a href="#linear-discriminant-analysis-lda" id="toc-linear-discriminant-analysis-lda" class="nav-link" data-scroll-target="#linear-discriminant-analysis-lda">6. Linear Discriminant Analysis (LDA)</a>
+  <ul>
+  <li><a href="#load-libraries-1" id="toc-load-libraries-1" class="nav-link" data-scroll-target="#load-libraries-1">Load Libraries</a></li>
+  <li><a href="#step-1.-selection-of-a-random-sample-for-the-lda" id="toc-step-1.-selection-of-a-random-sample-for-the-lda" class="nav-link" data-scroll-target="#step-1.-selection-of-a-random-sample-for-the-lda">Step 1. selection of a random sample for the lda</a></li>
+  <li><a href="#step-2.-assumptions-of-normality-and-homogeneity-of-covariances" id="toc-step-2.-assumptions-of-normality-and-homogeneity-of-covariances" class="nav-link" data-scroll-target="#step-2.-assumptions-of-normality-and-homogeneity-of-covariances">Step 2. Assumptions of normality and homogeneity of covariances</a>
+  <ul>
+  <li><a href="#assumption-1.-multivariate-normality" id="toc-assumption-1.-multivariate-normality" class="nav-link" data-scroll-target="#assumption-1.-multivariate-normality">Assumption 1. Multivariate normality</a></li>
+  <li><a href="#assumption-2.-homogeneity-of-covariances-sphericity" id="toc-assumption-2.-homogeneity-of-covariances-sphericity" class="nav-link" data-scroll-target="#assumption-2.-homogeneity-of-covariances-sphericity">Assumption 2. Homogeneity of covariances (sphericity)</a></li>
   </ul></li>
-  <li><a href="#análisis-discriminante-lineal-lda" id="toc-análisis-discriminante-lineal-lda" class="nav-link" data-scroll-target="#análisis-discriminante-lineal-lda">6. Análisis Discriminante Lineal (LDA)</a>
-  <ul>
-  <li><a href="#cargar-librerías-1" id="toc-cargar-librerías-1" class="nav-link" data-scroll-target="#cargar-librerías-1">Cargar Librerías</a></li>
-  <li><a href="#paso-1.-selección-de-una-muestra-aleatoria-para-el-lda" id="toc-paso-1.-selección-de-una-muestra-aleatoria-para-el-lda" class="nav-link" data-scroll-target="#paso-1.-selección-de-una-muestra-aleatoria-para-el-lda">Paso 1. selección de una muestra aleatoria para el lda</a></li>
-  <li><a href="#paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas" id="toc-paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas" class="nav-link" data-scroll-target="#paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas">Paso 2. Supuestos de normalidad y homogeneidad de covarianzas</a>
-  <ul>
-  <li><a href="#supuesto-1.-normalidad-multivariada" id="toc-supuesto-1.-normalidad-multivariada" class="nav-link" data-scroll-target="#supuesto-1.-normalidad-multivariada">Supuesto 1. Normalidad multivariada</a></li>
-  <li><a href="#supuesto-2.-homogeneidad-de-covarianzas-esfericidad" id="toc-supuesto-2.-homogeneidad-de-covarianzas-esfericidad" class="nav-link" data-scroll-target="#supuesto-2.-homogeneidad-de-covarianzas-esfericidad">Supuesto 2. Homogeneidad de covarianzas (esfericidad)</a></li>
+  <li><a href="#step-3.-fisher-linear-discriminant-analysis" id="toc-step-3.-fisher-linear-discriminant-analysis" class="nav-link" data-scroll-target="#step-3.-fisher-linear-discriminant-analysis">Step 3. Fisher Linear Discriminant Analysis</a></li>
+  <li><a href="#step-4.-graphic-visualization-of-the-lda" id="toc-step-4.-graphic-visualization-of-the-lda" class="nav-link" data-scroll-target="#step-4.-graphic-visualization-of-the-lda">Step 4. Graphic visualization of the LDA</a></li>
   </ul></li>
-  <li><a href="#paso-3.-análisis-discriminante-lineal-de-fisher" id="toc-paso-3.-análisis-discriminante-lineal-de-fisher" class="nav-link" data-scroll-target="#paso-3.-análisis-discriminante-lineal-de-fisher">Paso 3. Análisis discriminante lineal de Fisher</a></li>
-  <li><a href="#paso-4.-visualización-grafica-del-lda" id="toc-paso-4.-visualización-grafica-del-lda" class="nav-link" data-scroll-target="#paso-4.-visualización-grafica-del-lda">Paso 4. Visualización grafica del LDA</a></li>
-  </ul></li>
-  <li><a href="#manovas---groups-taxonómicos-de-biol2" id="toc-manovas---groups-taxonómicos-de-biol2" class="nav-link" data-scroll-target="#manovas---groups-taxonómicos-de-biol2">7. Manovas - Groups Taxonómicos de biol2</a>
+  <li><a href="#manovas---taxonomic-groups-of-biol2" id="toc-manovas---taxonomic-groups-of-biol2" class="nav-link" data-scroll-target="#manovas---taxonomic-groups-of-biol2">7. Manovas - Taxonomic Groups of biol2</a>
   <ul>
-  <li><a href="#paso-1.-análisis-de-varinaza-multivariado---manova" id="toc-paso-1.-análisis-de-varinaza-multivariado---manova" class="nav-link" data-scroll-target="#paso-1.-análisis-de-varinaza-multivariado---manova">Paso 1. Análisis de Varinaza Multivariado - MANOVA</a>
+  <li><a href="#step-1.-multivariate-variance-analysis---manova" id="toc-step-1.-multivariate-variance-analysis---manova" class="nav-link" data-scroll-target="#step-1.-multivariate-variance-analysis---manova">Step 1. Multivariate Variance Analysis - MANOVA</a>
   <ul>
-  <li><a href="#respuesta-de-cada-variable-a-las-diferencias-entre-station" id="toc-respuesta-de-cada-variable-a-las-diferencias-entre-station" class="nav-link" data-scroll-target="#respuesta-de-cada-variable-a-las-diferencias-entre-station">1.1 Respuesta de cada variable a las diferencias entre Station</a></li>
-  <li><a href="#cuatro-tipos-de-manova" id="toc-cuatro-tipos-de-manova" class="nav-link" data-scroll-target="#cuatro-tipos-de-manova">1.2 Cuatro tipos de MANOVA</a></li>
-  <li><a href="#supuesto-de-normalidad-de-los-residuales-del-manova" id="toc-supuesto-de-normalidad-de-los-residuales-del-manova" class="nav-link" data-scroll-target="#supuesto-de-normalidad-de-los-residuales-del-manova">1.3. Supuesto de normalidad de los residuales del MANOVA</a></li>
-  <li><a href="#supuesto-de-independencia" id="toc-supuesto-de-independencia" class="nav-link" data-scroll-target="#supuesto-de-independencia">1.4. Supuesto de independencia</a></li>
+  <li><a href="#response-of-each-variable-to-the-differences-between-station" id="toc-response-of-each-variable-to-the-differences-between-station" class="nav-link" data-scroll-target="#response-of-each-variable-to-the-differences-between-station">1.1 Response of each variable to the differences between Station</a></li>
+  <li><a href="#four-types-of-manova" id="toc-four-types-of-manova" class="nav-link" data-scroll-target="#four-types-of-manova">1.2 Four types of MANOVA</a></li>
+  <li><a href="#assumption-of-normality-of-manova-residuals" id="toc-assumption-of-normality-of-manova-residuals" class="nav-link" data-scroll-target="#assumption-of-normality-of-manova-residuals">1.3. Assumption of normality of MANOVA residuals</a></li>
+  <li><a href="#independence-assumption" id="toc-independence-assumption" class="nav-link" data-scroll-target="#independence-assumption">1.4. Independence assumption</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#permanovas---groups-taxonómicos" id="toc-permanovas---groups-taxonómicos" class="nav-link" data-scroll-target="#permanovas---groups-taxonómicos">8. Permanovas - Groups Taxonómicos</a>
+  <li><a href="#permanovas---taxonomic-groups" id="toc-permanovas---taxonomic-groups" class="nav-link" data-scroll-target="#permanovas---taxonomic-groups">8. Permanovas - Taxonomic Groups</a>
   <ul>
-  <li><a href="#permanova-1.-análisis-de-similitudes---anosim" id="toc-permanova-1.-análisis-de-similitudes---anosim" class="nav-link" data-scroll-target="#permanova-1.-análisis-de-similitudes---anosim">Permanova 1. Análisis de Similitudes - ANOSIM</a>
+  <li><a href="#permanova-1.-analysis-of-similarities---anosim" id="toc-permanova-1.-analysis-of-similarities---anosim" class="nav-link" data-scroll-target="#permanova-1.-analysis-of-similarities---anosim">Permanova 1. Analysis of Similarities - ANOSIM</a>
   <ul>
-  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
-  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
-  <li><a href="#paso-3.-figura-del-anosim" id="toc-paso-3.-figura-del-anosim" class="nav-link" data-scroll-target="#paso-3.-figura-del-anosim">Paso 3. Figura del ANOSIM</a></li>
+  <li><a href="#step-1.-distance-between-observations-hellinger-for-this-case" id="toc-step-1.-distance-between-observations-hellinger-for-this-case" class="nav-link" data-scroll-target="#step-1.-distance-between-observations-hellinger-for-this-case">Step 1. Distance between observations (Hellinger for this case)</a></li>
+  <li><a href="#step-2.-multivariate-mean-equality-hypothesis-test" id="toc-step-2.-multivariate-mean-equality-hypothesis-test" class="nav-link" data-scroll-target="#step-2.-multivariate-mean-equality-hypothesis-test">Step 2. Multivariate mean equality hypothesis test</a></li>
+  <li><a href="#step-3.-anosim-figure" id="toc-step-3.-anosim-figure" class="nav-link" data-scroll-target="#step-3.-anosim-figure">Step 3. ANOSIM figure</a></li>
   </ul></li>
-  <li><a href="#permanova-2.-permanova-de-un-factor-una-vía" id="toc-permanova-2.-permanova-de-un-factor-una-vía" class="nav-link" data-scroll-target="#permanova-2.-permanova-de-un-factor-una-vía">Permanova 2. Permanova de un factor (una vía)</a>
+  <li><a href="#permanova-2.-one-factor-one-way-permanova" id="toc-permanova-2.-one-factor-one-way-permanova" class="nav-link" data-scroll-target="#permanova-2.-one-factor-one-way-permanova">Permanova 2. One-factor (one-way) permanova</a>
   <ul>
-  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
-  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  <li><a href="#step-1.-distance-between-observations-hellinger-for-this-case-1" id="toc-step-1.-distance-between-observations-hellinger-for-this-case-1" class="nav-link" data-scroll-target="#step-1.-distance-between-observations-hellinger-for-this-case-1">Step 1. Distance between observations (Hellinger for this case)</a></li>
+  <li><a href="#step-2.-multivariate-mean-equality-hypothesis-test-1" id="toc-step-2.-multivariate-mean-equality-hypothesis-test-1" class="nav-link" data-scroll-target="#step-2.-multivariate-mean-equality-hypothesis-test-1">Step 2. Multivariate mean equality hypothesis test</a></li>
   </ul></li>
-  <li><a href="#permanova-3.-permanova-de-dos-factores-dos-vías" id="toc-permanova-3.-permanova-de-dos-factores-dos-vías" class="nav-link" data-scroll-target="#permanova-3.-permanova-de-dos-factores-dos-vías">Permanova 3. Permanova de dos factores (dos vías)</a>
+  <li><a href="#permanova-3.-two-factor-two-way-permanova" id="toc-permanova-3.-two-factor-two-way-permanova" class="nav-link" data-scroll-target="#permanova-3.-two-factor-two-way-permanova">Permanova 3. Two-factor (two-way) permanova</a>
   <ul>
-  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
-  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  <li><a href="#step-1.-distance-between-observations-hellinger-for-this-case-2" id="toc-step-1.-distance-between-observations-hellinger-for-this-case-2" class="nav-link" data-scroll-target="#step-1.-distance-between-observations-hellinger-for-this-case-2">Step 1. Distance between observations (Hellinger for this case)</a></li>
+  <li><a href="#step-2.-multivariate-mean-equality-hypothesis-test-2" id="toc-step-2.-multivariate-mean-equality-hypothesis-test-2" class="nav-link" data-scroll-target="#step-2.-multivariate-mean-equality-hypothesis-test-2">Step 2. Multivariate mean equality hypothesis test</a></li>
   </ul></li>
-  <li><a href="#permanova-4.-permanova-de-dos-factores-dos-vías" id="toc-permanova-4.-permanova-de-dos-factores-dos-vías" class="nav-link" data-scroll-target="#permanova-4.-permanova-de-dos-factores-dos-vías">Permanova 4. Permanova de dos factores (dos vías)</a>
+  <li><a href="#permanova-4.-two-factor-two-way-permanova" id="toc-permanova-4.-two-factor-two-way-permanova" class="nav-link" data-scroll-target="#permanova-4.-two-factor-two-way-permanova">Permanova 4. Two-factor (two-way) permanova</a>
   <ul>
-  <li><a href="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3" id="toc-paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3" class="nav-link" data-scroll-target="#paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3">Paso 1. Disancia entre observaciones (Hellinger para este caso)</a></li>
-  <li><a href="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3" id="toc-paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</a></li>
+  <li><a href="#step-1.-distance-between-observations-hellinger-for-this-case-3" id="toc-step-1.-distance-between-observations-hellinger-for-this-case-3" class="nav-link" data-scroll-target="#step-1.-distance-between-observations-hellinger-for-this-case-3">Step 1. Distance between observations (Hellinger for this case)</a></li>
+  <li><a href="#step-2.-multivariate-mean-equality-hypothesis-test-3" id="toc-step-2.-multivariate-mean-equality-hypothesis-test-3" class="nav-link" data-scroll-target="#step-2.-multivariate-mean-equality-hypothesis-test-3">Step 2. Multivariate mean equality hypothesis test</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -197,36 +197,36 @@ ul.task-list li input[type="checkbox"] {
 </b><section id="resumen" class="level2"><b style="color:#1f78b4;">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>El presente ejercicio consiste en el procesamiento inicial de los datos entregados por el <strong>profesor Lenin Florez</strong> para dar respuesta al siguiente requerimiento:</p>
+<p>This exercise consists of the initial processing of the data provided by <strong>Professor Lenin Florez</strong> to respond to the following requirement:</p>
 <p><strong>13.The zooplankton community structure requires further exploration. I suggest applying hierarchical cluster analysis or NMDS ordination to better visualize separation between sampling events based on mesozooplankton abundance data.</strong></p>
-<p>Para este requerimiento, planteo realizar la propuesta de <strong>Borcard et al.&nbsp;(2018)</strong>, con ténicas de ordenación sin restricciones (unconstrained), de clasificación y de pruebas de hipótesis multivariadas.</p>
+<p>For this requirement, I propose to carry out the proposal of <strong>Borcard et al.&nbsp;(2018)</strong>, with unconstrained ordering, classification and multivariate hypothesis testing techniques.</p>
 <hr>
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="análisis-de-componentes-principales-pca" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="análisis-de-componentes-principales-pca">1. Análisis de Componentes Principales (PCA)</h2>
+</b><section id="principal-component-analysis-pca" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="principal-component-analysis-pca">1. Principal Component Analysis (PCA)</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="paso-1.-cargar-librerías" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías">Paso 1. Cargar Librerías</h3>
+</b><section id="step-1.-load-libraries" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-1.-load-libraries">Step 1. Load Libraries</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Librerías requeridas para el PCA.</p>
+<p>Libraries required for the PCA.</p>
 <div class="cell">
 
 </div>
 <hr>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-base-de-datos-de-los-taxones" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</h3>
+</b><section id="step-2.-taxa-database" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-2.-taxa-database">Step 2. Taxa database</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>La <a href="#tbl-tbl1">Tabla&nbsp;1</a> muestra la oranización de los Groups de taxones (13), para los diferentes sitios o Station (6), los Sizes (2) y los Layerss (2).</p>
+<p><a href="#tbl-tbl1">Tabla&nbsp;1</a> shows the organization of the Taxa Groups (13), for the different sites or Station (6), the Sizes (2) and the Layerss (2).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl1" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;1:  Base de datos biológicos </caption>
+<caption>Tabla&nbsp;1:  Biological database </caption>
  <thead>
   <tr>
    <th style="text-align:right;"> Station </th>
@@ -306,13 +306,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Si los nombres de los taxones son demasiado largos, se pueden abreviar con el número de letras que se requiera (ej: minlength = 4), esto para que las figuras que incluyan a los taxones, no queden tan saturadas de texto (<a href="#tbl-tbl2">Tabla&nbsp;2</a>).</p>
+<p>If the names of the taxa are too long, they can be abbreviated with the number of letters required (e.g.&nbsp;minlength = 4), so that the figures that include the taxa are not so saturated with text (<a href="#tbl-tbl2">Tabla&nbsp;2</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl2" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;2:  Abbreviations usadas para los Groups taxonómicos </caption>
+<caption>Tabla&nbsp;2:  Abbreviations used for taxonomic groups </caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Groups </th>
@@ -373,13 +373,13 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>En la <a href="#tbl-tbl3">Tabla&nbsp;3</a> <strong>Ref</strong> corresponde a la primera letra de la Station, el Size y el Layers. Ej. <strong>22P</strong> corresponde a la Station <strong>2</strong>, el Size <strong>2</strong>50 y el Layers <strong>p</strong>rofundidad.</p>
+<p>In <a href="#tbl-tbl3">Tabla&nbsp;3</a> <strong>Ref</strong> corresponds to the first letter of the Station, the Size and the Layers. Ex. <strong>22P</strong> corresponds to Station <strong>2</strong>, Size <strong>2</strong>50 and Layers <strong>p</strong>pth.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl3" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;3:  Base de datos con taxones abreviados y referencias de los sitios </caption>
+<caption>Tabla&nbsp;3:  Database with abbreviated taxa and site references </caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Ref </th>
@@ -531,8 +531,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-3.-exploración-de-relaciones-biol-vs.-biol4" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-3.-exploración-de-relaciones-biol-vs.-biol4">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</h3>
+</b><section id="pstep-3.-exploration-of-biol-vs.-relationships-biol4" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="pstep-3.-exploration-of-biol-vs.-relationships-biol4">PStep 3. Exploration of biol vs.&nbsp;relationships biol4</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
 <p>La <a href="#fig-fig1">Figura&nbsp;1</a> muestra que hay pocas relaciones lineales</p>
 <div class="cell">
@@ -540,12 +540,12 @@ ul.task-list li input[type="checkbox"] {
 <div id="fig-fig1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;1: Relaciones de las variables ambientales y los Groups taxonómicos</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;1: Relationships of environmental variables and taxonomic groups</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig2">Figura&nbsp;2</a> muestra la relación de las variables biológicas con la transformación de Hellinger, pero las relaciones lineales siguen siendo bajas. En este sentido, no es recomendable realizar el <strong>PCA</strong>. Se recomienda un <strong>NMDS</strong>.</p>
+<p><a href="#fig-fig2">Figura&nbsp;2</a> shows the relationship of the biological variables with the Hellinger transformation, but the linear relationships are still low. In this sense, it is not recommended to perform the <strong>PCA</strong>. A <strong>NMDS</strong> is recommended.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig2" class="quarto-figure quarto-figure-center anchored">
@@ -560,24 +560,24 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="escalamiento-multidimensional-no-métrico-nmds" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-nmds">2. Escalamiento Multidimensional no Métrico (NMDS)</h2>
+</b><section id="non-metric-multidimensional-scaling-nmds" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="non-metric-multidimensional-scaling-nmds">2. Non-Metric Multidimensional Scaling (NMDS)</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>Se aplicará esta técnica para explorar los gradientes en la ordenación de los sitios o Station, su relación con los trece Groups taxonómicos y las variables ambientales. Se utilizará la distancia Bray Curtis, para la asociación de los datos.</p>
+<p>This technique will be applied to explore the gradients in the organization of the sites or Station, its relationship with the thirteen taxonomic Groups and the environmental variables. The Bray Curtis distance will be used for data association.</p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="paso-1.-cargar-librerías-1" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</h3>
+</b><section id="paso-1.-cargar-librerías" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías">Paso 1. Cargar Librerías</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<p>The necessary libraries for this analysis are executed.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-nmds" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-2.-nmds">Paso 2. NMDS</h3>
+</b><section id="step-2.-nmds" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-2.-nmds">Step 2. NMDS</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
+<p>The <strong>Bray Curtis distance</strong> is used and the stress generated is <strong>0.17</strong> (17%), denoting a good configuration for this analysis.</p>
 <div class="cell">
 
 </div>
@@ -599,48 +599,48 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
   <tr>
    <td style="text-align:left;"> 22D </td>
-   <td style="text-align:right;"> -0.1964112 </td>
-   <td style="text-align:right;"> -0.1917069 </td>
+   <td style="text-align:right;"> -0.1963904 </td>
+   <td style="text-align:right;"> -0.1917712 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Depth </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 22S </td>
-   <td style="text-align:right;"> -0.5560553 </td>
-   <td style="text-align:right;"> -0.4986542 </td>
+   <td style="text-align:right;"> -0.5560650 </td>
+   <td style="text-align:right;"> -0.4986511 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Surface </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 25D </td>
-   <td style="text-align:right;"> -0.4383616 </td>
-   <td style="text-align:right;"> 0.6431930 </td>
+   <td style="text-align:right;"> -0.4383563 </td>
+   <td style="text-align:right;"> 0.6431842 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 500 μm </td>
    <td style="text-align:left;"> Depth </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 25S </td>
-   <td style="text-align:right;"> -1.2923563 </td>
-   <td style="text-align:right;"> -0.1067045 </td>
+   <td style="text-align:right;"> -1.2923631 </td>
+   <td style="text-align:right;"> -0.1066896 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 500 μm </td>
    <td style="text-align:left;"> Surface </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 42D </td>
-   <td style="text-align:right;"> -0.0721078 </td>
-   <td style="text-align:right;"> 0.1171290 </td>
+   <td style="text-align:right;"> -0.0721074 </td>
+   <td style="text-align:right;"> 0.1171298 </td>
    <td style="text-align:left;"> 4 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Depth </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 42S </td>
-   <td style="text-align:right;"> -0.6403648 </td>
-   <td style="text-align:right;"> 0.2974482 </td>
+   <td style="text-align:right;"> -0.6403795 </td>
+   <td style="text-align:right;"> 0.2974229 </td>
    <td style="text-align:left;"> 4 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Surface </td>
@@ -650,14 +650,14 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 </div>
-<p>A continuación se extraen las coordenadas de las Station, Sizes, Layerss, Groups taxonómicos y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<p>Next, the coordinates of the Stations, Sizes, Layers, Taxonomic Groups and environmental variables are extracted, to be ordered with the <strong>ggplo2</strong> library.</p>
 <div class="cell">
 
 </div>
 <div class="cell">
 
 </div>
-<p>L <a href="#fig-fig3">Figura&nbsp;3</a>, muestra la ordenación del NMDS para las referencias de las Station, con los Groups taxonómicos y las variables ambientales. No se logra apreciar un gradiente claro, aunque las Station 9, 13 y 15 son las que agrupan mayor cantidad de taxones, asociadas a mayor Temperature y Salinity.</p>
+<p><a href="#fig-fig3">Figura&nbsp;3</a> shows the organization of the NMDS for the Station references, with the taxonomic Groups and the environmental variables. A clear gradient cannot be seen, although Stations 9, 13 and 15 are the ones that group the largest number of taxa, associated with higher Temperature and Salinity.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig3" class="quarto-figure quarto-figure-center anchored">
@@ -668,46 +668,46 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig4">Figura&nbsp;4</a> muestra la diferenciación por Station, se logra observar un gradiente horizontal, en donde algunas Station muestran diferencias por sus Groups taxonómicos.</p>
+<p><a href="#fig-fig4">Figura&nbsp;4</a> shows the differentiation by Station, a horizontal gradient can be observed, where some Stations show differences by their taxonomic Groups.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig4-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;4: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;4: Ordination of the Stations, with the taxonomic groups</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig5">Figura&nbsp;5</a> que la composición taxonómica con 250 micras, se encuentra anidada en 500 micras.</p>
+<p><a href="#fig-fig5">Figura&nbsp;5</a> that the taxonomic composition with 250 microns is nested at 500 microns.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig5" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig5-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;5: ordenación de de las Station, con los Groups taxonómicos entre dos categorías de Size</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;5: Ordination of the stations, with the taxonomic Groups between two size categories</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Similar a la <a href="#fig-fig5">Figura&nbsp;5</a>, la <a href="#fig-fig6">Figura&nbsp;6</a>, muestra ausencia de diferencias en la composición taxonómica entre Layerss.</p>
+<p>Similar to <strong>?@fig-fig</strong> 5, <strong>?@fig-fig</strong> 6 shows absence of differences in taxonomic composition between Layerss.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig6-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;6: ordenación de de las Station, con los Groups taxonómicos entre Layerss de superficie y de Layers</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;6: Ordination of the Stations, with the taxonomic groups between Surface Layers and Layers</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig7">Figura&nbsp;7</a> complementa a la <span class="citation" data-cites="fi4">@fi4</span>, al incorporar las variables ambientales en la caracterización de las Station y de los Groups taxonómicos.</p>
+<p><a href="#fig-fig7">Figura&nbsp;7</a> complements <a href="#fig-fig4">Figura&nbsp;4</a>, by incorporating environmental variables in the characterization of the Stations and the taxonomic Groups.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig7-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;7: ordenación de de las Station, con los Groups taxonómicos y las variables ambientales</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;7: Ordination of the Stations, with the taxonomic groups and the environmental variables</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -716,24 +716,24 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="análisis-de-correspondencia-simple-ca" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="análisis-de-correspondencia-simple-ca">3. Análisis de Correspondencia Simple (CA)</h2>
+</b><section id="simple-correspondence-analysis-ca" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="simple-correspondence-analysis-ca">3. Simple Correspondence Analysis (CA)</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>En este análisis se explora una propuesta complementaria a la realizada con el NMDS, con la diferencia de que se utilizará a la <strong>distancia chi cuadrado</strong>, para relacionar a las localidades y a los Groups taxonómicos.</p>
+<p>In this analysis, a complementary proposal to the one made with the NMDS is explored, with the difference that the <strong>chi square distance</strong> will be used, to relate the localities and the taxonomic groups.</p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="paso-1.-cargar-librerías-2" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías-2">Paso 1. Cargar Librerías</h3>
+</b><section id="paso-1.-cargar-librerías-1" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<p>The necessary libraries for this analysis are executed.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-ca-con-el-paquete-ggplo2" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-2.-ca-con-el-paquete-ggplo2">Paso 2. CA con el paquete ggplo2</h3>
+</b><section id="step-2.-ca-with-ggplot2-package" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-2.-ca-with-ggplot2-package">Step 2. CA with ggplot2 package</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se utiliza la <strong>distancia Chi Cuadrado</strong> con las trece variables biológicas. La varanza capturada por los dos primeros ejes canónicos es de 0.86 (86%).</p>
+<p>The <strong>Chi Square distance</strong> is used with the thirteen biological variables. The variance captured by the first two canonical axes is 0.86 (86%).</p>
 <div class="cell">
 
 </div>
@@ -746,24 +746,24 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>La <a href="#fig-fig8">Figura&nbsp;8</a> no muestra un gradiente muy claro en la caracterización de los Groups taxonómicos para las Station evaluadas.</p>
+<p><a href="#fig-fig8">Figura&nbsp;8</a> does not show a very clear gradient in the characterization of the taxonomic Groups for the Stations evaluated.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig8" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig8-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;8: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;8: Ordination of the Stations, with the taxonomic groups</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig9">Figura&nbsp;9</a> tampoco permite visualizar un gradiente claro en la ordenación de los sitios y de los taxones.</p>
+<p><a href="#fig-fig9">Figura&nbsp;9</a> also does not allow us to visualize a clear gradient in the arrangement of sites and taxa.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig9" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig9-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;9: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;9: Ordination of the Stations, with the taxonomic groups</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -782,27 +782,27 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="escalamiento-multidimensional-no-métrico-nmds-1" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-nmds-1">4. Escalamiento Multidimensional no Métrico (NMDS)</h2>
+</b><section id="non-metric-multidimensional-scaling-nmds-1" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="non-metric-multidimensional-scaling-nmds-1">4. Non-Metric Multidimensional Scaling (NMDS)</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>Esta técnica se aplicará, para evaluar otra base de datos, que no relaciona a los trece Groups taxonómicos, pero si a los datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas.</p>
+<p>This technique will be applied to evaluate another database, which does not relate to the thirteen taxonomic Groups, but to Abundance, Biomass and environmental data, between Station or sites, Sizes, Layers and climatic epochs.</p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="paso-1.-cargar-la-base-de-datos" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-cargar-la-base-de-datos">Paso 1. Cargar la base de datos</h3>
+</b><section id="step-1.-load-the-database" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-1.-load-the-database">Step 1. Load the database</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<p>The necessary libraries for this analysis are executed.</p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-base-de-datos-de-los-taxones-1" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-2.-base-de-datos-de-los-taxones-1">Paso 2. Base de datos de los taxones</h3>
+</b><section id="step-2.-taxa-database-1" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-2.-taxa-database-1">Step 2. Taxa database</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Base de datos con los datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas. (<a href="#tbl-tbl4">Tabla&nbsp;4</a>).</p>
+<p>Database with Abundance, Biomass and environmental data, between Station or sites, Sizes, Layers and climatic periods. (<a href="#tbl-tbl4">Tabla&nbsp;4</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl4" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;4:  Base de datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas. </caption>
+<caption>Tabla&nbsp;4:  Abundance, Biomass and environmental database, between Station or sites, Sizes, Layers and climatic epochs. </caption>
  <thead>
   <tr>
    <th style="text-align:right;"> Stations </th>
@@ -889,13 +889,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>En la <a href="#tbl-tbl5">Tabla&nbsp;5</a> <strong>Ref</strong> corresponde a la primera letra de la Station, el Size, la Layers y la época. Ej. <strong>225P1</strong> corresponde a la Station <strong>2</strong>, el Size <strong>2</strong>50 y el Layers <strong>P</strong>rofundidad y a la Época <strong>1</strong>.</p>
+<p>In <a href="#tbl-tbl5">Tabla&nbsp;5</a> <strong>Ref</strong> corresponds to the first letter of the Station, the Size, the Layers and the era. Ex. <strong>225P1</strong> corresponds to Station <strong>2</strong>, Size <strong>2</strong>50 and Layers <strong>Depth and Epoch </strong>1**.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl5" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;5:  Base de datos de Abundance, de Biomass y ambientales, entre Station o sitios, Sizes, Layerses y épocas climáticas, que incorpora referencias de los sitios </caption>
+<caption>Tabla&nbsp;5:  Abundance, Biomass and environmental database, between Station or sites, Sizes, Layers and climatic epochs, which incorporates site references </caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Ref </th>
@@ -991,10 +991,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-3.-exploración-de-relaciones-biol-vs.-biol4-1" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-3.-exploración-de-relaciones-biol-vs.-biol4-1">Paso 3. Exploración de relaciones biol vs.&nbsp;biol4</h3>
+</b><section id="step-3.-exploration-of-biol-vs.-relationships-biol4" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-3.-exploration-of-biol-vs.-relationships-biol4">Step 3. Exploration of biol vs.&nbsp;relationships biol4</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Pocas relaciones lineales</p>
+<p>Few linear relationships</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
@@ -1007,10 +1007,10 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-4.-nmds" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-4.-nmds">Paso 4. NMDS</h3>
+</b><section id="step-4.-nmds" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-4.-nmds">Step 4. NMDS</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.078</strong> (7%), denotando una buena configuración para este análisis.</p>
+<p>The <strong>Bray Curtis distance</strong> is used and the stress generated is <strong>0.078</strong> (7%), denoting a good configuration for this analysis.</p>
 <div class="cell">
 
 </div>
@@ -1020,24 +1020,24 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>La <a href="#fig-fig10">Figura&nbsp;10</a> muestra un patrón poco claro en la ordenación de las variables y las localidades.</p>
+<p><a href="#fig-fig10">Figura&nbsp;10</a> shows an unclear pattern in the ordering of variables and locations.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig10" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig10-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;10: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;10: Ordination of the Stations, with the taxonomic groups</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig11">Figura&nbsp;11</a> muestra poca diferenciación entre las Station, con las variables que las caracterizan.</p>
+<p><a href="#fig-fig11">Figura&nbsp;11</a> shows little differentiation between the Stations, with the variables that characterize them.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-fig11" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="multivar2.eng_files/figure-html/fig-fig11-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figura&nbsp;11: ordenación de de las Station, con los Groups taxonómicos</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;11: Ordination of the Stations, with the taxonomic groups</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -1061,15 +1061,15 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="análisis-de-clúster-cla" class="level2"><b style="color:#fc8d62;">
-<h2 class="anchored" data-anchor-id="análisis-de-clúster-cla">5. Análisis de Clúster (CLA)</h2>
+</b><section id="cluster-analysis-cla" class="level2"><b style="color:#fc8d62;">
+<h2 class="anchored" data-anchor-id="cluster-analysis-cla">. Cluster Analysis (CLA)</h2>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Este análisis fue solicitado por los evaluadores, basado en la Abundance de los trece Groups taxonómicos, se pretende clasificar a las localidades en Groups y compararlos con las Station del estudio.</p>
+<p>This analysis was requested by the evaluators, based on the Abundance of the thirteen taxonomic Groups, the aim is to classify the localities into Groups and compare them with the Stations of the study.</p>
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
-</b><section id="cargar-librerías" class="level3"><b style="color:#1f78b4;">
-<h3 class="anchored" data-anchor-id="cargar-librerías">Cargar Librerías</h3>
+</b><section id="load-libraries" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="load-libraries">Load Libraries</h3>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>Se cargan las librerías requeridas para el análisis.</p>
+<p>The libraries required for the analysis are loaded.</p>
 <div class="cell">
 
 </div>
@@ -1079,7 +1079,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="tbl-tbl6" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;6:  Base de datos con taxones abreviados y referencias de los sitios </caption>
+<caption>Tabla&nbsp;6:  Database with abbreviated taxa and site references </caption>
  <thead>
   <tr>
    <th style="text-align:left;">   </th>
@@ -1245,7 +1245,7 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>La Salinity y la Density son variables derivadas, que presentan un patrón entre las localidades, inverso al de los taxones.</p>
+<p>Salinity and Density are derived variables, which present a pattern between localities, inverse to that of the taxa.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
@@ -1253,30 +1253,30 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-1.-distancia-entre-observaciones" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-distancia-entre-observaciones">Paso 1. Distancia entre observaciones</h3>
+</b><section id="step-1.-distance-between-observations" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-1.-distance-between-observations">Step 1. Distance between observations</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se aplicará la distancia Bray Curtis para las variables biológicas, dada la poca linealidad en sus relaciones.</p>
+<p>The Bray Curtis distance will be applied for the biological variables, given the lack of linearity in their relationships.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste">Paso 2. Elección del método de agrupación de mayor ajuste</h3>
+</b><section id="step-2.-choosing-the-best-fitting-clustering-method" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-2.-choosing-the-best-fitting-clustering-method">Step 2. Choosing the best-fitting clustering method</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<section id="cálculo-de-los-siete-dendogramas" class="level4">
-<h4 class="anchored" data-anchor-id="cálculo-de-los-siete-dendogramas">2.1 Cálculo de los siete dendogramas</h4>
+<section id="calculation-of-the-seven-dendrograms" class="level4">
+<h4 class="anchored" data-anchor-id="calculation-of-the-seven-dendrograms">2.1 Calculation of the seven dendrograms</h4>
 <div class="cell">
 
 </div>
 </section>
-<section id="cálculo-de-las-correlaciones-cofenéticas" class="level4">
-<h4 class="anchored" data-anchor-id="cálculo-de-las-correlaciones-cofenéticas">2.2 Cálculo de las correlaciones cofenéticas</h4>
+<section id="calculation-of-cophenetic-correlations" class="level4">
+<h4 class="anchored" data-anchor-id="calculation-of-cophenetic-correlations">2.2 Calculation of cophenetic correlations</h4>
 <div class="cell">
 
 </div>
-<p>El método de <strong>agrupación UPGMA</strong> es el que presentó el mejor ajuste cofenético.</p>
+<p>The <strong>UPGMA grouping</strong> method is the one that presented the best cophenetic fit.</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -1333,27 +1333,27 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-3.-número-de-groups-formados" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-3.-número-de-groups-formados">Paso 3. Número de Groups formados</h3>
+</b><section id="step-3.-number-of-groups-formed" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-3.-number-of-groups-formed">Step 3. Number of Groups formed</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<section id="niveles-de-fusión" class="level4">
-<h4 class="anchored" data-anchor-id="niveles-de-fusión">3.1 Niveles de fusión</h4>
+<section id="fusion-levels" class="level4">
+<h4 class="anchored" data-anchor-id="fusion-levels">3.1 Fusion levels</h4>
 <div class="cell">
 
 </div>
-<p>Esta ténica muestra que la mayor amplitud se presenta en la formación de <strong>tres Groups</strong> o clúester, que reunen a las observaciones clasificadas.</p>
+<p>This technique shows that the greatest amplitude occurs in the formation of <strong>three Groups</strong> or cluster, which bring together the classified observations.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="método-de-silueta" class="level4">
-<h4 class="anchored" data-anchor-id="método-de-silueta">3.2 Método de silueta</h4>
+<section id="silhouette-method" class="level4">
+<h4 class="anchored" data-anchor-id="silhouette-method">3.2 Silhouette method</h4>
 <div class="cell">
 
 </div>
-<p>Esta ténica muestra que la mayor amplitud se presenta en la formación de <strong>diez Groups</strong> o clúester, que reunen a las observaciones clasificadas.</p>
+<p>This technique shows that the greatest amplitude occurs in the formation of <strong>ten Groups</strong> or cluster, which bring together the classified observations.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
@@ -1371,17 +1371,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="dendograma-jerárquico-final" class="level4">
-<h4 class="anchored" data-anchor-id="dendograma-jerárquico-final">3.3 Dendograma jerárquico final</h4>
-<p>Dendograma generado con el método upgma, la distancia Bray y los tres Groups formados.</p>
+<section id="final-hierarchical-dendrogram" class="level4">
+<h4 class="anchored" data-anchor-id="final-hierarchical-dendrogram">3.3 Final hierarchical dendrogram</h4>
+<p>Dendrogram generated with the upgma method, the Bray distance and the three Groups formed.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
-<section id="dendograma-no-jerárquico-final" class="level4">
-<h4 class="anchored" data-anchor-id="dendograma-no-jerárquico-final">3.4 Dendograma no jerárquico final</h4>
+<section id="final-non-hierarchical-dendrogram" class="level4">
+<h4 class="anchored" data-anchor-id="final-non-hierarchical-dendrogram">3.4 Final non-hierarchical dendrogram</h4>
 <div class="cell">
 
 </div>
@@ -1483,10 +1483,10 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-4.-aporte-de-las-variables-a-la-clasificación" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-4.-aporte-de-las-variables-a-la-clasificación">Paso 4. Aporte de las variables a la clasificación</h3>
+</b><section id="step-4.-contribution-of-the-variables-to-the-classification" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-4.-contribution-of-the-variables-to-the-classification">Step 4. Contribution of the variables to the classification</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>En rojo se identifica a los Groups taxonómicos que por su patrón de Abundance, aportan a la clasificación de los sitios.</p>
+<p>In red, the taxonomic Groups are identified that, due to their Abundance pattern, contribute to the classification of the sites.</p>
 <div class="cell">
 
 </div>
@@ -1504,7 +1504,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>Para este caso, el aporte de los taxones se da para las Station.</p>
+<p>In this case, the contribution of the taxa is given for the Stations.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid" width="672"></p>
@@ -1514,19 +1514,19 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="análisis-discriminante-lineal-lda" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="análisis-discriminante-lineal-lda">6. Análisis Discriminante Lineal (LDA)</h2>
+</b><section id="linear-discriminant-analysis-lda" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="linear-discriminant-analysis-lda">6. Linear Discriminant Analysis (LDA)</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>Este análisis se realiza para intentar optimizar la separación de las Station, por la información de las Abundances de los diferentes Groups taxonómicos. Se incorpora a la variante de discriminante canónico, para analizar el aporte de los taxones en la clasificación.</p>
+<p>This analysis is carried out to try to optimize the separation of the Stations, based on the information on the Abundances of the different taxonomic Groups. It is incorporated into the canonical discriminant variant, to analyze the contribution of the taxa in the classification.</p>
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
-</b><section id="cargar-librerías-1" class="level3"><b style="color:#1f78b4;">
-<h3 class="anchored" data-anchor-id="cargar-librerías-1">Cargar Librerías</h3>
+</b><section id="load-libraries-1" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="load-libraries-1">Load Libraries</h3>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>Se cargan diferentes librerías requeridas para el lda.</p>
+<p>Different libraries required for the lda are loaded.</p>
 <div class="cell">
 
 </div>
-<p>La <a href="#tbl-tbl6">Tabla&nbsp;6</a>, es la misma <a href="#tbl-tbl6">Tabla&nbsp;6</a> utilizada para la mayoría de los análisis anteriores.</p>
+<p>The <a href="#tbl-tbl7">Tabla&nbsp;7</a>, is the same <a href="#tbl-tbl6">Tabla&nbsp;6</a> used for most of the previous analyses.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl7" class="anchored">
@@ -1692,7 +1692,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>Se vuelve a mostrar la resolución de los taxones y de las variables ambientales para clasificar a las Station o sitios de muestreo.</p>
+<p>The resolution of the taxa and environmental variables is shown again to classify the Stations or sampling sites.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-67-1.png" class="img-fluid" width="672"></p>
@@ -1705,43 +1705,43 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-1.-selección-de-una-muestra-aleatoria-para-el-lda" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-selección-de-una-muestra-aleatoria-para-el-lda">Paso 1. selección de una muestra aleatoria para el lda</h3>
+</b><section id="step-1.-selection-of-a-random-sample-for-the-lda" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-1.-selection-of-a-random-sample-for-the-lda">Step 1. selection of a random sample for the lda</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p><strong>División de los datos en conjuntos de entrenamiento y prueba</strong>. Se recomienda estandarizar o normalizar las variables predictoras (Abundances de taxones) para que no haya un efecto de la escala. Algunos autores recomiendan dividir los datos de entrenamiento en un 60% y los datos de la prueba en 40% <a href="https://finnstats.com/2021/05/02/linear-discriminant-analysis/">FINNSTATS</a> o datos de entrenamiento en un 80% y los de prueba en un 20%. <a href="http://www.sthda.com/english/articles/36-classification-methods-essentials/146-discriminant-analysis-essentials-in-r/">STHDA</a>. Se utilizará la segunda propuesta para este ejercicio.</p>
-<p><strong>1.&nbsp;División de los datos en conjuntos de entrenamiento y prueba</strong></p>
+<p><strong>Division of data into training and test sets</strong>. It is recommended to standardize or normalize the predictor variables (Abundances of taxa) so that there is no scale effect. Some authors recommend dividing the training data by 60% and the test data by 40% <a href="https://finnstats.com/2021/05/02/linear-discriminant-analysis/">FINNSTATS</a> or training data by 80% and the test ones by 20%. <a href="http://www.sthda.com/english/articles/36-classification-methods-essentials/146-discriminant-analysis-essentials-in-r/">STHDA</a>. The second proposal will be used for this exercise.</p>
+<p><strong>1.Splitting the data into training and test sets</strong></p>
 <div class="cell">
 
 </div>
 <ol start="2" type="1">
-<li><strong>Normalizar los datos. Las variables categóricas (Station) se ignoran automáticamente.</strong></li>
+<li><strong>Normalize the data. Categorical variables (Station) are automatically ignored.</strong></li>
 </ol>
 <div class="cell">
 
 </div>
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas" class="level3"><b style="color:#1f78b4;">
-<h3 class="anchored" data-anchor-id="paso-2.-supuestos-de-normalidad-y-homogeneidad-de-covarianzas">Paso 2. Supuestos de normalidad y homogeneidad de covarianzas</h3>
+</b><section id="step-2.-assumptions-of-normality-and-homogeneity-of-covariances" class="level3"><b style="color:#1f78b4;">
+<h3 class="anchored" data-anchor-id="step-2.-assumptions-of-normality-and-homogeneity-of-covariances">Step 2. Assumptions of normality and homogeneity of covariances</h3>
 </b><p><b style="color:#1f78b4;"></b></p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="supuesto-1.-normalidad-multivariada" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="supuesto-1.-normalidad-multivariada">Supuesto 1. Normalidad multivariada</h4>
+</b><section id="assumption-1.-multivariate-normality" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="assumption-1.-multivariate-normality">Assumption 1. Multivariate normality</h4>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Este es uno de los requisitos que deben presentar los datos, para utilizar al lda como un modelo lineal. En caso de que no se cumpla este supuesto o no se pueda ejecutar, puede usarse el lda como un análisis exploratorio.</p>
+<p>This is one of the requirements that the data must present to use LDA as a linear model. If this assumption is not met or cannot be executed, the LDA can be used as an exploratory analysis.</p>
 <div class="cell">
 
 </div>
-<p>Se corrió el diagnóstico de normalidad multivariada para cada Station, pero las muestras son matrices singulares, todas las matrices son singulares, impidiendo la ejecución del procedimiento.</p>
+<p>The diagnosis of multivariate normality was run for each Station, but the samples are singular matrices, all the matrices are singular, preventing the execution of the procedure.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="supuesto-2.-homogeneidad-de-covarianzas-esfericidad" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="supuesto-2.-homogeneidad-de-covarianzas-esfericidad">Supuesto 2. Homogeneidad de covarianzas (esfericidad)</h4>
+</b><section id="assumption-2.-homogeneity-of-covariances-sphericity" class="level4"><b style="color:#fc8d62;">
+<h4 class="anchored" data-anchor-id="assumption-2.-homogeneity-of-covariances-sphericity">Assumption 2. Homogeneity of covariances (sphericity)</h4>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se realizaron dos anovas permutacionales, las cuales permitieron demostrar que se cumple el supuesto de homogeneidad de covarianzas (valor p es mayor a 0.05).</p>
+<p>Two permutational anovas were carried out, which allowed us to demonstrate that the assumption of homogeneity of covariances is met (p value is greater than 0.05).</p>
 <div class="cell">
 
 </div>
@@ -1771,10 +1771,10 @@ Residuals 18 107.535  5.9742                     </code></pre>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-3.-análisis-discriminante-lineal-de-fisher" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-3.-análisis-discriminante-lineal-de-fisher">Paso 3. Análisis discriminante lineal de Fisher</h3>
+</b><section id="step-3.-fisher-linear-discriminant-analysis" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-3.-fisher-linear-discriminant-analysis">Step 3. Fisher Linear Discriminant Analysis</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se analizará el desempeño del modelo discriminante lineal, para clasificar a las seis Station, basado en las Abundances de los Groups taxonómicos.</p>
+<p>The performance of the linear discriminant model will be analyzed to classify the six Stations, based on the Abundances of the taxonomic Groups.</p>
 <div class="cell">
 
 </div>
@@ -1784,7 +1784,7 @@ Residuals 18 107.535  5.9742                     </code></pre>
 0.17 0.17 0.17 0.17 0.17 0.17 </code></pre>
 </div>
 </div>
-<p>La función de desempeño, genera la siguiente tabla de contingencia, en la que a excepción de la Station 2 (la más diferente), muestra una mezcla de observaciones que no permiten diferenciar claramente a la Station, eso se da por la similitud en la composición y Abundance de los Groups taxonómicos entre Station.</p>
+<p>The performance function generates the following contingency table, in which, with the exception of Station 2 (the most different), it shows a mixture of observations that do not allow the Station to be clearly differentiated, this is due to the similarity in the composition. and Abundance of taxonomic groups among Station.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>       group
@@ -1797,7 +1797,7 @@ Station 2 4 7 9 13 15
      15 0 0 1 1  0  2</code></pre>
 </div>
 </div>
-<p>El siguiente resultado muestra el porcentaje de acierto en la clasificación de las Station, el cual es bajo en la mayoría de los casos.</p>
+<p>The following result shows the percentage of correctness in the classification of the Stations, which is low in most cases.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>  2   4   7   9  13  15 
@@ -1806,17 +1806,17 @@ Station 2 4 7 9 13 15
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="paso-4.-visualización-grafica-del-lda" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-4.-visualización-grafica-del-lda">Paso 4. Visualización grafica del LDA</h3>
+</b><section id="step-4.-graphic-visualization-of-the-lda" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-4.-graphic-visualization-of-the-lda">Step 4. Graphic visualization of the LDA</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Se utilizará el paquete ggplot2 como se ha venido empleando en las diferentes técnicas, debido a su buen nivel de resolución para visualizar patrones en los datos.</p>
+<p>The ggplot2 package will be used as it has been used in the different techniques, due to its good level of resolution to visualize patterns in the data.</p>
 <div class="cell">
 
 </div>
 <div class="cell">
 
 </div>
-<p>La siguiente figura corrobora la separación de la Station 2, debido a su diferencia en la composición y Abundance de taxones encontrados. El resto de localidades presentan una mezcla o mayor similitud taxonómica.</p>
+<p>The following figure corroborates the separation of Station 2, due to its difference in the composition and Abundance of taxa found. The rest of the localities present a mixture or greater taxonomic similarity.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-82-1.png" class="img-fluid" width="672"></p>
@@ -1836,7 +1836,7 @@ Station 2 4 7 9 13 15
 <div class="cell">
 
 </div>
-<p>El siguiente <strong>análisis discriminante canónico</strong>, permite demostrar que la diferencia de la Station 2, se debe a la composición y Abundance de taxones como <strong>Srgs, Lcfr, Lrdp y Hvdp</strong>.</p>
+<p>The following <strong>canonical discriminant analysis</strong> allows us to demonstrate that the difference in Station 2 is due to the composition and Abundance of taxa such as <strong>Srgs, Lcfr, Lrdp and Hvdp</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="multivar2.eng_files/figure-html/unnamed-chunk-86-1.png" class="img-fluid" width="672"></p>
@@ -1846,16 +1846,16 @@ Station 2 4 7 9 13 15
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="manovas---groups-taxonómicos-de-biol2" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="manovas---groups-taxonómicos-de-biol2">7. Manovas - Groups Taxonómicos de biol2</h2>
+</b><section id="manovas---taxonomic-groups-of-biol2" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="manovas---taxonomic-groups-of-biol2">7. Manovas - Taxonomic Groups of biol2</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>El siguiente manova se emplea para probar la hipótesis de diferencias entre las Station, de acuerdo a la Abundance y composición de los Groups taxonómicos. Como es un modelo lineal paramétrico, se deben probar los supuestos paramétricos encontrando que no se cumple la normalidad multivariada de los residuales, por lo cual, posteriormente se realizaran permanovas que no requieren este supuesto.</p>
+<p>The following manova is used to test the hypothesis of differences between the Stations, according to the Abundance and composition of the taxonomic groups. As it is a parametric linear model, the parametric assumptions must be tested, finding that the multivariate normality of the residuals is not met, which is why permanovas that do not require this assumption will subsequently be carried out.</p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="paso-1.-análisis-de-varinaza-multivariado---manova" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="paso-1.-análisis-de-varinaza-multivariado---manova">Paso 1. Análisis de Varinaza Multivariado - MANOVA</h3>
+</b><section id="step-1.-multivariate-variance-analysis---manova" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="step-1.-multivariate-variance-analysis---manova">Step 1. Multivariate Variance Analysis - MANOVA</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<section id="respuesta-de-cada-variable-a-las-diferencias-entre-station" class="level4">
-<h4 class="anchored" data-anchor-id="respuesta-de-cada-variable-a-las-diferencias-entre-station">1.1 Respuesta de cada variable a las diferencias entre Station</h4>
+<section id="response-of-each-variable-to-the-differences-between-station" class="level4">
+<h4 class="anchored" data-anchor-id="response-of-each-variable-to-the-differences-between-station">1.1 Response of each variable to the differences between Station</h4>
 <div class="cell">
 
 </div>
@@ -1922,9 +1922,9 @@ Station 2 4 7 9 13 15
 </div>
 </div>
 </section>
-<section id="cuatro-tipos-de-manova" class="level4">
-<h4 class="anchored" data-anchor-id="cuatro-tipos-de-manova">1.2 Cuatro tipos de MANOVA</h4>
-<p>Solo el test de Roy muestra diferencias significativas en la Abundance y composición para las Station en comparación (valor p &lt; 0.05)</p>
+<section id="four-types-of-manova" class="level4">
+<h4 class="anchored" data-anchor-id="four-types-of-manova">1.2 Four types of MANOVA</h4>
+<p>Only the Roy test shows significant differences in Abundance and composition for the Stations in comparison (p value &lt; 0.05)</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df Pillai approx F num Df den Df Pr(&gt;F)
@@ -1952,9 +1952,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
-<section id="supuesto-de-normalidad-de-los-residuales-del-manova" class="level4">
-<h4 class="anchored" data-anchor-id="supuesto-de-normalidad-de-los-residuales-del-manova">1.3. Supuesto de normalidad de los residuales del MANOVA</h4>
-<p>No se cumple el supuesto de normalidad multivariada sobre los residuales del Manova (W = 0.65, p-value = 2.8e-06). En este sentido, el MANOVA no puede ser utilizado para probar diferencias entre la Station.</p>
+<section id="assumption-of-normality-of-manova-residuals" class="level4">
+<h4 class="anchored" data-anchor-id="assumption-of-normality-of-manova-residuals">1.3. Assumption of normality of MANOVA residuals</h4>
+<p>The assumption of multivariate normality on the Manova residuals is not met (W = 0.65, p-value = 2.8e-06). In this sense, the MANOVA cannot be used to test differences between the Station.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -1976,9 +1976,9 @@ W = 0.6573, p-value = 2.885e-06</code></pre>
 </div>
 </div>
 </section>
-<section id="supuesto-de-independencia" class="level4">
-<h4 class="anchored" data-anchor-id="supuesto-de-independencia">1.4. Supuesto de independencia</h4>
-<p>Se cumple este supuesto (valor p &gt; 0.05).</p>
+<section id="independence-assumption" class="level4">
+<h4 class="anchored" data-anchor-id="independence-assumption">1.4. Independence assumption</h4>
+<p>This assumption is met (p value &gt; 0.05).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
@@ -1991,28 +1991,28 @@ W = 0.6573, p-value = 2.885e-06</code></pre>
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
 </b></section><b style="color:#1f78b4;">
-</b><section id="permanovas---groups-taxonómicos" class="level2"><b style="color:#1f78b4;">
-<h2 class="anchored" data-anchor-id="permanovas---groups-taxonómicos">8. Permanovas - Groups Taxonómicos</h2>
+</b><section id="permanovas---taxonomic-groups" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="permanovas---taxonomic-groups">8. Permanovas - Taxonomic Groups</h2>
 </b><p><b style="color:#1f78b4;"></b></p>
-<p>Esta prueba de hipótesis se realiza, debido a que no se cumplieron algunos supuestos del MANOVA. Se analizarán diferentes variantes como el ANOSIM y el PERMANOVA de uno y varios factores.</p>
+<p>This hypothesis test is carried out because some assumptions of the MANOVA were not met. Different variants will be analyzed such as the ANOSIM and the PERMANOVA of one and several factors.</p>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b><section id="permanova-1.-análisis-de-similitudes---anosim" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="permanova-1.-análisis-de-similitudes---anosim">Permanova 1. Análisis de Similitudes - ANOSIM</h3>
+</b><section id="permanova-1.-analysis-of-similarities---anosim" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-1.-analysis-of-similarities---anosim">Permanova 1. Analysis of Similarities - ANOSIM</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
-</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><section id="step-1.-distance-between-observations-hellinger-for-this-case" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-1.-distance-between-observations-hellinger-for-this-case">Step 1. Distance between observations (Hellinger for this case)</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Se realiza la transformación de hellinger, debido a que logra linealizar las Abundances de los taxones, permitiendo encontrar diferencias entre algunas de las Station en comparación.</p>
+<p>The Hellinger transformation is performed, because it manages to linearize the Abundances of the taxa, allowing differences to be found between some of the Stations in comparison.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
-</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><section id="step-2.-multivariate-mean-equality-hypothesis-test" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-2.-multivariate-mean-equality-hypothesis-test">Step 2. Multivariate mean equality hypothesis test</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Se presentan pocas diferencias entre las Station de acuerdo a las Groups taxonómicos seleccionados (R= 0.21, p= 0.012).</p>
+<p>There are few differences between the Stations according to the selected taxonomic groups (R= 0.21, p= 0.012).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -2043,8 +2043,8 @@ Between  1  77.25 145.5 212.25  276 240
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
-</b><section id="paso-3.-figura-del-anosim" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-3.-figura-del-anosim">Paso 3. Figura del ANOSIM</h4>
+</b><section id="step-3.-anosim-figure" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-3.-anosim-figure">Step 3. ANOSIM figure</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
@@ -2055,24 +2055,24 @@ Between  1  77.25 145.5 212.25  276 240
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="permanova-2.-permanova-de-un-factor-una-vía" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="permanova-2.-permanova-de-un-factor-una-vía">Permanova 2. Permanova de un factor (una vía)</h3>
+</b><section id="permanova-2.-one-factor-one-way-permanova" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-2.-one-factor-one-way-permanova">Permanova 2. One-factor (one-way) permanova</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>De acuerdo a la teoría, esta prueba suele ser más robsta que el anosim, para encontrar diferencias entre los Groups en comparación.</p>
+<p>According to the theory, this test is usually more robust than the anosim, in finding differences between the Groups in comparison.</p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
-</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-1">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><section id="step-1.-distance-between-observations-hellinger-for-this-case-1" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-1.-distance-between-observations-hellinger-for-this-case-1">Step 1. Distance between observations (Hellinger for this case)</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Linealización de las Abundances de los Groups taxonómicos.</p>
+<p>Linearization of the Abundances of Taxonomic Groups.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
-</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-1">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><section id="step-2.-multivariate-mean-equality-hypothesis-test-1" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-2.-multivariate-mean-equality-hypothesis-test-1">Step 2. Multivariate mean equality hypothesis test</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Se presentan diferencias entre las Station similar al anosim (Seudo F= 2.73; g.l.= 5, 18; p= 0.012).</p>
+<p>There are differences between the Stations similar to the anosim (Pseudo F= 2.73; g.l.= 5, 18; p= 0.012).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Permutation test for adonis under reduced model
@@ -2119,24 +2119,24 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="permanova-3.-permanova-de-dos-factores-dos-vías" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="permanova-3.-permanova-de-dos-factores-dos-vías">Permanova 3. Permanova de dos factores (dos vías)</h3>
+</b><section id="permanova-3.-two-factor-two-way-permanova" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-3.-two-factor-two-way-permanova">Permanova 3. Two-factor (two-way) permanova</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Para este caso se evalúan las diferencias en la Abundance y composición de los Groups taxonómicos entre Station (factor 1) y los Sizes (factor 2).</p>
+<p>For this case, the differences in the Abundance and composition of the taxonomic Groups between Station (factor 1) and Sizes (factor 2) are evaluated.</p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
-</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-2">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><section id="step-1.-distance-between-observations-hellinger-for-this-case-2" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-1.-distance-between-observations-hellinger-for-this-case-2">Step 1. Distance between observations (Hellinger for this case)</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Linealización de las Abundances de los Groups taxonómicos.</p>
+<p>Linearization of the Abundances of the taxonomic Groups.sim (Pseudo F= 2.73; g.l.= 5, 18; p= 0.012).</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
-</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-2">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><section id="step-2.-multivariate-mean-equality-hypothesis-test-2" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-2.-multivariate-mean-equality-hypothesis-test-2">Step 2. Multivariate mean equality hypothesis test</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Se presentan diferencias entre las Station y entre los Sizes, pero no en la interacción entre los dos factores.</p>
+<p>There are differences between the Stations and between the Sizes, but not in the interaction between the two factors.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Permutation test for adonis under reduced model
@@ -2159,24 +2159,24 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
-</b><section id="permanova-4.-permanova-de-dos-factores-dos-vías" class="level3"><b style="color:#fc8d62;">
-<h3 class="anchored" data-anchor-id="permanova-4.-permanova-de-dos-factores-dos-vías">Permanova 4. Permanova de dos factores (dos vías)</h3>
+</b><section id="permanova-4.-two-factor-two-way-permanova" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="permanova-4.-two-factor-two-way-permanova">Permanova 4. Two-factor (two-way) permanova</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Para este caso se evalúan las diferencias en la Abundance y composición de los Groups taxonómicos entre Station (factor 1) y los Layerss de Layers (factor 2).</p>
+<p>For this case, the differences in the Abundance and composition of the taxonomic Groups between Station (factor 1) and the Layers of Layers (factor 2) are evaluated.</p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
-</b><section id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-1.-disancia-entre-observaciones-hellinger-para-este-caso-3">Paso 1. Disancia entre observaciones (Hellinger para este caso)</h4>
+</b><section id="step-1.-distance-between-observations-hellinger-for-this-case-3" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-1.-distance-between-observations-hellinger-for-this-case-3">Step 1. Distance between observations (Hellinger for this case)</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Linealización de las Abundances de los Groups taxonómicos.</p>
+<p>Linearization of the Abundances of Taxonomic Groups.</p>
 <div class="cell">
 
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
-</b><section id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3" class="level4"><b style="color:#66c2a5;">
-<h4 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-de-igualdad-de-medias-multivariadas-3">Paso 2. Prueba de hipótesis de igualdad de medias multivariadas</h4>
+</b><section id="step-2.-multivariate-mean-equality-hypothesis-test-3" class="level4"><b style="color:#66c2a5;">
+<h4 class="anchored" data-anchor-id="step-2.-multivariate-mean-equality-hypothesis-test-3">Step 2. Multivariate mean equality hypothesis test</h4>
 </b><p><b style="color:#66c2a5;"></b></p>
-<p>Se presentan diferencias entre las Station y entre los Layerss, pero no en la interacción entre los dos factores.</p>
+<p>There are differences between the Stations and between the Layers, but not in the interaction between the two factors.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Permutation test for adonis under reduced model
