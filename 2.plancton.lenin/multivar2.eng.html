@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-07-23">
+<meta name="dcterms.date" content="2024-07-24">
 <meta name="description" content="Scaling analysis (nmds), simple correspondences (ca), cluster (cla) and discriminant analysis (lda) for data exploration, as well as hypothesis testing of differences between sites (manonovas and permanovas) according to the requirements of the manuscript of Lenin Florez.">
 
 <title>Advice 3. Gradient and cluster analysis</title>
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Fecha de publicación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">July 23, 2024</p>
+        <p class="date">July 24, 2024</p>
       </div>
     </div>
     
@@ -307,6 +307,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>If the names of the taxa are too long, they can be abbreviated with the number of letters required (e.g.&nbsp;minlength = 4), so that the figures that include the taxa are not so saturated with text (<a href="#tbl-tbl2">Tabla&nbsp;2</a>).</p>
+<p>Larva de Crustáceo</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-tbl2" class="anchored">
@@ -399,6 +400,7 @@ ul.task-list li input[type="checkbox"] {
    <th style="text-align:right;"> Hvdp </th>
    <th style="text-align:right;"> LrvN </th>
    <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> LrdC </th>
    <th style="text-align:right;"> Otrs </th>
   </tr>
  </thead>
@@ -421,6 +423,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 135 </td>
    <td style="text-align:right;"> 56 </td>
    <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 16 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
@@ -439,6 +442,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2488 </td>
    <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 24 </td>
@@ -461,6 +465,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
@@ -479,6 +484,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -501,6 +507,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 120 </td>
    <td style="text-align:right;"> 280 </td>
    <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
@@ -521,6 +528,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
   </tr>
 </tbody>
@@ -599,48 +607,48 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
   <tr>
    <td style="text-align:left;"> 22D </td>
-   <td style="text-align:right;"> -0.1963904 </td>
-   <td style="text-align:right;"> -0.1917712 </td>
+   <td style="text-align:right;"> -0.2098219 </td>
+   <td style="text-align:right;"> -0.0676470 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Depth </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 22S </td>
-   <td style="text-align:right;"> -0.5560650 </td>
-   <td style="text-align:right;"> -0.4986511 </td>
+   <td style="text-align:right;"> -0.6609339 </td>
+   <td style="text-align:right;"> -0.4133637 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Surface </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 25D </td>
-   <td style="text-align:right;"> -0.4383563 </td>
-   <td style="text-align:right;"> 0.6431842 </td>
+   <td style="text-align:right;"> -0.5131072 </td>
+   <td style="text-align:right;"> 0.6789221 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 500 μm </td>
    <td style="text-align:left;"> Depth </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 25S </td>
-   <td style="text-align:right;"> -1.2923631 </td>
-   <td style="text-align:right;"> -0.1066896 </td>
+   <td style="text-align:right;"> -1.3000654 </td>
+   <td style="text-align:right;"> 0.0368918 </td>
    <td style="text-align:left;"> 2 </td>
    <td style="text-align:left;"> 500 μm </td>
    <td style="text-align:left;"> Surface </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 42D </td>
-   <td style="text-align:right;"> -0.0721074 </td>
-   <td style="text-align:right;"> 0.1171298 </td>
+   <td style="text-align:right;"> -0.1149899 </td>
+   <td style="text-align:right;"> 0.0852813 </td>
    <td style="text-align:left;"> 4 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Depth </td>
   </tr>
   <tr>
    <td style="text-align:left;"> 42S </td>
-   <td style="text-align:right;"> -0.6403795 </td>
-   <td style="text-align:right;"> 0.2974229 </td>
+   <td style="text-align:right;"> -0.6642895 </td>
+   <td style="text-align:right;"> 0.3581678 </td>
    <td style="text-align:left;"> 4 </td>
    <td style="text-align:left;"> 250 μm </td>
    <td style="text-align:left;"> Surface </td>
@@ -1100,6 +1108,7 @@ ul.task-list li input[type="checkbox"] {
    <th style="text-align:right;"> Hvdp </th>
    <th style="text-align:right;"> LrvN </th>
    <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> LrdC </th>
    <th style="text-align:right;"> Otrs </th>
   </tr>
  </thead>
@@ -1123,6 +1132,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 135 </td>
    <td style="text-align:right;"> 56 </td>
    <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 16 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
@@ -1142,6 +1152,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2488 </td>
    <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 24 </td>
@@ -1165,6 +1176,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
@@ -1184,6 +1196,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1207,6 +1220,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 120 </td>
    <td style="text-align:right;"> 280 </td>
    <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
@@ -1228,6 +1242,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
   </tr>
 </tbody>
@@ -1293,37 +1308,37 @@ ul.task-list li input[type="checkbox"] {
   <tr>
    <td style="text-align:left;"> upgma </td>
    <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0.917 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> upgmc </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0.897 </td>
+   <td style="text-align:right;"> 0.907 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> compl </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0.842 </td>
+   <td style="text-align:right;"> 0.881 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> upgmc </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0.869 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> wpgma </td>
    <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0.841 </td>
+   <td style="text-align:right;"> 0.821 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> simple </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0.787 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> wpgmc </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0.760 </td>
+   <td style="text-align:right;"> 0.804 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> ward </td>
    <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 0.711 </td>
+   <td style="text-align:right;"> 0.752 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> wpgmc </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0.607 </td>
   </tr>
 </tbody>
 </table>
@@ -1356,7 +1371,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This technique shows that the greatest amplitude occurs in the formation of <strong>ten Groups</strong> or cluster, which bring together the classified observations.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
+<pre><code>[1] 11</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1366,8 +1381,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code> Silueta-Número óptimo de Clusters k= 10 
- Con una aplitud promedio de silueta 0.3891467 </code></pre>
+<pre><code> Silueta-Número óptimo de Clusters k= 11 
+ Con una aplitud promedio de silueta 0.3956652 </code></pre>
 </div>
 </div>
 </section>
@@ -1553,6 +1568,7 @@ ul.task-list li input[type="checkbox"] {
    <th style="text-align:right;"> Hvdp </th>
    <th style="text-align:right;"> LrvN </th>
    <th style="text-align:right;"> LrvZ </th>
+   <th style="text-align:right;"> LrdC </th>
    <th style="text-align:right;"> Otrs </th>
   </tr>
  </thead>
@@ -1576,6 +1592,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 135 </td>
    <td style="text-align:right;"> 56 </td>
    <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 16 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
@@ -1595,6 +1612,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2488 </td>
    <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 24 </td>
@@ -1618,6 +1636,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
   <tr>
@@ -1637,6 +1656,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1660,6 +1680,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 120 </td>
    <td style="text-align:right;"> 280 </td>
    <td style="text-align:right;"> 400 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 200 </td>
   </tr>
   <tr>
@@ -1681,6 +1702,7 @@ ul.task-list li input[type="checkbox"] {
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
   </tr>
 </tbody>
@@ -1751,8 +1773,8 @@ ul.task-list li input[type="checkbox"] {
 
 Response: Distances
           Df  Sum Sq Mean Sq F value Pr(&gt;F)
-Groups     5  51.679 10.3357  1.7301 0.1787
-Residuals 18 107.535  5.9742               </code></pre>
+Groups     5  40.301  8.0602  1.3808 0.2778
+Residuals 18 105.075  5.8375               </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1764,8 +1786,8 @@ Number of permutations: 999
 
 Response: Distances
           Df  Sum Sq Mean Sq      F N.Perm Pr(&gt;F)
-Groups     5  51.679 10.3357 1.7301    999  0.137
-Residuals 18 107.535  5.9742                     </code></pre>
+Groups     5  40.301  8.0602 1.3808    999  0.257
+Residuals 18 105.075  5.8375                     </code></pre>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1827,7 +1849,7 @@ Station 2 4 7 9 13 15
 <pre><code> [1] "Ref"         "Station"     "Size"        "Layers"      "Temperature"
  [6] "Salinity"    "Density"     "Qtgn"        "Srgs"        "Lcfr"       
 [11] "Clnd"        "Cycl"        "Hrpc"        "Lrdp"        "Hvdp"       
-[16] "LrvN"        "LrvZ"        "Otrs"       </code></pre>
+[16] "LrvN"        "LrvZ"        "LrdC"        "Otrs"       </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1874,47 +1896,47 @@ Station 2 4 7 9 13 15
 <tbody>
   <tr>
    <td style="text-align:left;"> Lcf </td>
-   <td style="text-align:right;"> 0.0095 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Otrs </td>
-   <td style="text-align:right;"> 0.0279 </td>
+   <td style="text-align:right;"> 0.0108 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> LrvN </td>
-   <td style="text-align:right;"> 0.0422 </td>
+   <td style="text-align:right;"> 0.0460 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Qtgn </td>
-   <td style="text-align:right;"> 0.0549 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> LrvZ </td>
-   <td style="text-align:right;"> 0.0668 </td>
+   <td style="text-align:right;"> 0.0568 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Cycl </td>
-   <td style="text-align:right;"> 0.1085 </td>
+   <td style="text-align:right;"> 0.0631 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Hvdp </td>
-   <td style="text-align:right;"> 0.2080 </td>
+   <td style="text-align:left;"> LrvZ </td>
+   <td style="text-align:right;"> 0.1027 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Clnd </td>
-   <td style="text-align:right;"> 0.3225 </td>
+   <td style="text-align:right;"> 0.2022 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Hvdp </td>
+   <td style="text-align:right;"> 0.2718 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Lrdp </td>
-   <td style="text-align:right;"> 0.4135 </td>
+   <td style="text-align:right;"> 0.4695 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Srgs </td>
-   <td style="text-align:right;"> 0.4342 </td>
+   <td style="text-align:right;"> 0.4933 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Hrpc </td>
-   <td style="text-align:right;"> 0.7067 </td>
+   <td style="text-align:right;"> 0.6668 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Otrs </td>
+   <td style="text-align:right;"> 0.7119 </td>
   </tr>
 </tbody>
 </table>
@@ -1928,24 +1950,26 @@ Station 2 4 7 9 13 15
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df Pillai approx F num Df den Df Pr(&gt;F)
-Station    5 2.5409   1.1272     55     60 0.3243
+Station    5 2.6511   1.2312     55     60 0.2151
 Residuals 18                                     </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          Df     Wilks approx F num Df den Df Pr(&gt;F)
-Station    5 0.0088717   1.3111     55 40.617 0.1844
-Residuals 18                                        </code></pre>
+<pre><code>          Df     Wilks approx F num Df den Df  Pr(&gt;F)  
+Station    5 0.0056102   1.5244     55 40.617 0.08095 .
+Residuals 18                                           
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df Hotelling-Lawley approx F num Df den Df  Pr(&gt;F)  
-Station    5           13.728   1.5975     55     32 0.07816 .
+Station    5           18.343   2.1344     55     32 0.01163 *
 Residuals 18                                                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Df    Roy approx F num Df den Df    Pr(&gt;F)    
-Station    5 10.117   11.037     11     12 0.0001167 ***
+Station    5 14.572   15.897     11     12 1.717e-05 ***
 Residuals 18                                            
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
@@ -1961,7 +1985,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
     Shapiro-Wilk normality test
 
 data:  Z
-W = 0.6573, p-value = 2.885e-06</code></pre>
+W = 0.61194, p-value = 8.42e-07</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1982,7 +2006,7 @@ W = 0.6573, p-value = 2.885e-06</code></pre>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1      -0.3499029      2.694424   0.534
+   1      -0.3702746      2.719824   0.398
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>
@@ -2020,25 +2044,25 @@ Call:
 anosim(x = biol2.dist1, grouping = biol2$Station, permutations = 1000) 
 Dissimilarity: bray 
 
-ANOSIM statistic R: 0.2132 
-      Significance: 0.016983 
+ANOSIM statistic R: 0.2139 
+      Significance: 0.015984 
 
 Permutation: free
 Number of permutations: 1000
 
 Upper quantiles of permutations (null model):
   90%   95% 97.5%   99% 
-0.103 0.140 0.170 0.236 
+0.106 0.151 0.180 0.234 
 
 Dissimilarity ranks between and within classes:
         0%    25%   50%    75% 100%   N
-Between  1  77.25 145.5 212.25  276 240
-2       64 168.25 196.0 214.75  250   6
-4       20 142.50 177.5 211.00  254   6
-7       24  34.25  50.0  69.50  119   6
-9       50  55.50  91.5 119.25  157   6
-13       3 118.00 132.5 141.00  192   6
-15      10  64.75  72.0  75.50   77   6</code></pre>
+Between  1  73.75 143.5 212.25  276 240
+2       49 162.00 187.0 211.25  250   6
+4       17 106.25 135.5 196.25  253   6
+7       40  45.00  61.5  84.00  148   6
+9       39  80.50  84.0 111.50  132   6
+13       7 127.25 143.5 158.25  216   6
+15      10  44.50  57.5  60.75  159   6</code></pre>
 </div>
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
@@ -2082,9 +2106,9 @@ Number of permutations: 1000
 
 adonis2(formula = biol2.dist1 ~ biol2$Station, permutations = 1000)
               Df SumOfSqs      R2      F   Pr(&gt;F)   
-biol2$Station  5   1.3909 0.43156 2.7331 0.004995 **
-Residual      18   1.8320 0.56844                   
-Total         23   3.2229 1.00000                   
+biol2$Station  5   1.4582 0.42497 2.6605 0.004995 **
+Residual      18   1.9731 0.57503                   
+Total         23   3.4313 1.00000                   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -2098,19 +2122,19 @@ Number of permutations: 1000
 Terms added sequentially (first to last)
 
           Df SumsOfSqs MeanSqs F.Model      R2   Pr(&gt;F)    
-Qtgn       1    0.2409 0.24085  4.0729 0.07473 0.033966 *  
-Srgs       1    0.2460 0.24598  4.1596 0.07632 0.033966 *  
-Lcfr       1    1.1133 1.11332 18.8267 0.34544 0.000999 ***
-Clnd       1    0.0923 0.09229  1.5607 0.02864 0.177822    
-Cycl       1    0.0509 0.05093  0.8613 0.01580 0.462537    
-Hrpc       1    0.0993 0.09926  1.6786 0.03080 0.151848    
-Lrdp       1    0.1921 0.19211  3.2486 0.05961 0.028971 *  
-Hvdp       1    0.1660 0.16595  2.8063 0.05149 0.039960 *  
-LrvN       1    0.1010 0.10096  1.7073 0.03133 0.160839    
-LrvZ       1    0.1305 0.13051  2.2070 0.04050 0.102897    
-Otrs       1    0.0811 0.08106  1.3708 0.02515 0.251748    
-Residuals 12    0.7096 0.05914         0.22018             
-Total     23    3.2229                 1.00000             
+Qtgn       1    0.2325 0.23251  3.1095 0.06776 0.044955 *  
+Srgs       1    0.2551 0.25510  3.4116 0.07435 0.043956 *  
+Lcfr       1    1.0637 1.06368 14.2252 0.30999 0.000999 ***
+Clnd       1    0.0736 0.07364  0.9848 0.02146 0.367632    
+Cycl       1    0.0629 0.06295  0.8418 0.01834 0.483516    
+Hrpc       1    0.1239 0.12386  1.6564 0.03610 0.151848    
+Lrdp       1    0.2257 0.22571  3.0185 0.06578 0.030969 *  
+Hvdp       1    0.1801 0.18015  2.4092 0.05250 0.053946 .  
+LrvN       1    0.1125 0.11252  1.5048 0.03279 0.194805    
+LrvZ       1    0.1117 0.11170  1.4938 0.03255 0.216783    
+Otrs       1    0.0922 0.09217  1.2327 0.02686 0.305694    
+Residuals 12    0.8973 0.07477         0.26150             
+Total     23    3.4313                 1.00000             
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -2145,12 +2169,12 @@ Permutation: free
 Number of permutations: 1000
 
 adonis2(formula = biol2.dist1 ~ biol2$Station * biol2$Size, permutations = 1000)
-                         Df SumOfSqs      R2      F   Pr(&gt;F)    
-biol2$Station             5   1.3909 0.43156 3.5679 0.000999 ***
-biol2$Size                1   0.4665 0.14474 5.9830 0.003996 ** 
-biol2$Station:biol2$Size  5   0.4299 0.13340 1.1029 0.381618    
-Residual                 12   0.9356 0.29030                    
-Total                    23   3.2229 1.00000                    
+                         Df SumOfSqs      R2      F   Pr(&gt;F)   
+biol2$Station             5   1.4582 0.42497 3.2253 0.002997 **
+biol2$Size                1   0.4741 0.13817 5.2433 0.008991 **
+biol2$Station:biol2$Size  5   0.4139 0.12063 0.9156 0.542458   
+Residual                 12   1.0851 0.31623                   
+Total                    23   3.4313 1.00000                   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
@@ -2185,12 +2209,12 @@ Permutation: free
 Number of permutations: 1000
 
 adonis2(formula = biol2.dist1 ~ biol2$Station * biol2$Layers, permutations = 1000)
-                           Df SumOfSqs      R2      F  Pr(&gt;F)  
-biol2$Station               5   1.3909 0.43156 2.9092 0.01099 *
-biol2$Layers                1   0.2793 0.08666 2.9209 0.05395 .
-biol2$Station:biol2$Layers  5   0.4053 0.12576 0.8478 0.57343  
-Residual                   12   1.1474 0.35602                 
-Total                      23   3.2229 1.00000                 
+                           Df SumOfSqs      R2      F   Pr(&gt;F)   
+biol2$Station               5   1.4582 0.42497 2.8496 0.008991 **
+biol2$Layers                1   0.3042 0.08867 2.9728 0.043956 * 
+biol2$Station:biol2$Layers  5   0.4407 0.12845 0.8613 0.552448   
+Residual                   12   1.2281 0.35792                   
+Total                      23   3.4313 1.00000                   
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
