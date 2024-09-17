@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-09-17">
 <meta name="description" content="Se aplicarán dos técnicas multivariadas= Análisis de escalamientos (nmds), y de clúester (cla) para la exploración de los datos binarios, así como las pruebas de hipótesis de diferencias entre las especies (permanovas) de acuerdo a los patógenos identificados en Trichomycterus nigromacuatus y Hemibrycon sierraensis, en el manuscrito de Francisco Correa.">
 
-<title>Untitled</title>
+<title>Asesoría 1. Análisis de patógenos en peces de Minca</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,14 +109,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="datos_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
+<link rel="stylesheet" href="stile-justify.css">
 </head>
 
-<body class="fullcontent">
+<body>
 
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Untitled</h1>
+      <h1 class="title">Asesoría 1. Análisis de patógenos en peces de Minca</h1>
             <p class="subtitle lead">Análisis multivariado de la presencia de patógenos en dos especies de peces del sectos de Minca, Santa Marta</p>
                   <div>
         <div class="description">
@@ -148,7 +149,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     
   
   </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menú flotante</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#análisis-exploratorio" id="toc-análisis-exploratorio" class="nav-link" data-scroll-target="#análisis-exploratorio">1. Análisis Exploratorio</a>
+  <ul>
+  <li><a href="#paso-1.-cargar-librerías" id="toc-paso-1.-cargar-librerías" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías">Paso 1. Cargar Librerías</a></li>
+  <li><a href="#paso-2.-base-de-datos" id="toc-paso-2.-base-de-datos" class="nav-link" data-scroll-target="#paso-2.-base-de-datos">Paso 2. Base de datos</a></li>
+  <li><a href="#paso-3.-diferencias-entre-las-dos-especies" id="toc-paso-3.-diferencias-entre-las-dos-especies" class="nav-link" data-scroll-target="#paso-3.-diferencias-entre-las-dos-especies">Paso 3. Diferencias entre las dos especies</a></li>
+  </ul></li>
+  <li><a href="#escalamiento-multidimensional-no-métrico-nmds" id="toc-escalamiento-multidimensional-no-métrico-nmds" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-nmds">2. Escalamiento Multidimensional no Métrico (NMDS)</a>
+  <ul>
+  <li><a href="#paso-1.-nmds" id="toc-paso-1.-nmds" class="nav-link" data-scroll-target="#paso-1.-nmds">Paso 1. NMDS</a></li>
+  <li><a href="#paso-2.-figuras-del-nmds" id="toc-paso-2.-figuras-del-nmds" class="nav-link" data-scroll-target="#paso-2.-figuras-del-nmds">Paso 2. Figuras del NMDS</a></li>
+  </ul></li>
+  <li><a href="#escalamiento-multidimensional-no-métrico-nmds-sin-el-caso-i" id="toc-escalamiento-multidimensional-no-métrico-nmds-sin-el-caso-i" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-nmds-sin-el-caso-i">3. Escalamiento Multidimensional no Métrico (NMDS) sin el Caso I</a>
+  <ul>
+  <li><a href="#paso-1.-nmds-1" id="toc-paso-1.-nmds-1" class="nav-link" data-scroll-target="#paso-1.-nmds-1">Paso 1. NMDS</a></li>
+  <li><a href="#paso-2.-figuras-del-nmds-1" id="toc-paso-2.-figuras-del-nmds-1" class="nav-link" data-scroll-target="#paso-2.-figuras-del-nmds-1">Paso 2. Figuras del NMDS</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-clúster-cla" id="toc-análisis-de-clúster-cla" class="nav-link" data-scroll-target="#análisis-de-clúster-cla">4. Análisis de Clúster (CLA)</a>
+  <ul>
+  <li><a href="#paso-1.-distancia-entre-observaciones" id="toc-paso-1.-distancia-entre-observaciones" class="nav-link" data-scroll-target="#paso-1.-distancia-entre-observaciones">Paso 1. Distancia entre observaciones</a></li>
+  <li><a href="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" id="toc-paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste" class="nav-link" data-scroll-target="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste">Paso 2. Elección del método de agrupación de mayor ajuste</a>
+  <ul class="collapse">
+  <li><a href="#cálculo-de-los-siete-dendogramas" id="toc-cálculo-de-los-siete-dendogramas" class="nav-link" data-scroll-target="#cálculo-de-los-siete-dendogramas">2.1 Cálculo de los siete dendogramas</a></li>
+  <li><a href="#cálculo-de-las-correlaciones-cofenéticas" id="toc-cálculo-de-las-correlaciones-cofenéticas" class="nav-link" data-scroll-target="#cálculo-de-las-correlaciones-cofenéticas">2.2 Cálculo de las correlaciones cofenéticas</a></li>
+  </ul></li>
+  <li><a href="#paso-3.-número-de-groups-formados" id="toc-paso-3.-número-de-groups-formados" class="nav-link" data-scroll-target="#paso-3.-número-de-groups-formados">Paso 3. Número de Groups formados</a>
+  <ul class="collapse">
+  <li><a href="#niveles-de-fusión" id="toc-niveles-de-fusión" class="nav-link" data-scroll-target="#niveles-de-fusión">3.1 Niveles de fusión</a></li>
+  <li><a href="#método-de-silueta" id="toc-método-de-silueta" class="nav-link" data-scroll-target="#método-de-silueta">3.2 Método de silueta</a></li>
+  <li><a href="#dendograma-jerárquico-final" id="toc-dendograma-jerárquico-final" class="nav-link" data-scroll-target="#dendograma-jerárquico-final">3.3 Dendograma jerárquico final</a></li>
+  <li><a href="#dendograma-no-jerárquico---k-means" id="toc-dendograma-no-jerárquico---k-means" class="nav-link" data-scroll-target="#dendograma-no-jerárquico---k-means">3.4 Dendograma no jerárquico - k-means</a></li>
+  </ul></li>
+  <li><a href="#paso-4.-aporte-de-las-variables-a-la-clasificación" id="toc-paso-4.-aporte-de-las-variables-a-la-clasificación" class="nav-link" data-scroll-target="#paso-4.-aporte-de-las-variables-a-la-clasificación">Paso 4. Aporte de las variables a la clasificación</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-clúster-cla-sin-el-caso-i" id="toc-análisis-de-clúster-cla-sin-el-caso-i" class="nav-link" data-scroll-target="#análisis-de-clúster-cla-sin-el-caso-i">5. Análisis de Clúster (CLA) sin el Caso I</a>
+  <ul>
+  <li><a href="#paso-1.-distancia-entre-observaciones-1" id="toc-paso-1.-distancia-entre-observaciones-1" class="nav-link" data-scroll-target="#paso-1.-distancia-entre-observaciones-1">Paso 1. Distancia entre observaciones</a></li>
+  <li><a href="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste-1" id="toc-paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste-1" class="nav-link" data-scroll-target="#paso-2.-elección-del-método-de-agrupación-de-mayor-ajuste-1">Paso 2. Elección del método de agrupación de mayor ajuste</a>
+  <ul class="collapse">
+  <li><a href="#cálculo-de-los-siete-dendogramas-1" id="toc-cálculo-de-los-siete-dendogramas-1" class="nav-link" data-scroll-target="#cálculo-de-los-siete-dendogramas-1">2.1 Cálculo de los siete dendogramas</a></li>
+  <li><a href="#cálculo-de-las-correlaciones-cofenéticas-1" id="toc-cálculo-de-las-correlaciones-cofenéticas-1" class="nav-link" data-scroll-target="#cálculo-de-las-correlaciones-cofenéticas-1">2.2 Cálculo de las correlaciones cofenéticas</a></li>
+  </ul></li>
+  <li><a href="#paso-3.-número-de-groups-formados-1" id="toc-paso-3.-número-de-groups-formados-1" class="nav-link" data-scroll-target="#paso-3.-número-de-groups-formados-1">Paso 3. Número de Groups formados</a>
+  <ul class="collapse">
+  <li><a href="#niveles-de-fusión-1" id="toc-niveles-de-fusión-1" class="nav-link" data-scroll-target="#niveles-de-fusión-1">3.1 Niveles de fusión</a></li>
+  <li><a href="#método-de-silueta-1" id="toc-método-de-silueta-1" class="nav-link" data-scroll-target="#método-de-silueta-1">3.2 Método de silueta</a></li>
+  <li><a href="#dendograma-jerárquico-final-1" id="toc-dendograma-jerárquico-final-1" class="nav-link" data-scroll-target="#dendograma-jerárquico-final-1">3.3 Dendograma jerárquico final</a></li>
+  <li><a href="#dendograma-no-jerárquico---k-means-1" id="toc-dendograma-no-jerárquico---k-means-1" class="nav-link" data-scroll-target="#dendograma-no-jerárquico---k-means-1">3.4 Dendograma no jerárquico - k-means</a></li>
+  </ul></li>
+  <li><a href="#paso-4.-aporte-de-las-variables-a-la-clasificación-1" id="toc-paso-4.-aporte-de-las-variables-a-la-clasificación-1" class="nav-link" data-scroll-target="#paso-4.-aporte-de-las-variables-a-la-clasificación-1">Paso 4. Aporte de las variables a la clasificación</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
@@ -465,11 +524,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </b><p><b style="color:#fc8d62;"></b></p>
 <p>Cargar la base de datos sin la patología 1 y sin los peces sin datos para el resto de patologías</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base de datos sin patología 1</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>biol1 <span class="ot">=</span> biol[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">17</span>,<span class="sc">-</span><span class="dv">18</span>,<span class="sc">-</span><span class="dv">70</span>,<span class="sc">-</span><span class="dv">71</span>,<span class="sc">-</span><span class="dv">72</span>,<span class="sc">-</span><span class="dv">73</span>,<span class="sc">-</span><span class="dv">74</span>,<span class="sc">-</span><span class="dv">75</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">12</span>)]</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>biol1 <span class="ot">&lt;-</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  biol1 <span class="sc">%&gt;%</span> </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Tot =</span> <span class="fu">rowSums</span>(biol1[<span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p>Se utiliza la <strong>distancia Jaccard</strong> y el estrés generado es de <strong>0.038</strong> (3,8%), denotando una muy buena configuración para este análisis.</p>
 <div class="cell">
@@ -829,11 +891,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </b><p><b style="color:#1f78b4;"></b></p>
 <p>Con este análisis, se pretende clasificar en Groupos o clúster, a los peces evaluados <strong>sin el caso patológico I</strong> y comparar dicho agrupamiento con el de las dos especies. A continuación se procede a cargar la base de datos sin la patología 1 y sin los peces sin datos para el resto de patologías</p>
 <div class="cell">
+<details>
+<summary>Código</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base de datos sin patología 1</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>biol1 <span class="ot">=</span> biol[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">17</span>,<span class="sc">-</span><span class="dv">18</span>,<span class="sc">-</span><span class="dv">70</span>,<span class="sc">-</span><span class="dv">71</span>,<span class="sc">-</span><span class="dv">72</span>,<span class="sc">-</span><span class="dv">73</span>,<span class="sc">-</span><span class="dv">74</span>,<span class="sc">-</span><span class="dv">75</span>),<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span><span class="sc">:</span><span class="dv">12</span>)]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>biol1 <span class="ot">&lt;-</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  biol1 <span class="sc">%&gt;%</span> </span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Tot =</span> <span class="fu">rowSums</span>(biol1[<span class="dv">3</span><span class="sc">:</span><span class="dv">10</span>]))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b><section id="paso-1.-distancia-entre-observaciones-1" class="level3"><b style="color:#fc8d62;">
