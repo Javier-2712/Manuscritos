@@ -205,6 +205,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </ul></li>
   <li><a href="#paso-4.-aporte-de-las-variables-a-la-clasificación-1" id="toc-paso-4.-aporte-de-las-variables-a-la-clasificación-1" class="nav-link" data-scroll-target="#paso-4.-aporte-de-las-variables-a-la-clasificación-1">Paso 4. Aporte de las variables a la clasificación</a></li>
   </ul></li>
+  <li><a href="#análisis-de-varianza-permutacional-multivariado---permanova" id="toc-análisis-de-varianza-permutacional-multivariado---permanova" class="nav-link" data-scroll-target="#análisis-de-varianza-permutacional-multivariado---permanova">6. Análisis de varianza permutacional multivariado - permanova</a>
+  <ul>
+  <li><a href="#paso-1.-prueba-de-hipótesis-con-los-9-casos" id="toc-paso-1.-prueba-de-hipótesis-con-los-9-casos" class="nav-link" data-scroll-target="#paso-1.-prueba-de-hipótesis-con-los-9-casos">Paso 1. Prueba de hipótesis con los 9 casos</a></li>
+  <li><a href="#paso-2.-prueba-de-hipótesis-sin-el-caso-i" id="toc-paso-2.-prueba-de-hipótesis-sin-el-caso-i" class="nav-link" data-scroll-target="#paso-2.-prueba-de-hipótesis-sin-el-caso-i">Paso 2. Prueba de hipótesis sin el caso I</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -1186,6 +1191,58 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p><figcaption class="figure-caption">Figura&nbsp;15: Caracterización de los peces, basado en los nueve casos de patologías asociadas</figcaption><p></p>
 </figure>
 </div>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="análisis-de-varianza-permutacional-multivariado---permanova" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="análisis-de-varianza-permutacional-multivariado---permanova">6. Análisis de varianza permutacional multivariado - permanova</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se realizará el <strong>PERMANOVA</strong> para probar si existen diferencias en los casos de patologías para las dos especies de peces, a pesar que el <strong>NMDS</strong> y el <strong>CLA</strong>, muestran una alta relación entre estos organismos.</p>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-prueba-de-hipótesis-con-los-9-casos" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-1.-prueba-de-hipótesis-con-los-9-casos">Paso 1. Prueba de hipótesis con los 9 casos</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Este permanova, se realizó con 1000 permutacionesy se obtuvo diferencias altamente significativas en las dos especies comparadas, de acuerdo a los 9 casos de las patologías (seudo F= 10.15; g.l.= 1,75; valor p= 0.0009***).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = peces.dist ~ biol$Especie, permutations = 1000)
+             Df SumOfSqs      R2      F   Pr(&gt;F)    
+biol$Especie  1   2.8185 0.11924 10.154 0.000999 ***
+Residual     75  20.8184 0.88076                    
+Total        76  23.6368 1.00000                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-prueba-de-hipótesis-sin-el-caso-i" class="level3"><b style="color:#fc8d62;">
+<h3 class="anchored" data-anchor-id="paso-2.-prueba-de-hipótesis-sin-el-caso-i">Paso 2. Prueba de hipótesis sin el caso I</h3>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para seguir la línea del comparativo con y sin el caso patológico I, se realizará la prueba de hipótesis con los ocho casos restantes. se utilizará la base biol2, ya que esta no contiene el caso I ni los peces asociados a esa patología.</p>
+<p>Este permanova, también se realizó con 1000 permutaciones y se obtuvo diferencias altamente significativas en las dos especies comparadas, de acuerdo a los 8 casos de las patologías (seudo F= 12.74; g.l.= 1,67; valor p= 0.0009***). Con este resultado se demuestra que el caso I, no afecta el patrón de diferencias encontradas entre las dos especies, basado en el resto de patologías.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Permutation test for adonis under reduced model
+Terms added sequentially (first to last)
+Permutation: free
+Number of permutations: 1000
+
+adonis2(formula = peces.dist1 ~ biol2$Especie, permutations = 1000)
+              Df SumOfSqs      R2      F   Pr(&gt;F)    
+biol2$Especie  1   2.9368 0.15981 12.744 0.000999 ***
+Residual      67  15.4405 0.84019                    
+Total         68  18.3774 1.00000                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 </section>
