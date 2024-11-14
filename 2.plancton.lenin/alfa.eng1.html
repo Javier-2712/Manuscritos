@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-11-09">
+<meta name="dcterms.date" content="2024-11-13">
 <meta name="description" content="Correcciones Para lo citado por los evaluadores - Análisis de datos de diversidad alfa, de acuerdo a los requerimientos del manuscrito de Lenin Florez.">
 
 <title>Asesoría 2. Análisis de diversidad alfa</title>
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Fecha de publicación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 9, 2024</p>
+        <p class="date">November 13, 2024</p>
       </div>
     </div>
     
@@ -106,14 +106,23 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#estimadores-generales" id="toc-estimadores-generales" class="nav-link" data-scroll-target="#estimadores-generales">3.1 Estimadores generales</a></li>
   <li><a href="#composición-y-de-abundancia" id="toc-composición-y-de-abundancia" class="nav-link" data-scroll-target="#composición-y-de-abundancia">3.2 Composición y de abundancia</a>
   <ul>
-  <li><a href="#por-estaciones" id="toc-por-estaciones" class="nav-link" data-scroll-target="#por-estaciones">3.2.1 Por Estaciones</a></li>
-  <li><a href="#por-niveles-de-abundancia" id="toc-por-niveles-de-abundancia" class="nav-link" data-scroll-target="#por-niveles-de-abundancia">3.2.2 Por Niveles de abundancia</a></li>
+  <li><a href="#por-niveles-de-abundancia" id="toc-por-niveles-de-abundancia" class="nav-link" data-scroll-target="#por-niveles-de-abundancia">3.2.1 Por Niveles de abundancia</a></li>
+  <li><a href="#por-niveles-de-salinidad" id="toc-por-niveles-de-salinidad" class="nav-link" data-scroll-target="#por-niveles-de-salinidad">3.2.2 Por Niveles de salinidad</a></li>
+  <li><a href="#por-niveles-de-temperatura" id="toc-por-niveles-de-temperatura" class="nav-link" data-scroll-target="#por-niveles-de-temperatura">3.2.3 Por Niveles de temperatura</a></li>
   </ul></li>
-  <li><a href="#curvas-rad-estaciones-layerss-sizes" id="toc-curvas-rad-estaciones-layerss-sizes" class="nav-link" data-scroll-target="#curvas-rad-estaciones-layerss-sizes">3.3 Curvas RAD (Estaciones, Layerss, Sizes)</a>
+  <li><a href="#patrón-de-abundancia-y-biomasa" id="toc-patrón-de-abundancia-y-biomasa" class="nav-link" data-scroll-target="#patrón-de-abundancia-y-biomasa">3.3 Patrón de Abundancia y Biomasa</a>
   <ul>
-  <li><a href="#rad-por-estaciones" id="toc-rad-por-estaciones" class="nav-link" data-scroll-target="#rad-por-estaciones">3.3.1 RAD por Estaciones</a></li>
-  <li><a href="#rad-por-layerss" id="toc-rad-por-layerss" class="nav-link" data-scroll-target="#rad-por-layerss">3.3.2 RAD por Layerss</a></li>
-  <li><a href="#rad-por-sizes" id="toc-rad-por-sizes" class="nav-link" data-scroll-target="#rad-por-sizes">3.3.3 RAD por Sizes</a></li>
+  <li><a href="#abundancias-con-dato-atípico-de-abundancia-de-16.857" id="toc-abundancias-con-dato-atípico-de-abundancia-de-16.857" class="nav-link" data-scroll-target="#abundancias-con-dato-atípico-de-abundancia-de-16.857">3.3.1 Abundancias con dato atípico de abundancia de 16.857</a></li>
+  <li><a href="#abundancias-sin-dato-atípico-de-abundancia-de-16.857" id="toc-abundancias-sin-dato-atípico-de-abundancia-de-16.857" class="nav-link" data-scroll-target="#abundancias-sin-dato-atípico-de-abundancia-de-16.857">3.3.2 Abundancias sin dato atípico de abundancia de 16.857</a></li>
+  <li><a href="#abundancias-por-capas-de-superficie-y-profundidad" id="toc-abundancias-por-capas-de-superficie-y-profundidad" class="nav-link" data-scroll-target="#abundancias-por-capas-de-superficie-y-profundidad">3.3.3 Abundancias por capas de superficie y profundidad</a></li>
+  <li><a href="#biomasa-por-capas-de-superficie-y-profundidad" id="toc-biomasa-por-capas-de-superficie-y-profundidad" class="nav-link" data-scroll-target="#biomasa-por-capas-de-superficie-y-profundidad">3.3.4 Biomasa por capas de superficie y profundidad</a></li>
+  <li><a href="#biomasas-por-periodos-climáticos" id="toc-biomasas-por-periodos-climáticos" class="nav-link" data-scroll-target="#biomasas-por-periodos-climáticos">3.3.5 Biomasas por Periodos Climáticos</a></li>
+  </ul></li>
+  <li><a href="#curvas-rad-estaciones-layerss-sizes" id="toc-curvas-rad-estaciones-layerss-sizes" class="nav-link" data-scroll-target="#curvas-rad-estaciones-layerss-sizes">3.4 Curvas RAD (Estaciones, Layerss, Sizes)</a>
+  <ul>
+  <li><a href="#rad-por-estaciones" id="toc-rad-por-estaciones" class="nav-link" data-scroll-target="#rad-por-estaciones">3.4.1 RAD por Estaciones</a></li>
+  <li><a href="#rad-por-layerss" id="toc-rad-por-layerss" class="nav-link" data-scroll-target="#rad-por-layerss">3.4.2 RAD por Layerss</a></li>
+  <li><a href="#rad-por-sizes" id="toc-rad-por-sizes" class="nav-link" data-scroll-target="#rad-por-sizes">3.4.3 RAD por Sizes</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -500,191 +509,11 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<p>La <a href="#tbl-tbl4">Tabla&nbsp;4</a> muestra los nombres abreviados de los taxones, …</p>
 <div class="cell">
-<div class="cell-output-display">
-<div id="tbl-tbl4" class="anchored">
 
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;4:  Base de datos con los nombres abreviados de los taxones </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Station </th>
-   <th style="text-align:right;"> Clnd </th>
-   <th style="text-align:right;"> CrsL </th>
-   <th style="text-align:right;"> Cycl </th>
-   <th style="text-align:right;"> Fshe </th>
-   <th style="text-align:right;"> Fshl </th>
-   <th style="text-align:right;"> Hrpc </th>
-   <th style="text-align:right;"> Lcfr </th>
-   <th style="text-align:right;"> Npll </th>
-   <th style="text-align:right;"> Othr </th>
-   <th style="text-align:right;"> Qtgn </th>
-   <th style="text-align:right;"> Srgs </th>
-   <th style="text-align:right;"> ZLrv </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 13300 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 428 </td>
-   <td style="text-align:right;"> 168 </td>
-   <td style="text-align:right;"> 2562 </td>
-   <td style="text-align:right;"> 50 </td>
-   <td style="text-align:right;"> 12411 </td>
-   <td style="text-align:right;"> 57 </td>
-   <td style="text-align:right;"> 30 </td>
-   <td style="text-align:right;"> 86 </td>
-   <td style="text-align:right;"> 1219 </td>
-   <td style="text-align:right;"> 44 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:right;"> 11006 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 947 </td>
-   <td style="text-align:right;"> 135 </td>
-   <td style="text-align:right;"> 98 </td>
-   <td style="text-align:right;"> 33 </td>
-   <td style="text-align:right;"> 11659 </td>
-   <td style="text-align:right;"> 282 </td>
-   <td style="text-align:right;"> 234 </td>
-   <td style="text-align:right;"> 385 </td>
-   <td style="text-align:right;"> 397 </td>
-   <td style="text-align:right;"> 406 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:right;"> 288 </td>
-   <td style="text-align:right;"> 125 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 48 </td>
-   <td style="text-align:right;"> 74 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> 59 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:right;"> 1615 </td>
-   <td style="text-align:right;"> 38 </td>
-   <td style="text-align:right;"> 125 </td>
-   <td style="text-align:right;"> 20 </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 45 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 93 </td>
-   <td style="text-align:right;"> 81 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:right;"> 3911 </td>
-   <td style="text-align:right;"> 110 </td>
-   <td style="text-align:right;"> 237 </td>
-   <td style="text-align:right;"> 92 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 18 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 250 </td>
-   <td style="text-align:right;"> 81 </td>
-   <td style="text-align:right;"> 27 </td>
-   <td style="text-align:right;"> 13 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:right;"> 3362 </td>
-   <td style="text-align:right;"> 112 </td>
-   <td style="text-align:right;"> 307 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 179 </td>
-   <td style="text-align:right;"> 202 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
 </div>
 <div class="cell">
-<div class="cell-output-display">
 
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption></caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Groups </th>
-   <th style="text-align:left;"> Abreviatures </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Calanoida </td>
-   <td style="text-align:left;"> Clnd </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Crustacean Larvae </td>
-   <td style="text-align:left;"> CrsL </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyclopoida </td>
-   <td style="text-align:left;"> Cycl </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fish eggs </td>
-   <td style="text-align:left;"> Fshe </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Fish larvae </td>
-   <td style="text-align:left;"> Fshl </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Harpacticoida </td>
-   <td style="text-align:left;"> Hrpc </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luciferidae </td>
-   <td style="text-align:left;"> Lcfr </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Nauplius larvae </td>
-   <td style="text-align:left;"> Npll </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Others </td>
-   <td style="text-align:left;"> Othr </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Quetognata </td>
-   <td style="text-align:left;"> Qtgn </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sergestidae </td>
-   <td style="text-align:left;"> Srgs </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Zoea Larvae </td>
-   <td style="text-align:left;"> ZLrv </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
 </div>
 <hr>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -705,7 +534,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="tbl-tbl6" class="anchored">
 
 <table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Tabla&nbsp;5:  Estimadores clásicos de diversidad alfa. q=0 Riqueza de taxones, q= 1 Taxones abundantes, … </caption>
+<caption>Tabla&nbsp;4:  Estimadores clásicos de diversidad alfa. q=0 Riqueza de taxones, q= 1 Taxones abundantes, … </caption>
  <thead>
   <tr>
    <th style="text-align:left;"> Station </th>
@@ -778,8 +607,8 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="composición-y-de-abundancia">3.2 Composición y de abundancia</h4>
 </b><p><b style="color:#e78ac3;"></b></p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
-</b><section id="por-estaciones" class="level5"><b style="color:#66c2a5;">
-<h5 class="anchored" data-anchor-id="por-estaciones">3.2.1 Por Estaciones</h5>
+</b><section id="por-niveles-de-abundancia" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="por-niveles-de-abundancia">3.2.1 Por Niveles de abundancia</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
@@ -788,45 +617,55 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
-</b><section id="por-niveles-de-abundancia" class="level5"><b style="color:#66c2a5;">
-<h5 class="anchored" data-anchor-id="por-niveles-de-abundancia">3.2.2 Por Niveles de abundancia</h5>
+</b><section id="por-niveles-de-salinidad" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="por-niveles-de-salinidad">3.2.2 Por Niveles de salinidad</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="alfa.eng1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="por-niveles-de-temperatura" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="por-niveles-de-temperatura">3.2.3 Por Niveles de temperatura</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 <hr>
 <p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
 </b></section><b style="color:#e78ac3;">
 </b></section><b style="color:#e78ac3;">
-</b><section id="curvas-rad-estaciones-layerss-sizes" class="level4"><b style="color:#e78ac3;">
-<h4 class="anchored" data-anchor-id="curvas-rad-estaciones-layerss-sizes">3.3 Curvas RAD (Estaciones, Layerss, Sizes)</h4>
+</b><section id="patrón-de-abundancia-y-biomasa" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="patrón-de-abundancia-y-biomasa">3.3 Patrón de Abundancia y Biomasa</h4>
 </b><p><b style="color:#e78ac3;"></b></p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
-</b><section id="rad-por-estaciones" class="level5"><b style="color:#66c2a5;">
-<h5 class="anchored" data-anchor-id="rad-por-estaciones">3.3.1 RAD por Estaciones</h5>
+</b><section id="abundancias-con-dato-atípico-de-abundancia-de-16.857" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="abundancias-con-dato-atípico-de-abundancia-de-16.857">3.3.1 Abundancias con dato atípico de abundancia de 16.857</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
-
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="cell">
-
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="alfa.eng1_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>--</p>
-<p><strong>Como la anterior pero sin texto dentro de los páneles</strong></p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="abundancias-sin-dato-atípico-de-abundancia-de-16.857" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="abundancias-sin-dato-atípico-de-abundancia-de-16.857">3.3.2 Abundancias sin dato atípico de abundancia de 16.857</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="alfa.eng1_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>--</p>
-<p><strong>Como la anterior pero sin leyenda</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="alfa.eng1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
@@ -834,8 +673,75 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
+</b><section id="abundancias-por-capas-de-superficie-y-profundidad" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="abundancias-por-capas-de-superficie-y-profundidad">3.3.3 Abundancias por capas de superficie y profundidad</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="biomasa-por-capas-de-superficie-y-profundidad" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="biomasa-por-capas-de-superficie-y-profundidad">3.3.4 Biomasa por capas de superficie y profundidad</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="biomasas-por-periodos-climáticos" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="biomasas-por-periodos-climáticos">3.3.5 Biomasas por Periodos Climáticos</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p><strong>Nota:</strong> En el archivo de Excel, para estos datos de biomasa, la columna periodos (Seasons) aparece como 1 y 2, a 1 le coloqué lluvia (Rainy) y a 2 sequía (Dry). Se requiere validar si esto es correcto.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="curvas-rad-estaciones-layerss-sizes" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="curvas-rad-estaciones-layerss-sizes">3.4 Curvas RAD (Estaciones, Layerss, Sizes)</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="rad-por-estaciones" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="rad-por-estaciones">3.4.1 RAD por Estaciones</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>--</p>
+<p><strong>Como la anterior pero sin texto dentro de los páneles</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>--</p>
+<p><strong>Como la anterior pero sin leyenda</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
 </b><section id="rad-por-layerss" class="level5"><b style="color:#66c2a5;">
-<h5 class="anchored" data-anchor-id="rad-por-layerss">3.3.2 RAD por Layerss</h5>
+<h5 class="anchored" data-anchor-id="rad-por-layerss">3.4.2 RAD por Layerss</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -848,20 +754,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>--</p>
 <p><strong>Figura anterior sin texto en la figura</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
 </b><section id="rad-por-sizes" class="level5"><b style="color:#66c2a5;">
-<h5 class="anchored" data-anchor-id="rad-por-sizes">3.3.3 RAD por Sizes</h5>
+<h5 class="anchored" data-anchor-id="rad-por-sizes">3.4.3 RAD por Sizes</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 
@@ -871,14 +777,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>--</p>
 <p><strong>Figura anterior sin rótulos dentro de la figura</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
