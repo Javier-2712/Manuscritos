@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN-en" xml:lang="EN-en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Javier Rodríguez Barrios">
+<meta name="dcterms.date" content="2024-12-01">
+<meta name="description" content="Análisis de datos de diversidad alfa de peces estuarinos y su relación con condiciones ambientales.">
+
+<title>Asesoría 2. Análisis de diversidad alfa</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="alfa.eng1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="alfa.eng1_files/libs/quarto-html/quarto.js"></script>
+<script src="alfa.eng1_files/libs/quarto-html/popper.min.js"></script>
+<script src="alfa.eng1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="alfa.eng1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="alfa.eng1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="alfa.eng1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="alfa.eng1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="alfa.eng1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="alfa.eng1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #2b8cbe;
+    }
+    </style>
+
+<script src="alfa.eng1_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="alfa.eng1_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="stile-justify.css">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Asesoría 2. Análisis de diversidad alfa</h1>
+            <p class="subtitle lead">Diversidad alfa con datos peces estuarinos</p>
+                  <div>
+        <div class="description">
+          Análisis de datos de diversidad alfa de peces estuarinos y su relación con condiciones ambientales.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Javier Rodríguez Barrios </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 1, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menú flotante</h2>
+   
+  <ul>
+  <li><a href="#resumen" id="toc-resumen" class="nav-link active" data-scroll-target="#resumen">Resumen</a></li>
+  <li><a href="#cargar-bases-de-datos" id="toc-cargar-bases-de-datos" class="nav-link" data-scroll-target="#cargar-bases-de-datos">Cargar bases de datos</a></li>
+  <li><a href="#datos-biológicos" id="toc-datos-biológicos" class="nav-link" data-scroll-target="#datos-biológicos">Datos biológicos</a>
+  <ul>
+  <li><a href="#elipses" id="toc-elipses" class="nav-link" data-scroll-target="#elipses">Elipses</a></li>
+  </ul></li>
+  <li><a href="#datos-ambientales" id="toc-datos-ambientales" class="nav-link" data-scroll-target="#datos-ambientales">Datos ambientales</a>
+  <ul>
+  <li><a href="#elipses-1" id="toc-elipses-1" class="nav-link" data-scroll-target="#elipses-1">Elipses</a></li>
+  <li><a href="#relación-ambientales-y-taxones" id="toc-relación-ambientales-y-taxones" class="nav-link" data-scroll-target="#relación-ambientales-y-taxones">Relación ambientales y taxones</a></li>
+  <li><a href="#figuras-de-cajas" id="toc-figuras-de-cajas" class="nav-link" data-scroll-target="#figuras-de-cajas">Figuras de Cajas</a></li>
+  <li><a href="#burbujas" id="toc-burbujas" class="nav-link" data-scroll-target="#burbujas">Burbujas</a>
+  <ul>
+  <li><a href="#por-niveles-de-ph" id="toc-por-niveles-de-ph" class="nav-link" data-scroll-target="#por-niveles-de-ph">Por niveles de pH</a></li>
+  <li><a href="#por-niveles-de-o2" id="toc-por-niveles-de-o2" class="nav-link" data-scroll-target="#por-niveles-de-o2">Por niveles de O2</a></li>
+  <li><a href="#por-niveles-de-ups" id="toc-por-niveles-de-ups" class="nav-link" data-scroll-target="#por-niveles-de-ups">Por niveles de UPS</a></li>
+  <li><a href="#por-niveles-de-temperatura" id="toc-por-niveles-de-temperatura" class="nav-link" data-scroll-target="#por-niveles-de-temperatura">Por niveles de Temperatura</a></li>
+  <li><a href="#pendientes-por-realizar" id="toc-pendientes-por-realizar" class="nav-link" data-scroll-target="#pendientes-por-realizar"><strong>Pendientes por realizar:</strong></a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="mangroves%20uraba.jpg" class="img-fluid figure-img" width="625"></p>
+<p></p><figcaption class="figure-caption">Área de estudio</figcaption><p></p>
+</figure>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b><section id="resumen" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>El presente ejercicio consiste en el procesamiento inicial de los datos entregados por el profesor Lenin Florez y Alejandro Sandoval, para dar respuesta al siguiente requerimiento: “<em>Analizar el efecto de cambios en las fases lunares (<strong>ciclo lunar</strong>) y horarios de <strong>día vs.&nbsp;noche</strong>, sobre los patrones de <strong>riqueza, de composición y de abundancia (también la biomasa) de peces estuarinos</strong></em>”.</p>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="cargar-bases-de-datos" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="cargar-bases-de-datos">Cargar bases de datos</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se cargan las librerías requeridas para el procesamiento de los datos.</p>
+<div class="cell">
+
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="datos-biológicos" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="datos-biológicos">Datos biológicos</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se carga la base de datos con las especies de peces.</p>
+<div id="tbl-tbl1" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Resumen de los seis primeros datos de los taxones con nombres abreviados">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Especies </th>
+   <th style="text-align:left;"> Abreviaturas </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Achirus lineatus </td>
+   <td style="text-align:left;"> Achl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Anchovia clupeoides </td>
+   <td style="text-align:left;"> Ancc </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ariopsis sp </td>
+   <td style="text-align:left;"> Aris </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Bardiela ronchus </td>
+   <td style="text-align:left;"> Barr </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Batrachoides surinamensis </td>
+   <td style="text-align:left;"> Bats </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Caranx crysos </td>
+   <td style="text-align:left;"> Carc </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Caranx hippos </td>
+   <td style="text-align:left;"> Carh </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Caranx latus </td>
+   <td style="text-align:left;"> Carl </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cathorops mapale </td>
+   <td style="text-align:left;"> Catm </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Centropomus ensiferus </td>
+   <td style="text-align:left;"> Cene </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Centropomus pectinatus </td>
+   <td style="text-align:left;"> Cenp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Centropomus undecimalis </td>
+   <td style="text-align:left;"> Cenu </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Cetengraulis edentulus </td>
+   <td style="text-align:left;"> Cete </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Chaetodipterus fabel </td>
+   <td style="text-align:left;"> Chaf </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Citharichthys spilopterus </td>
+   <td style="text-align:left;"> Cits </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Dasyatis guttata </td>
+   <td style="text-align:left;"> Dasg </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Diapterus rhombeus </td>
+   <td style="text-align:left;"> Diar </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Epinephelus itajara </td>
+   <td style="text-align:left;"> Epii </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Eugerres plumieri </td>
+   <td style="text-align:left;"> Eugp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gerres cinereus </td>
+   <td style="text-align:left;"> Gerc </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gobiomorus dormitor </td>
+   <td style="text-align:left;"> Gobd </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Gymnothorax ocellatus </td>
+   <td style="text-align:left;"> Gymo </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lutjanus analis </td>
+   <td style="text-align:left;"> Luta </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lutjanus jocu </td>
+   <td style="text-align:left;"> Lutj </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Lycengraulis grossidens </td>
+   <td style="text-align:left;"> Lycg </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Megalops atlanticus </td>
+   <td style="text-align:left;"> Mega </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Menticirrhus americanus </td>
+   <td style="text-align:left;"> Mena </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mugil incilis </td>
+   <td style="text-align:left;"> Mugi </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oligoplites saliens </td>
+   <td style="text-align:left;"> Olig </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Oligoplites saurus </td>
+   <td style="text-align:left;"> Olig.1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Selene vomer </td>
+   <td style="text-align:left;"> Selv </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Sphoeroides testudineum </td>
+   <td style="text-align:left;"> Spht </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Stellifer sp </td>
+   <td style="text-align:left;"> Stes </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Strongylura timuco </td>
+   <td style="text-align:left;"> Strt </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Trichiurus lepturus </td>
+   <td style="text-align:left;"> Tril </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b><section id="elipses" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="elipses">Elipses</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p>Algunas especies presentan relaciones positivas o directas en sus abundancias, las relaciones inversas son muy bajas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b></section><b style="color:#1f78b4;">
+</b><section id="datos-ambientales" class="level2"><b style="color:#1f78b4;">
+<h2 class="anchored" data-anchor-id="datos-ambientales">Datos ambientales</h2>
+</b><p><b style="color:#1f78b4;"></b></p>
+<p>Se carga la base de datos ambientales.</p>
+<div class="cell">
+
+</div>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b><section id="elipses-1" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="elipses-1">Elipses</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p>Relaciones entre las variables ambientales tienen a ser positivas o directas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="relación-ambientales-y-taxones" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="relación-ambientales-y-taxones">Relación ambientales y taxones</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p>Se observan algunas relaciones negativas entre las variables ambientales y la abundancia de las especies.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="figuras-de-cajas" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="figuras-de-cajas">Figuras de Cajas</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p>Se analizan los patrones de <strong>abundancias de peces</strong> (eje y), con diferentes factores (eje x), como las fases lunares (<strong>Moon</strong>), horarios (<strong>Solar.day</strong>), y zonas (<strong>Zones</strong>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="burbujas" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="burbujas">Burbujas</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p>Se relaciona a las especies de peces (eje y), variables ambientales (eje x), colores de las burbujas (fases lunares) y tamaños de las burbujas (abundancias).</p>
+<p><strong>Nota:</strong> Solo se hará con fases lunares, pero se puede hacer con el resto de factores (horarios y zonas).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="por-niveles-de-ph" class="level6"><b style="color:#66c2a5;">
+<h6 class="anchored" data-anchor-id="por-niveles-de-ph">Por niveles de pH</h6>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>pH</strong> entre 7.5 y 8 unidades.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="por-niveles-de-o2" class="level6"><b style="color:#66c2a5;">
+<h6 class="anchored" data-anchor-id="por-niveles-de-o2">Por niveles de O2</h6>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>OD</strong> entre 3.5 y 4.7 mg/L.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="por-niveles-de-ups" class="level6"><b style="color:#66c2a5;">
+<h6 class="anchored" data-anchor-id="por-niveles-de-ups">Por niveles de UPS</h6>
+</b><p><b style="color:#66c2a5;"></b></p>
+<p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>UPS</strong> entre 19 y 25 unidades.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="por-niveles-de-temperatura" class="level6"><b style="color:#66c2a5;">
+<h6 class="anchored" data-anchor-id="por-niveles-de-temperatura">Por niveles de Temperatura</h6>
+</b><p><b style="color:#66c2a5;"></b><br>
+Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>temperaturas</strong> entre 28 y 30 grados centigrados.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="pendientes-por-realizar" class="level5"><b style="color:#e78ac3;">
+<h5 class="anchored" data-anchor-id="pendientes-por-realizar"><strong>Pendientes por realizar:</strong></h5>
+</b><p><b style="color:#e78ac3;"></b></p>
+<ul>
+<li><p><strong>Curvas rango-abundancia</strong> (RAD).</p></li>
+<li><p>Estimadores generales de <strong>diversidad alfa</strong>.</p></li>
+<li><p><strong>Diversidad alfa en cuatro pasos</strong> (Chao et al.&nbsp;2020).</p></li>
+<li><p><strong>Diversidad beta</strong>, con la propuesta de Carvahlo (2014).</p></li>
+<li><p><strong>Patrones multivariados</strong> (PCA, NMDS, CA, LDA, DCA, CLA, RDA, PERMANOVAS y BIOENV).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
