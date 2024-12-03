@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-12-01">
+<meta name="dcterms.date" content="2024-12-02">
 <meta name="description" content="Análisis de datos de diversidad alfa de peces estuarinos y su relación con condiciones ambientales.">
 
 <title>Asesoría 2. Análisis de diversidad alfa</title>
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 1, 2024</p>
+        <p class="date">December 2, 2024</p>
       </div>
     </div>
     
@@ -108,6 +108,36 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#por-niveles-de-o2" id="toc-por-niveles-de-o2" class="nav-link" data-scroll-target="#por-niveles-de-o2">Por niveles de O2</a></li>
   <li><a href="#por-niveles-de-ups" id="toc-por-niveles-de-ups" class="nav-link" data-scroll-target="#por-niveles-de-ups">Por niveles de UPS</a></li>
   <li><a href="#por-niveles-de-temperatura" id="toc-por-niveles-de-temperatura" class="nav-link" data-scroll-target="#por-niveles-de-temperatura">Por niveles de Temperatura</a></li>
+  </ul></li>
+  <li><a href="#curvas-rad-fases-lunares-y-horarios-del-día" id="toc-curvas-rad-fases-lunares-y-horarios-del-día" class="nav-link" data-scroll-target="#curvas-rad-fases-lunares-y-horarios-del-día">Curvas RAD (Fases lunares y Horarios del día)</a>
+  <ul>
+  <li><a href="#rad-por-fases-lunares-moon" id="toc-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#rad-por-fases-lunares-moon">RAD por fases lunares (Moon)</a></li>
+  <li><a href="#rad-por-horarios-del-día-solar-day" id="toc-rad-por-horarios-del-día-solar-day" class="nav-link" data-scroll-target="#rad-por-horarios-del-día-solar-day">RAD por horarios del día (Solar Day)</a></li>
+  <li><a href="#rad-por-zonas-zone" id="toc-rad-por-zonas-zone" class="nav-link" data-scroll-target="#rad-por-zonas-zone">RAD por Zonas (Zone)</a></li>
+  </ul></li>
+  <li><a href="#diversidad-alfa---propuesta-de-chao-et-al.-2020" id="toc-diversidad-alfa---propuesta-de-chao-et-al.-2020" class="nav-link" data-scroll-target="#diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</a>
+  <ul>
+  <li><a href="#por-fases-lunares-moon" id="toc-por-fases-lunares-moon" class="nav-link" data-scroll-target="#por-fases-lunares-moon">Por fases lunares (Moon)</a>
+  <ul>
+  <li><a href="#paso-1.-perfil-de-completitud" id="toc-paso-1.-perfil-de-completitud" class="nav-link" data-scroll-target="#paso-1.-perfil-de-completitud">Paso 1. Perfil de completitud</a></li>
+  <li><a href="#paso-2.-perfil-asintótico" id="toc-paso-2.-perfil-asintótico" class="nav-link" data-scroll-target="#paso-2.-perfil-asintótico">Paso 2. Perfil asintótico</a></li>
+  <li><a href="#paso-3.-perfil-no-asintótico" id="toc-paso-3.-perfil-no-asintótico" class="nav-link" data-scroll-target="#paso-3.-perfil-no-asintótico">Paso 3. Perfil no asintótico</a></li>
+  <li><a href="#paso-4.-patrón-de-uniformidad" id="toc-paso-4.-patrón-de-uniformidad" class="nav-link" data-scroll-target="#paso-4.-patrón-de-uniformidad">Paso 4. Patrón de uniformidad</a></li>
+  </ul></li>
+  <li><a href="#por-horarios-solar-days" id="toc-por-horarios-solar-days" class="nav-link" data-scroll-target="#por-horarios-solar-days">Por Horarios (Solar Days)</a>
+  <ul>
+  <li><a href="#paso-1.-perfil-de-completitud-1" id="toc-paso-1.-perfil-de-completitud-1" class="nav-link" data-scroll-target="#paso-1.-perfil-de-completitud-1">Paso 1. Perfil de completitud</a></li>
+  <li><a href="#paso-2.-perfil-asintótico-1" id="toc-paso-2.-perfil-asintótico-1" class="nav-link" data-scroll-target="#paso-2.-perfil-asintótico-1">Paso 2. Perfil asintótico</a></li>
+  <li><a href="#paso-3.-perfil-no-asintótico-1" id="toc-paso-3.-perfil-no-asintótico-1" class="nav-link" data-scroll-target="#paso-3.-perfil-no-asintótico-1">Paso 3. Perfil no asintótico</a></li>
+  <li><a href="#paso-4.-patrón-de-uniformidad-1" id="toc-paso-4.-patrón-de-uniformidad-1" class="nav-link" data-scroll-target="#paso-4.-patrón-de-uniformidad-1">Paso 4. Patrón de uniformidad</a></li>
+  </ul></li>
+  <li><a href="#por-zonas-zone" id="toc-por-zonas-zone" class="nav-link" data-scroll-target="#por-zonas-zone">Por Zonas (Zone)</a>
+  <ul>
+  <li><a href="#paso-1.-perfil-de-completitud-2" id="toc-paso-1.-perfil-de-completitud-2" class="nav-link" data-scroll-target="#paso-1.-perfil-de-completitud-2">Paso 1. Perfil de completitud</a></li>
+  <li><a href="#paso-2.-perfil-asintótico-2" id="toc-paso-2.-perfil-asintótico-2" class="nav-link" data-scroll-target="#paso-2.-perfil-asintótico-2">Paso 2. Perfil asintótico</a></li>
+  <li><a href="#paso-3.-perfil-no-asintótico-2" id="toc-paso-3.-perfil-no-asintótico-2" class="nav-link" data-scroll-target="#paso-3.-perfil-no-asintótico-2">Paso 3. Perfil no asintótico</a></li>
+  <li><a href="#paso-4.-patrón-de-uniformidad-2" id="toc-paso-4.-patrón-de-uniformidad-2" class="nav-link" data-scroll-target="#paso-4.-patrón-de-uniformidad-2">Paso 4. Patrón de uniformidad</a></li>
+  </ul></li>
   <li><a href="#pendientes-por-realizar" id="toc-pendientes-por-realizar" class="nav-link" data-scroll-target="#pendientes-por-realizar"><strong>Pendientes por realizar:</strong></a></li>
   </ul></li>
   </ul></li>
@@ -435,13 +465,925 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <hr>
 <p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
 </b></section><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="curvas-rad-fases-lunares-y-horarios-del-día" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="curvas-rad-fases-lunares-y-horarios-del-día">Curvas RAD (Fases lunares y Horarios del día)</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="rad-por-fases-lunares-moon" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="rad-por-fases-lunares-moon">RAD por fases lunares (Moon)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Patrón de distribución de abundancias para las 15 especies más abundantes (para no saturar las figuras). <strong>Wan.cres</strong> y <strong>Wan.gibb</strong>, muestran la mayor presencia de especies abundantes o dominantes.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="rad-por-horarios-del-día-solar-day" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="rad-por-horarios-del-día-solar-day">RAD por horarios del día (Solar Day)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Patrón de distribución de abundancias para las 15 especies más abundantes (para no saturar las figuras). En la <strong>noche</strong> se presenta el mayor número de especies abundantes o dominantes.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="rad-por-zonas-zone" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="rad-por-zonas-zone">RAD por Zonas (Zone)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Patrón de distribución de abundancias para las 15 especies más abundantes (para no saturar las figuras). En la <strong>zona 3</strong> se presenta el mayor número de especies abundantes o dominantes, seguida de las zonas 2 y 1 respectivamente.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b><section id="diversidad-alfa---propuesta-de-chao-et-al.-2020" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</h4>
+</b><p><b style="color:#e78ac3;"></b></p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="por-fases-lunares-moon" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="por-fases-lunares-moon">Por fases lunares (Moon)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<p>Patrón general de diversidad por cada fase lunar. <strong>Wan.cres</strong> y <strong>Wang.gib</strong>b presentan la mayoa abundancia y riqueza de especies, así como la mayor cantidad de <strong>singletons</strong> o especies con un individuo (f1) y de <strong>doubletons</strong> o especies con dos individuos (f2), esta cantidad de singletons afectará considerablemente a su perfil de completitud y el perfil asintótico que se muestran a continuación.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla. Estimadores de diversidad alfa</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Moon </th>
+   <th style="text-align:right;"> N </th>
+   <th style="text-align:right;"> Richness </th>
+   <th style="text-align:right;"> f1 </th>
+   <th style="text-align:right;"> f2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 233 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 274 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 70 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-perfil-de-completitud" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud">Paso 1. Perfil de completitud</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div class="cell">
+
+</div>
+<p>El <strong>perfil de completitud</strong>, para los casos que sea &lt;0.9 indica que la muestra no es completa. Se observa que para la <strong>riqueza de especies</strong> (q=0) todas las fases lunares son incompleta (&lt;0.9), lo cual indica que puede requerirse un mayor esfuerzo de muestreo o que se pueden encontrar más taxones. Los <strong>taxones abundantes</strong> (q=1) y <strong>muy abundantes</strong> (q=2) fueron registrados en su totalidad (&gt;0.9).</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Moon </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 0.77 </td>
+   <td style="text-align:right;"> 0.97 </td>
+   <td style="text-align:right;"> 1.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 0.75 </td>
+   <td style="text-align:right;"> 0.97 </td>
+   <td style="text-align:right;"> 1.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:right;"> 0.75 </td>
+   <td style="text-align:right;"> 0.96 </td>
+   <td style="text-align:right;"> 1.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 0.74 </td>
+   <td style="text-align:right;"> 0.92 </td>
+   <td style="text-align:right;"> 0.99 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-perfil-asintótico" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-2.-perfil-asintótico">Paso 2. Perfil asintótico</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>El <strong>perfil asintótico</strong> muestra que en las fases lunares <strong>Wan.cres</strong> y <strong>Wan.gibb</strong>, se presenta el mayor número de especies sin detectar (8 especies), seguidas de <strong>Wax.cres</strong> con 6 especies no detectadas. Este patrón puede afectar para que no se encuentre la asintota de diversidad, en la figura que se presenta a continuación.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Moon </th>
+   <th style="text-align:left;"> Estimator </th>
+   <th style="text-align:right;"> Ob.D </th>
+   <th style="text-align:right;"> Est.D </th>
+   <th style="text-align:right;"> Undet. </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 34 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>La siguiente figura complementa el <strong>patrón asintótico</strong> de la tabla anterior, en el que se observa que ninguna de las fases lunares se estabiliza en q = 0 (total de especies), ni siquiera interpolando al doble de la abundancia registrada (líneas punteadas, no se estabilizan o no se vuelven asintóticas para la diversidad esperada). Esto se debe al lto número de especies con un solo individuo encontradas (f1).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-perfil-no-asintótico" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico">Paso 3. Perfil no asintótico</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La siguiente tabla muestra el <strong>patrón no asintótico</strong>, en el que se extrae una submuestra de cada fase lunar y para este caso la cobertura calculada es del 97%, para lo cual se espera encontrar mayor número de taxones en <strong>Wan.cre</strong>s, seguida de Wan.gibb, Wax.cres y Wax.gibb respectivamente. Este patrón presenta validez, debido a la falta de asintota en el paso anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.969 </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 26.78 </td>
+   <td style="text-align:right;"> 12.97 </td>
+   <td style="text-align:right;"> 8.34 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 23.53 </td>
+   <td style="text-align:right;"> 9.76 </td>
+   <td style="text-align:right;"> 6.35 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:right;"> 14.12 </td>
+   <td style="text-align:right;"> 8.78 </td>
+   <td style="text-align:right;"> 5.97 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 20.75 </td>
+   <td style="text-align:right;"> 10.51 </td>
+   <td style="text-align:right;"> 5.84 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-4.-patrón-de-uniformidad" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad">Paso 4. Patrón de uniformidad</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>Wax.gibb</strong> que representa a la estación con menor número de tazones (q=0) y menos nùmero de singletons (f1).</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.969 </th>
+   <th style="text-align:right;"> Pielou J' </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 0.78 </td>
+   <td style="text-align:right;"> 0.46 </td>
+   <td style="text-align:right;"> 0.28 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 0.72 </td>
+   <td style="text-align:right;"> 0.39 </td>
+   <td style="text-align:right;"> 0.24 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax..gibb </td>
+   <td style="text-align:right;"> 0.82 </td>
+   <td style="text-align:right;"> 0.59 </td>
+   <td style="text-align:right;"> 0.38 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 0.78 </td>
+   <td style="text-align:right;"> 0.48 </td>
+   <td style="text-align:right;"> 0.25 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<hr>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="por-horarios-solar-days" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="por-horarios-solar-days">Por Horarios (Solar Days)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<p><strong>Patrón general de diversidad por horario del día</strong>. En la noche se presenta la mayor abundancia y riqueza de especies, así como la mayor cantidad de <strong>singletons</strong> o especies con un individuo (f1) y de <strong>doubletons</strong> o especies con dos individuos (f2), esta cantidad de singletons afectará considerablemente a su perfil de completitud y el perfil asintótico que se muestran a continuación.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla. Estimadores de diversidad alfa</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Solar_day </th>
+   <th style="text-align:right;"> N </th>
+   <th style="text-align:right;"> Richness </th>
+   <th style="text-align:right;"> f1 </th>
+   <th style="text-align:right;"> f2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:right;"> 147 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:right;"> 502 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-perfil-de-completitud-1" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud-1">Paso 1. Perfil de completitud</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div class="cell">
+
+</div>
+<p>El <strong>perfil de completitud</strong>, para los casos que sea &lt;0.9 indica que la muestra no es completa. Se observa que para la <strong>riqueza de especies</strong> (q=0) los horarios día y noche son inncompletos (&lt;0.9), lo cual indica que puede requerirse un mayor esfuerzo de muestreo o que se pueden encontrar más taxones, especialmente en la noche. Los <strong>taxones abundantes</strong> (q=1) y <strong>muy abundantes</strong> (q=2) fueron registrados en su totalidad (&gt;0.9).</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Solar_day </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:right;"> 0.81 </td>
+   <td style="text-align:right;"> 0.96 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:right;"> 0.53 </td>
+   <td style="text-align:right;"> 0.97 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-perfil-asintótico-1" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-2.-perfil-asintótico-1">Paso 2. Perfil asintótico</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>El <strong>perfil asintótico</strong> muestra que en la <strong>noche</strong> se presenta el mayor número de especies sin detectar (28 especies no detectadas), seguida del <strong>día</strong> con solo 4 especies no detectadas. Este patrón puede afectar para que no se encuentre la asintota de diversidad, en la figura que se presenta a continuación.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Solar_day </th>
+   <th style="text-align:left;"> Estimator </th>
+   <th style="text-align:right;"> Ob.D </th>
+   <th style="text-align:right;"> Est.D </th>
+   <th style="text-align:right;"> Undet. </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 60 </td>
+   <td style="text-align:right;"> 28 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>La siguiente figura complementa el <strong>patrón asintótico</strong> de la tabla anterior, en el que se observa que ninguno de los horarios día-noche se estabilizan en q = 0 (total de especies), ni siquiera interpolando al doble de la abundancia registrada (líneas punteadas, no se estabilizan o no se vuelven asintóticas para la diversidad esperada). Esto se debe al lto número de especies con un solo individuo encontradas (f1).</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-perfil-no-asintótico-1" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico-1">Paso 3. Perfil no asintótico</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La siguiente tabla muestra el <strong>patrón no asintótico</strong>, en el que se extrae una submuestra de cada horario día-noche y para este caso la cobertura calculada es del 98%, para lo cual se espera encontrar mayor número de taxones en <strong>la noche</strong> (42 especies), seguida de la <strong>mañana</strong> (22 especies). Este patrón presenta validez, debido a la falta de asintota en el paso anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.984 </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:right;"> 21.67 </td>
+   <td style="text-align:right;"> 9.25 </td>
+   <td style="text-align:right;"> 5.54 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:right;"> 42.40 </td>
+   <td style="text-align:right;"> 12.29 </td>
+   <td style="text-align:right;"> 8.27 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-4.-patrón-de-uniformidad-1" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad-1">Paso 4. Patrón de uniformidad</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>la mañana</strong> que representa a la estación con menor número de tazones (q=0) y de especies con un solo individuo (f1).</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.984 </th>
+   <th style="text-align:right;"> Pielou J' </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:right;"> 0.72 </td>
+   <td style="text-align:right;"> 0.40 </td>
+   <td style="text-align:right;"> 0.22 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:right;"> 0.67 </td>
+   <td style="text-align:right;"> 0.27 </td>
+   <td style="text-align:right;"> 0.18 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<hr>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b></section><b style="color:#66c2a5;">
+</b><section id="por-zonas-zone" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="por-zonas-zone">Por Zonas (Zone)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<p><strong>Patrón general de diversidad por horario del día</strong>. En la la <strong>zona 2</strong> se presenta la mayor abundancia y riqueza de especies, así como la mayor cantidad de <strong>singletons</strong> o especies con un individuo (f1) y de <strong>doubletons</strong> o especies con dos individuos (f2), seguida de las zonas y 1, respectivamente. Esta cantidad de singletons afectará considerablemente a su perfil de completitud y el perfil asintótico que se muestran a continuación.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Tabla. Estimadores de diversidad alfa</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Zone </th>
+   <th style="text-align:right;"> N </th>
+   <th style="text-align:right;"> Richness </th>
+   <th style="text-align:right;"> f1 </th>
+   <th style="text-align:right;"> f2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 203 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 236 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 210 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b><section id="paso-1.-perfil-de-completitud-2" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud-2">Paso 1. Perfil de completitud</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<div class="cell">
+
+</div>
+<p>El <strong>perfil de completitud</strong>, para los casos que sea &lt;0.9 indica que la muestra no es completa. Se observa que para la <strong>riqueza de especies</strong> (q=0) Las tres zonas son bastante inncompletas (&lt;&lt;0.9), lo cual indica que puede requerirse un mayor esfuerzo de muestreo o que se pueden encontrar más taxones, especialmente en las zonas 3 y 2. Los <strong>taxones abundantes</strong> (q=1) y <strong>muy abundantes</strong> (q=2) fueron registrados en su totalidad (&gt;0.9).</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Zone </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:right;"> 0.68 </td>
+   <td style="text-align:right;"> 0.96 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:right;"> 0.47 </td>
+   <td style="text-align:right;"> 0.95 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:right;"> 0.39 </td>
+   <td style="text-align:right;"> 0.96 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-2.-perfil-asintótico-2" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-2.-perfil-asintótico-2">Paso 2. Perfil asintótico</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>El <strong>perfil asintótico</strong> muestra que en la <strong>zona 3</strong> se presenta el mayor número de especies sin detectar (32 especies no detectadas), seguida de las <strong>zonas 2 y 1</strong> con 30 y 11 especies no detectadas. Este patrón puede afectar para que no se encuentre la asintota de diversidad, en la figura que se presenta a continuación.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Zone </th>
+   <th style="text-align:left;"> Estimator </th>
+   <th style="text-align:right;"> Ob.D </th>
+   <th style="text-align:right;"> Est.D </th>
+   <th style="text-align:right;"> Undet. </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 34 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 15 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 32 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;">  </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-3.-perfil-no-asintótico-2" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico-2">Paso 3. Perfil no asintótico</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>La siguiente tabla muestra el <strong>patrón no asintótico</strong>, en el que se extrae una submuestra de cada horario día-noche y para este caso la cobertura calculada es del 97%, para lo cual se espera encontrar mayor número de taxones en <strong>la zona 2</strong> (36 especies), seguida de las <strong>zonas 3 y 1</strong> (25 especies). Este patrón presenta validez, debido a la falta de asintota en el paso anterior.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.968 </th>
+   <th style="text-align:right;"> q = 0 </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> X1 </td>
+   <td style="text-align:right;"> 24.88 </td>
+   <td style="text-align:right;"> 11.67 </td>
+   <td style="text-align:right;"> 8.48 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> X2 </td>
+   <td style="text-align:right;"> 36.21 </td>
+   <td style="text-align:right;"> 14.34 </td>
+   <td style="text-align:right;"> 9.87 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> X3 </td>
+   <td style="text-align:right;"> 24.80 </td>
+   <td style="text-align:right;"> 7.44 </td>
+   <td style="text-align:right;"> 4.39 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="alfa.eng1_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
+</b></section><b style="color:#fc8d62;">
+</b><section id="paso-4.-patrón-de-uniformidad-2" class="level6"><b style="color:#fc8d62;">
+<h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad-2">Paso 4. Patrón de uniformidad</h6>
+</b><p><b style="color:#fc8d62;"></b></p>
+<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en la <strong>zona 1</strong> que representa a la estación con menor número de tazones (q=0) y de especies con un solo individuo (f1).</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Cmax = 0.968 </th>
+   <th style="text-align:right;"> Pielou J' </th>
+   <th style="text-align:right;"> q = 1 </th>
+   <th style="text-align:right;"> q = 2 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> X1 </td>
+   <td style="text-align:right;"> 0.76 </td>
+   <td style="text-align:right;"> 0.45 </td>
+   <td style="text-align:right;"> 0.31 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> X2 </td>
+   <td style="text-align:right;"> 0.74 </td>
+   <td style="text-align:right;"> 0.38 </td>
+   <td style="text-align:right;"> 0.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> X3 </td>
+   <td style="text-align:right;"> 0.63 </td>
+   <td style="text-align:right;"> 0.27 </td>
+   <td style="text-align:right;"> 0.14 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<hr>
+<p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
+</b></section><b style="color:#e78ac3;">
 </b><section id="pendientes-por-realizar" class="level5"><b style="color:#e78ac3;">
 <h5 class="anchored" data-anchor-id="pendientes-por-realizar"><strong>Pendientes por realizar:</strong></h5>
 </b><p><b style="color:#e78ac3;"></b></p>
 <ul>
-<li><p><strong>Curvas rango-abundancia</strong> (RAD).</p></li>
-<li><p>Estimadores generales de <strong>diversidad alfa</strong>.</p></li>
-<li><p><strong>Diversidad alfa en cuatro pasos</strong> (Chao et al.&nbsp;2020).</p></li>
 <li><p><strong>Diversidad beta</strong>, con la propuesta de Carvahlo (2014).</p></li>
 <li><p><strong>Patrones multivariados</strong> (PCA, NMDS, CA, LDA, DCA, CLA, RDA, PERMANOVAS y BIOENV).</p></li>
 </ul>
