@@ -943,7 +943,7 @@ ggplot(biol7,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)") +
+       y = expression(log[10]~(Relative~Abundance))) +
   facet_wrap(~Station, nrow = 1) +
   theme_bw() + 
   theme(panel.grid=element_blank()) +
@@ -963,7 +963,7 @@ ggplot(biol7,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)") +
+       y = expression(log[10]~(Relative~Abundance))) +
   facet_wrap(~Station, nrow = 1) +
   theme_bw() + 
   theme(panel.grid = element_blank(),
@@ -999,7 +999,7 @@ ggplot(biol7,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)") +
+       y = expression(log[10]~(Relative~Abundance))) +
   facet_wrap(~Station, nrow = 1) +
   theme_bw() + 
   theme(panel.grid = element_blank(),
@@ -1072,7 +1072,7 @@ ggplot(biol8,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)") +
+       y = expression(log[10]~(Relative~Abundance))) +
   facet_wrap(~Layers, nrow = 1) +
   theme_bw() + 
   theme(panel.grid=element_blank()) 
@@ -1094,7 +1094,7 @@ ggplot(biol8,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)") +
+       y = expression(log[10]~(Relative~Abundance))) +
   facet_wrap(~Layers, nrow = 1) +
   theme_bw() + 
   theme(panel.grid=element_blank()) 
@@ -1166,7 +1166,7 @@ ggplot(biol9,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)", 
+       y = expression(log[10]~(Relative~Abundance)), 
        color = "Taxa") +
   facet_wrap(~Size, nrow = 1) +
   theme_bw() + 
@@ -1185,7 +1185,7 @@ ggplot(biol9,
   scale_x_reverse() +
   scale_y_log10() +
   labs(x = "Group Ranks", 
-       y = "log10(Relative Abundance)", 
+       y = expression(log[10]~(Relative~Abundance)), 
        color = "Taxa") +
   facet_wrap(~Size, nrow = 1) +
   theme_bw() + 
