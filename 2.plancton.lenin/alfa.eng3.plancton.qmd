@@ -1,0 +1,1338 @@
+---
+title: "Asesoría 2. Análisis de diversidad alfa"
+subtitle: "Diversidad alfa con datos Mesozoplancton"
+date: last-modified #now #today
+description: Correcciones Para lo citado por los evaluadores - Análisis de datos de diversidad alfa, de acuerdo a los requerimientos del manuscrito de Lenin Florez.
+author: 
+  name: Javier Rodríguez Barrios
+  url: https://www.unimagdalena.edu.co/
+  afiliation: Grupo GIEN
+  afiliation-url: https://grupogien.jimdofree.com/
+title-block-banner: "#2b8cbe"
+format:
+  html:
+    toc: true    # Tabla de contenido
+    toc-depth: 6 
+    toc-title: Menú flotante
+    code-tools: false   # Opción para descargar los códigos
+    code-fold: true   # Visualización de los códigos en el reporte
+    css: "stile-justify.css"   # Justificar el texto del reporte
+lang: EN-en
+---
+
+<b style='color:#1f78b4;'>
+
+## Resumen
+
+</b>
+
+Este reporte tiene por objeto corregir las observaciones de los pares evaluadores al manuscrito sometido.
+
+------------------------------------------------------------------------
+
+<b style='color:#1f78b4;'>
+
+## Requerimientos de los revisores
+
+</b>
+
+<b style='color:#fc8d62;'>
+
+### Revisor 1.
+
+</b>
+
+**12. Fig. 4**, ¿cuál es el propósito de utilizar datos de **transformación logarítmica**? Las diferencias de abundancia reales entre los grupos biológicos no se muestran claramente. El texto completo también carece de descripciones prácticas de la abundancia y la **distribución espaciotemporal del zooplancton** en el área de estudio. ¿**Qué significan los superíndices** de los nombres de los grupos biológicos?
+
+**R./** Se coloca en **escala logarítmica** para que los grupos taxonómicos dominantes, no enmascaren el patrón de abundancia de los grupos menos abundantes. **No encuentro datos temporales**. **Superíndices eliminados** porque son un error en la visualización de las figuras. **Al final de este reporte se presentan las figuras con los ajustes requeridos.**
+
+**14.** Fig. 8. ¿Qué significan las abreviaturas y combinaciones de números y letras?
+
+**R./** La figura 8 corresponde a un mapa de calor, que analiza la importancia de los grupos taxonómicos (eje x, con nombres abreviados de los grupos taxonómicos, ver @tbl-tbl1), para caracterizar a las observaciones en el eje y, compuestas por estaciones (primer número: estaciones 1 a la 15), el ojo de malla de colecta (segundo número: 2= 250 micras y 5= 500 micras), y una letra (D: profundidad, S: Superficie) ver @tbl-tbl2.
+
+![](mapa.calor.PNG){width="524"}
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+#| label: tbl-tbl1
+#| tbl-cap: "Abbreviaturas del eje x de la figura"
+
+# Librerías
+library(tidyverse)    # Para diferentes operaciones
+library(readxl)       # Para la lectura de archivos de Excel
+library(corrplot)     # Para las figuras de elipses
+library(vegan)        # Estimadores de diversidad
+library(ggrepel)      # Rótulos a los puntos de figuras en ggplot2
+library(viridis)
+library(kableExtra)   # Edición de las tablas
+
+
+#
+biol <- read_xlsx("datos.eng.xlsx", "Riqueza")
+
+# Abreviar los nombres de la columna "Station" a solo 4 letras
+Abbreviations <-
+biol$Groups1 <- abbreviate(biol$Groups, minlength = 4)
+
+# Crear la tabla combinando nombres completos y abreviados de los Groups
+tabla <- cbind(Groups = biol[,4], Abbreviations = Abbreviations)
+
+# Impresión de la tabla con los datos
+tabla[1:11,] %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+#| label: tbl-tbl2
+#| tbl-cap: "Abreviaturas del eje y de la figura"
+
+biol <- read_xlsx("datos.eng.xlsx", "Riqueza")
+
+# Abreviar los nombres de la columna "Station" a solo 4 letras
+Abbreviations <-
+biol$Groups1 <- abbreviate(biol$Groups, minlength = 4)
+
+# Crear la tabla combinando nombres completos y abreviados de los Groups
+tabla <- cbind(Groups = biol[,4], Abbreviations = Abbreviations)
+
+# Tabla con nombres abreviados de los Groups 
+biol1 <-
+  data.frame(Abbreviations, biol[,c(-4,-9)]) # Quito las columnas 4 y 5
+
+# Variables agrupadoras como factores
+biol1$Station = as.factor(biol1$Station)
+biol1$Size = as.factor(biol1$Size)
+biol1$Layers = as.factor(biol1$Layers)
+
+# Convertir el dataframe para obtener las Abundances totales y promedios
+biol2 <- 
+  biol1 %>%
+  group_by(Station, Size, Layers) %>%
+  summarize(
+    Temperature = round(mean(Temperature),2),
+    Salinity   = round(mean(Salinity),2),
+    Density    = round(mean(Density),2),    
+    Qtgn = sum(Abundance[Abbreviations == "Qtgn"]),
+    Srgs = sum(Abundance[Abbreviations == "Srgs"]),
+    Lcfr = sum(Abundance[Abbreviations == "Lcfr"]),
+    Clnd = sum(Abundance[Abbreviations == "Clnd"]),
+    Cycl = sum(Abundance[Abbreviations == "Cycl"]),
+    Hrpc = sum(Abundance[Abbreviations == "Hrpc"]),
+    Lrdp = sum(Abundance[Abbreviations == "Lrdp"]),
+    Hvdp = sum(Abundance[Abbreviations == "Hvdp"]),
+    LrvN = sum(Abundance[Abbreviations == "LrvN"]),
+    LrvZ = sum(Abundance[Abbreviations == "LrvZ"]),
+    Otrs = sum(Abundance[Abbreviations == "Otrs"])
+  )
+
+# Crear un consecutivo de "Station", "Size" y "Layers"
+biol2 <- 
+  biol2 %>%
+  mutate(Ref = paste0(substr(Station, 1, 2), 
+                      substr(Size, 1, 1), 
+                      substr(Layers, 1, 1))) %>%
+  select(Ref, everything())
+
+# Base de datos (biol4)
+biol4 <- biol2[,c(8:18)]
+
+# Distancia utilizada (d.bray)
+d.bray <- vegdist(biol2[,c(8:18)])
+
+# Método de agrupamiento seleccionado (cl.upgma)
+Cl.upgma<-hclust(d.bray,method="average")
+
+# Variable agrupadora con k=3 clúster
+grp <- cutree(Cl.upgma, k = 3)    # Groups generados "grp"  
+grl <- levels(factor(grp))        # Rotulos de los Groups formados
+
+# Incluir la variable agrupadora en la base de datos
+Groups=data.frame(grp,biol2)       # Nuevo dataframe con la variable agrupadora (gr)
+
+# Impresión de la tabla con los datos
+Groups[,2:5] %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")#| 
+```
+
+<b style='color:#fc8d62;'>
+
+### Revisor 2.
+
+</b>
+
+Para mejorar la claridad, recomiendo **reorientar los resultados y las figuras** para que se alineen mejor con el mensaje clave del manuscrito: **cómo cambia la estructura de la comunidad del mesozooplancton a lo largo de un gradiente de salinidad de 80 km durante las estaciones seca y lluviosa**. Por ejemplo, la **Figura 2** presenta la temperatura, la salinidad y la densidad a lo largo de un gradiente latitudinal, pero el texto solo analiza los promedios de todo el sitio, con patrones relacionados con la profundidad descritos en términos demasiado generales. Además, se debe **mejorar la calidad de las figuras** para que los resultados sean más interpretables. Se deben abordar cuestiones como puntos de datos oscurecidos, etiquetado excesivo o leyendas superfluas.
+
+R./ El evaluador tiene razón, pero no se si los datos con los que se cuenta pueden cubrir estos requerimientos espacio-temporales.
+
+------------------------------------------------------------------------
+
+<b style='color:#1f78b4;'>
+
+## Paso a paso para la organización de los datos de los taxones y ambientales.
+
+</b>
+
+------------------------------------------------------------------------
+
+<b style='color:#fc8d62;'>
+
+### Paso 1. Cargar Librerías
+
+</b>
+
+Librerías requeridas para el análisis de diversidad alfa.
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)    # Para diferentes operaciones
+library(readxl)       # Para la lectura de archivos de Excel
+library(corrplot)     # Para las figuras de elipses
+library(vegan)        # Estimadores de diversidad
+library(ggrepel)      # Rótulos a los puntos de figuras en ggplot2
+library(viridis)
+library(kableExtra)   # Edición de las tablas
+
+```
+
+------------------------------------------------------------------------
+
+<b style='color:#fc8d62;'>
+
+### Paso 2. Base de datos de los taxones
+
+</b>
+
+La base de datos con los 40 taxones se llamará **biol**. La base con con las 18 variables ambientales se llamará **amb** y se cargará más adelante (@tbl-tbl3).
+
+```{r, message=FALSE, echo=FALSE}
+#| label: tbl-tbl3
+#| tbl-cap: "Base de datos biológicos"
+biol <- read_xlsx("datos.eng.xlsx", "Riqueza")
+
+# Impresión de la tabla con los datos
+head(biol) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Base de datos
+biol <- read_xlsx("datos.eng.xlsx", "Riqueza1")
+# head(biol)
+
+# View(biol)
+biol1 <-
+  biol %>%   
+  gather(Groups, Abundance, 
+         -Station,-Layers, -Size) 
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol1) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Incluye a Layerss, Sizes y Groups
+biol2 <- 
+  biol1 %>%     
+  spread(Station, Abundance)
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol2) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, results='hide'}
+# Solo incluye Grpos
+biol3 <- biol1[,-3] %>% 
+  group_by(Station, Groups) %>% 
+  summarise(Abundance = sum(Abundance, na.rm = TRUE)) %>%
+  pivot_wider(names_from = Station, values_from = Abundance)
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol3) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Transponer usando pivot_longer y pivot_wider
+biol4 <- biol3 %>%
+  pivot_longer(cols = -1, 
+               names_to = "Station", 
+               values_to = "value") %>%
+  pivot_wider(names_from = names(biol3)[1], 
+              values_from = value)
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol4) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+
+```
+
+```{r, echo=FALSE, results='hide'}
+# Nombres abreviados de los Groups taxonómicos
+biol5 <- 
+  biol4[,c(-1)] %>%
+  rename_with(~ abbreviate(.x, minlength = 4))
+
+# Incluir la columna Station
+biol5 <- data.frame(biol4[,1], biol5)
+
+# Impresión de la tabla con los datos
+biol5 %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, warning=FALSE, echo=FALSE, results='hide'}
+
+# Definir nombres completos de las columnas
+n.completos <- names(biol4[,-1])
+
+# Definir nombres abreviados de las columnas
+n.abreviados <- names(biol5[,-1])
+
+# Crear la tabla combinando nombres completos y abreviados
+tabla <- cbind(Groups = n.completos, Abreviatures = n.abreviados)
+
+# Impresión de la tabla con los datos
+tabla %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+------------------------------------------------------------------------
+
+<b style='color:#e78ac3;'>
+
+#### Burbujas
+
+</b>
+
+
+**Nota**: En este archivo solo pude recuperar una figura de burbujas, ya que el original se dañó y se perdieron el resto.
+
+En **ggplot2**, no hay soporte nativo para incluir un **eje x secundario** (como sí lo hay para el eje y con `sec.axis`). Es por ello que se hace el intento con el eje y, invirtiendo los ejes.
+
+**Nota**: No recomiendo a esta @fig-fig6 porque como no es compatible el patrón de salinidad con el de temperatura, R solo le da sentido a lo que proyecte en el eje y primario.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig6
+#| fig-cap: "Abundance ranges of plankton taxonomic groups (circle sizes depend on estimated abundance) for the different seasons evaluated (circle colors)."
+
+library(ggplot2)
+library(dplyr)
+library(readxl)
+
+# Base de datos
+biol6a <- read_xlsx("datos.eng.xlsx", "amb")
+
+# Volver Station y Groups como factor
+biol6a$Station <- as.factor(biol6a$Station)
+biol6a$Groups <- as.factor(biol6a$Groups)
+
+# Calcular la abundancia total por grupo e invertir el orden
+abundance_order1 <- biol6a %>%
+  group_by(Groups) %>%
+  summarise(total_abundance = sum(Abundance)) %>%
+  arrange(desc(total_abundance)) %>%
+  pull(Groups)
+
+# Reordenar el eje X según la abundancia (más abundante a la izquierda)
+biol6a$Groups <- factor(biol6a$Groups, levels = abundance_order1)
+
+# Escala personalizada para el eje secundario (Salinity)
+salinity_min <- 15
+salinity_max <- 35
+temperature_min <- 29
+temperature_max <- 30.2
+
+# Relación entre los rangos de Temperature y Salinity
+scaling_factor <- (temperature_max - temperature_min) / (salinity_max - salinity_min)
+
+# Gráfico con eje y primario y secundario
+ggplot(biol6a, aes(x = Groups)) +
+  # Puntos para "Temperature" en el eje primario
+  geom_point(aes(y = Temperature, size = Abundance, color = Station), alpha = 0.7) +
+  # Líneas horizontales en los valores de Salinity
+  geom_hline(
+    yintercept = (seq(salinity_min, salinity_max, by = 5) - salinity_min) * scaling_factor + temperature_min,
+    color = "gray", linetype = "solid", alpha = 0.5
+  ) +
+  # Configuración del eje y primario
+  scale_y_continuous(
+    name = bquote(Temperature~"("*degree~C*")"),
+    limits = c(temperature_min, temperature_max),
+    breaks = seq(temperature_min, temperature_max, by = 0.4),
+    sec.axis = sec_axis(
+      trans = ~ (. - temperature_min) / scaling_factor + salinity_min,  # Transformación inversa
+      name = "Salinity (UPS)",
+      breaks = seq(salinity_min, salinity_max, by = 5)
+    )
+  ) +
+  # Estética general
+  scale_size(range = c(1.4, 8)) +
+  scale_color_viridis(discrete = TRUE) +
+  theme_bw() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.text.x = element_text(size = 9, angle = 45, hjust = 1),
+    axis.title.y.left = element_text(size = 11, angle = 90), # Temperatura hacia arriba
+    axis.title.y.right = element_text(size = 11, angle = 90, color = "black"),  # Salinidad hacia arriba en negro
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  # Mejora en las leyendas
+  guides(
+    size = guide_legend(
+      title = NULL,
+      override.aes = list(shape = 1, color = "#377eb8", stroke = 1.2)
+    ),
+    color = guide_legend(
+      title = NULL,
+      override.aes = list(size = 5)
+    )
+  )
+
+```
+
+------------------------------------------------------------------------
+
+<b style='color:#e78ac3;'>
+
+#### 3.3 Patrón de Abundancia y Biomasa
+
+</b>
+
+<b style='color:#66c2a5;'>
+
+##### 3.3.1 Abundancias con dato atípico de abundancia de 16.857
+
+</b>
+
+**Nota:** el dato atípico no se ve, porque se reparte en las capas de profundidad y de superficie, de época seca para ojo de malla de 250 micras.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig7
+#| fig-cap: "Abundance pattern, for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+# Base de datos con salinidad
+biol6b <- read_xlsx("datos.eng.xlsx", "Ab3")
+
+# Volver Station y Size como factor
+biol6b$Stations = as.factor(biol6b$Stations)
+biol6b$Size = as.factor(biol6b$Size)
+biol6b$Layers = as.factor(biol6b$Layers)
+biol6b$Seasons = as.factor(biol6b$Seasons)
+
+
+
+# Cambiar etiquetas de Seasons
+levels(biol6b$Seasons) <- c("Dry", "Rainy")
+
+ggplot(biol6b, aes(x=Stations, y=Abundance)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(x="Sampling Stations", 
+    y = expression(log[10]~(Abundance~Ind.~m^-3))
+       ) +
+  scale_fill_manual(values = c('#fc8d59','#ffffbf','#99d594','#377eb8','#e78ac3','#7570b3')) +
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank())
+
+```
+La @fig-fig8 con transformación $log_{10}$.
+
+**Nota**: Esta transformación se hace para mejorar la comparabilidad de los valores de abundancia entre estaciones de muestreo, ya que en su escala original, algunas estaciones pueden quedar enmascaradas por sus valores muy bajos, comparados al resto de estaciones con valores muy altos (distribuciones sesgadas a valores muy altos). Entonces la transformación es una manera de relativizar o estandarizar los valores en una escala más comparativa.
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig8
+#| fig-cap: "Abundance pattern ($log_{10}$), for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+# Base de datos con salinidad
+biol6b <- read_xlsx("datos.eng.xlsx", "Ab3")
+
+# Volver Station y Size como factor
+biol6b$Stations = as.factor(biol6b$Stations)
+biol6b$Size = as.factor(biol6b$Size)
+biol6b$Layers = as.factor(biol6b$Layers)
+biol6b$Seasons = as.factor(biol6b$Seasons)
+
+
+
+# Cambiar etiquetas de Seasons
+levels(biol6b$Seasons) <- c("Dry", "Rainy")
+
+ggplot(biol6b, aes(x=Stations, y=Abundance)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(x="Sampling Stations", 
+    y = expression(log[10]~(Abundance~Ind.~m^-3))
+       ) +
+  # Transformación logarítmica en el eje y
+  scale_y_continuous(trans = "log10") +
+  scale_fill_manual(values = c('#fc8d59','#ffffbf','#99d594','#377eb8','#e78ac3','#7570b3')) +
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank())
+
+```
+
+<b style='color:#66c2a5;'>
+
+##### 3.3.2 Abundancias sin dato atípico de abundancia de 16.857
+
+</b>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig9
+#| fig-cap: "Abundance pattern, for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+
+# Base de datos con salinidad
+biol6c <- read_xlsx("datos.eng.xlsx", "Ab4")
+biol6c <- biol6c[,1:5]
+
+# Convertir variables en factores
+biol6c$Stations <- as.factor(biol6c$Stations)
+biol6c$Size <- as.factor(biol6c$Size)
+biol6c$Layers <- as.factor(biol6c$Layers)
+biol6c$Seasons <- as.factor(biol6c$Seasons)
+
+# Cambiar etiquetas de Seasons
+levels(biol6c$Seasons) <- c("Dry", "Rainy")
+
+# Crear gráfico con etiquetas de valores atípicos redondeados
+ggplot(biol6c, aes(x=Stations, y=Abundance)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(
+    x = "Sampling Stations",
+    y = bquote("Abundance Ind.m"^-3)
+  ) +
+  # Personalización de colores
+  scale_fill_manual(
+    values = c("Depth" = "#ff7f00", "Surface" = "#80cdc1")
+  ) +  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank())
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig10
+#| fig-cap: "Abundance pattern ($log_{10}$), for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+
+# Cargar las librerías necesarias
+library(ggplot2)
+library(readxl)
+library(viridis)
+
+# Cargar los datos
+biol6c <- read_xlsx("datos.eng.xlsx", "Ab4")
+biol6c <- biol6c[,1:5]
+
+# Convertir variables en factores
+biol6c$Stations <- as.factor(biol6c$Stations)
+biol6c$Size <- as.factor(biol6c$Size)
+biol6c$Layers <- as.factor(biol6c$Layers)
+biol6c$Seasons <- as.factor(biol6c$Seasons)
+
+# Cambiar etiquetas de Seasons
+levels(biol6c$Seasons) <- c("Dry", "Rainy")
+
+# Crear gráfico con etiquetas de valores normales en el eje y
+ggplot(biol6c, aes(x = Stations, y = Abundance)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(
+    x = "Sampling Stations",
+    y = expression(log[10]~(Abundance~Ind.~m^-3))
+  ) +
+  # Transformación logarítmica en el eje y con etiquetas personalizadas
+  scale_y_continuous(
+    trans = "log10",
+    breaks = c(1, 10, 100, 1000, 10000),  # Ajusta los breaks según tus datos
+    labels = c("1", "10", "100", "1,000", "10,000")
+  ) +
+  # Personalización de colores
+  scale_fill_manual(
+    values = c("Depth" = "#ff7f00", "Surface" = "#80cdc1")
+  ) +  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank()
+  )
+
+
+```
+
+<b style='color:#66c2a5;'>
+
+##### 3.3.4 Biomasa por capas de superficie y profundidad
+
+</b>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig11
+#| fig-cap: "Biomass pattern, for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)"
+
+# Base de datos con salinidad
+biol6d <- read_xlsx("datos.eng.xlsx", "Ab.Biom")
+
+# Convertir variables en factores
+biol6d$Stations <- as.factor(biol6d$Stations)
+biol6d$Size <- as.factor(biol6d$Size)
+biol6d$Layers <- as.factor(biol6d$Layers)
+biol6d$Seasons <- as.factor(biol6d$Seasons)
+
+# Cambiar etiquetas de Seasons
+levels(biol6d$Layers) <- c("Depth", "Surface")
+
+# Crear gráfico con etiquetas de valores atípicos redondeados
+ggplot(biol6d, aes(x=Stations, y=Biomass)) + 
+  geom_boxplot(aes(fill = Seasons)) +
+  labs(
+    x = "Sampling Sities",
+    y = bquote("Biomass mg.m"^-3)
+  ) +
+  scale_color_viridis(discrete = TRUE) +
+  facet_wrap(~ Size + Layers, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank())
+```
+
+La @fig-fig12 con transformación $log_{10}$
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig12
+#| fig-cap: "Biomass pattern ($log_{10}$), for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)"
+
+
+library(dplyr)
+library(readxl)
+
+# Base de datos con salinidad
+biol6d <- read_xlsx("datos.eng.xlsx", "Ab.Biom")
+
+# Convertir variables en factores
+biol6d$Stations <- as.factor(biol6d$Stations)
+biol6d$Size <- as.factor(biol6d$Size)
+biol6d$Layers <- as.factor(biol6d$Layers)
+biol6d$Seasons <- as.factor(biol6d$Seasons)
+
+# Cambiar etiquetas de Layers
+levels(biol6d$Layers) <- c("Depth", "Surface")
+
+# Crear una columna ajustada para log10 solo para valores positivos
+biol6d <- biol6d %>%
+  mutate(
+    log_Biomass = ifelse(Biomass > 0, log10(Biomass), NA),
+    neg_Biomass = ifelse(Biomass < 0, -log10(abs(Biomass)), NA)  # Reflejar negativos
+  )
+
+# Combinar positivos y negativos en una nueva columna
+biol6d <- biol6d %>%
+  mutate(
+    plot_Biomass = coalesce(log_Biomass, neg_Biomass)  # Usa log10 positivo o reflejo negativo
+  )
+
+# Crear gráfico
+ggplot(biol6d, aes(x = Stations, y = plot_Biomass)) + 
+  geom_boxplot(aes(fill = Seasons)) +
+  labs(
+    x = "Sampling Sites",
+    y = expression(log[10]~(Biomass~mg.~m^-3))
+  ) +
+  # Configurar el eje Y para incluir negativos y positivos
+  scale_y_continuous(
+    breaks = c(-4, -3, -2, -1, 0, 1, 2, 3),  # Ajustar valores log10
+    labels = c("-10,000", "-1,000", "-100", "-10", "0", "10", "100", "1,000")
+  ) +
+  scale_fill_manual(
+    values = c("Dry" = "#ff7f00", "Rainy" = "#80cdc1")
+  ) +
+  facet_wrap(~ Size + Layers, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+
+```
+
+
+
+La @fig-fig12_1 con transformación $log_{10}+1$ para eliminar datos negativos en el eje Y.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig12_1
+#| fig-cap: "Biomass pattern ($log_{10}+1$), for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)"
+
+
+library(ggplot2)
+library(dplyr)
+library(readxl)
+library(scales)  # Para crear transformaciones personalizadas
+
+
+# Base de datos con salinidad
+biol6d <- read_xlsx("datos.eng.xlsx", "Ab.Biom")
+
+# Convertir variables en factores
+biol6d$Stations <- as.factor(biol6d$Stations)
+biol6d$Size <- as.factor(biol6d$Size)
+biol6d$Layers <- as.factor(biol6d$Layers)
+biol6d$Seasons <- as.factor(biol6d$Seasons)
+
+# Cambiar etiquetas de Layers
+levels(biol6d$Layers) <- c("Depth", "Surface")
+
+# Crear gráfico con etiquetas de valores atípicos redondeados
+ggplot(biol6d, aes(x = Stations, y = Biomass)) + 
+  geom_boxplot(aes(fill = Seasons)) +
+  labs(
+    x = "Sampling Sites",
+    y = expression(log[10]~(Biomass~mg.~m^-3~"+1"))
+  ) +
+  # Transformación log10(x + 1) en el eje y
+  scale_y_continuous(
+    trans = trans_new(
+      name = "log10_plus1",
+      transform = function(x) log10(x + 1),  # Aplicar log10(x + 1)
+      inverse = function(x) 10^x - 1         # Inversa de log10(x + 1)
+    ),
+    breaks = c(0, 1, 10, 100, 1000, 10000),  # Ajusta según tus datos
+    labels = c("0", "1", "10", "100", "1,000", "10,000")) +
+  # Personalización de colores
+  scale_fill_manual(
+    values = c("Dry" = "#ff7f00", "Rainy" = "#80cdc1")) +  
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  scale_color_viridis(discrete = TRUE) +
+  facet_wrap(~ Size + Layers, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank()
+  )
+```
+
+
+<b style='color:#66c2a5;'>
+
+##### 3.3.5 Biomasas por Periodos Climáticos
+
+</b>
+
+**Nota:** En el archivo de Excel, para estos datos de biomasa, la columna periodos (Seasons) aparece como 1 y 2, a 1 le coloqué lluvia (Rainy) y a 2 sequía (Dry). Se requiere validar si esto es correcto.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig13
+#| fig-cap: "Biomass pattern, for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+# Base de datos con salinidad
+biol6d <- read_xlsx("datos.eng.xlsx", "Ab.Biom")
+
+# Convertir variables en factores
+biol6d$Stations <- as.factor(biol6d$Stations)
+biol6d$Size <- as.factor(biol6d$Size)
+biol6d$Layers <- as.factor(biol6d$Layers)
+biol6d$Seasons <- as.factor(biol6d$Seasons)
+
+# Cambiar etiquetas de Seasons
+levels(biol6d$Layers) <- c("Depth", "Surface")
+
+# Crear gráfico con etiquetas de valores atípicos redondeados
+ggplot(biol6d, aes(x=Stations, y=Biomass)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(
+    x = "Sampling Sities",
+    y = bquote("Biomass mg.m"^-3)
+  ) +
+  scale_color_viridis(discrete = TRUE) +
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank())
+```
+
+
+La @fig-fig14 con transformación $log_{10}$
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig14
+#| fig-cap: "Biomass pattern ($log_{10}$), for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+
+library(ggplot2)
+library(dplyr)
+library(readxl)
+
+# Base de datos con salinidad
+biol6d <- read_xlsx("datos.eng.xlsx", "Ab.Biom")
+
+# Convertir variables en factores
+biol6d$Stations <- as.factor(biol6d$Stations)
+biol6d$Size <- as.factor(biol6d$Size)
+biol6d$Layers <- as.factor(biol6d$Layers)
+biol6d$Seasons <- as.factor(biol6d$Seasons)
+
+# Cambiar etiquetas de Layers
+levels(biol6d$Layers) <- c("Depth", "Surface")
+
+# Crear gráfico con etiquetas de valores atípicos redondeados
+ggplot(biol6d, aes(x = Stations, y = Biomass)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(
+    x = "Sampling Sites",
+    y = expression(log[10]~(Biomass~mg.~m^-3))
+  ) +
+  
+  scale_y_continuous(trans = "log10") +  # Aplicar la transformación logarítmica
+  scale_color_viridis(discrete = TRUE) +
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank()
+  )
+
+```
+
+La @fig-fig14_1 con transformación $log_{10}+1$ para eliminar datos negativos en el eje Y.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+#| label: fig-fig14_1
+#| fig-cap: "Biomass pattern ($log_{10}+1$), for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)"
+
+
+library(ggplot2)
+library(dplyr)
+library(readxl)
+library(scales)  # Para crear transformaciones personalizadas
+
+# Base de datos con salinidad
+biol6d <- read_xlsx("datos.eng.xlsx", "Ab.Biom")
+
+# Convertir variables en factores
+biol6d$Stations <- as.factor(biol6d$Stations)
+biol6d$Size <- as.factor(biol6d$Size)
+biol6d$Layers <- as.factor(biol6d$Layers)
+biol6d$Seasons <- as.factor(biol6d$Seasons)
+
+# Cambiar etiquetas de Layers
+levels(biol6d$Layers) <- c("Depth", "Surface")
+
+# Crear gráfico con transformación log10(x + 1) en el eje Y
+ggplot(biol6d, aes(x = Stations, y = Biomass)) + 
+  geom_boxplot(aes(fill = Layers)) +
+  labs(
+    x = "Sampling Sites",
+    y = expression(log[10]~(Biomass~mg.~m^-3~"+1"))
+  ) +
+  # Transformación log10(x + 1)
+  scale_y_continuous(
+    trans = trans_new(
+      name = "log10_plus1",
+      transform = function(x) log10(x + 1),  # Aplicar log10(x + 1)
+      inverse = function(x) 10^x - 1         # Inversa de log10(x + 1)
+    ),
+    breaks = c(0, 1, 10, 100, 1000, 10000),  # Ajusta los breaks según los datos
+    labels = c("0", "1", "10", "100", "1,000", "10,000")  # Etiquetas para el eje Y
+  ) +
+  scale_fill_manual(
+    values = c("Depth" = "#ff7f00", "Surface" = "#80cdc1")  # Colores para Layers
+  ) +
+  facet_wrap(~ Size + Seasons, nrow = 1, strip.position = "top") + 
+  theme_bw() +
+  theme(
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank()
+  )
+
+```
+
+
+------------------------------------------------------------------------
+
+<b style='color:#e78ac3;'>
+
+#### 3.4 Curvas RAD (Estaciones, Layerss, Sizes)
+
+</b>
+
+<b style='color:#66c2a5;'>
+
+##### 3.4.1 RAD por Estaciones
+
+</b>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+# Incluye a Layerss, Sizes y Groups
+# View(biol)
+biol7 <-
+  biol[,c(-2,-3)] %>%         # Elimina las columnas de Layers y Size
+  gather(Groups, Abundance, 
+         -Station) 
+
+# Volver Station y Groups como factor
+biol7$Station = as.factor(biol7$Station)
+biol7$Groups = as.factor(biol7$Groups)
+
+# Totales de Abundance por cada grupo
+biol7 <- 
+  biol7 %>% 
+  group_by(Station, Groups) %>% 
+  summarise(Abundance = sum(Abundance, na.rm = TRUE)) 
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol7) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Insertar una columna "Range" que ranquea a las Abundances de c/spp
+biol7$Range <- ave(biol7$Abundance, biol7$Station, 
+                    FUN = rank, ties.method = "min")
+
+# Abundance relativa (Abundance_rel) de los taxones para cada tramo
+biol7$Rel_ab <- biol7$Abundance / sum(biol7$Abundance)
+
+# Redondeo a tres decimales para resumir los valores de esta variable
+biol7$Rel_ab <- round(biol7$Rel_ab,3)
+
+# Filtrado de los datos de manera descendente por cada Range de Abundance
+biol7 <- biol7[order(biol7$Range, decreasing = TRUE), ]
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol7) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(ggrepel)
+
+ggplot(biol7, 
+       aes(x = Range, y = Rel_ab, color = Groups, label = Groups)) +
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = Groups), hjust = 1, vjust = 1.5, size = 3,
+                  box.padding = 0.5, point.padding = 0.2, 
+                  segment.color = "black",       # Color de las líneas de conexión
+                  segment.linetype = "dashed",   # Líneas punteadas
+                  show.legend = FALSE) +
+  geom_line(color = "blue") +
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)") +
+  facet_wrap(~Station, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid=element_blank()) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+\--
+
+**Como la anterior pero sin texto dentro de los páneles**
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(biol7, 
+       aes(x = Range, y = Rel_ab, color = Groups)) +
+  geom_point(size = 3) +
+  geom_line(color = "blue") +
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)") +
+  facet_wrap(~Station, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
+
+\--
+
+**Como la anterior pero sin leyenda**
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(ggrepel)
+
+# Convertir Groups en factor para asegurarnos de que ggplot lo interprete correctamente
+biol7 <- biol7 %>%
+  mutate(Groups = as.factor(Groups))
+
+ggplot(biol7, 
+       aes(x = Range, y = Rel_ab, color = Groups, label = Groups)) +
+  geom_point(size = 3, show.legend = FALSE) +     # Eliminar leyenda de puntos
+  geom_text_repel(aes(label = Groups), 
+                  size = 3,                      # Tamaño de texto
+                  box.padding = 1,               # Incrementar espacio alrededor de etiquetas
+                  point.padding = 0.5,           # Más espacio entre puntos y etiquetas
+                  force = 2,                     # Mayor fuerza para evitar solapamiento
+                  segment.color = "black",       # Color de las líneas de conexión
+                  segment.linetype = "dashed",   # Líneas punteadas
+                  show.legend = FALSE) +         # Eliminar leyenda de etiquetas
+  geom_line(color = "blue") +
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)") +
+  facet_wrap(~Station, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1))
+
+
+```
+
+<b style='color:#66c2a5;'>
+
+##### 3.4.2 RAD por Layerss
+
+</b>
+
+```{r, echo=FALSE, results='hide'}
+# Incluye a Layerss, Sizes y Groups
+# View(biol)
+biol8 <-
+  biol[,c(-1,-3)] %>%         # Elimina las columnas de Station y Size
+  gather(Groups, Abundance, 
+         -Layers) 
+
+# Volver Station y Groups como factor
+biol8$Layers = as.factor(biol8$Layers)
+biol8$Groups = as.factor(biol8$Groups)
+
+# Totales de Abundance por cada grupo
+biol8 <- 
+  biol8 %>% 
+  group_by(Layers, Groups) %>% 
+  summarise(Abundance = sum(Abundance, na.rm = TRUE)) 
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol8) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Insertar una columna "Range" que ranquea a las Abundances de c/spp
+biol8$Range <- ave(biol8$Abundance, biol8$Layers, 
+                    FUN = rank, ties.method = "min")
+
+# Abundance relativa (Abundance_rel) de los taxones para cada tramo
+biol8$Rel_ab <- biol8$Abundance / sum(biol8$Abundance)
+
+# Redondeo a tres decimales para resumir los valores de esta variable
+biol8$Rel_ab <- round(biol8$Rel_ab,3)
+
+# Filtrado de los datos de manera descendente por cada Range de Abundance
+biol8 <- biol8[order(biol8$Range, decreasing = TRUE), ]
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol8) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+
+ggplot(biol8, 
+       aes(x = Range, y = Rel_ab, color = Groups, label = Groups)) +
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = Groups), hjust = 1, vjust = 1.5, size = 3,
+                  box.padding = 0.5, point.padding = 0.2, 
+                  segment.color = "black",       # con NA, elimina líneas punteadas 
+                  segment.linetype = "dashed",   # Líneas punteadas
+                  show.legend = FALSE) +  # Evita un error en la leyenda
+  geom_line(color = "blue") +
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)") +
+  facet_wrap(~Layers, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid=element_blank()) 
+```
+
+\--
+
+**Figura anterior sin texto en la figura**
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(ggplot2)
+library(dplyr)
+library(ggrepel)
+
+ggplot(biol8, 
+       aes(x = Range, y = Rel_ab, color = Groups)) + # Quitar label
+  geom_point(size = 3) +
+  geom_line(color = "blue") +  # Quitar el geom_text_repell
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)") +
+  facet_wrap(~Layers, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid=element_blank()) 
+
+
+
+```
+
+<b style='color:#66c2a5;'>
+
+##### 3.4.3 RAD por Sizes
+
+</b>
+
+```{r, echo=FALSE, results='hide', warning=FALSE, message=FALSE}
+# Incluye a Layerss, Sizes y Groups
+# View(biol)
+biol9 <-
+  biol[,c(-1,-2)] %>%         # Elimina las columnas de Station y Layers
+  gather(Groups, Abundance, 
+         -Size) 
+
+# Volver Station y Groups como factor
+biol9$Size = as.factor(biol9$Size)
+biol9$Groups = as.factor(biol9$Groups)
+
+# Totales de Abundance por cada grupo
+biol9 <- 
+  biol9 %>% 
+  group_by(Size, Groups) %>% 
+  summarise(Abundance = sum(Abundance, na.rm = TRUE)) 
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol9) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Insertar una columna "Range" que ranquea a las Abundances de c/spp
+biol9$Range <- ave(biol9$Abundance, biol9$Size, 
+                    FUN = rank, ties.method = "min")
+
+# Abundance relativa (Abundance_rel) de los taxones para cada tramo
+biol9$Rel_ab <- biol9$Abundance / sum(biol9$Abundance)
+
+# Redondeo a tres decimales para resumir los valores de esta variable
+biol9$Rel_ab <- round(biol9$Rel_ab,3)
+
+# Filtrado de los datos de manera descendente por cada Range de Abundance
+biol9 <- biol9[order(biol9$Range, decreasing = TRUE), ]
+
+# Impresión de la tabla con los seis (6) primeros datos (filas)
+head(biol9) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cambria")
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(biol9, 
+       aes(x = Range, y = Rel_ab, color = Groups, label = Groups)) +
+  geom_point(size = 3) +
+  geom_text_repel(aes(label = Groups), hjust = 1, vjust = 1.5, size = 3,
+                  box.padding = 0.5, point.padding = 0.2, 
+                  segment.color = "black",       # con NA, elimina líneas punteadas 
+                  segment.linetype = "dashed",   # Líneas punteadas
+                  show.legend = FALSE) +  # Evita un error en la leyenda
+  geom_line(color = "blue") +
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)", 
+       color = "Taxa") +
+  facet_wrap(~Size, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid=element_blank()) 
+```
+
+\--
+
+**Figura anterior sin rótulos dentro de la figura**
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+ggplot(biol9, 
+       aes(x = Range, y = Rel_ab, color = Groups)) +
+  geom_point(size = 3) +
+  geom_line(color = "blue") +
+  scale_x_reverse() +
+  scale_y_log10() +
+  labs(x = "Group Ranks", 
+       y = "log10(Relative Abundance)", 
+       color = "Taxa") +
+  facet_wrap(~Size, nrow = 1) +
+  theme_bw() + 
+  theme(panel.grid=element_blank()) 
+```
+
+------------------------------------------------------------------------
+
+<b style='color:#fc8d62;'>
+
+### Paso 4. Mapa de Calor corregido
+
+</b>
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+# LIBRERÍAS REQUERIDAS
+library(ellipse)
+require(gclus)
+require(SciViews)
+require(ade4)
+require(vegan)
+library(corrplot)
+library(pheatmap)
+library("gplots")
+library(gridExtra)
+library(factoextra)
+library(reshape)
+library(ggplot2)      # Figuras de dispersión
+library(readxl)
+library(tidyverse)
+library(kableExtra)
+```
+
+```{r, message=FALSE, echo=FALSE, results='hide'}
+biol <- read_xlsx("datos.eng.xlsx", "Riqueza")
+
+# Impresión de la tabla con los datos
+head(biol) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cbiol4ria")
+```
+
+```{r, echo=FALSE, results='hide'}
+#
+biol <- read_xlsx("datos.eng.xlsx", "Riqueza")
+
+# Abreviar los nombres de la columna "Especie" a solo 4 letras
+Abreviatures <-
+biol$Groups1 <- abbreviate(biol$Groups, minlength = 4)
+
+# Crear la tabla combinando nombres completos y abreviados de los Groups
+tabla <- cbind(Groups = biol[,4], Abreviatures = Abreviatures)
+
+# Impresión de la tabla con los datos
+head(tabla) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cbiol4ria")
+```
+
+```{r, echo=FALSE, results='hide'}
+# Tabla con nombres abreviados de los Groups 
+biol1 <-
+  data.frame(Abreviatures, biol[,c(-4,-9)]) # Quito las columnas 4 y 5
+
+# Impresión de la tabla con los datos
+head(biol1) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cbiol4ria")
+```
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE, results='hide'}
+# Variables agrupadoras como factores
+biol1$Station = as.factor(biol1$Station)
+biol1$Size = as.factor(biol1$Size)
+biol1$Layers = as.factor(biol1$Layers)
+
+# Convertir el dataframe para obtener las Abundances totales y promedios
+biol2 <- 
+  biol1 %>%
+  group_by(Station, Size, Layers) %>%
+  summarize(
+    Temperature = round(mean(Temperature),2),
+    Salinity   = round(mean(Salinity),2),
+    Density    = round(mean(Density),2),    
+    Qtgn = sum(Abundance[Abreviatures == "Qtgn"]),
+    Srgs = sum(Abundance[Abreviatures == "Srgs"]),
+    Lcfr = sum(Abundance[Abreviatures == "Lcfr"]),
+    Clnd = sum(Abundance[Abreviatures == "Clnd"]),
+    Cycl = sum(Abundance[Abreviatures == "Cycl"]),
+    Hrpc = sum(Abundance[Abreviatures == "Hrpc"]),
+    Lrdp = sum(Abundance[Abreviatures == "Lrdp"]),
+    Hvdp = sum(Abundance[Abreviatures == "Hvdp"]),
+    LrvN = sum(Abundance[Abreviatures == "LrvN"]),
+    LrvZ = sum(Abundance[Abreviatures == "LrvZ"]),
+    Otrs = sum(Abundance[Abreviatures == "Otrs"])
+  )
+
+# Crear un consecutivo de "Station", "Size" y "Layers"
+biol2 <- 
+  biol2 %>%
+  mutate(Ref = paste0(substr(Station, 1, 2), 
+                      substr(Size, 1, 1), 
+                      substr(Layers, 1, 1))) %>%
+  select(Ref, everything())
+
+# Impresión de la tabla con los datos
+head(biol2) %>%
+  kbl(caption = "", booktabs = F,longtable = T) %>%
+  kable_classic(full_width = F, html_font = "Cbiol4ria")
+
+```
+
+```{r, echo=FALSE, results='hide'}
+# Rotulos de las observaciones
+biol2 <- data.frame(biol2)
+rownames(biol2) <- biol2[,1]
+
+
+# Base de datos (biol4)
+biol4 <- biol2[,c(8:18)]
+
+# Distancia utilizada (d.bray)
+d.bray <- vegdist(biol2[,c(8:18)])
+
+# Método de agrupamiento seleccionado (cl.upgma)
+Cl.upgma<-hclust(d.bray,method="average")
+```
+
+```{r, echo=FALSE, results='hide'}
+biol5 <- as.matrix(biol4)
+```
+
+```{r, fig.height=7, echo=FALSE}
+#| label: fig-fig15
+#| fig-cap: "Heat map for classifying stations, mesh eyes and depth layers, using the different taxonomic groups of plankton"
+# Opción 2. Mapa de calor con paquete "stats"
+hclust.fq <- function(biol5) hclust(biol5, method="average")   # Inserción de agrupación UPGMA
+
+heatmap.2(biol5,               # Base de datos en formato matricial
+          margins=c(6,5),     # Margenes de la figura
+          scale = "row",      # Estandariza variables diferentes.
+          col = bluered(100),                 # Colores del mapa de calor
+          xlab ="Groups",
+          ylab= "Stations, mesh eye and depth layer", 
+          main = "Classification of Plankton Groups",
+          trace = "none", 
+          density.info = "none",
+          distfun = vegdist,       # Se puede usar vegdist de "vegan" 
+          hclustfun=hclust.fq)     # Agrupamiento UPGMA
+```
