@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="EN-en" xml:lang="EN-en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-12-10">
+<meta name="dcterms.date" content="2024-12-11">
 <meta name="description" content="Correcciones Para lo citado por los evaluadores - Análisis de datos de diversidad alfa, de acuerdo a los requerimientos del manuscrito de Lenin Florez.">
 
 <title>Asesoría 2. Análisis de diversidad alfa</title>
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -37,15 +37,45 @@ ul.task-list li input[type="checkbox"] {
 <link href="alfa.eng3.plancton_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="alfa.eng3.plancton_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <style>
-    .quarto-title-block .quarto-title-banner {
-      background: #2b8cbe;
-    }
-    </style>
 
+      .quarto-title-block .quarto-title-banner {
+        background: #2b8cbe;
+      }
+</style>
 <script src="alfa.eng3.plancton_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
 <link href="alfa.eng3.plancton_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="stile-justify.css">
 </head>
@@ -71,14 +101,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Javier Rodríguez Barrios </p>
+               <p><a href="https://www.unimagdalena.edu.co/">Javier Rodríguez Barrios</a> </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 10, 2024</p>
+        <p class="date">December 11, 2024</p>
       </div>
     </div>
     
@@ -128,6 +158,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+
 <p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
 </b><section id="resumen" class="level2"><b style="color:#1f78b4;">
 <h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
@@ -146,234 +177,246 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>12. Fig. 4</strong>, ¿cuál es el propósito de utilizar datos de <strong>transformación logarítmica</strong>? Las diferencias de abundancia reales entre los grupos biológicos no se muestran claramente. El texto completo también carece de descripciones prácticas de la abundancia y la <strong>distribución espaciotemporal del zooplancton</strong> en el área de estudio. ¿<strong>Qué significan los superíndices</strong> de los nombres de los grupos biológicos?</p>
 <p><strong>R./</strong> Se coloca en <strong>escala logarítmica</strong> para que los grupos taxonómicos dominantes, no enmascaren el patrón de abundancia de los grupos menos abundantes. <strong>No encuentro datos temporales</strong>. <strong>Superíndices eliminados</strong> porque son un error en la visualización de las figuras. <strong>Al final de este reporte se presentan las figuras con los ajustes requeridos.</strong></p>
 <p><strong>14.</strong> Fig. 8. ¿Qué significan las abreviaturas y combinaciones de números y letras?</p>
-<p><strong>R./</strong> La figura 8 corresponde a un mapa de calor, que analiza la importancia de los grupos taxonómicos (eje x, con nombres abreviados de los grupos taxonómicos, ver <a href="#tbl-tbl1">Table&nbsp;1</a>), para caracterizar a las observaciones en el eje y, compuestas por estaciones (primer número: estaciones 1 a la 15), el ojo de malla de colecta (segundo número: 2= 250 micras y 5= 500 micras), y una letra (D: profundidad, S: Superficie) ver <a href="#tbl-tbl2">Table&nbsp;2</a>.</p>
+<p><strong>R./</strong> La figura 8 corresponde a un mapa de calor, que analiza la importancia de los grupos taxonómicos (eje x, con nombres abreviados de los grupos taxonómicos, ver <a href="#tbl-tbl1" class="quarto-xref">Table&nbsp;1</a>), para caracterizar a las observaciones en el eje y, compuestas por estaciones (primer número: estaciones 1 a la 15), el ojo de malla de colecta (segundo número: 2= 250 micras y 5= 500 micras), y una letra (D: profundidad, S: Superficie) ver <a href="#tbl-tbl2" class="quarto-xref">Table&nbsp;2</a>.</p>
 <p><img src="mapa.calor.PNG" class="img-fluid" width="524"></p>
 <div class="cell">
+<div id="tbl-tbl1" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Abbreviaturas del eje x de la figura
+</figcaption>
+<div aria-describedby="tbl-tbl1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tbl1" class="anchored">
-
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Table&nbsp;1:  Abbreviaturas del eje x de la figura </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Groups </th>
-   <th style="text-align:left;"> Abbreviations </th>
-  </tr>
- </thead>
+<table class="lightable-classic do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Groups</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Abbreviations</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Quetognatos </td>
-   <td style="text-align:left;"> Qtgn </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Sergestidae </td>
-   <td style="text-align:left;"> Srgs </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Luciferidae </td>
-   <td style="text-align:left;"> Lcfr </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Calanoida </td>
-   <td style="text-align:left;"> Clnd </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyclopoida </td>
-   <td style="text-align:left;"> Cycl </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Harpacticoida </td>
-   <td style="text-align:left;"> Hrpc </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Larvas de peces </td>
-   <td style="text-align:left;"> Lrdp </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Huevos de peces </td>
-   <td style="text-align:left;"> Hvdp </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Larva Nauplio </td>
-   <td style="text-align:left;"> LrvN </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Larva Zoea </td>
-   <td style="text-align:left;"> LrvZ </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Otros </td>
-   <td style="text-align:left;"> Otrs </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Quetognatos</td>
+<td style="text-align: left;">Qtgn</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sergestidae</td>
+<td style="text-align: left;">Srgs</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Luciferidae</td>
+<td style="text-align: left;">Lcfr</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calanoida</td>
+<td style="text-align: left;">Clnd</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cyclopoida</td>
+<td style="text-align: left;">Cycl</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Harpacticoida</td>
+<td style="text-align: left;">Hrpc</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Larvas de peces</td>
+<td style="text-align: left;">Lrdp</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Huevos de peces</td>
+<td style="text-align: left;">Hvdp</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Larva Nauplio</td>
+<td style="text-align: left;">LrvN</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Larva Zoea</td>
+<td style="text-align: left;">LrvZ</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Otros</td>
+<td style="text-align: left;">Otrs</td>
+</tr>
 </tbody>
 </table>
 
+
 </div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell">
+<div id="tbl-tbl2" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Abreviaturas del eje y de la figura
+</figcaption>
+<div aria-describedby="tbl-tbl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tbl2" class="anchored">
-
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Table&nbsp;2:  Abreviaturas del eje y de la figura </caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Ref </th>
-   <th style="text-align:left;"> Station </th>
-   <th style="text-align:left;"> Size </th>
-   <th style="text-align:left;"> Layers </th>
-  </tr>
- </thead>
+<table class="lightable-classic do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Ref</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Station</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Size</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Layers</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> 22D </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 22S </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 25D </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 25S </td>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 42D </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 42S </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 45D </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 45S </td>
-   <td style="text-align:left;"> 4 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 72D </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 72S </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 75D </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 75S </td>
-   <td style="text-align:left;"> 7 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 92D </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 92S </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 95D </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 95S </td>
-   <td style="text-align:left;"> 9 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 132D </td>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 132S </td>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 135D </td>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 135S </td>
-   <td style="text-align:left;"> 13 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 152D </td>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 152S </td>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 155D </td>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Depth </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 155S </td>
-   <td style="text-align:left;"> 15 </td>
-   <td style="text-align:left;"> 500 μm </td>
-   <td style="text-align:left;"> Surface </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">22D</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">22S</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">25D</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">25S</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">42D</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">42S</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">45D</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">45S</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">72D</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">72S</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">75D</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">75S</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">92D</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">92S</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">95D</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">95S</td>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">132D</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">132S</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">135D</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">135S</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">152D</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">152S</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">155D</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Depth</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">155S</td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">500 μm</td>
+<td style="text-align: left;">Surface</td>
+</tr>
 </tbody>
 </table>
 
+
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -396,118 +439,103 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="paso-1.-cargar-librerías">Paso 1. Cargar Librerías</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
 <p>Librerías requeridas para el análisis de diversidad alfa.</p>
-<div class="cell">
-
-</div>
 <hr>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
 </b></section><b style="color:#fc8d62;">
 </b><section id="paso-2.-base-de-datos-de-los-taxones" class="level3"><b style="color:#fc8d62;">
 <h3 class="anchored" data-anchor-id="paso-2.-base-de-datos-de-los-taxones">Paso 2. Base de datos de los taxones</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>La base de datos con los 40 taxones se llamará <strong>biol</strong>. La base con con las 18 variables ambientales se llamará <strong>amb</strong> y se cargará más adelante (<a href="#tbl-tbl3">Table&nbsp;3</a>).</p>
+<p>La base de datos con los 40 taxones se llamará <strong>biol</strong>. La base con con las 18 variables ambientales se llamará <strong>amb</strong> y se cargará más adelante (<a href="#tbl-tbl3" class="quarto-xref">Table&nbsp;3</a>).</p>
 <div class="cell">
+<div id="tbl-tbl3" class="cell quarto-float anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-tbl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: Base de datos biológicos
+</figcaption>
+<div aria-describedby="tbl-tbl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-tbl3" class="anchored">
-
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Table&nbsp;3:  Base de datos biológicos </caption>
- <thead>
-  <tr>
-   <th style="text-align:right;"> Station </th>
-   <th style="text-align:left;"> Size </th>
-   <th style="text-align:left;"> Layers </th>
-   <th style="text-align:left;"> Groups </th>
-   <th style="text-align:right;"> Abundance </th>
-   <th style="text-align:right;"> Temperature </th>
-   <th style="text-align:right;"> Salinity </th>
-   <th style="text-align:right;"> Density </th>
-  </tr>
- </thead>
+<table class="lightable-classic do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Station</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Size</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Layers</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Groups</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Abundance</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Temperature</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Salinity</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Density</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-   <td style="text-align:left;"> Quetognatos </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 30.29749 </td>
-   <td style="text-align:right;"> 34.69981 </td>
-   <td style="text-align:right;"> 21.417828 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-   <td style="text-align:left;"> Sergestidae </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 29.40959 </td>
-   <td style="text-align:right;"> 25.83323 </td>
-   <td style="text-align:right;"> 15.085254 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-   <td style="text-align:left;"> Luciferidae </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 29.59008 </td>
-   <td style="text-align:right;"> 12.38513 </td>
-   <td style="text-align:right;"> 5.729643 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-   <td style="text-align:left;"> Calanoida </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> 30.29749 </td>
-   <td style="text-align:right;"> 34.69981 </td>
-   <td style="text-align:right;"> 21.417828 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-   <td style="text-align:left;"> Cyclopoida </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 29.40959 </td>
-   <td style="text-align:right;"> 25.83323 </td>
-   <td style="text-align:right;"> 15.085254 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> 250 μm </td>
-   <td style="text-align:left;"> Surface </td>
-   <td style="text-align:left;"> Harpacticoida </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 29.59008 </td>
-   <td style="text-align:right;"> 12.38513 </td>
-   <td style="text-align:right;"> 5.729643 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+<td style="text-align: left;">Quetognatos</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">30.29749</td>
+<td style="text-align: right;">34.69981</td>
+<td style="text-align: right;">21.417828</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+<td style="text-align: left;">Sergestidae</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">29.40959</td>
+<td style="text-align: right;">25.83323</td>
+<td style="text-align: right;">15.085254</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+<td style="text-align: left;">Luciferidae</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">29.59008</td>
+<td style="text-align: right;">12.38513</td>
+<td style="text-align: right;">5.729643</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+<td style="text-align: left;">Calanoida</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">30.29749</td>
+<td style="text-align: right;">34.69981</td>
+<td style="text-align: right;">21.417828</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+<td style="text-align: left;">Cyclopoida</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">29.40959</td>
+<td style="text-align: right;">25.83323</td>
+<td style="text-align: right;">15.085254</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">250 μm</td>
+<td style="text-align: left;">Surface</td>
+<td style="text-align: left;">Harpacticoida</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">29.59008</td>
+<td style="text-align: right;">12.38513</td>
+<td style="text-align: right;">5.729643</td>
+</tr>
 </tbody>
 </table>
 
-</div>
-</div>
-</div>
-<div class="cell">
 
 </div>
-<div class="cell">
-
 </div>
-<div class="cell">
-
+</figure>
 </div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
 </div>
 <hr>
 <p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
@@ -516,13 +544,17 @@ ul.task-list li input[type="checkbox"] {
 </b><p><b style="color:#e78ac3;"></b></p>
 <p><strong>Nota</strong>: En este archivo solo pude recuperar una figura de burbujas, ya que el original se dañó y se perdieron el resto.</p>
 <p>En <strong>ggplot2</strong>, no hay soporte nativo para incluir un <strong>eje x secundario</strong> (como sí lo hay para el eje y con <code>sec.axis</code>). Es por ello que se hace el intento con el eje y, invirtiendo los ejes.</p>
-<p><strong>Nota</strong>: No recomiendo a esta <a href="#fig-fig6">Figure&nbsp;1</a> porque como no es compatible el patrón de salinidad con el de temperatura, R solo le da sentido a lo que proyecte en el eje y primario.</p>
+<p><strong>Nota</strong>: No recomiendo a esta <a href="#fig-fig6" class="quarto-xref">Figure&nbsp;1</a> porque como no es compatible el patrón de salinidad con el de temperatura, R solo le da sentido a lo que proyecte en el eje y primario.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig6" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig6-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Abundance ranges of plankton taxonomic groups (circle sizes depend on estimated abundance) for the different seasons evaluated (circle colors).</figcaption><p></p>
+<div id="fig-fig6" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig6-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Abundance ranges of plankton taxonomic groups (circle sizes depend on estimated abundance) for the different seasons evaluated (circle colors).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -540,22 +572,30 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Nota:</strong> el dato atípico no se ve, porque se reparte en las capas de profundidad y de superficie, de época seca para ojo de malla de 250 micras.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig7" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig7-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Abundance pattern, for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig7" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig7-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Abundance pattern, for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig8">Figure&nbsp;3</a> con transformación <span class="math inline">\(log_{10}\)</span>.</p>
+<p>La <a href="#fig-fig8" class="quarto-xref">Figure&nbsp;3</a> con transformación <span class="math inline">\(log_{10}\)</span>.</p>
 <p><strong>Nota</strong>: Esta transformación se hace para mejorar la comparabilidad de los valores de abundancia entre estaciones de muestreo, ya que en su escala original, algunas estaciones pueden quedar enmascaradas por sus valores muy bajos, comparados al resto de estaciones con valores muy altos (distribuciones sesgadas a valores muy altos). Entonces la transformación es una manera de relativizar o estandarizar los valores en una escala más comparativa.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig8" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig8-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Abundance pattern (log10), for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig8" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig8-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Abundance pattern (<span class="math inline">\(log_{10}\)</span>), for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -567,20 +607,28 @@ ul.task-list li input[type="checkbox"] {
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig9" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig9-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Abundance pattern, for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig9" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig9-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Abundance pattern, for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig10" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig10-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;5: Abundance pattern (log10), for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig10" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig10-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Abundance pattern (<span class="math inline">\(log_{10}\)</span>), for the different seasons and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -592,32 +640,44 @@ ul.task-list li input[type="checkbox"] {
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig11" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig11-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;6: Biomass pattern, for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)</figcaption><p></p>
+<div id="fig-fig11" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig11-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Biomass pattern, for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig12">Figure&nbsp;7</a> con transformación <span class="math inline">\(log_{10}\)</span></p>
+<p>La <a href="#fig-fig12" class="quarto-xref">Figure&nbsp;7</a> con transformación <span class="math inline">\(log_{10}\)</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig12" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig12-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;7: Biomass pattern (log10), for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)</figcaption><p></p>
+<div id="fig-fig12" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig12-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Biomass pattern (<span class="math inline">\(log_{10}\)</span>), for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig12_1">Figure&nbsp;8</a> con transformación <span class="math inline">\(log_{10+1}\)</span> para eliminar datos negativos en el eje Y.</p>
+<p>La <a href="#fig-fig12_1" class="quarto-xref">Figure&nbsp;8</a> con transformación <span class="math inline">\(log_{10}+1\)</span> para eliminar datos negativos en el eje Y.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig12_1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig12_1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8: Biomass pattern (log10+1), for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)</figcaption><p></p>
+<div id="fig-fig12_1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig12_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig12_1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig12_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Biomass pattern (<span class="math inline">\(log_{10}+1\)</span>), for the different stations and seasons evaluated (box colors), for each mesh eye and depth level evaluated (Depth and Surface)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -630,32 +690,44 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Nota:</strong> En el archivo de Excel, para estos datos de biomasa, la columna periodos (Seasons) aparece como 1 y 2, a 1 le coloqué lluvia (Rainy) y a 2 sequía (Dry). Se requiere validar si esto es correcto.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig13" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig13-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9: Biomass pattern, for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig13" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig13-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Biomass pattern, for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig14">Figure&nbsp;10</a> con transformación <span class="math inline">\(log_{10}\)</span></p>
+<p>La <a href="#fig-fig14" class="quarto-xref">Figure&nbsp;10</a> con transformación <span class="math inline">\(log_{10}\)</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig14" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig14-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;10: Biomass pattern (log10), for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig14" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig14-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Biomass pattern (<span class="math inline">\(log_{10}\)</span>), for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig14_1">Figure&nbsp;11</a> con transformación <span class="math inline">\(log_{10+1}\)</span> para eliminar datos negativos en el eje Y.</p>
+<p>La <a href="#fig-fig14_1" class="quarto-xref">Figure&nbsp;11</a> con transformación <span class="math inline">\(log_{10}+1\)</span> para eliminar datos negativos en el eje Y.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig14_1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig14_1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;11: Biomass pattern (log10+1), for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)</figcaption><p></p>
+<div id="fig-fig14_1" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig14_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig14_1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig14_1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Biomass pattern (<span class="math inline">\(log_{10}+1\)</span>), for the different stations and depth layers evaluated (box colors), for each mesh eye and climatic period evaluated (Dry and Rainy)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -672,28 +744,34 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="anchored" data-anchor-id="rad-por-estaciones">3.4.1 RAD por Estaciones</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>--</p>
 <p><strong>Como la anterior pero sin texto dentro de los páneles</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>--</p>
 <p><strong>Como la anterior pero sin leyenda</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
@@ -702,24 +780,23 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="anchored" data-anchor-id="rad-por-layerss">3.4.2 RAD por Layerss</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'Layers'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>--</p>
 <p><strong>Figura anterior sin texto en la figura</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
@@ -728,21 +805,23 @@ ul.task-list li input[type="checkbox"] {
 <h5 class="anchored" data-anchor-id="rad-por-sizes">3.4.3 RAD por Sizes</h5>
 </b><p><b style="color:#66c2a5;"></b></p>
 <div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>--</p>
 <p><strong>Figura anterior sin rótulos dentro de la figura</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="alfa.eng3.plancton_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -754,32 +833,15 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="paso-4.-mapa-de-calor-corregido">Paso 4. Mapa de Calor corregido</h3>
 </b><p><b style="color:#fc8d62;"></b></p>
 <div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig15" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="alfa.eng3.plancton_files/figure-html/fig-fig15-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12: Heat map for classifying stations, mesh eyes and depth layers, using the different taxonomic groups of plankton</figcaption><p></p>
+<div id="fig-fig15" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="alfa.eng3.plancton_files/figure-html/fig-fig15-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;12: Heat map for classifying stations, mesh eyes and depth layers, using the different taxonomic groups of plankton
+</figcaption>
 </figure>
 </div>
 </div>
@@ -816,9 +878,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -854,10 +930,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -867,8 +960,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -880,9 +982,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -923,6 +1261,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
