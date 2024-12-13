@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="EN-en" xml:lang="EN-en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Javier Rodríguez Barrios">
+<meta name="dcterms.date" content="2024-12-12">
+<meta name="description" content="Se analizan los datos de un de peces estuarinos del Golfo de Urabá en el que se aplican modelos lm como ruta para analizar la relación en la abundancia entre gremios róficos en diferentes semanas de muestreo.">
+
+<title>Asesoría 2. Modelos Lineales Mixtos de Efectos Aleatorios - lm</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="sem.lenin1_files/libs/clipboard/clipboard.min.js"></script>
+<script src="sem.lenin1_files/libs/quarto-html/quarto.js"></script>
+<script src="sem.lenin1_files/libs/quarto-html/popper.min.js"></script>
+<script src="sem.lenin1_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="sem.lenin1_files/libs/quarto-html/anchor.min.js"></script>
+<link href="sem.lenin1_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="sem.lenin1_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="sem.lenin1_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="sem.lenin1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="sem.lenin1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #2b8cbe;
+    }
+    </style>
+
+<script src="sem.lenin1_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="sem.lenin1_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="stile-justify.css">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Asesoría 2. Modelos Lineales Mixtos de Efectos Aleatorios - lm</h1>
+            <p class="subtitle lead">Mdelos lm como enfoque para analizar gremios tróficos de peces</p>
+                  <div>
+        <div class="description">
+          Se analizan los datos de un de peces estuarinos del Golfo de Urabá en el que se aplican modelos lm como ruta para analizar la relación en la abundancia entre gremios róficos en diferentes semanas de muestreo.
+        </div>
+      </div>
+                </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Javier Rodríguez Barrios </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 12, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Menú flotante</h2>
+   
+  <ul>
+  <li><a href="#análisis-de-los-resultados" id="toc-análisis-de-los-resultados" class="nav-link active" data-scroll-target="#análisis-de-los-resultados">Análisis de los resultados</a>
+  <ul>
+  <li><a href="#estructura-jerárquica-propuesta" id="toc-estructura-jerárquica-propuesta" class="nav-link" data-scroll-target="#estructura-jerárquica-propuesta"><strong>Estructura jerárquica propuesta</strong></a></li>
+  <li><a href="#ecuación-del-modelo-lineal-propuesto" id="toc-ecuación-del-modelo-lineal-propuesto" class="nav-link" data-scroll-target="#ecuación-del-modelo-lineal-propuesto"><strong>Ecuación del modelo lineal propuesto</strong></a></li>
+  </ul></li>
+  <li><a href="#modelo-lineal-mixto-de-efectos-aleatorios-lm" id="toc-modelo-lineal-mixto-de-efectos-aleatorios-lm" class="nav-link" data-scroll-target="#modelo-lineal-mixto-de-efectos-aleatorios-lm">Modelo lineal mixto de efectos aleatorios “lm”</a>
+  <ul>
+  <li><a href="#paso-1.-selección-del-modelo-más-parsimonioso" id="toc-paso-1.-selección-del-modelo-más-parsimonioso" class="nav-link" data-scroll-target="#paso-1.-selección-del-modelo-más-parsimonioso">Paso 1. Selección del modelo más parsimonioso</a></li>
+  <li><a href="#paso-2.-diagnóstico-del-modelo" id="toc-paso-2.-diagnóstico-del-modelo" class="nav-link" data-scroll-target="#paso-2.-diagnóstico-del-modelo"><strong>Paso 2. Diagnóstico del Modelo</strong></a>
+  <ul>
+  <li><a href="#efectos-aleatorios-trophic-guild." id="toc-efectos-aleatorios-trophic-guild." class="nav-link" data-scroll-target="#efectos-aleatorios-trophic-guild."><strong>2.1 Efectos Aleatorios (Trophic guild).</strong></a></li>
+  <li><a href="#efectos-fijos-predictor---time" id="toc-efectos-fijos-predictor---time" class="nav-link" data-scroll-target="#efectos-fijos-predictor---time">2.2 Efectos Fijos (predictor - Time)</a></li>
+  <li><a href="#correlación-de-los-efectos-fijos" id="toc-correlación-de-los-efectos-fijos" class="nav-link" data-scroll-target="#correlación-de-los-efectos-fijos">2.3 Correlación de los Efectos Fijos</a></li>
+  <li><a href="#residuos" id="toc-residuos" class="nav-link" data-scroll-target="#residuos">2.4 Residuos</a></li>
+  <li><a href="#diagnósticos-gráficos-de-los-residuales" id="toc-diagnósticos-gráficos-de-los-residuales" class="nav-link" data-scroll-target="#diagnósticos-gráficos-de-los-residuales">2.5 Diagnósticos gráficos de los residuales</a></li>
+  </ul></li>
+  <li><a href="#figuras-para-gremios-tróficos" id="toc-figuras-para-gremios-tróficos" class="nav-link" data-scroll-target="#figuras-para-gremios-tróficos">5. Figuras para gremios tróficos</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<hr>
+<section id="análisis-de-los-resultados" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-de-los-resultados">Análisis de los resultados</h2>
+<p>El presente ejercicio consiste en el procesamiento inicial de los datos entregados por los profesores <strong>Lenin Florez y Alejandro Sandoval</strong>, para dar respuesta al siguiente requerimiento: “<em>Analizar el efecto de cambios en las fases lunares (<strong>ciclo lunar - Moon</strong>) y horarios de <strong>día vs.&nbsp;noche</strong></em> (<strong><em>Time</em></strong>)<em>, sobre los patrones de <strong>abundancia en gremios tróficos de peces estuarinos, censados en el Golfo de Urabá</strong></em>”. Se pretende analizar que características temporales como las semanas de pesca (<strong>week</strong>), las fases lunares (<strong>moon</strong>) y las jornadas día-noche (<strong>time</strong>) afectan los patrones de abundancias en los diferentes <strong>gremios tróficos</strong> de peces estuarino en distintas zonas del Golfo de Urabá.</p>
+<ul>
+<li><p><strong>Estructura de los datos:</strong></p>
+<ul>
+<li><p>Los datos tienen <strong>variables categóricas</strong> (como fases lunares y las jornadas día-noche)</p></li>
+<li><p><strong>Las abundancias</strong> de los peces están organizadas por <strong>gremios tróficos</strong>.</p></li>
+<li><p>Existe una <strong>posible dependencia o anidamiento dentro de cada combinación de niveles</strong> (por ejemplo, semanas dentro de zonas, fases lunares y gremios tróficos).</p></li>
+</ul></li>
+<li><p><strong>Justificación:</strong></p>
+<ul>
+<li>Las <strong>estructuras jerárquicas</strong> modelan adecuadamente la dependencia de los datos, por ejemplo, al considerar que las <strong>observaciones dentro de una misma jornada de día o de noche no son totalmente independientes</strong>.</li>
+<li>Los <strong>efectos aleatorios</strong> permiten modelar la variabilidad no explicada por los predictores fijos y capturan patrones específicos de grupos (ej. zonas o <strong>gremios tróficos</strong>).</li>
+</ul></li>
+</ul>
+<section id="estructura-jerárquica-propuesta" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-jerárquica-propuesta"><strong>Estructura jerárquica propuesta</strong></h3>
+<ul>
+<li><p><strong>Nivel 1 (mediciones):</strong></p>
+<ul>
+<li><p><strong>Variables independientes</strong>: Semana de pesca (<strong>Week</strong>), fases lunares (<strong>Moon</strong>), y jornada día-noche (<strong>Time</strong>).</p></li>
+<li><p><strong>Variable dependiente</strong>: Abundancia de peces (Abundance).</p></li>
+</ul></li>
+<li><p><strong>Nivel 2 (anidamiento):</strong></p>
+<ul>
+<li><p><strong>Zonas</strong> del Golfo de Urabá como <strong>efectos aleatorios</strong> (*<strong>no se tabularon</strong> pero pueden incluirse al modelo).</p></li>
+<li><p><strong>Gremios tróficos</strong> de peces también como un <strong>efecto aleatorio</strong>.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="ecuación-del-modelo-lineal-propuesto" class="level3">
+<h3 class="anchored" data-anchor-id="ecuación-del-modelo-lineal-propuesto"><strong>Ecuación del modelo lineal propuesto</strong></h3>
+<p>Un <strong>modelo lineal mixto con efectos aleatorios</strong> puede expresarse como:</p>
+<p><b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Week\)</span> <strong>+</strong> <span class="math inline">\(β_2\)</span> <strong>×</strong> <span class="math inline">\(Moon\)</span> <strong>+</strong> <span class="math inline">\(β_3\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(δ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
+<p>Dónde:</p>
+<ul>
+<li><p><code>$β_0$:</code> Intercepto general.</p></li>
+<li><p><code>$β_1,β_2,β_3$:</code> Coeficientes de los efectos fijos para las semanas, fases lunares, y jornadas día-noche.</p></li>
+<li><p><code>$γ$ :</code> Efecto aleatorio de las zonas.</p></li>
+<li><p><code>$δ$:</code> Efecto aleatorio del gremio trófico.</p></li>
+<li><p><code>$ε$:</code> Error residual.</p></li>
+</ul>
+<p><strong>Área de estudio</strong>: Zonas del Golfo de Urabá en Colombia.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://javier-2712.github.io/Manuscritos/4.peces.lenin/mangroves%20uraba.jpg" class="img-fluid figure-img" width="486"></p>
+</figure>
+</div>
+<p>A partir del anterior modelo realizado, se realizaron los siguientes pasos:</p>
+<ul>
+<li><p><strong>Paso 1</strong>. Se aplicó el <strong>principio de parsimonia</strong>, orientado a la <strong>selección del mejor modelo</strong>, el cual permita identificar a los predictores que mejor se relacionan con la abundancia de los peces. Se proponen dos diagnósticos de selección, con los paquetes lme y <code>MuMIn</code>, respectivamente. El modelo seleccionado fue aquel que presentó el menor valor de los estimadores <strong>AIC</strong> y <strong>BIC</strong>.</p></li>
+<li><p><strong>Paso 2</strong>. Inicia con el diagnóstico de ajuste <strong>REML</strong> (Máxima Verosimilitud Restringida), el cual permite la comparabilidad de este modelo con otros similares de efectos fijos y aleatrorios.</p></li>
+<li><p>En este mismo paso se analiza al afecto aleatorio (<strong>trophic guild</strong>), asociado a la <strong>variabilidad entre los gremios tróficos</strong> en cuanto a sus niveles de abundancia, utilizando a la variabilidad del intercepto y del residual del modelo. Este diagnóstico también se hace para el efecto fijo (<strong>Time</strong>), para este caso el día y la noche mostraron un efecto significativo sobre la abundancia de peces, aumentando considerablemente en la noche. En cuanto a la <strong>correlación del efecto fijo con la abundancia</strong>, no se detecta problemas de <strong>colinealidad</strong>.</p></li>
+<li><p>Finalmente los <strong>residuales</strong> del modelo son <strong>homogéneos</strong> (no hay problemas de heterocedasticidad), son independientes (no hay problemas de autocorrelación) y <strong>son simétricos</strong> (posiblemente se cumple el supuesto de normalidad).</p></li>
+<li><p><strong>Paso 3</strong>. Se realizan unas figuras tomadas del mansucrito de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> que sirve de base para los modelos estrusturales - SEM y modelos mixtos jerárquicos de efectos aleatorios, estos últimos aplicados en este análisis.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="modelo-lineal-mixto-de-efectos-aleatorios-lm" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-lineal-mixto-de-efectos-aleatorios-lm">Modelo lineal mixto de efectos aleatorios “lm”</h2>
+<p>A continuación se realizará un procedimiento paso a paso, para la construcción y análisis de los elementos del modelo más parsimonioso de los datos.</p>
+<section id="paso-1.-selección-del-modelo-más-parsimonioso" class="level4">
+<h4 class="anchored" data-anchor-id="paso-1.-selección-del-modelo-más-parsimonioso">Paso 1. Selección del modelo más parsimonioso</h4>
+<p>Será aquel que con el menor número de predictores (efectos fijos del modelo mixto), explique la mayor variabilidad de la abundancia en los diferentes gremios tróficos de peces.</p>
+<p><strong>Nota</strong>. No se puede incluir la variable aleatoria “Zone”, porque presenta un problema de singulariadad, debido a que su intercepto en el modelo es cero (0) o que no contribuye a explicar la variabilidad de la abundancia. Se diagnosticará el modelo que mejor se ajusta a los datos, y de las tres variables predictoras (Moon, Week y Time).</p>
+<div class="cell">
+
+</div>
+<p><strong>Opción A. Comparación de modelos</strong>. Con el paquete <strong>lme</strong>, se analizan modelos con diferentes combinaciones de predictores. Se usarán los criterios <code>AIC()</code> y <code>BIC()</code> para evaluar los modelos.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   m1    m2    m3    m4    m5    m6    m7 
+324.9 332.3 315.0 335.4 320.2 328.5 331.7 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>   m1    m2    m3    m4    m5    m6    m7 
+336.6 352.7 326.7 358.7 334.8 351.8 357.9 </code></pre>
+</div>
+</div>
+<p>De acuerdo a estos diagnósticos, el mejor modelo es el No.&nbsp;2. porque es el que presenta menos <strong>AIC</strong> y <strong>BIC</strong>.</p>
+<p><b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
+<p>Dónde:</p>
+<ul>
+<li><p><code>$β_0$:</code> Intercepto general.</p></li>
+<li><p><code>$β_1$:</code> Coeficientes de los efectos fijos para Horarios día-noche (time).</p></li>
+<li><p><code>$γ$ :</code> Efecto aleatorio del gremio trófico.</p></li>
+<li><p><code>$ε$:</code> Error residual.</p></li>
+</ul>
+<p><strong>Opción B. Selección automatizada</strong>. El paquete <strong>MuMIn</strong> tambien permite identificar el mejor modelo, seleccionando al que presente el menor AIC. Para este caso el resultado es el mismo al aterior, el modelo es el que solo incluye a los horarios día-noche (modelo 3), con un <strong>AIC</strong>: 315.3.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Global model call: lmer(formula = log(Ab + 1) ~ Week + Moon + Time + (1 | `Trophic guild`), 
+    data = data, na.action = na.fail)
+---
+Model selection table 
+  (Intrc) Moon Time     Week df   logLik  AICc delta weight
+3   1.170         +           4 -153.513 315.3  0.00  0.862
+1   1.457                     3 -157.075 320.3  5.00  0.071
+7   1.341         + -0.04572  5 -155.103 320.7  5.34  0.060
+5   1.644           -0.05206  4 -158.453 325.2  9.88  0.006
+4   1.126    +    +           8 -156.246 329.6 14.29  0.001
+8   1.694    +    + -0.09343  9 -156.834 333.1 17.77  0.000
+2   1.365    +                7 -159.168 333.2 17.88  0.000
+6   1.953    +      -0.09725  8 -159.696 336.5 21.20  0.000
+Models ranked by AICc(x) 
+Random terms (all models): 
+  1 | `Trophic guild`</code></pre>
+</div>
+</div>
+<p><strong>Resumen de los datos</strong>. Se totalizan las abundancias por cada horario día-noche (Time), excluyendo a los aportes del resto de predictores (Week y Moon).</p>
+<p><strong>NOTA</strong>: Dataframe datos, solo tiene 6 datos.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Time </th>
+   <th style="text-align:left;"> Trophic.guild </th>
+   <th style="text-align:right;"> Ab </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> Omnivores </td>
+   <td style="text-align:right;"> 42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> Phytobenthivores </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> Piscivores </td>
+   <td style="text-align:right;"> 10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> Planktivores </td>
+   <td style="text-align:right;"> 65 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Day </td>
+   <td style="text-align:left;"> Zoobenthivores </td>
+   <td style="text-align:right;"> 26 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Night </td>
+   <td style="text-align:left;"> No data </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<hr>
+<p>La ecuación del modelo seleccionado es la siguiente:<br>
+<br>
+<b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
+<hr>
+<div class="cell">
+
+</div>
+</section>
+<section id="paso-2.-diagnóstico-del-modelo" class="level4">
+<h4 class="anchored" data-anchor-id="paso-2.-diagnóstico-del-modelo"><strong>Paso 2. Diagnóstico del Modelo</strong></h4>
+<ul>
+<li><p><strong>Criterio REML</strong>: El valor es <strong>307</strong>, un indicador relativo del ajuste del modelo. No tiene interpretación absoluta, pero es útil para comparar modelos con la misma estructura.</p></li>
+<li><p><strong>Número de Observaciones y Grupos</strong>: <strong>136 observaciones</strong>. <strong>6 grupos</strong> en la variable aleatoria <code>Trophic guild</code>.</p></li>
+</ul>
+<section id="efectos-aleatorios-trophic-guild." class="level5">
+<h5 class="anchored" data-anchor-id="efectos-aleatorios-trophic-guild."><strong>2.1 Efectos Aleatorios (Trophic guild).</strong></h5>
+<p>Vale la pena aclarar que tanto los efectos aleatorios, como el fijo, presentaron respuestas significativas, el primero por explicar un porcentaje considerable de la variabilidad de las abundancias y el segundo por determinar el incremento en horas de la noche.</p>
+<ul>
+<li><p><strong>Intercepto Aleatorio (<code>Trophic guild</code>)</strong>: La varianza es <strong>0.1536</strong>, lo que indica que <strong>hay diferencias moderadas entre los grupos tróficos</strong> en sus valores promedio de la respuesta log-transformada (<code>log(Ab + 1)</code>). La desviación estándar asociada es <strong>0.3919</strong>. Esto sugiere que aunque hay diferencias entre <strong>gremios tróficos</strong>, estas no explican toda la variabilidad en las abundancias de peces.</p></li>
+<li><p><strong>Residual</strong>: La varianza residual es <strong>0.5107</strong>, con una desviación estándar de <strong>0.7146</strong>. Esto representa la variabilidad no explicada en el modelo. La mayor variabilidad en la abundancia se da a nivel residual, lo que sugiere que otros parámetros no incluidos en el modelo podrían estar influyendo.</p></li>
+</ul>
+</section>
+<section id="efectos-fijos-predictor---time" class="level5">
+<h5 class="anchored" data-anchor-id="efectos-fijos-predictor---time">2.2 Efectos Fijos (predictor - Time)</h5>
+<ul>
+<li><p><strong>Intercepto</strong>: Representa el valor promedio de <code>log(Ab + 1)</code> cuando el tiempo es de día (<code>Time = Day</code>). Su valor estimado de <strong>1.1695</strong> es estadísticamente significativo (Estimado &lt; t = 5.744). En el intercepto (e^{1.1695} ≈ 3.22), la abundancia promedio en la mañana es aproximadamente 3.22 individuos.</p>
+<p><strong><code>TimeNight</code></strong>: Su valor estimado de <strong>0.4111</strong> es estadísticamente significativo (estimado &lt; t = 3.111), lo que indica un efecto real del tiempo. El coeficiente estimado es <strong>0.4111</strong>, lo que sugiere que durante la noche (<code>Time = Night</code>), el valor de <code>log(Ab + 1)</code> aumenta en <strong>0.4111</strong> unidades en promedio respecto a la mañana o de día.</p></li>
+</ul>
+</section>
+<section id="correlación-de-los-efectos-fijos" class="level5">
+<h5 class="anchored" data-anchor-id="correlación-de-los-efectos-fijos">2.3 Correlación de los Efectos Fijos</h5>
+<p>Existe una correlación moderada negativa (<strong>-0.451</strong>) entre el intercepto y el efecto de <code>TimeNight</code>. Esto es común en modelos mixtos y no suele ser problemático. No se presentan problemas de colinealidad, ya que -0.45 es una correlación baja.</p>
+</section>
+<section id="residuos" class="level5">
+<h5 class="anchored" data-anchor-id="residuos">2.4 Residuos</h5>
+<ul>
+<li><strong>Rango de residuos escalados</strong>: La mayoría de los residuos están en torno a 0, pero hay algunos valores extremos (hasta <strong>3.0305</strong>), lo que podría sugerir casos atípicos o variabilidad adicional no explicada.</li>
+</ul>
+</section>
+<section id="diagnósticos-gráficos-de-los-residuales" class="level5">
+<h5 class="anchored" data-anchor-id="diagnósticos-gráficos-de-los-residuales">2.5 Diagnósticos gráficos de los residuales</h5>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figl1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="sem.lenin1_files/figure-html/fig-figl1-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Graphical diagnoses on the residuals of the mixed model performed</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-figl1">Figure&nbsp;1</a> muestra dos opciones gráficas para diagnosticar algunos requisitos o supuestos del modelo, en especial la homogeneidad y la independencia de los residuos así como posibles tendencias simétricas o normales.</p>
+<p><strong>1. Gráfico de residuales vs.&nbsp;índice de observaciones</strong></p>
+<p>Este gráfico ayuda a verificar si las <strong>relaciones lineales</strong> y los supuestos de <strong>homocedasticidad se cumplen</strong>. La <strong>distribución de los residuales es hogénea (no hay problemas de heterocedasticidad)</strong>. <strong>Como los residuales están distribuidos de manera aleatoria alrededor de 0, sugiere que el modelo ajusta bien los datos</strong>. En caso que se presenten patrones como una curva o una tendencia ascendente/descendente, podría indicar que el modelo no captura completamente la estructura de los datos (tendencias sistemáticas). Si los residuales muestran una variabilidad creciente o decreciente (como un cono), sugiere que la varianza no es constante (heterocedasticidad).</p>
+<p><strong>2. Gráfico Q-Q (cuantil-cuantil) de los residuales</strong></p>
+<p>Este gráfico <strong>evalúa si los residuales siguen una distribución normal</strong>, como generalmente se asume en los modelos lineales mixtos. Para este caso, <strong>los residuales no se ajustan de manera esperada a un patrón normal (forma de S)</strong>, por lo que este tipo de modelos mixtos es una buena opción.</p>
+<p>Un gráfico Q-Q apropiado respalda la <strong>validez de los intervalos de confianza</strong> y <strong>pruebas de hipótesis</strong> en el modelo. Si los residuales no son normales, se podrían considerar transformaciones de los datos o métodos robustos. El <strong>Eje x</strong> relaciona a los cuantiles teóricos de una distribución normal estándar. El <strong>Eje y</strong> muestra a lo cuantiles observados de los residuales. La <strong>Línea de referencia (qqline):</strong> Representa la distribución normal esperada. Los puntos deberían alinearse aproximadamente con esta línea. <strong>Puntos cercanos a la línea</strong> indican que los residuales se ajustan bien a una distribución normal.</p>
+<p><strong>Si los puntos se desvían significativamente de la línea</strong> en los extremos, podría sugerir colas largas (distribución leptocúrtica) o cortas (distribución platicúrtica). <strong>Una curvatura en forma de S</strong> podría indicar que los residuales no son normales, posiblemente debido a la presencia de outliers o a una transformación incorrecta de los datos.</p>
+<p><strong>Figura del modelo seleccionado</strong></p>
+<p>La <a href="#fig-figl2">Figure&nbsp;2</a> muestra que en la noche se concentra la mayor abundancia de peces, especialmente de planctivoros y de fitobenctivoros.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figl2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="sem.lenin1_files/figure-html/fig-figl2-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Abundance pattern of estuarine fish during day and night, separated by their trophic guilds</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="figuras-para-gremios-tróficos" class="level3">
+<h3 class="anchored" data-anchor-id="figuras-para-gremios-tróficos">5. Figuras para gremios tróficos</h3>
+<p>La <a href="#fig-figl3">Figure&nbsp;3</a> los omnivoros y los planctivoros, presentaron tendencias negativas a los largo de las seis semanas del estudio, mientras que los piscivoros mostraron un incremento leve en el aumento de su abundancia. Estos cambios se asocian a un patrón d disminución marcado de la abundancia total hacia la semana 4 y un cambio en el ensamblaje trófico dominado inicialmente por omnívoros al compuesto principalmente por planctivoros (<a href="#fig-figl4">Figure&nbsp;4</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figl3" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="sem.lenin1_files/figure-html/fig-figl3-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Week-long trends experienced by estuarine fishes, divided by trophic guilds. Smoothed lines and shaded areas represent the smoothed trends of the generalized additive model (GAM) and its standard error, respectively.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figl4" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="sem.lenin1_files/figure-html/fig-figl4-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Changes in estuarine fish assemblages in the Gulf of Urabá, divided by trophic guilds. The smoothed white line represents the loess-smoothed trend of maximum weekly abundance (in number of fish).</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
