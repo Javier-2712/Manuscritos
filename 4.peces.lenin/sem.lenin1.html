@@ -106,7 +106,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#residuos" id="toc-residuos" class="nav-link" data-scroll-target="#residuos">2.4 Residuos</a></li>
   <li><a href="#diagnósticos-gráficos-de-los-residuales" id="toc-diagnósticos-gráficos-de-los-residuales" class="nav-link" data-scroll-target="#diagnósticos-gráficos-de-los-residuales">2.5 Diagnósticos gráficos de los residuales</a></li>
   </ul></li>
-  <li><a href="#figuras-para-gremios-tróficos" id="toc-figuras-para-gremios-tróficos" class="nav-link" data-scroll-target="#figuras-para-gremios-tróficos">5. Figuras para gremios tróficos</a></li>
+  </ul></li>
+  <li><a href="#figuras-para-gremios-tróficos" id="toc-figuras-para-gremios-tróficos" class="nav-link" data-scroll-target="#figuras-para-gremios-tróficos">Figuras para gremios tróficos</a>
+  <ul>
+  <li><a href="#figura-de-regresiones-gam" id="toc-figura-de-regresiones-gam" class="nav-link" data-scroll-target="#figura-de-regresiones-gam">1. Figura de regresiones GAM</a></li>
+  <li><a href="#figura-de-áreas-para-gremios-tróficos" id="toc-figura-de-áreas-para-gremios-tróficos" class="nav-link" data-scroll-target="#figura-de-áreas-para-gremios-tróficos">2. Figura de áreas para gremios tróficos</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -131,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <section id="estructura-jerárquica-propuesta" class="level3">
 <h3 class="anchored" data-anchor-id="estructura-jerárquica-propuesta"><strong>Estructura jerárquica propuesta</strong></h3>
-<ol type="1">
+<ul>
 <li><p><strong>Mediciones:</strong></p>
 <ul>
 <li><p><strong>Variables independientes</strong>: Semana de pesca (<strong>Week</strong>), fases lunares (<strong>Moon</strong>), y jornada día-noche (<strong>Time</strong>).</p></li>
@@ -146,12 +150,12 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Gremios tróficos</strong> de peces también como un <strong>efecto aleatorio</strong>.</p></li>
 <li><p>También pueden ser las diferentes <strong>especies</strong> de peces.</p></li>
 </ul></li>
-</ol>
+</ul>
 </section>
 <section id="ecuación-del-modelo-propuesto" class="level3">
 <h3 class="anchored" data-anchor-id="ecuación-del-modelo-propuesto"><strong>Ecuación del modelo propuesto</strong></h3>
 <p>Un modelo lineal mixto con efectos aleatorios puede expresarse como:</p>
-<p><span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Week\)</span> <strong>+</strong> <span class="math inline">\(β_2\)</span> <strong>×</strong> <span class="math inline">\(Moon\)</span> <strong>+</strong> <span class="math inline">\(β_3\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(δ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span></p>
+<p><b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Week\)</span> <strong>+</strong> <span class="math inline">\(β_2\)</span> <strong>×</strong> <span class="math inline">\(Moon\)</span> <strong>+</strong> <span class="math inline">\(β_3\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(δ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
 <p>Dónde:</p>
 <ul>
 <li><p><code>β_0:</code> Intercepto general.</p></li>
@@ -174,11 +178,13 @@ ul.task-list li input[type="checkbox"] {
 <li><p>En este mismo paso se analiza al afecto aleatorio (<strong>trophic guild</strong>), asociado a la <strong>variabilidad entre los gremios tróficos</strong> en cuanto a sus niveles de abundancia, utilizando a la variabilidad del intercepto y del residual del modelo. Este diagnóstico también se hace para el efecto fijo (<strong>Time</strong>), para este caso el día y la noche mostraron un efecto significativo sobre la abundancia de peces, aumentando considerablemente en la noche. En cuanto a la <strong>correlación del efecto fijo con la abundancia</strong>, no se detecta problemas de <strong>colinealidad</strong>.</p></li>
 <li><p>Finalmente los <strong>residuales</strong> del modelo son <strong>homogéneos</strong> (no hay problemas de heterocedasticidad), son independientes (no hay problemas de autocorrelación) y <strong>son simétricos</strong> (posiblemente se cumple el supuesto de normalidad).</p></li>
 <li><p><strong>Paso 3</strong>. Se realizan unas figuras tomadas del mansucrito de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> que sirve de base para los modelos estrusturales - SEM y modelos mixtos jerárquicos de efectos aleatorios, estos últimos aplicados en este análisis.</p></li>
+<li><p><strong>Figuras de los gremios tróficos</strong>. La primera figura (<a href="#fig-figl3">Figure&nbsp;3</a>) se realiza con un <strong>GAM</strong> (modelo aditivo generalizado), siguiendo las recomendaciones de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> para proyectar regresiones no lineales con suavizamiento (<strong>LOESS</strong>) entre la variable dependiente (en este caso, la abundancia estandarizada de peces) y las variables independientes (como <code>Week</code>). Este GAM se usa para visualizar las tendencias temporales (por semanas) de la abundancia entre los diferentes gremios tróficos de peces, mediante regresiones suavizadas.</p></li>
+<li><p>Se realiza también una <strong>figura aplilada</strong> (<a href="#fig-figl4">Figure&nbsp;4</a>) en la que se destaca a los <strong>omnivoros</strong> como el gremio dominante del ecosistema evaluado, resaltando cambios temporales que inciden en la variabilidad de la abundancia total.</p></li>
 </ul>
 <hr>
 </section>
-<section id="modelo-lineal-mixto-de-efectos-aleatorios-lm" class="level2">
-<h2 class="anchored" data-anchor-id="modelo-lineal-mixto-de-efectos-aleatorios-lm">Modelo lineal mixto de efectos aleatorios “lm”</h2>
+<section id="modelo-lineal-mixto-de-efectos-aleatorios-lm" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-lineal-mixto-de-efectos-aleatorios-lm">Modelo lineal mixto de efectos aleatorios “lm”</h3>
 <p>A continuación se realizará un procedimiento paso a paso, para la construcción y análisis de los elementos del modelo más parsimonioso de los datos.</p>
 <section id="paso-1.-selección-del-modelo-más-parsimonioso" class="level4">
 <h4 class="anchored" data-anchor-id="paso-1.-selección-del-modelo-más-parsimonioso">Paso 1. Selección del modelo más parsimonioso</h4>
@@ -354,8 +360,11 @@ Random terms (all models):
 <hr>
 </section>
 </section>
+</section>
 <section id="figuras-para-gremios-tróficos" class="level3">
-<h3 class="anchored" data-anchor-id="figuras-para-gremios-tróficos">5. Figuras para gremios tróficos</h3>
+<h3 class="anchored" data-anchor-id="figuras-para-gremios-tróficos">Figuras para gremios tróficos</h3>
+<section id="figura-de-regresiones-gam" class="level4">
+<h4 class="anchored" data-anchor-id="figura-de-regresiones-gam">1. Figura de regresiones GAM</h4>
 <p>La <a href="#fig-figl3">Figure&nbsp;3</a> los omnivoros y los planctivoros, presentaron tendencias negativas a los largo de las seis semanas del estudio, mientras que los piscivoros mostraron un incremento leve en el aumento de su abundancia. Estos cambios se asocian a un patrón d disminución marcado de la abundancia total hacia la semana 4 y un cambio en el ensamblaje trófico dominado inicialmente por omnívoros al compuesto principalmente por planctivoros (<a href="#fig-figl4">Figure&nbsp;4</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -367,6 +376,10 @@ Random terms (all models):
 </div>
 </div>
 </div>
+</section>
+<section id="figura-de-áreas-para-gremios-tróficos" class="level4">
+<h4 class="anchored" data-anchor-id="figura-de-áreas-para-gremios-tróficos">2. Figura de áreas para gremios tróficos</h4>
+<p>En la <a href="#fig-figl4">Figure&nbsp;4</a> que el ecosistema estudiado es dominado por los <strong>omnivoros</strong>, con proporciones superiores al 75% en las diferentes semanas, aunque disminuye notablemente desde la semana 4. Los <strong>planctivoros</strong> muestran un leve aumento de su abundancia desde la semana 4, quizá por el aumento en la disponibilidad de su recurso. El resto de grupos se mantienen relativamente constantes. El patrón de <strong>abundancia total</strong> (línea blanca suavizada), muestra un descenso hacia la semana 4 y posteriormente un aumento, quizá por la influencia del patrón que se indicó con los <strong>omnívoros</strong>, por ser el gremio dominante.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-figl4" class="quarto-figure quarto-figure-center anchored">
