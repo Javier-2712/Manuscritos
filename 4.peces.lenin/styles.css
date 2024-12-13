@@ -1,0 +1,52 @@
+# Titulos y subtitulos
+
+h1 {
+    color: #eff3ff;  /* Blanco */
+    text-align: left;
+}
+h2 {
+    color: #d83838;  /* Azul */
+    text-align: left;
+}
+h3 {
+    color: #018571;  /* Verde */
+    text-align: left;
+}
+h4 {
+    color: #a6611a;  /* Amarillo */
+    text-align: left;
+}
+h5 {
+    color: #fd8d3c;  /* Gris */
+    text-align: left;
+}
+
+# Listas con viñetas y numeradas
+
+ul {
+    color: #4CAF50;         /* Verde para el texto */
+    font-family: 'Arial', sans-serif; /* Fuente Arial */
+    font-size: 16px;        /* Tamaño de texto */
+    line-height: 1.6;       /* Altura de línea */
+}
+ul li {
+    margin-bottom: 5px;     /* Espacio entre ítems */
+}
+
+ol {
+    color: #0571b0;         /* Azul para el texto */
+    font-family: 'Verdana', sans-serif; /* Fuente Verdana */
+    font-size: 16px;        /* Tamaño de texto */
+    line-height: 1.8;       /* Altura de línea */
+}
+ol li {
+    margin-bottom: 8px;     /* Espacio entre ítems */
+}
+
+
+# Texto justificado
+
+/*-- scss:justify --*/
+body, p, .justified-text {
+  text-align: justify;
+}
