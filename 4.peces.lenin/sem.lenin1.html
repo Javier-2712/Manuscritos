@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-12-12">
+<meta name="dcterms.date" content="2024-12-13">
 <meta name="description" content="Se analizan los datos de un de peces estuarinos del Golfo de Urabá en el que se aplican modelos lm como ruta para analizar la relación en la abundancia entre gremios róficos en diferentes semanas de muestreo.">
 
 <title>Asesoría 2. Modelos Lineales Mixtos de Efectos Aleatorios - lm</title>
@@ -79,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 12, 2024</p>
+        <p class="date">December 13, 2024</p>
       </div>
     </div>
     
@@ -93,11 +93,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Menú flotante</h2>
    
   <ul>
-  <li><a href="#análisis-de-los-resultados" id="toc-análisis-de-los-resultados" class="nav-link active" data-scroll-target="#análisis-de-los-resultados">Análisis de los resultados</a>
-  <ul>
-  <li><a href="#estructura-jerárquica-propuesta" id="toc-estructura-jerárquica-propuesta" class="nav-link" data-scroll-target="#estructura-jerárquica-propuesta"><strong>Estructura jerárquica propuesta</strong></a></li>
-  <li><a href="#ecuación-del-modelo-lineal-propuesto" id="toc-ecuación-del-modelo-lineal-propuesto" class="nav-link" data-scroll-target="#ecuación-del-modelo-lineal-propuesto"><strong>Ecuación del modelo lineal propuesto</strong></a></li>
-  </ul></li>
+  <li><a href="#estructura-jerárquica-propuesta" id="toc-estructura-jerárquica-propuesta" class="nav-link active" data-scroll-target="#estructura-jerárquica-propuesta"><strong>Estructura jerárquica propuesta</strong></a></li>
+  <li><a href="#ecuación-del-modelo-propuesto" id="toc-ecuación-del-modelo-propuesto" class="nav-link" data-scroll-target="#ecuación-del-modelo-propuesto"><strong>Ecuación del modelo propuesto</strong></a></li>
   <li><a href="#modelo-lineal-mixto-de-efectos-aleatorios-lm" id="toc-modelo-lineal-mixto-de-efectos-aleatorios-lm" class="nav-link" data-scroll-target="#modelo-lineal-mixto-de-efectos-aleatorios-lm">Modelo lineal mixto de efectos aleatorios “lm”</a>
   <ul>
   <li><a href="#paso-1.-selección-del-modelo-más-parsimonioso" id="toc-paso-1.-selección-del-modelo-más-parsimonioso" class="nav-link" data-scroll-target="#paso-1.-selección-del-modelo-más-parsimonioso">Paso 1. Selección del modelo más parsimonioso</a></li>
@@ -120,49 +117,50 @@ ul.task-list li input[type="checkbox"] {
 
 
 <hr>
-<section id="análisis-de-los-resultados" class="level2">
-<h2 class="anchored" data-anchor-id="análisis-de-los-resultados">Análisis de los resultados</h2>
+<p>Análisis de los resultados</p>
 <p>El presente ejercicio consiste en el procesamiento inicial de los datos entregados por los profesores <strong>Lenin Florez y Alejandro Sandoval</strong>, para dar respuesta al siguiente requerimiento: “<em>Analizar el efecto de cambios en las fases lunares (<strong>ciclo lunar - Moon</strong>) y horarios de <strong>día vs.&nbsp;noche</strong></em> (<strong><em>Time</em></strong>)<em>, sobre los patrones de <strong>abundancia en gremios tróficos de peces estuarinos, censados en el Golfo de Urabá</strong></em>”. Se pretende analizar que características temporales como las semanas de pesca (<strong>week</strong>), las fases lunares (<strong>moon</strong>) y las jornadas día-noche (<strong>time</strong>) afectan los patrones de abundancias en los diferentes <strong>gremios tróficos</strong> de peces estuarino en distintas zonas del Golfo de Urabá.</p>
 <ul>
 <li><p><strong>Estructura de los datos:</strong></p>
 <ul>
-<li><p>Los datos tienen <strong>variables categóricas</strong> (como fases lunares y las jornadas día-noche)</p></li>
-<li><p><strong>Las abundancias</strong> de los peces están organizadas por <strong>gremios tróficos</strong>.</p></li>
-<li><p>Existe una <strong>posible dependencia o anidamiento dentro de cada combinación de niveles</strong> (por ejemplo, semanas dentro de zonas, fases lunares y gremios tróficos).</p></li>
-</ul></li>
-<li><p><strong>Justificación:</strong></p>
-<ul>
-<li>Las <strong>estructuras jerárquicas</strong> modelan adecuadamente la dependencia de los datos, por ejemplo, al considerar que las <strong>observaciones dentro de una misma jornada de día o de noche no son totalmente independientes</strong>.</li>
-<li>Los <strong>efectos aleatorios</strong> permiten modelar la variabilidad no explicada por los predictores fijos y capturan patrones específicos de grupos (ej. zonas o <strong>gremios tróficos</strong>).</li>
+<li><p>Los datos tienen <strong>variables categóricas</strong> (como Semanas, fases lunares y jornadas)</p></li>
+<li><p><strong>Las abundancias</strong> de los peces están organizadas por especies y <strong>gremios tróficos</strong>.</p></li>
+<li><p>Existe una <strong>posible dependencia dentro de cada combinación de niveles</strong> (por ejemplo, abundancias dentro de semanas, de zonas, de fases lunares y de gremios tróficos).</p></li>
+<li><p>Las <strong>estructuras jerárquicas modelan adecuadamente la dependencia de los datos</strong>, por ejemplo, al considerar que las <strong>observaciones dentro de una misma semana, fase lunar o jornada no son independientes</strong>.</p></li>
+<li><p>Los <strong>efectos aleatorios</strong> permiten modelar la variabilidad no explicada por los predictores fijos y capturan patrones específicos de grupos (ej. especies o gremios tróficos).</p></li>
 </ul></li>
 </ul>
 <section id="estructura-jerárquica-propuesta" class="level3">
 <h3 class="anchored" data-anchor-id="estructura-jerárquica-propuesta"><strong>Estructura jerárquica propuesta</strong></h3>
-<ul>
-<li><p><strong>Nivel 1 (mediciones):</strong></p>
+<ol type="1">
+<li><p><strong>Mediciones:</strong></p>
 <ul>
 <li><p><strong>Variables independientes</strong>: Semana de pesca (<strong>Week</strong>), fases lunares (<strong>Moon</strong>), y jornada día-noche (<strong>Time</strong>).</p></li>
 <li><p><strong>Variable dependiente</strong>: Abundancia de peces (Abundance).</p></li>
 </ul></li>
-<li><p><strong>Nivel 2 (anidamiento):</strong></p>
+<li><p><strong>Anidamiento:</strong></p>
 <ul>
-<li><p><strong>Zonas</strong> del Golfo de Urabá como <strong>efectos aleatorios</strong> (*<strong>no se tabularon</strong> pero pueden incluirse al modelo).</p></li>
-<li><p><strong>Gremios tróficos</strong> de peces también como un <strong>efecto aleatorio</strong>.</p></li>
+<li><strong>Zonas</strong> del Golfo de Urabá como <strong>efectos aleatorios</strong> (*<strong>no se tabularon</strong> pero pueden incluirse al modelo).</li>
 </ul></li>
-</ul>
+<li><p><strong>Factores aleatorios</strong>:</p>
+<ul>
+<li><p><strong>Gremios tróficos</strong> de peces también como un <strong>efecto aleatorio</strong>.</p></li>
+<li><p>También pueden ser las diferentes <strong>especies</strong> de peces.</p></li>
+</ul></li>
+</ol>
 </section>
-<section id="ecuación-del-modelo-lineal-propuesto" class="level3">
-<h3 class="anchored" data-anchor-id="ecuación-del-modelo-lineal-propuesto"><strong>Ecuación del modelo lineal propuesto</strong></h3>
-<p>Un <strong>modelo lineal mixto con efectos aleatorios</strong> puede expresarse como:</p>
-<p><b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Week\)</span> <strong>+</strong> <span class="math inline">\(β_2\)</span> <strong>×</strong> <span class="math inline">\(Moon\)</span> <strong>+</strong> <span class="math inline">\(β_3\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(δ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
+<section id="ecuación-del-modelo-propuesto" class="level3">
+<h3 class="anchored" data-anchor-id="ecuación-del-modelo-propuesto"><strong>Ecuación del modelo propuesto</strong></h3>
+<p>Un modelo lineal mixto con efectos aleatorios puede expresarse como:</p>
+<p><span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Week\)</span> <strong>+</strong> <span class="math inline">\(β_2\)</span> <strong>×</strong> <span class="math inline">\(Moon\)</span> <strong>+</strong> <span class="math inline">\(β_3\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(δ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span></p>
 <p>Dónde:</p>
 <ul>
-<li><p><code>$β_0$:</code> Intercepto general.</p></li>
-<li><p><code>$β_1,β_2,β_3$:</code> Coeficientes de los efectos fijos para las semanas, fases lunares, y jornadas día-noche.</p></li>
-<li><p><code>$γ$ :</code> Efecto aleatorio de las zonas.</p></li>
-<li><p><code>$δ$:</code> Efecto aleatorio del gremio trófico.</p></li>
-<li><p><code>$ε$:</code> Error residual.</p></li>
+<li><p><code>β_0:</code> Intercepto general.</p></li>
+<li><p><code>β_1,β_2,β_3:</code> Coeficientes de los efectos fijos para las semanas, fases lunares, y jornadas día-noche.</p></li>
+<li><p><code>γ:</code> Efecto aleatorio de las zonas.</p></li>
+<li><p><code>δ:</code> Efecto aleatorio del gremio trófico.</p></li>
+<li><p><code>ε:</code> Error residual.</p></li>
 </ul>
+<hr>
 <p><strong>Área de estudio</strong>: Zonas del Golfo de Urabá en Colombia.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -178,7 +176,6 @@ ul.task-list li input[type="checkbox"] {
 <li><p><strong>Paso 3</strong>. Se realizan unas figuras tomadas del mansucrito de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> que sirve de base para los modelos estrusturales - SEM y modelos mixtos jerárquicos de efectos aleatorios, estos últimos aplicados en este análisis.</p></li>
 </ul>
 <hr>
-</section>
 </section>
 <section id="modelo-lineal-mixto-de-efectos-aleatorios-lm" class="level2">
 <h2 class="anchored" data-anchor-id="modelo-lineal-mixto-de-efectos-aleatorios-lm">Modelo lineal mixto de efectos aleatorios “lm”</h2>
@@ -207,10 +204,10 @@ ul.task-list li input[type="checkbox"] {
 <p><b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
 <p>Dónde:</p>
 <ul>
-<li><p><code>$β_0$:</code> Intercepto general.</p></li>
-<li><p><code>$β_1$:</code> Coeficientes de los efectos fijos para Horarios día-noche (time).</p></li>
-<li><p><code>$γ$ :</code> Efecto aleatorio del gremio trófico.</p></li>
-<li><p><code>$ε$:</code> Error residual.</p></li>
+<li><p><code>β_0:</code> Intercepto general.</p></li>
+<li><p><code>β_1:</code> Coeficientes de los efectos fijos para Horarios día-noche (time).</p></li>
+<li><p><code>γ :</code> Efecto aleatorio del gremio trófico.</p></li>
+<li><p><code>ε:</code> Error residual.</p></li>
 </ul>
 <p><strong>Opción B. Selección automatizada</strong>. El paquete <strong>MuMIn</strong> tambien permite identificar el mejor modelo, seleccionando al que presente el menor AIC. Para este caso el resultado es el mismo al aterior, el modelo es el que solo incluye a los horarios día-noche (modelo 3), con un <strong>AIC</strong>: 315.3.</p>
 <div class="cell">
