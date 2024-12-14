@@ -109,13 +109,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#por-niveles-de-ups" id="toc-por-niveles-de-ups" class="nav-link" data-scroll-target="#por-niveles-de-ups">Por niveles de UPS</a></li>
   <li><a href="#por-niveles-de-temperatura" id="toc-por-niveles-de-temperatura" class="nav-link" data-scroll-target="#por-niveles-de-temperatura">Por niveles de Temperatura</a></li>
   </ul></li>
-  <li><a href="#curvas-rad-fases-lunares-y-horarios-del-día" id="toc-curvas-rad-fases-lunares-y-horarios-del-día" class="nav-link" data-scroll-target="#curvas-rad-fases-lunares-y-horarios-del-día">Curvas RAD (Fases lunares y Horarios del día)</a>
+  <li><a href="#curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas" id="toc-curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas" class="nav-link" data-scroll-target="#curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas">Curvas RAD (Fases lunares, Horarios día-noche y por zonas)</a>
   <ul>
   <li><a href="#rad-por-fases-lunares-moon" id="toc-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#rad-por-fases-lunares-moon">RAD por fases lunares (Moon)</a></li>
   <li><a href="#rad-por-horarios-del-día-time" id="toc-rad-por-horarios-del-día-time" class="nav-link" data-scroll-target="#rad-por-horarios-del-día-time">RAD por horarios del día (Time)</a></li>
   <li><a href="#rad-por-zonas-zone" id="toc-rad-por-zonas-zone" class="nav-link" data-scroll-target="#rad-por-zonas-zone">RAD por Zonas (Zone)</a></li>
   </ul></li>
-  <li><a href="#ajuste-de-los-modelos-rad" id="toc-ajuste-de-los-modelos-rad" class="nav-link" data-scroll-target="#ajuste-de-los-modelos-rad">Ajuste de los modelos RAD</a>
+  <li><a href="#ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas" id="toc-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas" class="nav-link" data-scroll-target="#ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas">Ajuste de las curvas RAD (Fases lunares, Horarios día-noche y por zonas)</a>
   <ul>
   <li><a href="#ajuste-del-rad-por-fases-lunares-moon" id="toc-ajuste-del-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#ajuste-del-rad-por-fases-lunares-moon">Ajuste del RAD por fases lunares (Moon)</a></li>
   <li><a href="#figuras-de-los-modelos-rad" id="toc-figuras-de-los-modelos-rad" class="nav-link" data-scroll-target="#figuras-de-los-modelos-rad">Figuras de los modelos RAD</a></li>
@@ -481,8 +481,8 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
 </b></section><b style="color:#e78ac3;">
 </b></section><b style="color:#e78ac3;">
-</b><section id="curvas-rad-fases-lunares-y-horarios-del-día" class="level4"><b style="color:#e78ac3;">
-<h4 class="anchored" data-anchor-id="curvas-rad-fases-lunares-y-horarios-del-día">Curvas RAD (Fases lunares y Horarios del día)</h4>
+</b><section id="curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas" class="level4"><b style="color:#e78ac3;">
+<h4 class="anchored" data-anchor-id="curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas">Curvas RAD (Fases lunares, Horarios día-noche y por zonas)</h4>
 </b><p><b style="color:#e78ac3;"></b></p>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b><section id="rad-por-fases-lunares-moon" class="level5"><b style="color:#66c2a5;">
@@ -541,8 +541,8 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
 </b></section><b style="color:#4daf4a;">
 </b></section><b style="color:#4daf4a;">
-</b><section id="ajuste-de-los-modelos-rad" class="level4"><b style="color:#4daf4a;">
-<h4 class="anchored" data-anchor-id="ajuste-de-los-modelos-rad">Ajuste de los modelos RAD</h4>
+</b><section id="ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas" class="level4"><b style="color:#4daf4a;">
+<h4 class="anchored" data-anchor-id="ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche-y-por-zonas">Ajuste de las curvas RAD (Fases lunares, Horarios día-noche y por zonas)</h4>
 </b><p><b style="color:#4daf4a;"></b></p>
 <p>Los <strong>modelos de distribución de rango-abundancia</strong> (RAD, Rank-Abundance Distribution) siguen una <strong>distribución</strong> <strong>Poisson</strong> como base estadística, por ser datos discretos representados por valores de abundancia de las especies censadas. En este sentido los cinco modelos que se describen a continuación corresponde a esta familia de modelos generalizados (<strong>Null,</strong> <strong>Preemption, log-normal, Zipf y Mandelbrot</strong>).</p>
 <p>La familia <strong>Poisson</strong> es parte de los <strong>Modelos Lineales Generalizados (GLMs)</strong>, como una opción flexible para modelar datos que no necesariamente siguen una distribución normal. Esta familia es adecuada para modelar datos de conteo como las abundancias de especies. Sin embargo, su aplicabilidad depende de que los datos cumplan con supuestos de independencia y de homogeneidad de varianzas de las medias. Si lo anterior no se cumple, podría ser necesario considerar alternativas más flexibles como la <strong>Binomial Negativa</strong>.</p>
@@ -555,6 +555,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <div class="cell">
 
 </div>
+<p>A continuación se tabulan los resultados con los cinco modelos para cada <strong>fase lunar</strong>, lo importante es seleccionar para cada caso, el modelo que presente el menor <strong>AIC</strong> y <strong>BIC</strong>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -630,6 +631,7 @@ Mandelbrot  0.34422 -1.1533  1.7583e-06  1.7478  55.9474 58.4471</code></pre>
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<hr>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></div></section><b style="color:#66c2a5;">
 </b><section id="ajuste-del-rad-por-horarios-día-noche-time" class="level5"><b style="color:#66c2a5;">
@@ -638,6 +640,7 @@ Mandelbrot  0.34422 -1.1533  1.7583e-06  1.7478  55.9474 58.4471</code></pre>
 <div class="cell">
 
 </div>
+<p>A continuación se tabulan los resultados con los cinco modelos para cada <strong>jornada</strong>, lo importante es seleccionar para cada caso, el modelo que presente el menor <strong>AIC</strong> y <strong>BIC</strong>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -669,7 +672,6 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <p><strong>Modelo 1: Day. Distribución predominante: Lognormal (AIC = 72.2)</strong>, seguido muy de cerca por <strong>Zipf (AIC = 72.53)</strong>. La distribución <strong>Lognormal</strong> sugiere que, en el horario diurno, las especies tienen una estructura de abundancia equilibrada con predominancia de unas pocas especies más abundantes y muchas de abundancias similares. Esto puede estar asociado con una mayor diversificación de nichos y de recursos tróficos. La similitud en el ajuste con el modelo <strong>Zipf</strong> podría indicar que hay una ligera jerarquización en la comunidad, pero no tan marcada.</p>
 <p><strong>Modelo 2: Night. Distribución predominante: Mandelbrot (AIC = 140.47)</strong>, seguido por <strong>Preemption (AIC = 147.06)</strong>. El modelo <strong>Mandelbrot</strong> indica que este ensamblaje en la noche, prsenta una estructura compleja, caracterizada por una jerarquía de en la dominancia de las especies de peces, pero más flexible que el modelo Zipf. Esto puede reflejar dinámicas de abundancia influenciadas por interacciones ecológicas nocturnas, como cambios en la obtención de recursos, el efecto de la depredación, o comportamiento de las especies. El modelo <strong>Preemption</strong> también que puede haber una fuerte repartición de los recursos, donde unas pocas especies dominan significativamente.</p>
 <p>De acuerdo a <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a>, el ajuste <em>Premption,</em> se denomina de nicho preferencial o de serie geométrica y se asocia a ensamblajes con algunos taxones que dominan por sus mayores densidades de indiviuos, especialmente en etapas iniciales de las sucesiones. Según <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a> y (<a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Magurran, 2004</a>), en el ajuste Mandelbrot se asocia a ensamblajes con pocas especies dominantes y en etapas sucesionales iniciales, considerado como uno de los mejores modelos para describir la distribución de la abundancia de especies.</p>
-<hr>
 <p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
 </b></div></section><b style="color:#4daf4a;">
 </b><section id="figuras-de-los-modelos-rad-1" class="level5"><b style="color:#4daf4a;">
@@ -697,6 +699,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <div class="cell">
 
 </div>
+<p>A continuación se tabulan los resultados con los cinco modelos para cada <strong>zona</strong>, lo importante es seleccionar para cada caso, el modelo que presente el menor <strong>AIC</strong> y <strong>BIC</strong>.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
