@@ -23,69 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -600,6 +537,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 </div>
 </div>
 <hr>
+<hr>
 <p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
 </b></section><b style="color:#4daf4a;">
 </b></section><b style="color:#4daf4a;">
@@ -618,15 +556,6 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 
 </div>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelos para el ajuste de las curvas RAD</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> <span class="fu">data.frame</span>(datos1)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 1</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mod.Wan.cres  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">2</span>])</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mod.Wan.cres    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -639,12 +568,6 @@ Lognormal   1.4245   1.3058           7.7456  98.2094 100.7256
 Zipf        0.299   -1.1081          17.8514 108.3151 110.8313
 Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 2</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mod.Wan.gibb  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">3</span>])</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mod.Wan.gibb    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -657,12 +580,6 @@ Lognormal   1.4311   1.5112          19.674  102.988 105.345
 Zipf        0.36315 -1.2648          34.267  117.582 119.938
 Mandelbrot  109.7   -3.1539  5.5868  17.551  102.866 106.400</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 3</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mod.Wax.gibb  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">4</span>])</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mod.Wax.gibb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -675,12 +592,6 @@ Lognormal   1.258    1.0249              2.8758  48.2945 49.4244
 Zipf        0.33416 -1.0596              2.8938  48.3125 49.4424
 Mandelbrot  0.33417 -1.0596  8.6624e-06  2.8938  50.3125 52.0073</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 4</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mod.Wax.cres  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">5</span>])</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mod.Wax.cres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -707,15 +618,6 @@ Mandelbrot  0.34422 -1.1533  1.7583e-06  1.7478  55.9474 58.4471</code></pre>
 <h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad">Figuras de los modelos RAD</h5>
 </b><p><b style="color:#4daf4a;"></b></p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.cres, <span class="at">main=</span><span class="st">"Wan.cres"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.gibb, <span class="at">main=</span><span class="st">"Wan.gibb"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.gibb, <span class="at">main=</span><span class="st">"Wax. gibb"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.cres, <span class="at">main=</span><span class="st">"Wax.cres"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -724,19 +626,6 @@ Mandelbrot  0.34422 -1.1533  1.7583e-06  1.7478  55.9474 58.4471</code></pre>
 
 <p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada fase lunar. A continuación se grafican los diagramas de mayor ajuste.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.cres<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wan.cres - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.gibb<span class="sc">$</span>models<span class="sc">$</span>Preemption, </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wan.gibb - Mandelbrot"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.gibb<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wax. gibb - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.cres<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wax.cres - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -750,15 +639,6 @@ Mandelbrot  0.34422 -1.1533  1.7583e-06  1.7478  55.9474 58.4471</code></pre>
 
 </div>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelos para el ajuste de las curvas RAD</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> <span class="fu">data.frame</span>(datos1)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 1</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mod.day  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">2</span>])</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>mod.day </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -771,12 +651,6 @@ Lognormal   1.1935   1.4004           7.7767  72.2090 74.0979
 Zipf        0.37692 -1.2647           8.1032  72.5355 74.4244
 Mandelbrot  0.87051 -1.5987  0.75701  7.1920  73.6243 76.4576</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 2</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mod.night  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">3</span>])</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mod.night   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -802,13 +676,6 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad-1">Figuras de los modelos RAD</h5>
 </b><p><b style="color:#4daf4a;"></b></p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">cex.main=</span><span class="dv">1</span>, <span class="at">cex.lab=</span><span class="fl">0.8</span>, <span class="at">cex.axis=</span><span class="fl">0.7</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.day, <span class="at">main=</span><span class="st">"Day"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.night, <span class="at">main=</span><span class="st">"Night"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -817,15 +684,6 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 
 <p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada horario evaluado. A continuación se grafican los diagramas de mayor ajuste.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.day<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Day - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.night<span class="sc">$</span>models<span class="sc">$</span>Preemption, </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Night - Mandelbrot"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -840,15 +698,6 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 
 </div>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelos para el ajuste de las curvas RAD</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> <span class="fu">data.frame</span>(datos1)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 1</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>mod.zone1  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">2</span>])</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>mod.zone1   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -861,12 +710,6 @@ Lognormal   1.4548      1.2709          20.4063  99.3614 101.6324
 Zipf        0.30043    -1.0908          37.1589 116.1140 118.3850
 Mandelbrot  2.5606e+09 -7.1813  24.198   4.5651  85.5202  88.9267</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 2</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mod.zone2  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">3</span>])</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mod.zone2   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -879,12 +722,6 @@ Lognormal   1.4571      1.2516          22.464  114.052 116.644
 Zipf        0.27366    -1.0461          42.368  133.956 136.548
 Mandelbrot  8.0713e+08 -6.6708  26.793  13.417  107.005 110.892</code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 3</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mod.zone3  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">4</span>])</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mod.zone3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 RAD models, family poisson 
@@ -909,37 +746,25 @@ Mandelbrot  2.318   -2.1289  1.2439   2.4291  72.4335  75.4207</code></pre>
 <h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad-2">Figuras de los modelos RAD</h5>
 </b><p><b style="color:#4daf4a;"></b></p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone1, <span class="at">main=</span><span class="st">"Zone 1"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone2, <span class="at">main=</span><span class="st">"Zone 2"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone3, <span class="at">main=</span><span class="st">"Zone 3"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-36-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div style="text-align: justify">
 
 <p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada zona evaluada. A continuación se grafican los diagramas de mayor ajuste.</p>
 <div class="cell">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone1<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Zone1 - Preemption"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone2<span class="sc">$</span>models<span class="sc">$</span>Preemption, </span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Zone2 - Preemption"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone3<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Zone3 - Mandelbrot"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output-display">
 <p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
 </div>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-37-2.png" class="img-fluid" width="672"></p>
 </div>
+</div>
+<hr>
 <hr>
 <p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
 </b></div></section><b style="color:#e78ac3;">
