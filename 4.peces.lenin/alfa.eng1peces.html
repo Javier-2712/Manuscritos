@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-12-13">
+<meta name="dcterms.date" content="2024-12-14">
 <meta name="description" content="Análisis de datos de diversidad alfa de peces estuarinos y su relación con condiciones ambientales.">
 
 <title>Asesoría 2. Análisis de diversidad alfa</title>
@@ -23,6 +23,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -77,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 13, 2024</p>
+        <p class="date">December 14, 2024</p>
       </div>
     </div>
     
@@ -114,6 +177,15 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#rad-por-fases-lunares-moon" id="toc-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#rad-por-fases-lunares-moon">RAD por fases lunares (Moon)</a></li>
   <li><a href="#rad-por-horarios-del-día-time" id="toc-rad-por-horarios-del-día-time" class="nav-link" data-scroll-target="#rad-por-horarios-del-día-time">RAD por horarios del día (Time)</a></li>
   <li><a href="#rad-por-zonas-zone" id="toc-rad-por-zonas-zone" class="nav-link" data-scroll-target="#rad-por-zonas-zone">RAD por Zonas (Zone)</a></li>
+  </ul></li>
+  <li><a href="#ajuste-de-los-modelos-rad" id="toc-ajuste-de-los-modelos-rad" class="nav-link" data-scroll-target="#ajuste-de-los-modelos-rad">Ajuste de los modelos RAD</a>
+  <ul>
+  <li><a href="#ajuste-del-rad-por-fases-lunares-moon" id="toc-ajuste-del-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#ajuste-del-rad-por-fases-lunares-moon">Ajuste del RAD por fases lunares (Moon)</a></li>
+  <li><a href="#figuras-de-los-modelos-rad" id="toc-figuras-de-los-modelos-rad" class="nav-link" data-scroll-target="#figuras-de-los-modelos-rad">Figuras de los modelos RAD</a></li>
+  <li><a href="#ajuste-del-rad-por-horarios-día-noche-time" id="toc-ajuste-del-rad-por-horarios-día-noche-time" class="nav-link" data-scroll-target="#ajuste-del-rad-por-horarios-día-noche-time">Ajuste del RAD por horarios día-noche (Time)</a></li>
+  <li><a href="#figuras-de-los-modelos-rad-1" id="toc-figuras-de-los-modelos-rad-1" class="nav-link" data-scroll-target="#figuras-de-los-modelos-rad-1">Figuras de los modelos RAD</a></li>
+  <li><a href="#ajuste-del-rad-por-zonas-zone" id="toc-ajuste-del-rad-por-zonas-zone" class="nav-link" data-scroll-target="#ajuste-del-rad-por-zonas-zone">Ajuste del RAD por zonas (Zone)</a></li>
+  <li><a href="#figuras-de-los-modelos-rad-2" id="toc-figuras-de-los-modelos-rad-2" class="nav-link" data-scroll-target="#figuras-de-los-modelos-rad-2">Figuras de los modelos RAD</a></li>
   </ul></li>
   <li><a href="#diversidad-alfa---propuesta-de-chao-et-al.-2020" id="toc-diversidad-alfa---propuesta-de-chao-et-al.-2020" class="nav-link" data-scroll-target="#diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</a>
   <ul>
@@ -528,8 +600,349 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 </div>
 </div>
 <hr>
+<p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
+</b></section><b style="color:#4daf4a;">
+</b></section><b style="color:#4daf4a;">
+</b><section id="ajuste-de-los-modelos-rad" class="level4"><b style="color:#4daf4a;">
+<h4 class="anchored" data-anchor-id="ajuste-de-los-modelos-rad">Ajuste de los modelos RAD</h4>
+</b><p><b style="color:#4daf4a;"></b></p>
+<p>Los <strong>modelos de distribución de rango-abundancia</strong> (RAD, Rank-Abundance Distribution) siguen una <strong>distribución</strong> <strong>Poisson</strong> como base estadística, por ser datos discretos representados por valores de abundancia de las especies censadas. En este sentido los cinco modelos que se describen a continuación corresponde a esta familia de modelos logísticos (<strong>Null,</strong> <strong>Preemption, log-normal, Zipf y Mandelbrot</strong>).</p>
+<p>La familia <strong>Poisson</strong> es parte de los <strong>Modelos Lineales Generalizados (GLMs)</strong>, como una opción flexible para modelar datos que no necesariamente siguen una distribución normal. Esta familia es adecuada para modelar datos de conteo como las abundancias de especies. Sin embargo, su aplicabilidad depende de que los datos cumplan con supuestos de independencia y de homogeneidad de varianzas de las medias. Si lo anterior no se cumple, podría ser necesario considerar alternativas más flexibles como la <strong>Binomial Negativa</strong>.</p>
+<p>El comando <code>radfit</code> de R (ajuste de Modelos - RAD), compara los cinco modelos mencionados: <strong>Null,</strong> <strong>Preemption, log-normal, Zipf y Mandelbrot</strong>, utilizando los criterios de información de Akaike (<code>AIC</code>) y los Bayesianos o de Schwartz (<code>BIC</code>). Los modelos RAD que se ajustan mejor a los datos, son los que presenten <strong>menor AIC y BIC</strong>.</p>
+<p>En este sentido, los modelos evaluados (Preemption, Lognormal, Zipf, Mandelbrot) asumen la misma familia estadística (Poisson) para garantizar consistencia en los cálculos y comparaciones con trabajos realizados en muestras o ensamblajes similares. La elección de la familia estadística afecta la forma en que se calculan los criterios AIC y el BIC, permitiendo una evaluación equilibrada entre los modelos.</p>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b><section id="ajuste-del-rad-por-fases-lunares-moon" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="ajuste-del-rad-por-fases-lunares-moon">Ajuste del RAD por fases lunares (Moon)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelos para el ajuste de las curvas RAD</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> <span class="fu">data.frame</span>(datos1)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>mod.Wan.cres  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">2</span>])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>mod.Wan.cres    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 26, total abundance 233
+
+           par1     par2    par3    Deviance AIC      BIC     
+Null                                 39.5871 126.0509 126.0509
+Preemption  0.17654                  21.6136 110.0774 111.3355
+Lognormal   1.4245   1.3058           7.7456  98.2094 100.7256
+Zipf        0.299   -1.1081          17.8514 108.3151 110.8313
+Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mod.Wan.gibb  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">3</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mod.Wan.gibb    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 24, total abundance 274
+
+           par1     par2    par3    Deviance AIC     BIC    
+Null                                 93.127  172.441 172.441
+Preemption  0.22873                  30.018  111.333 112.511
+Lognormal   1.4311   1.5112          19.674  102.988 105.345
+Zipf        0.36315 -1.2648          34.267  117.582 119.938
+Mandelbrot  109.7   -3.1539  5.5868  17.551  102.866 106.400</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 3</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mod.Wax.gibb  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">4</span>])</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>mod.Wax.gibb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 13, total abundance 72
+
+           par1     par2    par3        Deviance AIC     BIC    
+Null                                     6.0994  47.5182 47.5182
+Preemption  0.23331                      7.8975  51.3162 51.8812
+Lognormal   1.258    1.0249              2.8758  48.2945 49.4244
+Zipf        0.33416 -1.0596              2.8938  48.3125 49.4424
+Mandelbrot  0.33417 -1.0596  8.6624e-06  2.8938  50.3125 52.0073</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 4</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>mod.Wax.cres  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">5</span>])</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>mod.Wax.cres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 17, total abundance 70
+
+           par1     par2    par3        Deviance AIC     BIC    
+Null                                    14.1116  62.3112 62.3112
+Preemption  0.21242                     14.1658  64.3654 65.1986
+Lognormal   0.80179  1.1825              5.4251  57.6247 59.2911
+Zipf        0.34422 -1.1533              1.7478  53.9474 55.6139
+Mandelbrot  0.34422 -1.1533  1.7583e-06  1.7478  55.9474 58.4471</code></pre>
+</div>
+</div>
+<div style="text-align: justify">
+
+<p><strong>Modelo 1: Wan.cres. Distribución predominante: Lognormal (AIC = 102.9).</strong> El patrón lognormal sugiere que el ensablaje de peces está estructurado de forma relativamente equilibrada, donde hay unas pocas especies muy abundantes y muchas especies con abundancias intermedias o bajas. Esto puede reflejar un entorno donde los recursos están repartidos en varios nichos trógicos.</p>
+<p><strong>Modelo 2: Wan.gibb. Distribución predominante: Zipf (AIC = 48.29).</strong> Los modelos Lognormal (48.29) y Zipf (48.31) tienen valores de AIC muy similares. Los modelos ZIP se asocian a ensamblajes en los que las especies dominantes ejercen el contro sobre los recursos. Esto se asocia a un patrón jerárquico, donde una o pocas especies dominan en abundancia. Esto puede reflejar mecanismos de competencia en los nichos tróficos.</p>
+<p><strong>Modelo 3: Wax.gibb. Distribución predominante: Zipf (AIC = 53.94).</strong> Aquí, el modelo Zipf es claramente el de mejor ajuste.</p>
+<p><strong>Modelo 4: Wax.cres. Distribución predominante: Lognormal (AIC = 102.86).</strong> El modelo Lognormal (102.86) es el mejor ajustado, muy cercano al modelo Mandelbrot (106.400).</p>
+<p>Finalmente se puede presentar mayor competencia durante las fases lunares Wan.gibb y Wax.gib, en el resto de fases la competencia disminuye y el ensamblaje es más equilibrado en cuanto al uso del recurso, quiza por su mayor disponibilidad. De acuerdo a <a href="#0">Ibañez et al.&nbsp;(2006)</a>, las distribuciones <strong>lognormales</strong>, aplican a ensamblajes estables (sin perturbaciones) y/o a oportunistas.</p>
+<p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
+</b></div></section><b style="color:#4daf4a;">
+</b><section id="figuras-de-los-modelos-rad" class="level5"><b style="color:#4daf4a;">
+<h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad">Figuras de los modelos RAD</h5>
+</b><p><b style="color:#4daf4a;"></b></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.cres, <span class="at">main=</span><span class="st">"Wan.cres"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.gibb, <span class="at">main=</span><span class="st">"Wan.gibb"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.gibb, <span class="at">main=</span><span class="st">"Wax. gibb"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.cres, <span class="at">main=</span><span class="st">"Wax.cres"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="text-align: justify">
+
+<p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada fase lunar. A continuación se grafican los diagramas de mayor ajuste.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.cres<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wan.cres - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wan.gibb<span class="sc">$</span>models<span class="sc">$</span>Preemption, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wan.gibb - Mandelbrot"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.gibb<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wax. gibb - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.Wax.cres<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Wax.cres - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></div></section><b style="color:#66c2a5;">
+</b><section id="ajuste-del-rad-por-horarios-día-noche-time" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="ajuste-del-rad-por-horarios-día-noche-time">Ajuste del RAD por horarios día-noche (Time)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelos para el ajuste de las curvas RAD</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> <span class="fu">data.frame</span>(datos1)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 1</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>mod.day  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">2</span>])</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>mod.day </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 19, total abundance 147
+
+           par1     par2    par3     Deviance AIC     BIC    
+Null                                 37.4963  97.9286 97.9286
+Preemption  0.24107                  22.3261  84.7584 85.7028
+Lognormal   1.1935   1.4004           7.7767  72.2090 74.0979
+Zipf        0.37692 -1.2647           8.1032  72.5355 74.4244
+Mandelbrot  0.87051 -1.5987  0.75701  7.1920  73.6243 76.4576</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 2</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mod.night  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">3</span>])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mod.night   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 32, total abundance 502
+
+           par1        par2    par3    Deviance AIC     BIC    
+Null                                   209.072  318.126 318.126
+Preemption  0.19667                     36.012  147.066 148.532
+Lognormal   1.6935      1.5363          69.321  182.375 185.307
+Zipf        0.32326    -1.2015         119.887  232.941 235.873
+Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
+</div>
+</div>
+<div style="text-align: justify">
+
+<p><strong>Modelo 1: Day. Distribución predominante: Lognormal (AIC = 72.2)</strong>, seguido muy de cerca por <strong>Zipf (AIC = 72.53)</strong>. La distribución <strong>Lognormal</strong> sugiere que, en el horario diurno, las especies tienen una estructura de abundancia equilibrada con predominancia de unas pocas especies más abundantes y muchas de abundancias similares. Esto puede estar asociado con una mayor diversificación de nichos y de recursos tróficos. La similitud en el ajuste con el modelo <strong>Zipf</strong> podría indicar que hay una ligera jerarquización en la comunidad, pero no tan marcada.</p>
+<p><strong>Modelo 2: Night. Distribución predominante: Mandelbrot (AIC = 140.47)</strong>, seguido por <strong>Preemption (AIC = 147.06)</strong>. El modelo <strong>Mandelbrot</strong> indica que este ensamblaje en la noche, prsenta una estructura compleja, caracterizada por una jerarquía de en la dominancia de las especies de peces, pero más flexible que el modelo Zipf. Esto puede reflejar dinámicas de abundancia influenciadas por interacciones ecológicas nocturnas, como cambios en la obtención de recursos, el efecto de la depredación, o comportamiento de las especies. El modelo <strong>Preemption</strong> también que puede haber una fuerte repartición de los recursos, donde unas pocas especies dominan significativamente.</p>
+<p>De acuerdo a <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a>, el ajuste <em>Premption,</em> se denomina de nicho preferencial o de serie geométrica y se asocia a ensamblajes con algunos taxones que dominan por sus mayores densidades de indiviuos, especialmente en etapas iniciales de las sucesiones. Según <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a> y (<a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Magurran, 2004</a>), en el ajuste Mandelbrot se asocia a ensamblajes con pocas especies dominantes y en etapas sucesionales iniciales, considerado como uno de los mejores modelos para describir la distribución de la abundancia de especies.</p>
+<hr>
+<p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
+</b></div></section><b style="color:#4daf4a;">
+</b><section id="figuras-de-los-modelos-rad-1" class="level5"><b style="color:#4daf4a;">
+<h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad-1">Figuras de los modelos RAD</h5>
+</b><p><b style="color:#4daf4a;"></b></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>), <span class="at">cex.main=</span><span class="dv">1</span>, <span class="at">cex.lab=</span><span class="fl">0.8</span>, <span class="at">cex.axis=</span><span class="fl">0.7</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.day, <span class="at">main=</span><span class="st">"Day"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.night, <span class="at">main=</span><span class="st">"Night"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="text-align: justify">
+
+<p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada horario evaluado. A continuación se grafican los diagramas de mayor ajuste.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.day<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Day - log-normal"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.night<span class="sc">$</span>models<span class="sc">$</span>Preemption, </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Night - Mandelbrot"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
+</b></div></section><b style="color:#66c2a5;">
+</b><section id="ajuste-del-rad-por-zonas-zone" class="level5"><b style="color:#66c2a5;">
+<h5 class="anchored" data-anchor-id="ajuste-del-rad-por-zonas-zone">Ajuste del RAD por zonas (Zone)</h5>
+</b><p><b style="color:#66c2a5;"></b></p>
+<div class="cell">
+
+</div>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Modelos para el ajuste de las curvas RAD</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>datos1 <span class="ot">=</span> <span class="fu">data.frame</span>(datos1)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 1</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>mod.zone1  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">2</span>])</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>mod.zone1   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 23, total abundance 203
+
+           par1        par2    par3    Deviance AIC      BIC     
+Null                                    36.6570 111.6121 111.6121
+Preemption  0.20222                      6.4117  83.3668  84.5023
+Lognormal   1.4548      1.2709          20.4063  99.3614 101.6324
+Zipf        0.30043    -1.0908          37.1589 116.1140 118.3850
+Mandelbrot  2.5606e+09 -7.1813  24.198   4.5651  85.5202  88.9267</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 2</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>mod.zone2  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">3</span>])</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mod.zone2   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 27, total abundance 236
+
+           par1        par2    par3    Deviance AIC     BIC    
+Null                                    41.456  129.044 129.044
+Preemption  0.17068                     15.236  104.824 106.120
+Lognormal   1.4571      1.2516          22.464  114.052 116.644
+Zipf        0.27366    -1.0461          42.368  133.956 136.548
+Mandelbrot  8.0713e+08 -6.6708  26.793  13.417  107.005 110.892</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fase 3</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mod.zone3  <span class="ot">&lt;-</span> <span class="fu">radfit</span>(datos1[,<span class="dv">4</span>])</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mod.zone3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+RAD models, family poisson 
+No. of species 20, total abundance 210
+
+           par1     par2    par3    Deviance AIC      BIC     
+Null                                100.7204 164.7249 164.7249
+Preemption  0.29413                  33.5950  99.5994 100.5951
+Lognormal   1.1182   1.7068           8.9331  76.9376  78.9290
+Zipf        0.45212 -1.4765           6.6855  74.6900  76.6814
+Mandelbrot  2.318   -2.1289  1.2439   2.4291  72.4335  75.4207</code></pre>
+</div>
+</div>
+<div style="text-align: justify">
+
+<p><strong>Modelo 1: Zona 1. Distribución predominante: Preemption (AIC = 83.37)</strong>. El modelo <strong>Preemption</strong> sugiere una repartición jerárquica de recursos, con pocas especies dominantes.</p>
+<p><strong>Modelo 2: Zona 2. Distribución predominante: Preemption (AIC = 104.82)</strong>. Patrón similar al de la zona 1.</p>
+<p><strong>Modelo 3: Zona 3. Distribución predominante: Maldelbrot (AIC = 72.43)</strong>. Como se mencionó para el caso del patrón nocturno, donde también se presenta este ajuste, hay una estructura compleja, debido al patron de dominancia de las especies, debido a posibles mecanismos de depredación o por cambios en la disponibilidad del recurso.</p>
+<p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
+</b></div></section><b style="color:#4daf4a;">
+</b><section id="figuras-de-los-modelos-rad-2" class="level5"><b style="color:#4daf4a;">
+<h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad-2">Figuras de los modelos RAD</h5>
+</b><p><b style="color:#4daf4a;"></b></p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone1, <span class="at">main=</span><span class="st">"Zone 1"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone2, <span class="at">main=</span><span class="st">"Zone 2"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone3, <span class="at">main=</span><span class="st">"Zone 3"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div style="text-align: justify">
+
+<p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada zona evaluada. A continuación se grafican los diagramas de mayor ajuste.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfcol=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone1<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Zone1 - Preemption"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone2<span class="sc">$</span>models<span class="sc">$</span>Preemption, </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Zone2 - Preemption"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod.zone3<span class="sc">$</span>models<span class="sc">$</span>Lognormal, </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"Zone3 - Mandelbrot"</span>, <span class="at">ylab=</span> <span class="st">"log10(Ab. relativa)"</span>, <span class="at">xlab=</span><span class="st">"Rangos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
 <p><b style="color:#e78ac3;"></b></p><b style="color:#e78ac3;">
-</b></section><b style="color:#e78ac3;">
+</b></div></section><b style="color:#e78ac3;">
 </b></section><b style="color:#e78ac3;">
 </b><section id="diversidad-alfa---propuesta-de-chao-et-al.-2020" class="level4"><b style="color:#e78ac3;">
 <h4 class="anchored" data-anchor-id="diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</h4>
@@ -754,7 +1167,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p>La siguiente figura complementa el <strong>patrón asintótico</strong> de la tabla anterior, en el que se observa que ninguna de las fases lunares se estabiliza en q = 0 (total de especies), ni siquiera interpolando al doble de la abundancia registrada (líneas punteadas, no se estabilizan o no se vuelven asintóticas para la diversidad esperada). Esto se debe al lto número de especies con un solo individuo encontradas (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -809,7 +1222,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-45-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1016,7 +1429,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p>La siguiente figura complementa el <strong>patrón asintótico</strong> de la tabla anterior, en el que se observa que ninguno de los horarios día-noche se estabilizan en q = 0 (total de especies), ni siquiera interpolando al doble de la abundancia registrada (líneas punteadas, no se estabilizan o no se vuelven asintóticas para la diversidad esperada). Esto se debe al lto número de especies con un solo individuo encontradas (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-52-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1059,7 +1472,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-54-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1287,7 +1700,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-61-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1336,7 +1749,7 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng1peces_files/figure-html/unnamed-chunk-63-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
