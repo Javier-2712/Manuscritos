@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2025-02-11">
+<meta name="dcterms.date" content="2025-02-12">
 <meta name="description" content="Análisis de datos de diversidad alfa de peces estuarinos y su relación con condiciones ambientales.">
 
 <title>Asesoría 2. Análisis de diversidad alfa</title>
@@ -77,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 11, 2025</p>
+        <p class="date">February 12, 2025</p>
       </div>
     </div>
     
@@ -494,6 +494,13 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Las curvas RAD por cada fase lunar muestran los siguientes patrones:</p>
+<ol type="1">
+<li><strong>Wax.cres (Waxing crescent)</strong> 🌒. La curva es más pendiente que el resto, lo cual muestra un patrón con pocas especies que son las dominantes (ver taxones de la parte superios como aris, Cete y Ancc). En el siguiente análisis de ajuste de estas curvas, se demostrará que el modelo relacionado es el <strong>Zipf</strong>.</li>
+<li><strong>Wax.gib (Waxing gobbous)</strong> 🌔. Que no hay un patrón definido en la estructura de las abundancias (de dominancia o de equidad en las abundancias de las especies), por lo cual en el siguiente análisis, el ajuste será más asociado a un modelo <strong>nulo</strong>.</li>
+<li><strong>Wan.gib (Waning gibbous)</strong> 🌖. Hay una dominancia jerárquica con una estructura fractal. En el siguiente análisis el el ajuste de esta curva es a un modelo <strong>Mandelbrot</strong>.</li>
+<li><strong>Wax.gibb (Waxing gibbous)</strong> 🌘. Hay un patrón uniforme en la distribución de las abundancias para los diferentes taxones (curva menos pendiente), con lo cual se espera una mayor diversidad de peces y uniformidad para esta fase lunar. En el siguiente análisis el ajuste de esta curva es a un modelo <strong>lognormal</strong>.</li>
+</ol>
 <hr>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
@@ -512,6 +519,11 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>Las curvas RAD por cada fase lunar muestran los siguientes patrones:</p>
+<ol type="1">
+<li><strong>Day</strong> ☀️. Hay un patrón uniforme en la distribución de las abundancias para los diferentes taxones (curva menos pendiente), con lo cual se espera una mayor diversidad de peces y uniformidad para esta fase lunar. En el siguiente análisis el el ajuste de esta curva es a un modelo <strong>lognormal</strong>.</li>
+<li><strong>Night</strong> 🌙. Hay una dominancia jerárquica con una estructura fractal. En el siguiente análisis el ajuste de esta curva es a un modelo <strong>Mandelbrot</strong>.</li>
+</ol>
 <hr>
 <hr>
 <p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
@@ -601,23 +613,23 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="zieiiqlvbc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#zieiiqlvbc table {
+<div id="sjwxjjvzyl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sjwxjjvzyl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#zieiiqlvbc thead, #zieiiqlvbc tbody, #zieiiqlvbc tfoot, #zieiiqlvbc tr, #zieiiqlvbc td, #zieiiqlvbc th {
+#sjwxjjvzyl thead, #sjwxjjvzyl tbody, #sjwxjjvzyl tfoot, #sjwxjjvzyl tr, #sjwxjjvzyl td, #sjwxjjvzyl th {
   border-style: none;
 }
 
-#zieiiqlvbc p {
+#sjwxjjvzyl p {
   margin: 0;
   padding: 0;
 }
 
-#zieiiqlvbc .gt_table {
+#sjwxjjvzyl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -643,12 +655,12 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_caption {
+#sjwxjjvzyl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#zieiiqlvbc .gt_title {
+#sjwxjjvzyl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -660,7 +672,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-bottom-width: 0;
 }
 
-#zieiiqlvbc .gt_subtitle {
+#sjwxjjvzyl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -672,7 +684,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-top-width: 0;
 }
 
-#zieiiqlvbc .gt_heading {
+#sjwxjjvzyl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -684,13 +696,13 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_bottom_border {
+#sjwxjjvzyl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_col_headings {
+#sjwxjjvzyl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -705,7 +717,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_col_heading {
+#sjwxjjvzyl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -725,7 +737,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   overflow-x: hidden;
 }
 
-#zieiiqlvbc .gt_column_spanner_outer {
+#sjwxjjvzyl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -737,15 +749,15 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   padding-right: 4px;
 }
 
-#zieiiqlvbc .gt_column_spanner_outer:first-child {
+#sjwxjjvzyl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zieiiqlvbc .gt_column_spanner_outer:last-child {
+#sjwxjjvzyl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zieiiqlvbc .gt_column_spanner {
+#sjwxjjvzyl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -757,11 +769,11 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   width: 100%;
 }
 
-#zieiiqlvbc .gt_spanner_row {
+#sjwxjjvzyl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#zieiiqlvbc .gt_group_heading {
+#sjwxjjvzyl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -787,7 +799,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   text-align: left;
 }
 
-#zieiiqlvbc .gt_empty_group_heading {
+#sjwxjjvzyl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -802,15 +814,15 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   vertical-align: middle;
 }
 
-#zieiiqlvbc .gt_from_md > :first-child {
+#sjwxjjvzyl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zieiiqlvbc .gt_from_md > :last-child {
+#sjwxjjvzyl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zieiiqlvbc .gt_row {
+#sjwxjjvzyl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -829,7 +841,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   overflow-x: hidden;
 }
 
-#zieiiqlvbc .gt_stub {
+#sjwxjjvzyl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -842,7 +854,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   padding-right: 5px;
 }
 
-#zieiiqlvbc .gt_stub_row_group {
+#sjwxjjvzyl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -856,15 +868,15 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   vertical-align: top;
 }
 
-#zieiiqlvbc .gt_row_group_first td {
+#sjwxjjvzyl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#zieiiqlvbc .gt_row_group_first th {
+#sjwxjjvzyl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#zieiiqlvbc .gt_summary_row {
+#sjwxjjvzyl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -874,16 +886,16 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   padding-right: 5px;
 }
 
-#zieiiqlvbc .gt_first_summary_row {
+#sjwxjjvzyl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_first_summary_row.thick {
+#sjwxjjvzyl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#zieiiqlvbc .gt_last_summary_row {
+#sjwxjjvzyl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -893,7 +905,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_grand_summary_row {
+#sjwxjjvzyl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -903,7 +915,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   padding-right: 5px;
 }
 
-#zieiiqlvbc .gt_first_grand_summary_row {
+#sjwxjjvzyl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -913,7 +925,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_last_grand_summary_row_top {
+#sjwxjjvzyl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -923,11 +935,11 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_striped {
+#sjwxjjvzyl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zieiiqlvbc .gt_table_body {
+#sjwxjjvzyl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -936,7 +948,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_footnotes {
+#sjwxjjvzyl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -950,7 +962,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_footnote {
+#sjwxjjvzyl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -959,7 +971,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   padding-right: 5px;
 }
 
-#zieiiqlvbc .gt_sourcenotes {
+#sjwxjjvzyl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -973,7 +985,7 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#zieiiqlvbc .gt_sourcenote {
+#sjwxjjvzyl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -981,72 +993,72 @@ Mandelbrot  5.3459  -2.0802  3.4159   9.6873 102.1510 105.9253</code></pre>
   padding-right: 5px;
 }
 
-#zieiiqlvbc .gt_left {
+#sjwxjjvzyl .gt_left {
   text-align: left;
 }
 
-#zieiiqlvbc .gt_center {
+#sjwxjjvzyl .gt_center {
   text-align: center;
 }
 
-#zieiiqlvbc .gt_right {
+#sjwxjjvzyl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zieiiqlvbc .gt_font_normal {
+#sjwxjjvzyl .gt_font_normal {
   font-weight: normal;
 }
 
-#zieiiqlvbc .gt_font_bold {
+#sjwxjjvzyl .gt_font_bold {
   font-weight: bold;
 }
 
-#zieiiqlvbc .gt_font_italic {
+#sjwxjjvzyl .gt_font_italic {
   font-style: italic;
 }
 
-#zieiiqlvbc .gt_super {
+#sjwxjjvzyl .gt_super {
   font-size: 65%;
 }
 
-#zieiiqlvbc .gt_footnote_marks {
+#sjwxjjvzyl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#zieiiqlvbc .gt_asterisk {
+#sjwxjjvzyl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#zieiiqlvbc .gt_indent_1 {
+#sjwxjjvzyl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#zieiiqlvbc .gt_indent_2 {
+#sjwxjjvzyl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#zieiiqlvbc .gt_indent_3 {
+#sjwxjjvzyl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#zieiiqlvbc .gt_indent_4 {
+#sjwxjjvzyl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#zieiiqlvbc .gt_indent_5 {
+#sjwxjjvzyl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#zieiiqlvbc .katex-display {
+#sjwxjjvzyl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#zieiiqlvbc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sjwxjjvzyl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1151,6 +1163,490 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <p><strong>Modelo 1: Day. Distribución predominante: Lognormal (AIC = 72.2)</strong>, seguido muy de cerca por <strong>Zipf (AIC = 72.53)</strong>. La distribución <strong>Lognormal</strong> sugiere que, en el horario diurno, las especies tienen una estructura de abundancia equilibrada con predominancia de unas pocas especies más abundantes y muchas de abundancias similares. Esto puede estar asociado con una mayor diversificación de nichos y de recursos tróficos. La similitud en el ajuste con el modelo <strong>Zipf</strong> podría indicar que hay una ligera jerarquización en la comunidad, pero no tan marcada.</p>
 <p><strong>Modelo 2: Night. Distribución predominante: Mandelbrot (AIC = 140.47)</strong>, seguido por <strong>Preemption (AIC = 147.06)</strong>. El modelo <strong>Mandelbrot</strong> indica que este ensamblaje en la noche, presenta una estructura compleja, caracterizada por una jerarquía de en la dominancia de las especies de peces, pero más flexible que el modelo Zipf. Esto puede reflejar dinámicas de abundancia influenciadas por interacciones ecológicas nocturnas, como cambios en la obtención de recursos, el efecto de la depredación, o comportamiento de las especies. El modelo <strong>Preemption</strong> también que puede haber una fuerte repartición de los recursos, donde unas pocas especies dominan significativamente.</p>
 <p>De acuerdo a <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a>, el ajuste <em>Premption,</em> se denomina de nicho preferencial o de serie geométrica y se asocia a ensamblajes con algunos taxones que dominan por sus mayores densidades de indiviuos, especialmente en etapas iniciales de las sucesiones. Según <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a> y (<a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Magurran, 2004</a>), en el ajuste Mandelbrot se asocia a ensamblajes con pocas especies dominantes y en etapas sucesionales iniciales, considerado como uno de los mejores modelos para describir la distribución de la abundancia de especies.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<div id="dshrwzpmvs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dshrwzpmvs table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dshrwzpmvs thead, #dshrwzpmvs tbody, #dshrwzpmvs tfoot, #dshrwzpmvs tr, #dshrwzpmvs td, #dshrwzpmvs th {
+  border-style: none;
+}
+
+#dshrwzpmvs p {
+  margin: 0;
+  padding: 0;
+}
+
+#dshrwzpmvs .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: medium;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#dshrwzpmvs .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#dshrwzpmvs .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#dshrwzpmvs .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#dshrwzpmvs .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#dshrwzpmvs .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#dshrwzpmvs .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#dshrwzpmvs .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#dshrwzpmvs .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#dshrwzpmvs .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#dshrwzpmvs .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#dshrwzpmvs .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#dshrwzpmvs .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#dshrwzpmvs .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#dshrwzpmvs .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dshrwzpmvs .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#dshrwzpmvs .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#dshrwzpmvs .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#dshrwzpmvs .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dshrwzpmvs .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#dshrwzpmvs .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dshrwzpmvs .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#dshrwzpmvs .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dshrwzpmvs .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#dshrwzpmvs .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#dshrwzpmvs .gt_left {
+  text-align: left;
+}
+
+#dshrwzpmvs .gt_center {
+  text-align: center;
+}
+
+#dshrwzpmvs .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#dshrwzpmvs .gt_font_normal {
+  font-weight: normal;
+}
+
+#dshrwzpmvs .gt_font_bold {
+  font-weight: bold;
+}
+
+#dshrwzpmvs .gt_font_italic {
+  font-style: italic;
+}
+
+#dshrwzpmvs .gt_super {
+  font-size: 65%;
+}
+
+#dshrwzpmvs .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#dshrwzpmvs .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#dshrwzpmvs .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#dshrwzpmvs .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#dshrwzpmvs .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#dshrwzpmvs .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#dshrwzpmvs .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#dshrwzpmvs .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#dshrwzpmvs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_heading">
+      <td colspan="5" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="font-size: 24px; font-weight: bold;"><span data-qmd-base64="PHN0cm9uZz5Fc3RydWN0dXJhIGRlbCBlbnNhbWJsYWplIGRlIHBlY2VzIGVuIGVsIGTDrWEgeSBlbiBsYSBub2NoZTwvc3Ryb25nPg=="><span class="gt_from_md"><strong>Estructura del ensamblaje de peces en el día y en la noche</strong></span></span></td>
+    </tr>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Horario"><span data-qmd-base64="PHN0cm9uZz5Ib3JhcmlvPC9zdHJvbmc+"><span class="gt_from_md"><strong>Horario</strong></span></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Luna_Emoji"><span data-qmd-base64="PHN0cm9uZz7wn4yFPC9zdHJvbmc+"><span class="gt_from_md"><strong>🌅</strong></span></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Modelo_Ajustado"><span data-qmd-base64="PHN0cm9uZz5Nb2RlbG8gQWp1c3RhZG88L3N0cm9uZz4="><span class="gt_from_md"><strong>Modelo Ajustado</strong></span></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Patron_Ecologico"><span data-qmd-base64="PHN0cm9uZz5QYXRyw7NuIEVjb2zDs2dpY288L3N0cm9uZz4="><span class="gt_from_md"><strong>Patrón Ecológico</strong></span></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Mecanismo_Dominante"><span data-qmd-base64="PHN0cm9uZz5NZWNhbmlzbW8gRG9taW5hbnRlPC9zdHJvbmc+"><span class="gt_from_md"><strong>Mecanismo Dominante</strong></span></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Horario" class="gt_row gt_left">Day</td>
+<td headers="Luna_Emoji" class="gt_row gt_left">☀️</td>
+<td headers="Modelo_Ajustado" class="gt_row gt_left">Lognormal</td>
+<td headers="Patron_Ecologico" class="gt_row gt_left">Ensamblaje más equilibrado y estable</td>
+<td headers="Mecanismo_Dominante" class="gt_row gt_left">Diferenciación de nichos y coexistencia</td></tr>
+    <tr><td headers="Horario" class="gt_row gt_left">Night</td>
+<td headers="Luna_Emoji" class="gt_row gt_left">🌙</td>
+<td headers="Modelo_Ajustado" class="gt_row gt_left">Mandelbrot</td>
+<td headers="Patron_Ecologico" class="gt_row gt_left">Dominancia jerárquica con estructura fractal</td>
+<td headers="Mecanismo_Dominante" class="gt_row gt_left">Diversificación de hábitats y estratificación de especies</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
 <p><b style="color:#4daf4a;"></b></p><b style="color:#4daf4a;">
 </b></div></section><b style="color:#4daf4a;">
 </b><section id="figuras-de-los-modelos-rad-1" class="level5"><b style="color:#4daf4a;">
@@ -1158,7 +1654,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 </b><p><b style="color:#4daf4a;"></b></p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div style="text-align: justify">
@@ -1166,7 +1662,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <p>La línea de mayor grosor es la que representa al <strong>modelo de mayor ajuste</strong> para cada horario evaluado. A continuación se grafican los diagramas de mayor ajuste.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <hr>
@@ -1201,11 +1697,18 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:right;"> 233 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 70 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 1 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wan.gibb </td>
@@ -1215,18 +1718,11 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:right;"> 72 </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> 70 </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 233 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
 </tbody>
 </table>
@@ -1256,9 +1752,15 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:right;"> 0.77 </td>
-   <td style="text-align:right;"> 0.97 </td>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 0.74 </td>
+   <td style="text-align:right;"> 0.92 </td>
+   <td style="text-align:right;"> 0.99 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 0.75 </td>
+   <td style="text-align:right;"> 0.96 </td>
    <td style="text-align:right;"> 1.00 </td>
   </tr>
   <tr>
@@ -1268,16 +1770,10 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
    <td style="text-align:right;"> 1.00 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:right;"> 0.75 </td>
-   <td style="text-align:right;"> 0.96 </td>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 0.77 </td>
+   <td style="text-align:right;"> 0.97 </td>
    <td style="text-align:right;"> 1.00 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> 0.74 </td>
-   <td style="text-align:right;"> 0.92 </td>
-   <td style="text-align:right;"> 0.99 </td>
   </tr>
 </tbody>
 </table>
@@ -1306,87 +1802,87 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:left;"> q = 0 </td>
-   <td style="text-align:right;"> 26 </td>
-   <td style="text-align:right;"> 34 </td>
-   <td style="text-align:right;"> 8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:left;"> q = 1 </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> 14 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:left;"> q = 2 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> q = 0 </td>
-   <td style="text-align:right;"> 24 </td>
-   <td style="text-align:right;"> 32 </td>
-   <td style="text-align:right;"> 8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> q = 1 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> q = 2 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:left;"> q = 0 </td>
-   <td style="text-align:right;"> 13 </td>
-   <td style="text-align:right;"> 17 </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:left;"> q = 1 </td>
-   <td style="text-align:right;"> 8 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 1 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:left;"> q = 2 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:left;"> q = 2 </td>
    <td style="text-align:right;"> 17 </td>
    <td style="text-align:right;"> 23 </td>
    <td style="text-align:right;"> 6 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:left;"> q = 0 </td>
    <td style="text-align:right;"> 9 </td>
    <td style="text-align:right;"> 11 </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
    <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:left;"> q = 1 </td>
    <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> q = 2 </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 34 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> q = 0 </td>
+   <td style="text-align:right;"> 13 </td>
+   <td style="text-align:right;"> 14 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> q = 1 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 9 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
 </tbody>
@@ -1397,7 +1893,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <p>La siguiente figura complementa el <strong>patrón asintótico</strong> de la tabla anterior, en el que se observa que ninguna de las fases lunares se estabiliza en q = 0 (total de especies), ni siquiera interpolando al doble de la abundancia registrada (líneas punteadas, no se estabilizan o no se vuelven asintóticas para la diversidad esperada). Esto se debe al lto número de especies con un solo individuo encontradas (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-39-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1421,10 +1917,16 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:right;"> 26.78 </td>
-   <td style="text-align:right;"> 12.97 </td>
-   <td style="text-align:right;"> 8.34 </td>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 20.75 </td>
+   <td style="text-align:right;"> 10.51 </td>
+   <td style="text-align:right;"> 5.84 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 14.12 </td>
+   <td style="text-align:right;"> 8.78 </td>
+   <td style="text-align:right;"> 5.97 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wan.gibb </td>
@@ -1433,26 +1935,22 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
    <td style="text-align:right;"> 6.35 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:right;"> 14.12 </td>
-   <td style="text-align:right;"> 8.78 </td>
-   <td style="text-align:right;"> 5.97 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> 20.75 </td>
-   <td style="text-align:right;"> 10.51 </td>
-   <td style="text-align:right;"> 5.84 </td>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 26.78 </td>
+   <td style="text-align:right;"> 12.97 </td>
+   <td style="text-align:right;"> 8.34 </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
+<p><br>
+</p>
 <p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1460,7 +1958,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 </b><section id="paso-4.-patrón-de-uniformidad" class="level6"><b style="color:#fc8d62;">
 <h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad">Paso 4. Patrón de uniformidad</h6>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>Wax.gibb</strong> que representa a la estación con menor número de tazones (q=0) y menos nùmero de singletons (f1).</p>
+<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>Wax.gibb</strong> que representa a la estación con menor número de taxones (q=0) y menos nùmero de singletons (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -1476,10 +1974,16 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:left;"> Wax.cres </td>
    <td style="text-align:right;"> 0.78 </td>
-   <td style="text-align:right;"> 0.46 </td>
-   <td style="text-align:right;"> 0.28 </td>
+   <td style="text-align:right;"> 0.48 </td>
+   <td style="text-align:right;"> 0.25 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 0.82 </td>
+   <td style="text-align:right;"> 0.59 </td>
+   <td style="text-align:right;"> 0.38 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wan.gibb </td>
@@ -1488,22 +1992,18 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
    <td style="text-align:right;"> 0.24 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax..gibb </td>
-   <td style="text-align:right;"> 0.82 </td>
-   <td style="text-align:right;"> 0.59 </td>
-   <td style="text-align:right;"> 0.38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:left;"> Wan.cres </td>
    <td style="text-align:right;"> 0.78 </td>
-   <td style="text-align:right;"> 0.48 </td>
-   <td style="text-align:right;"> 0.25 </td>
+   <td style="text-align:right;"> 0.46 </td>
+   <td style="text-align:right;"> 0.28 </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
+<p><br>
+</p>
 <hr>
 <p><b style="color:#66c2a5;"></b></p><b style="color:#66c2a5;">
 </b></section><b style="color:#66c2a5;">
@@ -1659,7 +2159,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <p>La siguiente figura complementa el <strong>patrón asintótico</strong> de la tabla anterior, en el que se observa que ninguno de los horarios día-noche se estabilizan en q = 0 (total de especies), ni siquiera interpolando al doble de la abundancia registrada (líneas punteadas, no se estabilizan o no se vuelven asintóticas para la diversidad esperada). Esto se debe al lto número de especies con un solo individuo encontradas (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1702,7 +2202,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 <p>El siguiente perfil complementa a la tabla anterior, para lo cual, todas las curvas presentan una cobertura &gt; 0.9 o cercana a uno en el eje x, para que sus patrones de diversidad sean comparables.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-49-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.eng2.peces_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
@@ -1710,7 +2210,7 @@ Mandelbrot  1.5186e+07 -6.0261  18.926  25.416  140.471 144.868</code></pre>
 </b><section id="paso-4.-patrón-de-uniformidad-1" class="level6"><b style="color:#fc8d62;">
 <h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad-1">Paso 4. Patrón de uniformidad</h6>
 </b><p><b style="color:#fc8d62;"></b></p>
-<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>la mañana</strong> que representa a la estación con menor número de tazones (q=0) y de especies con un solo individuo (f1).</p>
+<p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>la mañana</strong> que representa a la estación con menor número de taxones (q=0) y de especies con un solo individuo (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
 
