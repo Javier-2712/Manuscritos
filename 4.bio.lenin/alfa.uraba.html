@@ -23,6 +23,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -9365,100 +9428,26 @@ ul.task-list li input[type="checkbox"] {
 <section id="resumen-de-con-las-veinte-especies-más-abundantes" class="level4">
 <h4 class="anchored" data-anchor-id="resumen-de-con-las-veinte-especies-más-abundantes">Resumen de con las veinte especies más abundantes</h4>
 <div class="cell">
+
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar librerías necesarias</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear gráfico de barras</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(biol3, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(taxón, Total), <span class="at">y =</span> Total, <span class="at">fill =</span> Total)) <span class="sc">+</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"D"</span>) <span class="sc">+</span>  <span class="co"># Aplicar la escala de colores viridis</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span>  <span class="co"># Girar el gráfico para que los taxones estén en el eje Y</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Veinte especies con mayores registros"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Especies"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Total de registros"</span>) <span class="sc">+</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span>  <span class="co"># Aplicar un tema limpio</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>), <span class="co"># Ajustar tamaño del texto en eje Y</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid =</span> <span class="fu">element_blank</span>())  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-
-<table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption>Abreviaturas de las 20 especies con más registros</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> taxón </th>
-   <th style="text-align:right;"> Total </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Tyra </td>
-   <td style="text-align:right;"> 3832 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Thra </td>
-   <td style="text-align:right;"> 3133 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Ramp </td>
-   <td style="text-align:right;"> 3100 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Myio </td>
-   <td style="text-align:right;"> 2653 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Seto </td>
-   <td style="text-align:right;"> 2548 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cath </td>
-   <td style="text-align:right;"> 2278 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Amaz </td>
-   <td style="text-align:right;"> 2055 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Psar </td>
-   <td style="text-align:right;"> 2045 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Trog </td>
-   <td style="text-align:right;"> 1865 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Bute </td>
-   <td style="text-align:right;"> 1808 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Crot </td>
-   <td style="text-align:right;"> 1734 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cora </td>
-   <td style="text-align:right;"> 1658 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Camp </td>
-   <td style="text-align:right;"> 1602 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Pita </td>
-   <td style="text-align:right;"> 1487 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Cyan </td>
-   <td style="text-align:right;"> 1481 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Colu </td>
-   <td style="text-align:right;"> 1399 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Lept </td>
-   <td style="text-align:right;"> 1383 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Icte </td>
-   <td style="text-align:right;"> 1378 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Brot </td>
-   <td style="text-align:right;"> 1326 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Mela </td>
-   <td style="text-align:right;"> 1321 </td>
-  </tr>
-</tbody>
-</table>
-
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -9471,7 +9460,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Relación del número de registos para las 20 especies más abundantes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <hr>
@@ -9480,18 +9469,18 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="figuras-de-cajas">Figuras de Cajas</h4>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><strong>*Nota:</strong> Esta figura bifactorial no resultó, está pendiente de ajustes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid" width="672"></p>
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid" width="672"></p>
 </div>
 </div>
 <hr>
@@ -9510,10 +9499,10 @@ ul.task-list li input[type="checkbox"] {
 <p>Patrón de distribución de abundancias para las 15 especies más abundantes (para no saturar las figuras). <strong>Wan.cres</strong> y <strong>Wan.gibb</strong>, muestran la mayor presencia de especies abundantes o dominantes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-14-2.png" class="img-fluid" width="672"></p>
+<p><img src="alfa.uraba_files/figure-html/unnamed-chunk-15-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <hr>
