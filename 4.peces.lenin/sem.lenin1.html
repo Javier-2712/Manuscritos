@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="EN-en" xml:lang="EN-en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.335">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2024-12-13">
+<meta name="dcterms.date" content="2025-05-07">
 <meta name="description" content="Se analizan los datos de un de peces estuarinos del Golfo de Urabá en el que se aplican modelos lm como ruta para analizar la relación en la abundancia entre gremios róficos en diferentes semanas de muestreo.">
 
 <title>Asesoría 2. Modelos Lineales Mixtos de Efectos Aleatorios - lm</title>
@@ -20,7 +20,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -37,15 +37,45 @@ ul.task-list li input[type="checkbox"] {
 <link href="sem.lenin1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="sem.lenin1_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <style>
-    .quarto-title-block .quarto-title-banner {
-      background: #2b8cbe;
-    }
-    </style>
 
+      .quarto-title-block .quarto-title-banner {
+        background: #2b8cbe;
+      }
+</style>
 <script src="sem.lenin1_files/libs/kePrint-0.0.1/kePrint.js"></script>
+
 <link href="sem.lenin1_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="stile-justify.css">
@@ -72,14 +102,14 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Javier Rodríguez Barrios </p>
+               <p><a href="https://www.unimagdalena.edu.co/">Javier Rodríguez Barrios</a> </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 13, 2024</p>
+        <p class="date">May 7, 2025</p>
       </div>
     </div>
     
@@ -116,6 +146,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">
+
 
 
 
@@ -168,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Área de estudio</strong>: Zonas del Golfo de Urabá en Colombia.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://javier-2712.github.io/Manuscritos/4.peces.lenin/mangroves%20uraba.jpg" class="img-fluid figure-img" width="486"></p>
+<p><img src="https://javier-2712.github.io/Manuscritos/4.peces.lenin/mangroves%20uraba.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="486"></p>
 </figure>
 </div>
 <p>A partir del anterior modelo realizado, se realizaron los siguientes pasos:</p>
@@ -178,8 +209,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>En este mismo paso se analiza al afecto aleatorio (<strong>trophic guild</strong>), asociado a la <strong>variabilidad entre los gremios tróficos</strong> en cuanto a sus niveles de abundancia, utilizando a la variabilidad del intercepto y del residual del modelo. Este diagnóstico también se hace para el efecto fijo (<strong>Time</strong>), para este caso el día y la noche mostraron un efecto significativo sobre la abundancia de peces, aumentando considerablemente en la noche. En cuanto a la <strong>correlación del efecto fijo con la abundancia</strong>, no se detecta problemas de <strong>colinealidad</strong>.</p></li>
 <li><p>Finalmente los <strong>residuales</strong> del modelo son <strong>homogéneos</strong> (no hay problemas de heterocedasticidad), son independientes (no hay problemas de autocorrelación) y <strong>son simétricos</strong> (posiblemente se cumple el supuesto de normalidad).</p></li>
 <li><p><strong>Paso 3</strong>. Se realizan unas figuras tomadas del mansucrito de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> que sirve de base para los modelos estrusturales - SEM y modelos mixtos jerárquicos de efectos aleatorios, estos últimos aplicados en este análisis.</p></li>
-<li><p><strong>Figuras de los gremios tróficos</strong>. La primera figura (<a href="#fig-figl3">Figure&nbsp;3</a>) se realiza con un <strong>GAM</strong> (modelo aditivo generalizado), siguiendo las recomendaciones de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> para proyectar regresiones no lineales con suavizamiento (<strong>LOESS</strong>) entre la variable dependiente (en este caso, la abundancia estandarizada de peces) y las variables independientes (como <code>Week</code>). Este GAM se usa para visualizar las tendencias temporales (por semanas) de la abundancia entre los diferentes gremios tróficos de peces, mediante regresiones suavizadas.</p></li>
-<li><p>Se realiza también una <strong>figura aplilada</strong> (<a href="#fig-figl4">Figure&nbsp;4</a>) en la que se destaca a los <strong>omnivoros</strong> como el gremio dominante del ecosistema evaluado, resaltando cambios temporales que inciden en la variabilidad de la abundancia total.</p></li>
+<li><p><strong>Figuras de los gremios tróficos</strong>. La primera figura (<a href="#fig-figl3" class="quarto-xref">Figure&nbsp;3</a>) se realiza con un <strong>GAM</strong> (modelo aditivo generalizado), siguiendo las recomendaciones de <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17600">De Felipe et al.&nbsp;(2024)</a><strong>,</strong> para proyectar regresiones no lineales con suavizamiento (<strong>LOESS</strong>) entre la variable dependiente (en este caso, la abundancia estandarizada de peces) y las variables independientes (como <code>Week</code>). Este GAM se usa para visualizar las tendencias temporales (por semanas) de la abundancia entre los diferentes gremios tróficos de peces, mediante regresiones suavizadas.</p></li>
+<li><p>Se realiza también una <strong>figura aplilada</strong> (<a href="#fig-figl4" class="quarto-xref">Figure&nbsp;4</a>) en la que se destaca a los <strong>omnivoros</strong> como el gremio dominante del ecosistema evaluado, resaltando cambios temporales que inciden en la variabilidad de la abundancia total.</p></li>
 </ul>
 <hr>
 </section>
@@ -190,20 +221,17 @@ ul.task-list li input[type="checkbox"] {
 <h4 class="anchored" data-anchor-id="paso-1.-selección-del-modelo-más-parsimonioso">Paso 1. Selección del modelo más parsimonioso</h4>
 <p>Será aquel que con el menor número de predictores (efectos fijos del modelo mixto), explique la mayor variabilidad de la abundancia en los diferentes gremios tróficos de peces.</p>
 <p><strong>Nota</strong>. No se puede incluir la variable aleatoria “Zone”, porque presenta un problema de singulariadad, debido a que su intercepto en el modelo es cero (0) o que no contribuye a explicar la variabilidad de la abundancia. Se diagnosticará el modelo que mejor se ajusta a los datos, y de las tres variables predictoras (Moon, Week y Time).</p>
-<div class="cell">
-
-</div>
 <p><strong>Opción A. Comparación de modelos</strong>. Con el paquete <strong>lme</strong>, se analizan modelos con diferentes combinaciones de predictores. Se usarán los criterios <code>AIC()</code> y <code>BIC()</code> para evaluar los modelos.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   m1    m2    m3    m4    m5    m6    m7 
-324.9 332.3 315.0 335.4 320.2 328.5 331.7 </code></pre>
+318.0 325.0 308.0 328.5 312.9 320.9 324.6 </code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>   m1    m2    m3    m4    m5    m6    m7 
-336.6 352.7 326.7 358.7 334.8 351.8 357.9 </code></pre>
+329.5 345.2 319.5 351.6 327.4 344.1 350.6 </code></pre>
 </div>
 </div>
 <p>De acuerdo a estos diagnósticos, el mejor modelo es el No.&nbsp;2. porque es el que presenta menos <strong>AIC</strong> y <strong>BIC</strong>.</p>
@@ -223,14 +251,14 @@ ul.task-list li input[type="checkbox"] {
 ---
 Model selection table 
   (Intrc) Moon Time     Week df   logLik  AICc delta weight
-3   1.170         +           4 -153.513 315.3  0.00  0.862
-1   1.457                     3 -157.075 320.3  5.00  0.071
-7   1.341         + -0.04572  5 -155.103 320.7  5.34  0.060
-5   1.644           -0.05206  4 -158.453 325.2  9.88  0.006
-4   1.126    +    +           8 -156.246 329.6 14.29  0.001
-8   1.694    +    + -0.09343  9 -156.834 333.1 17.77  0.000
-2   1.365    +                7 -159.168 333.2 17.88  0.000
-6   1.953    +      -0.09725  8 -159.696 336.5 21.20  0.000
+3   1.217         +           4 -149.978 308.3  0.00  0.868
+7   1.395         + -0.04854  5 -151.471 313.4  5.15  0.066
+1   1.493                     3 -153.729 313.6  5.37  0.059
+5   1.688           -0.05565  4 -154.976 318.3 10.00  0.006
+4   1.143    +    +           8 -152.468 322.1 13.83  0.001
+2   1.367    +                7 -155.496 325.9 17.62  0.000
+8   1.661    +    + -0.08568  9 -153.286 326.0 17.77  0.000
+6   1.906    +      -0.08977  8 -156.246 329.7 21.38  0.000
 Models ranked by AICc(x) 
 Random terms (all models): 
   1 | `Trophic guild`</code></pre>
@@ -240,49 +268,48 @@ Random terms (all models):
 <p><strong>NOTA</strong>: Dataframe datos, solo tiene 6 datos.</p>
 <div class="cell">
 <div class="cell-output-display">
-
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption></caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Time </th>
-   <th style="text-align:left;"> Trophic.guild </th>
-   <th style="text-align:right;"> Ab </th>
-  </tr>
- </thead>
+<table class="lightable-classic caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Time</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Trophic.guild</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Ab</th>
+</tr>
+</thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:left;"> Omnivores </td>
-   <td style="text-align:right;"> 42 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:left;"> Phytobenthivores </td>
-   <td style="text-align:right;"> 4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:left;"> Piscivores </td>
-   <td style="text-align:right;"> 10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:left;"> Planktivores </td>
-   <td style="text-align:right;"> 65 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:left;"> Zoobenthivores </td>
-   <td style="text-align:right;"> 26 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:left;"> No data </td>
-   <td style="text-align:right;"> 8 </td>
-  </tr>
+<tr class="odd">
+<td style="text-align: left;">Day</td>
+<td style="text-align: left;">Omnivores</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Day</td>
+<td style="text-align: left;">Phytobenthivores</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Day</td>
+<td style="text-align: left;">Piscivores</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Day</td>
+<td style="text-align: left;">Planktivores</td>
+<td style="text-align: right;">65</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Day</td>
+<td style="text-align: left;">Zoobenthivores</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Night</td>
+<td style="text-align: left;">Omnivores</td>
+<td style="text-align: right;">212</td>
+</tr>
 </tbody>
 </table>
+
 
 </div>
 </div>
@@ -291,9 +318,6 @@ Random terms (all models):
 <br>
 <b style="color:#1f78b4;"> <span class="math inline">\(Abundancia\)</span> <strong>=</strong> <span class="math inline">\(β_0\)</span> <strong>+</strong> <span class="math inline">\(β_1\)</span> <strong>×</strong> <span class="math inline">\(Time\)</span> <strong>+</strong> <span class="math inline">\(γ\)</span> <strong>+</strong> <span class="math inline">\(ε\)</span> </b></p>
 <hr>
-<div class="cell">
-
-</div>
 </section>
 <section id="paso-2.-diagnóstico-del-modelo" class="level4">
 <h4 class="anchored" data-anchor-id="paso-2.-diagnóstico-del-modelo"><strong>Paso 2. Diagnóstico del Modelo</strong></h4>
@@ -330,15 +354,19 @@ Random terms (all models):
 <h5 class="anchored" data-anchor-id="diagnósticos-gráficos-de-los-residuales">2.5 Diagnósticos gráficos de los residuales</h5>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="sem.lenin1_files/figure-html/fig-figl1-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;1: Graphical diagnoses on the residuals of the mixed model performed</figcaption><p></p>
+<div id="fig-figl1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-figl1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sem.lenin1_files/figure-html/fig-figl1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-figl1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Graphical diagnoses on the residuals of the mixed model performed
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-figl1">Figure&nbsp;1</a> muestra dos opciones gráficas para diagnosticar algunos requisitos o supuestos del modelo, en especial la homogeneidad y la independencia de los residuos así como posibles tendencias simétricas o normales.</p>
+<p>La <a href="#fig-figl1" class="quarto-xref">Figure&nbsp;1</a> muestra dos opciones gráficas para diagnosticar algunos requisitos o supuestos del modelo, en especial la homogeneidad y la independencia de los residuos así como posibles tendencias simétricas o normales.</p>
 <p><strong>1. Gráfico de residuales vs.&nbsp;índice de observaciones</strong></p>
 <p>Este gráfico ayuda a verificar si las <strong>relaciones lineales</strong> y los supuestos de <strong>homocedasticidad se cumplen</strong>. La <strong>distribución de los residuales es hogénea (no hay problemas de heterocedasticidad)</strong>. <strong>Como los residuales están distribuidos de manera aleatoria alrededor de 0, sugiere que el modelo ajusta bien los datos</strong>. En caso que se presenten patrones como una curva o una tendencia ascendente/descendente, podría indicar que el modelo no captura completamente la estructura de los datos (tendencias sistemáticas). Si los residuales muestran una variabilidad creciente o decreciente (como un cono), sugiere que la varianza no es constante (heterocedasticidad).</p>
 <p><strong>2. Gráfico Q-Q (cuantil-cuantil) de los residuales</strong></p>
@@ -346,13 +374,17 @@ Random terms (all models):
 <p>Un gráfico Q-Q apropiado respalda la <strong>validez de los intervalos de confianza</strong> y <strong>pruebas de hipótesis</strong> en el modelo. Si los residuales no son normales, se podrían considerar transformaciones de los datos o métodos robustos. El <strong>Eje x</strong> relaciona a los cuantiles teóricos de una distribución normal estándar. El <strong>Eje y</strong> muestra a lo cuantiles observados de los residuales. La <strong>Línea de referencia (qqline):</strong> Representa la distribución normal esperada. Los puntos deberían alinearse aproximadamente con esta línea. <strong>Puntos cercanos a la línea</strong> indican que los residuales se ajustan bien a una distribución normal.</p>
 <p><strong>Si los puntos se desvían significativamente de la línea</strong> en los extremos, podría sugerir colas largas (distribución leptocúrtica) o cortas (distribución platicúrtica). <strong>Una curvatura en forma de S</strong> podría indicar que los residuales no son normales, posiblemente debido a la presencia de outliers o a una transformación incorrecta de los datos.</p>
 <p><strong>Figura del modelo seleccionado</strong></p>
-<p>La <a href="#fig-figl2">Figure&nbsp;2</a> muestra que en la noche se concentra la mayor abundancia de peces, especialmente de planctivoros y de fitobenctivoros.</p>
+<p>La <a href="#fig-figl2" class="quarto-xref">Figure&nbsp;2</a> muestra que en la noche se concentra la mayor abundancia de peces, especialmente de planctivoros y de fitobenctivoros.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="sem.lenin1_files/figure-html/fig-figl2-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;2: Abundance pattern of estuarine fish during day and night, separated by their trophic guilds</figcaption><p></p>
+<div id="fig-figl2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-figl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sem.lenin1_files/figure-html/fig-figl2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-figl2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Abundance pattern of estuarine fish during day and night, separated by their trophic guilds
+</figcaption>
 </figure>
 </div>
 </div>
@@ -365,13 +397,17 @@ Random terms (all models):
 <h3 class="anchored" data-anchor-id="figuras-para-gremios-tróficos">Figuras para gremios tróficos</h3>
 <section id="figura-de-regresiones-gam" class="level4">
 <h4 class="anchored" data-anchor-id="figura-de-regresiones-gam">1. Figura de regresiones GAM</h4>
-<p>La <a href="#fig-figl3">Figure&nbsp;3</a> los omnivoros y los planctivoros, presentaron tendencias negativas a los largo de las seis semanas del estudio, mientras que los piscivoros mostraron un incremento leve en el aumento de su abundancia. Estos cambios se asocian a un patrón d disminución marcado de la abundancia total hacia la semana 4 y un cambio en el ensamblaje trófico dominado inicialmente por omnívoros al compuesto principalmente por planctivoros (<a href="#fig-figl4">Figure&nbsp;4</a>).</p>
+<p>La <a href="#fig-figl3" class="quarto-xref">Figure&nbsp;3</a> los omnivoros y los planctivoros, presentaron tendencias negativas a los largo de las seis semanas del estudio, mientras que los piscivoros mostraron un incremento leve en el aumento de su abundancia. Estos cambios se asocian a un patrón d disminución marcado de la abundancia total hacia la semana 4 y un cambio en el ensamblaje trófico dominado inicialmente por omnívoros al compuesto principalmente por planctivoros (<a href="#fig-figl4" class="quarto-xref">Figure&nbsp;4</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="sem.lenin1_files/figure-html/fig-figl3-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;3: Week-long trends experienced by estuarine fishes, divided by trophic guilds. Smoothed lines and shaded areas represent the smoothed trends of the generalized additive model (GAM) and its standard error, respectively.</figcaption><p></p>
+<div id="fig-figl3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-figl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sem.lenin1_files/figure-html/fig-figl3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-figl3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Week-long trends experienced by estuarine fishes, divided by trophic guilds. Smoothed lines and shaded areas represent the smoothed trends of the generalized additive model (GAM) and its standard error, respectively.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -379,13 +415,17 @@ Random terms (all models):
 </section>
 <section id="figura-de-áreas-para-gremios-tróficos" class="level4">
 <h4 class="anchored" data-anchor-id="figura-de-áreas-para-gremios-tróficos">2. Figura de áreas para gremios tróficos</h4>
-<p>En la <a href="#fig-figl4">Figure&nbsp;4</a> que el ecosistema estudiado es dominado por los <strong>omnivoros</strong>, con proporciones superiores al 75% en las diferentes semanas, aunque disminuye notablemente desde la semana 4. Los <strong>planctivoros</strong> muestran un leve aumento de su abundancia desde la semana 4, quizá por el aumento en la disponibilidad de su recurso. El resto de grupos se mantienen relativamente constantes. El patrón de <strong>abundancia total</strong> (línea blanca suavizada), muestra un descenso hacia la semana 4 y posteriormente un aumento, quizá por la influencia del patrón que se indicó con los <strong>omnívoros</strong>, por ser el gremio dominante.</p>
+<p>En la <a href="#fig-figl4" class="quarto-xref">Figure&nbsp;4</a> que el ecosistema estudiado es dominado por los <strong>omnivoros</strong>, con proporciones superiores al 75% en las diferentes semanas, aunque disminuye notablemente desde la semana 4. Los <strong>planctivoros</strong> muestran un leve aumento de su abundancia desde la semana 4, quizá por el aumento en la disponibilidad de su recurso. El resto de grupos se mantienen relativamente constantes. El patrón de <strong>abundancia total</strong> (línea blanca suavizada), muestra un descenso hacia la semana 4 y posteriormente un aumento, quizá por la influencia del patrón que se indicó con los <strong>omnívoros</strong>, por ser el gremio dominante.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="sem.lenin1_files/figure-html/fig-figl4-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;4: Changes in estuarine fish assemblages in the Gulf of Urabá, divided by trophic guilds. The smoothed white line represents the loess-smoothed trend of maximum weekly abundance (in number of fish).</figcaption><p></p>
+<div id="fig-figl4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-figl4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="sem.lenin1_files/figure-html/fig-figl4-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-figl4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Changes in estuarine fish assemblages in the Gulf of Urabá, divided by trophic guilds. The smoothed white line represents the loess-smoothed trend of maximum weekly abundance (in number of fish).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -422,12 +462,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -459,11 +502,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -473,8 +555,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -486,9 +577,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -529,6 +856,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
