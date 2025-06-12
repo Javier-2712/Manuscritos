@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2025-05-25">
+<meta name="dcterms.date" content="2025-06-11">
 <meta name="description" content="Ajuste de los análisis a las 4 semanas requeridas para la versión final del manuscrito de peces.">
 
 <title>Asesoría 3. Ajustes requeridos del manuscrito</title>
@@ -23,6 +23,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -47,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles2">
+<link rel="stylesheet" href="styles2.css">
 </head>
 
 <body>
@@ -78,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">May 25, 2025</p>
+        <p class="date">June 11, 2025</p>
       </div>
     </div>
     
@@ -92,51 +155,50 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Menú flotante</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">————————————————————————</a>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">————————————————————————</a></li>
+  <li><a href="#diversidad-alfa" id="toc-diversidad-alfa" class="nav-link" data-scroll-target="#diversidad-alfa"><strong>Diversidad Alfa</strong></a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">————————————————————————</a>
   <ul>
-  <li><a href="#a-continuación" id="toc-a-continuación" class="nav-link" data-scroll-target="#a-continuación"><strong>A continuación:</strong></a></li>
-  </ul></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">————————————————————————</a></li>
   <li><a href="#resumen" id="toc-resumen" class="nav-link" data-scroll-target="#resumen">Resumen</a></li>
   <li><a href="#cargar-bases-de-datos" id="toc-cargar-bases-de-datos" class="nav-link" data-scroll-target="#cargar-bases-de-datos">Cargar bases de datos</a></li>
   <li><a href="#datos-biológicos" id="toc-datos-biológicos" class="nav-link" data-scroll-target="#datos-biológicos">Datos biológicos</a>
   <ul>
   <li><a href="#elipses" id="toc-elipses" class="nav-link" data-scroll-target="#elipses">Elipses</a></li>
   </ul></li>
-  <li><a href="#datos-ambientales" id="toc-datos-ambientales" class="nav-link" data-scroll-target="#datos-ambientales">Datos ambientales</a>
+  <li><a href="#datos-ambientales" id="toc-datos-ambientales" class="nav-link" data-scroll-target="#datos-ambientales">Datos ambientales</a></li>
+  <li><a href="#visualización-de-patrónes" id="toc-visualización-de-patrónes" class="nav-link" data-scroll-target="#visualización-de-patrónes">Visualización de patrónes</a>
   <ul>
-  <li><a href="#elipses-1" id="toc-elipses-1" class="nav-link" data-scroll-target="#elipses-1">Elipses</a></li>
-  <li><a href="#relación-ambientales-y-taxones" id="toc-relación-ambientales-y-taxones" class="nav-link" data-scroll-target="#relación-ambientales-y-taxones">Relación ambientales y taxones</a></li>
-  <li><a href="#figuras-de-cajas" id="toc-figuras-de-cajas" class="nav-link" data-scroll-target="#figuras-de-cajas">Figuras de Cajas</a></li>
-  <li><a href="#burbujas" id="toc-burbujas" class="nav-link" data-scroll-target="#burbujas">Burbujas</a>
+  <li><a href="#a.-elipses" id="toc-a.-elipses" class="nav-link" data-scroll-target="#a.-elipses">a. Elipses</a></li>
+  <li><a href="#b.-relación-ambientales-y-taxones" id="toc-b.-relación-ambientales-y-taxones" class="nav-link" data-scroll-target="#b.-relación-ambientales-y-taxones">b. Relación ambientales y taxones</a></li>
+  <li><a href="#c.-figuras-de-cajas" id="toc-c.-figuras-de-cajas" class="nav-link" data-scroll-target="#c.-figuras-de-cajas">c.&nbsp;Figuras de Cajas</a></li>
+  <li><a href="#d.-burbujas" id="toc-d.-burbujas" class="nav-link" data-scroll-target="#d.-burbujas">d.&nbsp;Burbujas</a>
   <ul>
   <li><a href="#por-niveles-de-ph" id="toc-por-niveles-de-ph" class="nav-link" data-scroll-target="#por-niveles-de-ph">Por niveles de pH</a></li>
   <li><a href="#por-niveles-de-o2" id="toc-por-niveles-de-o2" class="nav-link" data-scroll-target="#por-niveles-de-o2">Por niveles de O2</a></li>
   <li><a href="#por-niveles-de-ups" id="toc-por-niveles-de-ups" class="nav-link" data-scroll-target="#por-niveles-de-ups">Por niveles de UPS</a></li>
   <li><a href="#por-niveles-de-temperatura" id="toc-por-niveles-de-temperatura" class="nav-link" data-scroll-target="#por-niveles-de-temperatura">Por niveles de Temperatura</a></li>
   </ul></li>
+  </ul></li>
   <li><a href="#curvas-rad-fases-lunares-horarios-día-noche" id="toc-curvas-rad-fases-lunares-horarios-día-noche" class="nav-link" data-scroll-target="#curvas-rad-fases-lunares-horarios-día-noche">Curvas RAD (Fases lunares, Horarios día-noche)</a>
   <ul>
-  <li><a href="#rad-por-fases-lunares-moon" id="toc-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#rad-por-fases-lunares-moon">RAD por fases lunares (Moon)</a></li>
-  <li><a href="#rad-por-horarios-del-día-time" id="toc-rad-por-horarios-del-día-time" class="nav-link" data-scroll-target="#rad-por-horarios-del-día-time">RAD por horarios del día (Time)</a></li>
-  </ul></li>
-  <li><a href="#ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche" id="toc-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche" class="nav-link" data-scroll-target="#ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche">Ajuste de las curvas RAD (Fases lunares, Horarios día-noche)</a>
-  <ul>
-  <li><a href="#ajuste-del-rad-por-fases-lunares-moon" id="toc-ajuste-del-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#ajuste-del-rad-por-fases-lunares-moon">Ajuste del RAD por fases lunares (Moon)</a></li>
-  <li><a href="#figuras-de-los-modelos-rad" id="toc-figuras-de-los-modelos-rad" class="nav-link" data-scroll-target="#figuras-de-los-modelos-rad">Figuras de los modelos RAD</a></li>
-  <li><a href="#ajuste-del-rad-por-horarios-día-noche-time" id="toc-ajuste-del-rad-por-horarios-día-noche-time" class="nav-link" data-scroll-target="#ajuste-del-rad-por-horarios-día-noche-time">Ajuste del RAD por horarios día-noche (Time)</a></li>
-  <li><a href="#figuras-de-los-modelos-rad-1" id="toc-figuras-de-los-modelos-rad-1" class="nav-link" data-scroll-target="#figuras-de-los-modelos-rad-1">Figuras de los modelos RAD</a></li>
+  <li><a href="#a.-rad-por-fases-lunares-moon" id="toc-a.-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#a.-rad-por-fases-lunares-moon">a. RAD por fases lunares (Moon)</a></li>
+  <li><a href="#b.-rad-por-horarios-del-día-time" id="toc-b.-rad-por-horarios-del-día-time" class="nav-link" data-scroll-target="#b.-rad-por-horarios-del-día-time">b. RAD por horarios del día (Time)</a></li>
+  <li><a href="#c.-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche" id="toc-c.-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche" class="nav-link" data-scroll-target="#c.-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche">c.&nbsp;Ajuste de las curvas RAD (Fases lunares, Horarios día-noche)</a></li>
+  <li><a href="#d.-ajuste-del-rad-por-fases-lunares-moon" id="toc-d.-ajuste-del-rad-por-fases-lunares-moon" class="nav-link" data-scroll-target="#d.-ajuste-del-rad-por-fases-lunares-moon">d.&nbsp;Ajuste del RAD por fases lunares (Moon)</a></li>
+  <li><a href="#e.-figuras-de-los-modelos-rad" id="toc-e.-figuras-de-los-modelos-rad" class="nav-link" data-scroll-target="#e.-figuras-de-los-modelos-rad">e. Figuras de los modelos RAD</a></li>
+  <li><a href="#f.-ajuste-del-rad-por-horarios-día-noche-time" id="toc-f.-ajuste-del-rad-por-horarios-día-noche-time" class="nav-link" data-scroll-target="#f.-ajuste-del-rad-por-horarios-día-noche-time">f.&nbsp;Ajuste del RAD por horarios día-noche (Time)</a></li>
+  <li><a href="#g.-figuras-de-los-modelos-rad" id="toc-g.-figuras-de-los-modelos-rad" class="nav-link" data-scroll-target="#g.-figuras-de-los-modelos-rad">g. Figuras de los modelos RAD</a></li>
   </ul></li>
   <li><a href="#diversidad-alfa---propuesta-de-chao-et-al.-2020" id="toc-diversidad-alfa---propuesta-de-chao-et-al.-2020" class="nav-link" data-scroll-target="#diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</a>
   <ul>
-  <li><a href="#por-fases-lunares-moon" id="toc-por-fases-lunares-moon" class="nav-link" data-scroll-target="#por-fases-lunares-moon">Por fases lunares (Moon)</a>
+  <li><a href="#a.-por-fases-lunares-moon" id="toc-a.-por-fases-lunares-moon" class="nav-link" data-scroll-target="#a.-por-fases-lunares-moon">a. Por fases lunares (Moon)</a>
   <ul>
   <li><a href="#paso-1.-perfil-de-completitud" id="toc-paso-1.-perfil-de-completitud" class="nav-link" data-scroll-target="#paso-1.-perfil-de-completitud">Paso 1. Perfil de completitud</a></li>
   <li><a href="#paso-2.-perfil-asintótico" id="toc-paso-2.-perfil-asintótico" class="nav-link" data-scroll-target="#paso-2.-perfil-asintótico">Paso 2. Perfil asintótico</a></li>
   <li><a href="#paso-3.-perfil-no-asintótico" id="toc-paso-3.-perfil-no-asintótico" class="nav-link" data-scroll-target="#paso-3.-perfil-no-asintótico">Paso 3. Perfil no asintótico</a></li>
   <li><a href="#paso-4.-patrón-de-uniformidad" id="toc-paso-4.-patrón-de-uniformidad" class="nav-link" data-scroll-target="#paso-4.-patrón-de-uniformidad">Paso 4. Patrón de uniformidad</a></li>
   </ul></li>
-  <li><a href="#por-horarios-times" id="toc-por-horarios-times" class="nav-link" data-scroll-target="#por-horarios-times">Por Horarios (Times)</a>
+  <li><a href="#b.-por-horarios-times" id="toc-b.-por-horarios-times" class="nav-link" data-scroll-target="#b.-por-horarios-times">b. Por Horarios (Times)</a>
   <ul>
   <li><a href="#paso-1.-perfil-de-completitud-1" id="toc-paso-1.-perfil-de-completitud-1" class="nav-link" data-scroll-target="#paso-1.-perfil-de-completitud-1">Paso 1. Perfil de completitud</a></li>
   <li><a href="#paso-2.-perfil-asintótico-1" id="toc-paso-2.-perfil-asintótico-1" class="nav-link" data-scroll-target="#paso-2.-perfil-asintótico-1">Paso 2. Perfil asintótico</a></li>
@@ -145,10 +207,8 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   </ul></li>
   </ul></li>
-  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">————————————————————————</a>
-  <ul>
-  <li><a href="#a-continuación-1" id="toc-a-continuación-1" class="nav-link" data-scroll-target="#a-continuación-1"><strong>A continuación:</strong></a></li>
-  </ul></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">————————————————————————</a></li>
+  <li><a href="#modelos-mixtos" id="toc-modelos-mixtos" class="nav-link" data-scroll-target="#modelos-mixtos"><strong>Modelos Mixtos:</strong></a></li>
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">————————————————————————</a></li>
   <li><a href="#modelo-lineal-mixto-lm-sin-zone" id="toc-modelo-lineal-mixto-lm-sin-zone" class="nav-link" data-scroll-target="#modelo-lineal-mixto-lm-sin-zone">1. Modelo lineal mixto “lm” sin Zone</a>
   <ul>
@@ -165,30 +225,34 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#figura-de-áreas-para-gremios-tróficos" id="toc-figura-de-áreas-para-gremios-tróficos" class="nav-link" data-scroll-target="#figura-de-áreas-para-gremios-tróficos">2. Figura de áreas para gremios tróficos</a>
   <ul>
   <li><a href="#abundancias-de-gremios-por-fases-lunares---opción-con-barras-discretas." id="toc-abundancias-de-gremios-por-fases-lunares---opción-con-barras-discretas." class="nav-link" data-scroll-target="#abundancias-de-gremios-por-fases-lunares---opción-con-barras-discretas.">2.1 Abundancias de gremios por fases lunares - Opción con barras discretas.</a></li>
-  <li><a href="#a-continuación-2" id="toc-a-continuación-2" class="nav-link" data-scroll-target="#a-continuación-2"><strong>A continuación:</strong></a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#nmds-con-abundancias-de-taxones" id="toc-nmds-con-abundancias-de-taxones" class="nav-link" data-scroll-target="#nmds-con-abundancias-de-taxones">1. NMDS con abundancias de taxones</a>
+  </ul></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">————————————————————————</a></li>
+  <li><a href="#rda-con-abundancias" id="toc-rda-con-abundancias" class="nav-link" data-scroll-target="#rda-con-abundancias"><strong>RDA con abundancias</strong></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">————————————————————————</a>
   <ul>
-  <li><a href="#escalamiento-multidimensional-no-métrico-1-nmds" id="toc-escalamiento-multidimensional-no-métrico-1-nmds" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-1-nmds">Escalamiento Multidimensional no Métrico 1 (NMDS)</a></li>
-  <li><a href="#paso-1.-cargar-librerías" id="toc-paso-1.-cargar-librerías" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías">Paso 1. Cargar Librerías</a></li>
-  <li><a href="#paso-2.-nmds" id="toc-paso-2.-nmds" class="nav-link" data-scroll-target="#paso-2.-nmds">Paso 2. NMDS</a></li>
+  <li><a href="#procedimiento-del-análisis-de-redundancia---rda." id="toc-procedimiento-del-análisis-de-redundancia---rda." class="nav-link" data-scroll-target="#procedimiento-del-análisis-de-redundancia---rda.">Procedimiento del análisis de redundancia - RDA.</a></li>
+  <li><a href="#visualización-del-rda-con-ggplot2" id="toc-visualización-del-rda-con-ggplot2" class="nav-link" data-scroll-target="#visualización-del-rda-con-ggplot2">Visualización del RDA con ggplot2</a></li>
   </ul></li>
-  <li><a href="#nmds-con-abundancias-de-gremios-tróficos" id="toc-nmds-con-abundancias-de-gremios-tróficos" class="nav-link" data-scroll-target="#nmds-con-abundancias-de-gremios-tróficos">2. NMDS con abundancias de gremios tróficos</a>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">————————————————————————</a></li>
+  <li><a href="#nmds---con-abudancias" id="toc-nmds---con-abudancias" class="nav-link" data-scroll-target="#nmds---con-abudancias"><strong>NMDS - Con abudancias</strong></a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">————————————————————————</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">————————————————————————</a></li>
+  <li><a href="#nmds---abundancias-de-grem.-trof." id="toc-nmds---abundancias-de-grem.-trof." class="nav-link" data-scroll-target="#nmds---abundancias-de-grem.-trof."><strong>NMDS - Abundancias de Grem. Trof.</strong></a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">————————————————————————</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">————————————————————————</a></li>
+  <li><a href="#nmds---biom.-gre.-trof.-sin-replicas" id="toc-nmds---biom.-gre.-trof.-sin-replicas" class="nav-link" data-scroll-target="#nmds---biom.-gre.-trof.-sin-replicas"><strong>NMDS - Biom. Gre. Trof. Sin replicas</strong></a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">————————————————————————</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">————————————————————————</a></li>
+  <li><a href="#nmds---índice-multivariante" id="toc-nmds---índice-multivariante" class="nav-link" data-scroll-target="#nmds---índice-multivariante"><strong>NMDS - Índice Multivariante</strong></a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">————————————————————————</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">————————————————————————</a></li>
+  <li><a href="#rda---índice-multivariante" id="toc-rda---índice-multivariante" class="nav-link" data-scroll-target="#rda---índice-multivariante"><strong>RDA - Índice Multivariante</strong></a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">————————————————————————</a>
   <ul>
-  <li><a href="#escalamiento-multidimensional-no-métrico-2-nmds" id="toc-escalamiento-multidimensional-no-métrico-2-nmds" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-2-nmds">Escalamiento Multidimensional no Métrico 2 (NMDS)</a></li>
-  <li><a href="#paso-1.-cargar-librerías-1" id="toc-paso-1.-cargar-librerías-1" class="nav-link" data-scroll-target="#paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</a></li>
-  <li><a href="#paso-2.-nmds-1" id="toc-paso-2.-nmds-1" class="nav-link" data-scroll-target="#paso-2.-nmds-1">Paso 2. NMDS</a></li>
-  </ul></li>
-  <li><a href="#nmds-con-biomasas-de-gremios-tróficos" id="toc-nmds-con-biomasas-de-gremios-tróficos" class="nav-link" data-scroll-target="#nmds-con-biomasas-de-gremios-tróficos">3. NMDS con biomasas de gremios tróficos</a>
-  <ul>
-  <li><a href="#escalamiento-multidimensional-no-métrico-3-nmds" id="toc-escalamiento-multidimensional-no-métrico-3-nmds" class="nav-link" data-scroll-target="#escalamiento-multidimensional-no-métrico-3-nmds">Escalamiento Multidimensional no Métrico 3 (NMDS)</a></li>
-  <li><a href="#paso-2.-nmds-2" id="toc-paso-2.-nmds-2" class="nav-link" data-scroll-target="#paso-2.-nmds-2">Paso 2. NMDS</a>
-  <ul>
-  <li><a href="#a-continuación-3" id="toc-a-continuación-3" class="nav-link" data-scroll-target="#a-continuación-3"><strong>A continuación:</strong></a></li>
-  </ul></li>
-  <li><a href="#rda-con-abundancias-de-taxones" id="toc-rda-con-abundancias-de-taxones" class="nav-link" data-scroll-target="#rda-con-abundancias-de-taxones">1. RDA con abundancias de taxones</a></li>
-  </ul></li>
+  <li><a href="#visualización-del-rda-con-ggplot2-1" id="toc-visualización-del-rda-con-ggplot2-1" class="nav-link" data-scroll-target="#visualización-del-rda-con-ggplot2-1">Visualización del RDA con ggplot2</a></li>
+  <li><a href="#pendientes" id="toc-pendientes" class="nav-link" data-scroll-target="#pendientes">Pendientes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -206,18 +270,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="section" class="level2">
 <h2 class="anchored" data-anchor-id="section">————————————————————————</h2>
-<section id="a-continuación" class="level5">
-<h5 class="anchored" data-anchor-id="a-continuación"><strong>A continuación:</strong></h5>
+</section>
+<section id="diversidad-alfa" class="level2">
+<h2 class="anchored" data-anchor-id="diversidad-alfa"><strong>Diversidad Alfa</strong></h2>
 <ul>
 <li><strong>Diversidad alfa</strong>. Hay otro html en donde se encuentra esta información.</li>
 </ul>
 </section>
-</section>
 <section id="section-1" class="level2">
 <h2 class="anchored" data-anchor-id="section-1">————————————————————————</h2>
-</section>
-<section id="resumen" class="level2">
-<h2 class="anchored" data-anchor-id="resumen">Resumen</h2>
+<section id="resumen" class="level3">
+<h3 class="anchored" data-anchor-id="resumen">Resumen</h3>
 <p>El presente reporte corresponde a los últimos ajustes requeridos para someter el manuscrito a la revista indicada. Ajustes realizados:</p>
 <ol type="1">
 <li><strong>Generales</strong>: Con las cuatro semanas definitivas y relacionadas a las cuatro fases lunares del ejercicio, se realizará todo el procedimiento de diversidad alfa, modelos mixtos y técnicas de ordenación multivariada.</li>
@@ -227,16 +290,16 @@ ul.task-list li input[type="checkbox"] {
 </ol>
 <hr>
 </section>
-<section id="cargar-bases-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="cargar-bases-de-datos">Cargar bases de datos</h2>
+<section id="cargar-bases-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-bases-de-datos">Cargar bases de datos</h3>
 <p>Se cargan las librerías requeridas para el procesamiento de los datos.</p>
 <div class="cell">
 
 </div>
 <hr>
 </section>
-<section id="datos-biológicos" class="level2">
-<h2 class="anchored" data-anchor-id="datos-biológicos">Datos biológicos</h2>
+<section id="datos-biológicos" class="level3">
+<h3 class="anchored" data-anchor-id="datos-biológicos">Datos biológicos</h3>
 <p>Se carga la base de datos con las especies de peces.</p>
 <div id="tbl-tbl1" class="cell tbl-parent quarto-layout-panel anchored" data-tbl-cap="Resumen de los seis primeros datos de los taxones con nombres abreviados">
 
@@ -386,14 +449,18 @@ ul.task-list li input[type="checkbox"] {
 <hr>
 </section>
 </section>
-<section id="datos-ambientales" class="level2">
-<h2 class="anchored" data-anchor-id="datos-ambientales">Datos ambientales</h2>
+<section id="datos-ambientales" class="level3">
+<h3 class="anchored" data-anchor-id="datos-ambientales">Datos ambientales</h3>
 <p>Se carga la base de datos ambientales.</p>
 <div class="cell">
 
 </div>
-<section id="elipses-1" class="level4">
-<h4 class="anchored" data-anchor-id="elipses-1">Elipses</h4>
+<hr>
+</section>
+<section id="visualización-de-patrónes" class="level3">
+<h3 class="anchored" data-anchor-id="visualización-de-patrónes">Visualización de patrónes</h3>
+<section id="a.-elipses" class="level4">
+<h4 class="anchored" data-anchor-id="a.-elipses">a. Elipses</h4>
 <p>Relaciones entre las variables ambientales tienen a ser positivas o directas.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -401,8 +468,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="relación-ambientales-y-taxones" class="level4">
-<h4 class="anchored" data-anchor-id="relación-ambientales-y-taxones">Relación ambientales y taxones</h4>
+<section id="b.-relación-ambientales-y-taxones" class="level4">
+<h4 class="anchored" data-anchor-id="b.-relación-ambientales-y-taxones">b. Relación ambientales y taxones</h4>
 <p>Se observan algunas relaciones negativas entre las variables ambientales y la abundancia de las especies.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -411,8 +478,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <hr>
 </section>
-<section id="figuras-de-cajas" class="level4">
-<h4 class="anchored" data-anchor-id="figuras-de-cajas">Figuras de Cajas</h4>
+<section id="c.-figuras-de-cajas" class="level4">
+<h4 class="anchored" data-anchor-id="c.-figuras-de-cajas">c.&nbsp;Figuras de Cajas</h4>
 <p>Se analizan los patrones de <strong>abundancias de peces</strong> (eje y), con diferentes factores (eje x), como las fases lunares (<strong>Moon</strong>), horarios (<strong>Time</strong>), y zonas (<strong>Zones</strong>).</p>
 <p><strong>Nota</strong>: Con esta base de datos de solo 4 semanas, No hay suficientes replicas para generar las cajas, sugiero incluir en la base biológica a la información de <strong>Zonas</strong> que servía como replicas.</p>
 <div class="cell">
@@ -429,8 +496,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <hr>
 </section>
-<section id="burbujas" class="level4">
-<h4 class="anchored" data-anchor-id="burbujas">Burbujas</h4>
+<section id="d.-burbujas" class="level4">
+<h4 class="anchored" data-anchor-id="d.-burbujas">d.&nbsp;Burbujas</h4>
 <p>Se relaciona a las especies de peces (eje y), variables ambientales (eje x), colores de las burbujas (fases lunares) y tamaños de las burbujas (abundancias).</p>
 <p><strong>Nota:</strong> Solo se hará con fases lunares, pero se puede hacer con el resto de factores (horarios y zonas).</p>
 <div class="cell">
@@ -439,8 +506,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 
 </div>
-<section id="por-niveles-de-ph" class="level6">
-<h6 class="anchored" data-anchor-id="por-niveles-de-ph">Por niveles de pH</h6>
+<section id="por-niveles-de-ph" class="level5">
+<h5 class="anchored" data-anchor-id="por-niveles-de-ph">Por niveles de pH</h5>
 <p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>pH</strong> entre 7.5 y 8 unidades.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -448,8 +515,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="por-niveles-de-o2" class="level6">
-<h6 class="anchored" data-anchor-id="por-niveles-de-o2">Por niveles de O2</h6>
+<section id="por-niveles-de-o2" class="level5">
+<h5 class="anchored" data-anchor-id="por-niveles-de-o2">Por niveles de O2</h5>
 <p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>OD</strong> entre 3.5 y 4.7 mg/L.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -457,8 +524,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="por-niveles-de-ups" class="level6">
-<h6 class="anchored" data-anchor-id="por-niveles-de-ups">Por niveles de UPS</h6>
+<section id="por-niveles-de-ups" class="level5">
+<h5 class="anchored" data-anchor-id="por-niveles-de-ups">Por niveles de UPS</h5>
 <p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>UPS</strong> entre 19 y 25 unidades.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -466,10 +533,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="por-niveles-de-temperatura" class="level6">
-<h6 class="anchored" data-anchor-id="por-niveles-de-temperatura">Por niveles de Temperatura</h6>
-<p><br>
-Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>temperaturas</strong> entre 28 y 30 grados centigrados.</p>
+<section id="por-niveles-de-temperatura" class="level5">
+<h5 class="anchored" data-anchor-id="por-niveles-de-temperatura">Por niveles de Temperatura</h5>
+<p>Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <strong>temperaturas</strong> entre 28 y 30 grados centigrados.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="ajustes.peces_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
@@ -478,10 +544,11 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <hr>
 </section>
 </section>
-<section id="curvas-rad-fases-lunares-horarios-día-noche" class="level4">
-<h4 class="anchored" data-anchor-id="curvas-rad-fases-lunares-horarios-día-noche">Curvas RAD (Fases lunares, Horarios día-noche)</h4>
-<section id="rad-por-fases-lunares-moon" class="level5">
-<h5 class="anchored" data-anchor-id="rad-por-fases-lunares-moon">RAD por fases lunares (Moon)</h5>
+</section>
+<section id="curvas-rad-fases-lunares-horarios-día-noche" class="level3">
+<h3 class="anchored" data-anchor-id="curvas-rad-fases-lunares-horarios-día-noche">Curvas RAD (Fases lunares, Horarios día-noche)</h3>
+<section id="a.-rad-por-fases-lunares-moon" class="level4">
+<h4 class="anchored" data-anchor-id="a.-rad-por-fases-lunares-moon">a. RAD por fases lunares (Moon)</h4>
 <div class="cell">
 
 </div>
@@ -506,8 +573,8 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 </ol>
 <hr>
 </section>
-<section id="rad-por-horarios-del-día-time" class="level5">
-<h5 class="anchored" data-anchor-id="rad-por-horarios-del-día-time">RAD por horarios del día (Time)</h5>
+<section id="b.-rad-por-horarios-del-día-time" class="level4">
+<h4 class="anchored" data-anchor-id="b.-rad-por-horarios-del-día-time">b. RAD por horarios del día (Time)</h4>
 <div class="cell">
 
 </div>
@@ -524,15 +591,15 @@ Se observa la mayor concentración de taxones abundantes y la mayor riqueza en <
 <p>Patrón de distribución de abundancias para las 15 especies más abundantes (para no saturar las figuras). En la <strong>zona 3</strong> se presenta el mayor número de especies abundantes o dominantes, seguida de las zonas 2 y 1 respectivamente.</p>
 <hr>
 </section>
-</section>
-<section id="ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche" class="level4">
-<h4 class="anchored" data-anchor-id="ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche">Ajuste de las curvas RAD (Fases lunares, Horarios día-noche)</h4>
+<section id="c.-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche" class="level4">
+<h4 class="anchored" data-anchor-id="c.-ajuste-de-las-curvas-rad-fases-lunares-horarios-día-noche">c.&nbsp;Ajuste de las curvas RAD (Fases lunares, Horarios día-noche)</h4>
 <p>Los <strong>modelos de distribución de rango-abundancia</strong> (RAD, Rank-Abundance Distribution) siguen una <strong>distribución</strong> <strong>Poisson</strong> como base estadística, por ser datos discretos representados por valores de abundancia de las especies censadas. En este sentido los cinco modelos que se describen a continuación corresponde a esta familia de modelos generalizados (<strong>Null,</strong> <strong>Preemption, log-normal, Zipf y Mandelbrot</strong>).</p>
 <p>La familia <strong>Poisson</strong> es parte de los <strong>Modelos Lineales Generalizados (GLMs)</strong>, como una opción flexible para modelar datos que no necesariamente siguen una distribución normal. Esta familia es adecuada para modelar datos de conteo como las abundancias de especies. Sin embargo, su aplicabilidad depende de que los datos cumplan con supuestos de independencia y de homogeneidad de varianzas de las medias. Si lo anterior no se cumple, podría ser necesario considerar alternativas más flexibles como la <strong>Binomial Negativa</strong>.</p>
 <p>El comando <code>radfit</code> de R (ajuste de Modelos - RAD), compara los cinco modelos mencionados: <strong>Null,</strong> <strong>Preemption, log-normal, Zipf y Mandelbrot</strong>, utilizando los criterios de información de Akaike (<code>AIC</code>) y los Bayesianos o de Schwartz (<code>BIC</code>). Los modelos RAD que se ajustan mejor a los datos, son los que presenten <strong>menor AIC y BIC</strong>.</p>
 <p>En este sentido, los modelos evaluados (Preemption, Lognormal, Zipf, Mandelbrot) asumen la misma familia estadística (Poisson) para garantizar consistencia en los cálculos y comparaciones con trabajos realizados en muestras o ensamblajes similares. La elección de la familia estadística afecta la forma en que se calculan los criterios AIC y el BIC, permitiendo una evaluación equilibrada entre los modelos.</p>
-<section id="ajuste-del-rad-por-fases-lunares-moon" class="level5">
-<h5 class="anchored" data-anchor-id="ajuste-del-rad-por-fases-lunares-moon">Ajuste del RAD por fases lunares (Moon)</h5>
+</section>
+<section id="d.-ajuste-del-rad-por-fases-lunares-moon" class="level4">
+<h4 class="anchored" data-anchor-id="d.-ajuste-del-rad-por-fases-lunares-moon">d.&nbsp;Ajuste del RAD por fases lunares (Moon)</h4>
 <div class="cell">
 
 </div>
@@ -592,9 +659,10 @@ Mandelbrot  0.33417 -1.0596  8.6624e-06  2.8938  50.3125 52.0073</code></pre>
 <p><strong>Modelo 3: Wax.gibb. Distribución predominante: Zipf (AIC = 53.94).</strong> Aquí, el modelo Zipf es claramente el de mejor ajuste.</p>
 <p><strong>Modelo 4: Wax.cres. Distribución predominante: Lognormal (AIC = 102.86).</strong> El modelo Lognormal (102.86) es el mejor ajustado, muy cercano al modelo Mandelbrot (106.400).</p>
 <p>Finalmente se puede presentar mayor competencia durante las fases lunares Wan.gibb y Wax.gib, en el resto de fases la competencia disminuye y el ensamblaje es más equilibrado en cuanto al uso del recurso, quiza por su mayor disponibilidad. De acuerdo a <a href="#0">Ibañez et al.&nbsp;(2006)</a>, las distribuciones <strong>lognormales</strong>, aplican a ensamblajes estables (sin perturbaciones) y/o a oportunistas.</p>
+<hr>
 </section>
-<section id="figuras-de-los-modelos-rad" class="level5">
-<h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad">Figuras de los modelos RAD</h5>
+<section id="e.-figuras-de-los-modelos-rad" class="level4">
+<h4 class="anchored" data-anchor-id="e.-figuras-de-los-modelos-rad">e. Figuras de los modelos RAD</h4>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="ajustes.peces_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
@@ -608,8 +676,8 @@ Mandelbrot  0.33417 -1.0596  8.6624e-06  2.8938  50.3125 52.0073</code></pre>
 </div>
 <hr>
 </section>
-<section id="ajuste-del-rad-por-horarios-día-noche-time" class="level5">
-<h5 class="anchored" data-anchor-id="ajuste-del-rad-por-horarios-día-noche-time">Ajuste del RAD por horarios día-noche (Time)</h5>
+<section id="f.-ajuste-del-rad-por-horarios-día-noche-time" class="level4">
+<h4 class="anchored" data-anchor-id="f.-ajuste-del-rad-por-horarios-día-noche-time">f.&nbsp;Ajuste del RAD por horarios día-noche (Time)</h4>
 <div class="cell">
 
 </div>
@@ -643,9 +711,10 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 <p><strong>Modelo 1: Day. Distribución predominante: Lognormal (AIC = 72.2)</strong>, seguido muy de cerca por <strong>Zipf (AIC = 72.53)</strong>. La distribución <strong>Lognormal</strong> sugiere que, en el horario diurno, las especies tienen una estructura de abundancia equilibrada con predominancia de unas pocas especies más abundantes y muchas de abundancias similares. Esto puede estar asociado con una mayor diversificación de nichos y de recursos tróficos. La similitud en el ajuste con el modelo <strong>Zipf</strong> podría indicar que hay una ligera jerarquización en la comunidad, pero no tan marcada.</p>
 <p><strong>Modelo 2: Night. Distribución predominante: Mandelbrot (AIC = 140.47)</strong>, seguido por <strong>Preemption (AIC = 147.06)</strong>. El modelo <strong>Mandelbrot</strong> indica que este ensamblaje en la noche, prsenta una estructura compleja, caracterizada por una jerarquía de en la dominancia de las especies de peces, pero más flexible que el modelo Zipf. Esto puede reflejar dinámicas de abundancia influenciadas por interacciones ecológicas nocturnas, como cambios en la obtención de recursos, el efecto de la depredación, o comportamiento de las especies. El modelo <strong>Preemption</strong> también que puede haber una fuerte repartición de los recursos, donde unas pocas especies dominan significativamente.</p>
 <p>De acuerdo a <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a>, el ajuste <em>Premption,</em> se denomina de nicho preferencial o de serie geométrica y se asocia a ensamblajes con algunos taxones que dominan por sus mayores densidades de indiviuos, especialmente en etapas iniciales de las sucesiones. Según <a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Alanís-Rodríguez et al.&nbsp;(2020)</a> y (<a href="https://cienciasforestales.inifap.gob.mx/index.php/forestales/article/view/591/2056">Magurran, 2004</a>), en el ajuste Mandelbrot se asocia a ensamblajes con pocas especies dominantes y en etapas sucesionales iniciales, considerado como uno de los mejores modelos para describir la distribución de la abundancia de especies.</p>
+<hr>
 </section>
-<section id="figuras-de-los-modelos-rad-1" class="level5">
-<h5 class="anchored" data-anchor-id="figuras-de-los-modelos-rad-1">Figuras de los modelos RAD</h5>
+<section id="g.-figuras-de-los-modelos-rad" class="level4">
+<h4 class="anchored" data-anchor-id="g.-figuras-de-los-modelos-rad">g. Figuras de los modelos RAD</h4>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="ajustes.peces_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
@@ -661,10 +730,10 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 <hr>
 </section>
 </section>
-<section id="diversidad-alfa---propuesta-de-chao-et-al.-2020" class="level4">
-<h4 class="anchored" data-anchor-id="diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</h4>
-<section id="por-fases-lunares-moon" class="level5">
-<h5 class="anchored" data-anchor-id="por-fases-lunares-moon">Por fases lunares (Moon)</h5>
+<section id="diversidad-alfa---propuesta-de-chao-et-al.-2020" class="level3">
+<h3 class="anchored" data-anchor-id="diversidad-alfa---propuesta-de-chao-et-al.-2020">Diversidad alfa - propuesta de Chao et al.&nbsp;(2020)</h3>
+<section id="a.-por-fases-lunares-moon" class="level4">
+<h4 class="anchored" data-anchor-id="a.-por-fases-lunares-moon">a. Por fases lunares (Moon)</h4>
 <div class="cell">
 
 </div>
@@ -717,8 +786,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 
 </div>
 </div>
-<section id="paso-1.-perfil-de-completitud" class="level6">
-<h6 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud">Paso 1. Perfil de completitud</h6>
+<section id="paso-1.-perfil-de-completitud" class="level5">
+<h5 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud">Paso 1. Perfil de completitud</h5>
 <div class="cell">
 
 </div>
@@ -767,8 +836,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </div>
 </div>
 </section>
-<section id="paso-2.-perfil-asintótico" class="level6">
-<h6 class="anchored" data-anchor-id="paso-2.-perfil-asintótico">Paso 2. Perfil asintótico</h6>
+<section id="paso-2.-perfil-asintótico" class="level5">
+<h5 class="anchored" data-anchor-id="paso-2.-perfil-asintótico">Paso 2. Perfil asintótico</h5>
 <p>El <strong>perfil asintótico</strong> muestra que en las fases lunares <strong>Wan.cres</strong> y <strong>Wan.gibb</strong>, se presenta el mayor número de especies sin detectar (8 especies), seguidas de <strong>Wax.cres</strong> con 6 especies no detectadas. Este patrón puede afectar para que no se encuentre la asintota de diversidad, en la figura que se presenta a continuación.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -881,8 +950,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </div>
 </div>
 </section>
-<section id="paso-3.-perfil-no-asintótico" class="level6">
-<h6 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico">Paso 3. Perfil no asintótico</h6>
+<section id="paso-3.-perfil-no-asintótico" class="level5">
+<h5 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico">Paso 3. Perfil no asintótico</h5>
 <p>La siguiente tabla muestra el <strong>patrón no asintótico</strong>, en el que se extrae una submuestra de cada fase lunar y para este caso la cobertura calculada es del 97%, para lo cual se espera encontrar mayor número de taxones en <strong>Wan.cre</strong>s, seguida de Wan.gibb, Wax.cres y Wax.gibb respectivamente. Este patrón presenta validez, debido a la falta de asintota en el paso anterior.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -934,8 +1003,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </div>
 </div>
 </section>
-<section id="paso-4.-patrón-de-uniformidad" class="level6">
-<h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad">Paso 4. Patrón de uniformidad</h6>
+<section id="paso-4.-patrón-de-uniformidad" class="level5">
+<h5 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad">Paso 4. Patrón de uniformidad</h5>
 <p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>Wax.gibb</strong> que representa a la estación con menor número de tazones (q=0) y menos nùmero de singletons (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -983,8 +1052,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 <hr>
 </section>
 </section>
-<section id="por-horarios-times" class="level5">
-<h5 class="anchored" data-anchor-id="por-horarios-times">Por Horarios (Times)</h5>
+<section id="b.-por-horarios-times" class="level4">
+<h4 class="anchored" data-anchor-id="b.-por-horarios-times">b. Por Horarios (Times)</h4>
 <div class="cell">
 
 </div>
@@ -1023,8 +1092,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 
 </div>
 </div>
-<section id="paso-1.-perfil-de-completitud-1" class="level6">
-<h6 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud-1">Paso 1. Perfil de completitud</h6>
+<section id="paso-1.-perfil-de-completitud-1" class="level5">
+<h5 class="anchored" data-anchor-id="paso-1.-perfil-de-completitud-1">Paso 1. Perfil de completitud</h5>
 <div class="cell">
 
 </div>
@@ -1061,8 +1130,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </div>
 </div>
 </section>
-<section id="paso-2.-perfil-asintótico-1" class="level6">
-<h6 class="anchored" data-anchor-id="paso-2.-perfil-asintótico-1">Paso 2. Perfil asintótico</h6>
+<section id="paso-2.-perfil-asintótico-1" class="level5">
+<h5 class="anchored" data-anchor-id="paso-2.-perfil-asintótico-1">Paso 2. Perfil asintótico</h5>
 <p>El <strong>perfil asintótico</strong> muestra que en la <strong>noche</strong> se presenta el mayor número de especies sin detectar (28 especies no detectadas), seguida del <strong>día</strong> con solo 4 especies no detectadas. Este patrón puede afectar para que no se encuentre la asintota de diversidad, en la figura que se presenta a continuación.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1133,8 +1202,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </div>
 </div>
 </section>
-<section id="paso-3.-perfil-no-asintótico-1" class="level6">
-<h6 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico-1">Paso 3. Perfil no asintótico</h6>
+<section id="paso-3.-perfil-no-asintótico-1" class="level5">
+<h5 class="anchored" data-anchor-id="paso-3.-perfil-no-asintótico-1">Paso 3. Perfil no asintótico</h5>
 <p>La siguiente tabla muestra el <strong>patrón no asintótico</strong>, en el que se extrae una submuestra de cada horario día-noche y para este caso la cobertura calculada es del 98%, para lo cual se espera encontrar mayor número de taxones en <strong>la noche</strong> (42 especies), seguida de la <strong>mañana</strong> (22 especies). Este patrón presenta validez, debido a la falta de asintota en el paso anterior.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1174,8 +1243,8 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </div>
 </div>
 </section>
-<section id="paso-4.-patrón-de-uniformidad-1" class="level6">
-<h6 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad-1">Paso 4. Patrón de uniformidad</h6>
+<section id="paso-4.-patrón-de-uniformidad-1" class="level5">
+<h5 class="anchored" data-anchor-id="paso-4.-patrón-de-uniformidad-1">Paso 4. Patrón de uniformidad</h5>
 <p>Para este caso se observa que la mayor <strong>uniformidad de Pielou (J)</strong> se presenta en <strong>la mañana</strong> que representa a la estación con menor número de tazones (q=0) y de especies con un solo individuo (f1).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1214,12 +1283,12 @@ Mandelbrot  23526   -4.5519  11.336  18.381  113.074 116.848</code></pre>
 </section>
 <section id="section-2" class="level2">
 <h2 class="anchored" data-anchor-id="section-2">————————————————————————</h2>
-<section id="a-continuación-1" class="level5">
-<h5 class="anchored" data-anchor-id="a-continuación-1"><strong>A continuación:</strong></h5>
+</section>
+<section id="modelos-mixtos" class="level2">
+<h2 class="anchored" data-anchor-id="modelos-mixtos"><strong>Modelos Mixtos:</strong></h2>
 <ul>
 <li><strong>Modelos lineales Mixtos</strong>. Hay otro html en donde se encuentra esta información.</li>
 </ul>
-</section>
 </section>
 <section id="section-3" class="level2">
 <h2 class="anchored" data-anchor-id="section-3">————————————————————————</h2>
@@ -1477,24 +1546,24 @@ TimeNight -0.507</code></pre>
 </div>
 </div>
 <hr>
-<p>Esta <strong>?@fig-fig7</strong> a diferencia de la siguiente, se extrae de ta tabla general “<strong>data1</strong>” en el archivo datos25.xlsx de Excel, pero los resultados son iguales a <a href="#fig-figl8">Figure&nbsp;5</a>.</p>
+<p>Esta <strong>?@fig-fig6</strong> a diferencia de la siguiente, se extrae de ta tabla general “<strong>data1</strong>” en el archivo datos25.xlsx de Excel, pero los resultados son iguales a <a href="#fig-figl7">Figure&nbsp;5</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl7" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figl6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figl7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figl6-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;4: Changes in weight of estuarine fish assemblages in the Gulf of Urabá, divided by trophic guilds.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>Esta <strong>?@fig-fig8</strong>, a diferencia de la anterior se extrae de la hoja “<strong>functional2</strong>” en el archivo de Excel, pero los resultados son iguales a los de <strong>?@fig-fig7</strong>..</p>
+<p>Esta <strong>?@fig-fig7</strong>, a diferencia de la anterior se extrae de la hoja “<strong>functional2</strong>” en el archivo de Excel, pero los resultados son iguales a los de <strong>?@fig-fig6</strong>..</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl8" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figl7" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figl8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figl7-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;5: Changes in Biomass of estuarine fish assemblages in the Gulf of Urabá, divided by trophic guilds.</figcaption><p></p>
 </figure>
 </div>
@@ -1503,9 +1572,9 @@ TimeNight -0.507</code></pre>
 <hr>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl9" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figl8" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figl9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figl8-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;6: Changes in Biomass of estuarine fish assemblages in the Gulf of Urabá, divided by Time phases.</figcaption><p></p>
 </figure>
 </div>
@@ -1513,46 +1582,37 @@ TimeNight -0.507</code></pre>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figl10" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figl9" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figl10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figl9-1.png" class="img-fluid figure-img" width="672"></p>
 <p></p><figcaption class="figure-caption">Figure&nbsp;7: Changes in Biomass of estuarine fish assemblages in the Gulf of Urabá, divided by Time phases.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>##————————————————————————</p>
 </section>
-<section id="a-continuación-2" class="level5">
-<h5 class="anchored" data-anchor-id="a-continuación-2"><strong>A continuación:</strong></h5>
+</section>
+</section>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">————————————————————————</h2>
+</section>
+<section id="rda-con-abundancias" class="level2">
+<h2 class="anchored" data-anchor-id="rda-con-abundancias"><strong>RDA con abundancias</strong></h2>
 <ul>
-<li><strong>Técnicas de ordenación</strong>. (NMDS, RDA) y de clasificación (CLA).</li>
+<li><strong>Técnicas de ordenación - (RDA con datos de abundancia)</strong></li>
 </ul>
-<p>##————————————————————————</p>
 </section>
-</section>
-</section>
-<section id="nmds-con-abundancias-de-taxones" class="level3">
-<h3 class="anchored" data-anchor-id="nmds-con-abundancias-de-taxones">1. NMDS con abundancias de taxones</h3>
-<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
-</b><section id="escalamiento-multidimensional-no-métrico-1-nmds" class="level5"><b style="color:#1f78b4;">
-<h5 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-1-nmds">Escalamiento Multidimensional no Métrico 1 (NMDS)</h5>
-</b><p><b style="color:#1f78b4;"></b></p>
-<p>Se aplicará esta técnica para explorar los gradientes en la ordenación de los sitios o Moon, su relación con los trece Species taxonómicos y las variables ambientales. Se utilizará la distancia Bray Curtis, para la asociación de los datos.</p>
-<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b></section><b style="color:#fc8d62;">
-</b><section id="paso-1.-cargar-librerías" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="paso-1.-cargar-librerías">Paso 1. Cargar Librerías</h4>
-</b><p><b style="color:#fc8d62;"></b></p>
-<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">————————————————————————</h2>
+<p>Se intenta visualizar el ordenamiento de taxones con las fases lunares y variables ambientales, usando los datos de abundancia, linealizados con la transformación de Hellinger y los datos ambientales linealizados con log10+1.</p>
 <div class="cell">
 
 </div>
-<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-nmds" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="paso-2.-nmds">Paso 2. NMDS</h4>
-</b><p><b style="color:#fc8d62;"></b></p>
+<div class="cell">
+
+</div>
+<p>Se realiza un ajuste de la base de datos, primero convirtiendo a la columna <code>Moon</code> como un factor, luego transformando a las variables ambientales <code>amb</code> con logaritmo en base 10 y finalmente ajustando a los taxones <code>tax.hel</code> con la transformación de Hellinger.</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -1560,19 +1620,7 @@ TimeNight -0.507</code></pre>
 <caption></caption>
  <thead>
   <tr>
-   <th style="text-align:left;"> ID </th>
    <th style="text-align:left;"> Moon </th>
-   <th style="text-align:left;"> Time </th>
-   <th style="text-align:right;"> Achl </th>
-   <th style="text-align:right;"> Ancc </th>
-   <th style="text-align:right;"> Aris </th>
-   <th style="text-align:right;"> Barr </th>
-   <th style="text-align:right;"> Carc </th>
-   <th style="text-align:right;"> Catm </th>
-   <th style="text-align:right;"> Cene </th>
-   <th style="text-align:right;"> Cenp </th>
-   <th style="text-align:right;"> Cenu </th>
-   <th style="text-align:right;"> Cete </th>
    <th style="text-align:right;"> Chaf </th>
    <th style="text-align:right;"> Cits </th>
    <th style="text-align:right;"> Dasg </th>
@@ -1596,26 +1644,14 @@ TimeNight -0.507</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wax.cN </td>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 28 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1624,61 +1660,15 @@ TimeNight -0.507</code></pre>
    <td style="text-align:right;"> 9 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax.cD </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 6 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gN </td>
    <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Night </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 25 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 4 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 6 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1689,7 +1679,7 @@ TimeNight -0.507</code></pre>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1698,30 +1688,9 @@ TimeNight -0.507</code></pre>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax.gD </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 5 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> Wan.cres </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1729,25 +1698,22 @@ TimeNight -0.507</code></pre>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wan.gN </td>
    <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 16 </td>
-   <td style="text-align:right;"> 14 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 12 </td>
-   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 11 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
@@ -1765,266 +1731,207 @@ TimeNight -0.507</code></pre>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
   </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+
+</div>
+<section id="procedimiento-del-análisis-de-redundancia---rda." class="level4">
+<h4 class="anchored" data-anchor-id="procedimiento-del-análisis-de-redundancia---rda.">Procedimiento del análisis de redundancia - RDA.</h4>
+<p>Por ser muy pocas filas (solo 4 representadas por las fases lunares), los 12 pasos requeridos no se realizarán, dado a que se generar resultados inconsistentes. En ese sentido, se procede directamente al paso 4, relacionado a la visualización del RDA “parsimonioso”.</p>
+<div class="cell">
+
+</div>
+</section>
+<section id="visualización-del-rda-con-ggplot2" class="level4">
+<h4 class="anchored" data-anchor-id="visualización-del-rda-con-ggplot2">Visualización del RDA con ggplot2</h4>
+<p>Se realizará la figura del RDA con el paquete <code>ggplot2</code>, dada su mejor presentación, comparado a las figuras anteriores, realizadas con el paquete <code>vegan</code>. Los siguientes comandos sirven para identificar las coorddenadas de los sitios (“<code>sites</code>”), los taxones (“<code>sp</code>”) y las variables ambientales (“<code>vectors</code>”).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05), solo <code>Temp</code> se aproxima (valor p = 0.08)</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            RDA1     RDA2     r2  Pr(&gt;r)  
+pH      -0.37546 -0.92684 0.0025 1.00000  
+%OD      0.66941  0.74289 0.6680 0.58333  
+OD       0.94531 -0.32619 0.7144 0.54167  
+Conduct -0.77536  0.63152 0.8185 0.45833  
+TDS     -0.66577  0.74616 0.9790 0.20833  
+UPS     -0.74391  0.66828 0.9578 0.16667  
+Temp    -0.72704  0.68660 0.9951 0.08333 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 23</code></pre>
+</div>
+</div>
+<p>En la <a href="#fig-figura20">Figure&nbsp;8</a> se observa el mayor número de taxones asociados en “Wax.cres” seguido de “Wax.gibb”.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura20" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura20-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: Figuras del RDA con las variables biológicas y los sitios</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En la <a href="#fig-figura21">Figure&nbsp;9</a> se observa el mayor número de taxones asociados en “Wax.cres”, asociado al <code>pH</code>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura21" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura21-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: Figuras del RDA con las variables biológicas, las ambientales y los sitios</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">————————————————————————</h2>
+</section>
+<section id="nmds---con-abudancias" class="level2">
+<h2 class="anchored" data-anchor-id="nmds---con-abudancias"><strong>NMDS - Con abudancias</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación</strong>. (NMDS con datos de abundancia por especies)</li>
+</ul>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">————————————————————————</h2>
+<p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
   <tr>
-   <td style="text-align:left;"> Wan.gD </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Day </td>
+   <th style="text-align:left;"> Moon </th>
+   <th style="text-align:right;"> Chaf </th>
+   <th style="text-align:right;"> Cits </th>
+   <th style="text-align:right;"> Dasg </th>
+   <th style="text-align:right;"> Diar </th>
+   <th style="text-align:right;"> Eugp </th>
+   <th style="text-align:right;"> Gerc </th>
+   <th style="text-align:right;"> Gobd </th>
+   <th style="text-align:right;"> Luta </th>
+   <th style="text-align:right;"> Lutj </th>
+   <th style="text-align:right;"> Lycg </th>
+   <th style="text-align:right;"> Mena </th>
+   <th style="text-align:right;"> Mugi </th>
+   <th style="text-align:right;"> Olig </th>
+   <th style="text-align:right;"> Olig.1 </th>
+   <th style="text-align:right;"> Selv </th>
+   <th style="text-align:right;"> Spht </th>
+   <th style="text-align:right;"> Stes </th>
+   <th style="text-align:right;"> Strt </th>
+   <th style="text-align:right;"> Tril </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 12 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
    <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<div class="cell">
-
-</div>
-<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
-<div class="cell">
-
-</div>
-<div class="cell">
-<div class="cell-output-display">
-
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption></caption>
- <thead>
   <tr>
-   <th style="text-align:left;"> sitio </th>
-   <th style="text-align:right;"> NMDS1 </th>
-   <th style="text-align:right;"> NMDS2 </th>
-   <th style="text-align:left;"> Moon </th>
-   <th style="text-align:left;"> Time </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> -0.1125374 </td>
-   <td style="text-align:right;"> -0.0149871 </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Night </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> -0.0469541 </td>
-   <td style="text-align:right;"> -0.4664983 </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Day </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> -0.2315102 </td>
-   <td style="text-align:right;"> -0.1858522 </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Night </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> 0.8354677 </td>
-   <td style="text-align:right;"> -0.1387084 </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Day </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> -0.5939933 </td>
-   <td style="text-align:right;"> 0.0359565 </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Night </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> 0.2752842 </td>
-   <td style="text-align:right;"> 0.6681969 </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Day </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<p>A continuación se extraen las coordenadas de las Moon, Times, Zones, Species taxonómicos y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
-<div class="cell">
-
-</div>
-<div class="cell">
-
-</div>
-<p>L <a href="#fig-fig11">Figure&nbsp;8</a>, muestra la ordenación del NMDS para las referencias de las Moon, con los Species taxonómicos y las variables ambientales. No se logra apreciar un gradiente claro, aunque las Moon 9, 13 y 15 son las que agrupan mayor cantidad de taxones, asociadas a mayor Temperature y Salinity.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-fig11" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig11-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8: ordenación de de las fases lunares, con valores de abundancia de los taxones y las variables ambientales</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p>La <a href="#fig-fig12">Figure&nbsp;9</a> muestra la diferenciación por Moon, se logra observar un gradiente horizontal, en donde algunas Moon muestran diferencias por sus Species taxonómicos.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-fig12" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig12-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9: ordenación de de las Moon, con los Species taxonómicos</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p>La <a href="#fig-fig13">Figure&nbsp;10</a> complementa a la <a href="#fig-fig12">Figure&nbsp;9</a>, al incorporar las variables ambientales en la caracterización de las Moon y de los Species taxonómicos.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-fig13" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig13-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;10: ordenación de de las Moon, con los Species taxonómicos y las variables ambientales</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p>La <a href="#fig-fig14">Figure&nbsp;11</a> que la composición taxonómica con 250 micras, se encuentra anidada en 500 micras.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-fig14" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig14-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;11: ordenación de de las Moon, con los Species taxonómicos entre dos categorías de Time</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p>##————————————————————————</p>
-</section>
-</section>
-<section id="nmds-con-abundancias-de-gremios-tróficos" class="level3">
-<h3 class="anchored" data-anchor-id="nmds-con-abundancias-de-gremios-tróficos">2. NMDS con abundancias de gremios tróficos</h3>
-<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
-</b><section id="escalamiento-multidimensional-no-métrico-2-nmds" class="level5"><b style="color:#1f78b4;">
-<h5 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-2-nmds">Escalamiento Multidimensional no Métrico 2 (NMDS)</h5>
-</b><p><b style="color:#1f78b4;"></b></p>
-<p>Se aplicará esta técnica para explorar los gradientes en la ordenación de los sitios o Moon, su relación con los cinco gremios tròficos y las variables ambientales. Se utilizará la distancia Bray Curtis, para la asociación de los datos.</p>
-<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b></section><b style="color:#fc8d62;">
-</b><section id="paso-1.-cargar-librerías-1" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="paso-1.-cargar-librerías-1">Paso 1. Cargar Librerías</h4>
-</b><p><b style="color:#fc8d62;"></b></p>
-<p>Se ejecutan las librerías necesarias para este análisis.</p>
-<div class="cell">
-
-</div>
-<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-nmds-1" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="paso-2.-nmds-1">Paso 2. NMDS</h4>
-</b><p><b style="color:#fc8d62;"></b></p>
-<div class="cell">
-<div class="cell-output-display">
-
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption></caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> ID </th>
-   <th style="text-align:left;"> Moon </th>
-   <th style="text-align:left;"> Time </th>
-   <th style="text-align:right;"> Omni </th>
-   <th style="text-align:right;"> Phyt </th>
-   <th style="text-align:right;"> Pisc </th>
-   <th style="text-align:right;"> Plan </th>
-   <th style="text-align:right;"> Zoob </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Wax.cN </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:left;"> Wan.cres </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 10 </td>
-   <td style="text-align:right;"> 40 </td>
-   <td style="text-align:right;"> 16 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cD </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 4 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax.gN </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:left;"> Wan.gibb </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 9 </td>
-   <td style="text-align:right;"> 13 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gD </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 7 </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gN </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Night </td>
+   <td style="text-align:right;"> 11 </td>
    <td style="text-align:right;"> 1 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 3 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gD </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 3 </td>
-   <td style="text-align:right;"> 29 </td>
-   <td style="text-align:right;"> 15 </td>
   </tr>
 </tbody>
 </table>
@@ -2036,8 +1943,16 @@ TimeNight -0.507</code></pre>
 </div>
 <p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
 <div class="cell">
-
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in metaMDS(biol[, -1], trace = FALSE): stress is (nearly) zero: you may
+have insufficient data</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in postMDS(out$points, dis, plot = max(0, plot - 1), ...): skipping
+half-change scaling: too few points below threshold</code></pre>
+</div>
+</div>
+<p>A continuación se extraen las coordenadas de las Moon, Species y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -2049,112 +1964,105 @@ TimeNight -0.507</code></pre>
    <th style="text-align:right;"> NMDS1 </th>
    <th style="text-align:right;"> NMDS2 </th>
    <th style="text-align:left;"> Moon </th>
-   <th style="text-align:left;"> Time </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> -0.2234657 </td>
-   <td style="text-align:right;"> 0.0730495 </td>
+   <td style="text-align:right;"> -0.1609315 </td>
+   <td style="text-align:right;"> 0.1092847 </td>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Night </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> 0.4843052 </td>
-   <td style="text-align:right;"> -0.0715588 </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Day </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> 0.4196195 </td>
-   <td style="text-align:right;"> 0.0710216 </td>
+   <td style="text-align:right;"> -0.3670718 </td>
+   <td style="text-align:right;"> -0.2786473 </td>
    <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Night </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> -0.7621301 </td>
-   <td style="text-align:right;"> -0.0713239 </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Day </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> 0.0385223 </td>
-   <td style="text-align:right;"> -0.4726706 </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Night </td>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 0.0700300 </td>
+   <td style="text-align:right;"> 0.4182563 </td>
+   <td style="text-align:left;"> Wan.cres </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> -0.1068413 </td>
-   <td style="text-align:right;"> 0.5174074 </td>
+   <td style="text-align:right;"> 0.4579733 </td>
+   <td style="text-align:right;"> -0.2488937 </td>
    <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Day </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-<p>A continuación se extraen las coordenadas de las Moon, Times, Zones, Species taxonómicos y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
 <div class="cell">
 
 </div>
 <div class="cell">
 
 </div>
-<p>L <a href="#fig-fig15">Figure&nbsp;12</a>, muestra la ordenación del NMDS para las referencias de las Moon, con los Species taxonómicos y las variables ambientales. No se logra apreciar un gradiente claro, aunque las Moon 9, 13 y 15 son las que agrupan mayor cantidad de taxones, asociadas a mayor Temperature y Salinity.</p>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05), sin embargo se realizará la visualización de este análisis, porque para mi concepto, muestra un mejor gradiente que el encontrado en el RDA anterior.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           NMDS1    NMDS2     r2 Pr(&gt;r)
+pH       0.07797  0.99696 0.0913 0.9583
+%OD      0.71617 -0.69792 0.7750 0.5000
+OD       0.89933  0.43726 0.5428 0.7500
+Conduct -0.62765 -0.77849 0.6016 0.5833
+TDS     -0.45241 -0.89181 0.8436 0.5000
+UPS     -0.55719 -0.83039 0.8049 0.5000
+Temp    -0.52281 -0.85245 0.8988 0.3333
+Permutation: free
+Number of permutations: 23</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-fig22">Figure&nbsp;10</a>, muestra un gradiente unimodal interesante, de las especies, con las variables ambientales y las fases lunares, mostrando al igual que en el RDA, que las fases Wax.cres y Wax.gib, son las que agrupan mayor número de especies y se relacionan a mayores valores de pH.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig15" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig22" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig15-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12: ordenación de de las fases lunares, con valores de abundancia de los taxones y las variables ambientales</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig22-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: ordenación de de las fases lunares, con valores de abundancia de los taxones y las variables ambientales</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig16">Figure&nbsp;13</a> muestra la diferenciación por Moon, se logra observar un gradiente horizontal, en donde algunas Moon muestran diferencias por sus Species taxonómicos.</p>
+<p>La <a href="#fig-fig23">Figure&nbsp;11</a> no incluye a las variables ambientales.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig16" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig23" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig16-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;13: ordenación de de las Moon, con los Species taxonómicos</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig23-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;11: ordenación de de las Moon, con las especies</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig17">Figure&nbsp;14</a> que la composición taxonómica con 250 micras, se encuentra anidada en 500 micras.</p>
+<p>La <a href="#fig-fig24">Figure&nbsp;12</a> complementa a la <a href="#fig-fig22">Figure&nbsp;10</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig17" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig24" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig17-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;14: ordenación de de las Moon, con los Species taxonómicos entre dos categorías de Time</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig24-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>##————————————————————————</p>
 </section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">————————————————————————</h2>
 </section>
-<section id="nmds-con-biomasas-de-gremios-tróficos" class="level3">
-<h3 class="anchored" data-anchor-id="nmds-con-biomasas-de-gremios-tróficos">3. NMDS con biomasas de gremios tróficos</h3>
-<p><b style="color:#1f78b4;"></b></p><b style="color:#1f78b4;">
-</b><section id="escalamiento-multidimensional-no-métrico-3-nmds" class="level5"><b style="color:#1f78b4;">
-<h5 class="anchored" data-anchor-id="escalamiento-multidimensional-no-métrico-3-nmds">Escalamiento Multidimensional no Métrico 3 (NMDS)</h5>
-</b><p><b style="color:#1f78b4;"></b></p>
-<p>Se aplicará esta técnica para explorar los gradientes en la ordenación de los sitios o Moon, su relación con los cinco gremios tròficos y las variables ambientales. Se utilizará la distancia Bray Curtis, para la asociación de los datos.</p>
-<p><b style="color:#fc8d62;"></b></p><b style="color:#fc8d62;">
-</b></section><b style="color:#fc8d62;">
-</b><section id="paso-2.-nmds-2" class="level4"><b style="color:#fc8d62;">
-<h4 class="anchored" data-anchor-id="paso-2.-nmds-2">Paso 2. NMDS</h4>
-</b><p><b style="color:#fc8d62;"></b></p>
+<section id="nmds---abundancias-de-grem.-trof." class="level2">
+<h2 class="anchored" data-anchor-id="nmds---abundancias-de-grem.-trof."><strong>NMDS - Abundancias de Grem. Trof.</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación - NMDS con Abundancias de Gremios tróficos</strong></li>
+</ul>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">————————————————————————</h2>
+<p>El objetivo de este análisis es visualizar gradientes complementarios a los de abundancias de taxones o de especies. En este caso se analizan las abundancias de los gremios tróficos, aprovechando que se cuenta con esa información. Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis. Los datos a evaluar son las <strong>abundancias de los gremios tróficos</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -2162,9 +2070,7 @@ TimeNight -0.507</code></pre>
 <caption></caption>
  <thead>
   <tr>
-   <th style="text-align:left;"> ID </th>
    <th style="text-align:left;"> Moon </th>
-   <th style="text-align:left;"> Time </th>
    <th style="text-align:right;"> Omni </th>
    <th style="text-align:right;"> Phyt </th>
    <th style="text-align:right;"> Pisc </th>
@@ -2174,64 +2080,36 @@ TimeNight -0.507</code></pre>
  </thead>
 <tbody>
   <tr>
-   <td style="text-align:left;"> Wax.cN </td>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 9546.000 </td>
-   <td style="text-align:right;"> 94 </td>
-   <td style="text-align:right;"> 390 </td>
-   <td style="text-align:right;"> 1008 </td>
-   <td style="text-align:right;"> 1130 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 20 </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax.cD </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 3349.753 </td>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 36 </td>
    <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 16 </td>
+   <td style="text-align:right;"> 16 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 37 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 58 </td>
+   <td style="text-align:right;"> 30 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
    <td style="text-align:right;"> 28 </td>
-   <td style="text-align:right;"> 534 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gN </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 9439.000 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 123 </td>
-   <td style="text-align:right;"> 394 </td>
-   <td style="text-align:right;"> 1284 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gD </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 0.000 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 576 </td>
-   <td style="text-align:right;"> 201 </td>
-   <td style="text-align:right;"> 98 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gN </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Night </td>
-   <td style="text-align:right;"> 4521.600 </td>
-   <td style="text-align:right;"> 2238 </td>
-   <td style="text-align:right;"> 720 </td>
-   <td style="text-align:right;"> 733 </td>
-   <td style="text-align:right;"> 8861 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gD </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Day </td>
-   <td style="text-align:right;"> 505.000 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 0 </td>
-   <td style="text-align:right;"> 48 </td>
-   <td style="text-align:right;"> 11016 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 18 </td>
   </tr>
 </tbody>
 </table>
@@ -2241,9 +2119,16 @@ TimeNight -0.507</code></pre>
 <div class="cell">
 
 </div>
-<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0</strong> (0%), debido al bajo número de datos o filas de la matriz utilizada (solo cuatro filas).</p>
 <div class="cell">
-
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in metaMDS(biol[, 2:6], trace = FALSE): stress is (nearly) zero: you
+may have insufficient data</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in postMDS(out$points, dis, plot = max(0, plot - 1), ...): skipping
+half-change scaling: too few points below threshold</code></pre>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
@@ -2256,112 +2141,708 @@ TimeNight -0.507</code></pre>
    <th style="text-align:right;"> NMDS1 </th>
    <th style="text-align:right;"> NMDS2 </th>
    <th style="text-align:left;"> Moon </th>
-   <th style="text-align:left;"> Time </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> -0.2386107 </td>
-   <td style="text-align:right;"> -0.1152631 </td>
+   <td style="text-align:right;"> -0.0404814 </td>
+   <td style="text-align:right;"> -0.0272631 </td>
    <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Night </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> 0.4199599 </td>
-   <td style="text-align:right;"> -0.1722659 </td>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:left;"> Day </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> -0.1067455 </td>
-   <td style="text-align:right;"> -0.1462872 </td>
+   <td style="text-align:right;"> -0.1061514 </td>
+   <td style="text-align:right;"> -0.0250606 </td>
    <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Night </td>
   </tr>
   <tr>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> -0.6897654 </td>
-   <td style="text-align:right;"> 0.3572920 </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:left;"> Day </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> 0.0619967 </td>
-   <td style="text-align:right;"> 0.2511884 </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Night </td>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> -0.0140907 </td>
+   <td style="text-align:right;"> 0.0696369 </td>
+   <td style="text-align:left;"> Wan.cres </td>
   </tr>
   <tr>
    <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> 0.8316019 </td>
-   <td style="text-align:right;"> 0.3231745 </td>
+   <td style="text-align:right;"> 0.1607235 </td>
+   <td style="text-align:right;"> -0.0173131 </td>
    <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:left;"> Day </td>
   </tr>
 </tbody>
 </table>
 
 </div>
 </div>
-<p>A continuación se extraen las coordenadas de las Moon, Times, Zones, Species taxonómicos y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<p>A continuación se extraen las coordenadas de las Moon, especies y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
 <div class="cell">
 
 </div>
 <div class="cell">
 
 </div>
-<p>L <a href="#fig-fig18">Figure&nbsp;15</a>, muestra la ordenación del NMDS para las referencias de las Moon, con los Species taxonómicos y las variables ambientales. No se logra apreciar un gradiente claro, aunque las Moon 9, 13 y 15 son las que agrupan mayor cantidad de taxones, asociadas a mayor Temperature y Salinity.</p>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           NMDS1    NMDS2     r2  Pr(&gt;r)  
+pH       0.10917 -0.99402 0.0776 0.95833  
+%OD      0.95932 -0.28231 0.4888 0.79167  
+OD       0.27351  0.96187 0.8515 0.37500  
+Conduct -0.13953 -0.99022 0.9626 0.20833  
+TDS     -0.10041 -0.99495 0.9846 0.20833  
+UPS     -0.14185 -0.98989 0.9981 0.04167 *
+Temp    -0.14366 -0.98963 0.9672 0.16667  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 23</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-fig25">Figure&nbsp;13</a>, muestra un gradiente horizontal de los gremios y de las fases lunares, pero una baja relación con las variables ambientales. En este sentido, no veo un aporte complementario de esta ordenación de abundancias de gremios tróficos con la anterior de abundancias de las especies de peces (<a href="#fig-fig22">Figure&nbsp;10</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig18" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig25" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig18-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;15: ordenación de de las fases lunares, con valores de biomasa de los gremios tróficos y las variables ambientales</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig25-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;13: ordenación de de las fases lunares, con valores de abundancia de los taxones y las variables ambientales</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig19">Figure&nbsp;16</a> muestra la diferenciación por Moon, se logra observar un gradiente horizontal, en donde algunas Moon muestran diferencias por sus Species taxonómicos.</p>
+<p>La <a href="#fig-fig26">Figure&nbsp;14</a> detalla la caracterización de los gremios a las fases lunares. Basicamente cada fase lunar se asocia a un gremio, excepto <em>Wan.gibb</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig19" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig26" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig19-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;16: ordenación de de las Moon, con los Species taxonómicos</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig26-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14: ordenación de de las Moon, con las especies</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
-<p>La <a href="#fig-fig20">Figure&nbsp;17</a> que la composición taxonómica con 250 micras, se encuentra anidada en 500 micras.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-fig20" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig20-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;17: ordenación de de las Moon, con los gremios tróficos entre dos categorías de horarios del día</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<p>##————————————————————————</p>
-<section id="a-continuación-3" class="level5">
-<h5 class="anchored" data-anchor-id="a-continuación-3"><strong>A continuación:</strong></h5>
-<ul>
-<li><strong>Técnicas de ordenación</strong>. (RDA)</li>
-</ul>
-<p>##————————————————————————</p>
-</section>
-</section>
-<section id="rda-con-abundancias-de-taxones" class="level4">
-<h4 class="anchored" data-anchor-id="rda-con-abundancias-de-taxones">1. RDA con abundancias de taxones</h4>
 <hr>
-<p>Intenté correrlo pero el ajuste con la inercia no dirigida y con el R2 ajustado (Ezequiel 1930), dan demasiado bajos, por tener muy pocos datos por cada fase lunar. Sugiero considerar alguno de los NMDS anteriores, que pueden tener un mejor desempeño con ese tipo de datos, aunque no son tan robustos como el RDA, pero podrían funcionar para este caso.</p>
-<p><strong>Pendiente: Ajustar consecutivos de las figuras, enviar html a Lenin.</strong></p>
 </section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">————————————————————————</h2>
+</section>
+<section id="nmds---biom.-gre.-trof.-sin-replicas" class="level2">
+<h2 class="anchored" data-anchor-id="nmds---biom.-gre.-trof.-sin-replicas"><strong>NMDS - Biom. Gre. Trof. Sin replicas</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación - NMDS con Biomasas de Gremios tróficos</strong></li>
+</ul>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">————————————————————————</h2>
+<p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis. Los datos a evaluar son las <strong>biomasas de los gremios tróficos</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Moon </th>
+   <th style="text-align:right;"> Omni </th>
+   <th style="text-align:right;"> Phyt </th>
+   <th style="text-align:right;"> Pisc </th>
+   <th style="text-align:right;"> Plan </th>
+   <th style="text-align:right;"> Zoob </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 12895.75 </td>
+   <td style="text-align:right;"> 94 </td>
+   <td style="text-align:right;"> 390 </td>
+   <td style="text-align:right;"> 1036 </td>
+   <td style="text-align:right;"> 1664 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 9439.00 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 699 </td>
+   <td style="text-align:right;"> 595 </td>
+   <td style="text-align:right;"> 1382 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 6961.00 </td>
+   <td style="text-align:right;"> 216 </td>
+   <td style="text-align:right;"> 798 </td>
+   <td style="text-align:right;"> 1513 </td>
+   <td style="text-align:right;"> 2893 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 5026.60 </td>
+   <td style="text-align:right;"> 2238 </td>
+   <td style="text-align:right;"> 720 </td>
+   <td style="text-align:right;"> 781 </td>
+   <td style="text-align:right;"> 19877 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in metaMDS(biol[, 2:6], trace = FALSE): stress is (nearly) zero: you
+may have insufficient data</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in postMDS(out$points, dis, plot = max(0, plot - 1), ...): skipping
+half-change scaling: too few points below threshold</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sitio </th>
+   <th style="text-align:right;"> NMDS1 </th>
+   <th style="text-align:right;"> NMDS2 </th>
+   <th style="text-align:left;"> Moon </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> -0.0620925 </td>
+   <td style="text-align:right;"> -0.0058242 </td>
+   <td style="text-align:left;"> Wax.cres </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> -0.1412110 </td>
+   <td style="text-align:right;"> -0.0399410 </td>
+   <td style="text-align:left;"> Wax.gibb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> -0.0225493 </td>
+   <td style="text-align:right;"> 0.0657722 </td>
+   <td style="text-align:left;"> Wan.cres </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 0.2258528 </td>
+   <td style="text-align:right;"> -0.0200070 </td>
+   <td style="text-align:left;"> Wan.gibb </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>A continuación se extraen las coordenadas de las Moon, Times, Zones, especies y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           NMDS1    NMDS2     r2 Pr(&gt;r)
+pH       0.21064  0.97756 0.0055 1.0000
+%OD      0.57501 -0.81815 0.6034 0.5833
+OD       0.24775  0.96883 0.6440 0.6250
+Conduct -0.11081 -0.99384 0.7734 0.5000
+TDS     -0.06748 -0.99772 0.9639 0.2500
+UPS     -0.10073 -0.99491 0.9338 0.2500
+Temp    -0.09585 -0.99540 0.9852 0.1250
+Permutation: free
+Number of permutations: 23</code></pre>
+</div>
+</div>
+<p>L <a href="#fig-fig27">Figure&nbsp;15</a>, muestra un patrón similar al de la ordenación anterior con datos de abundancia (<a href="#fig-fig25">Figure&nbsp;13</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig27" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig27-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;15: ordenación de de las fases lunares, con valores de abundancia de los taxones y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig28" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig28-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;16: ordenación de de las Moon, con las especies</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">————————————————————————</h2>
+</section>
+<section id="nmds---índice-multivariante" class="level2">
+<h2 class="anchored" data-anchor-id="nmds---índice-multivariante"><strong>NMDS - Índice Multivariante</strong></h2>
+<ul>
+<li><strong>Índice multivariante que integra a diferentes variables</strong></li>
+</ul>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">————————————————————————</h2>
+<p>A continuación se realizará un <strong>índice multivariante</strong> con una posible importancia para el NMDS y el RDA, debido a lo siguiente:</p>
+<ol type="a">
+<li>Síntesis de múltiples dimensiones. Al combinar la abundancia (Value), Longitud total (LT), la Longitud estándar (LE) y el peso (Weight) en un único descriptor, convierte a estas cuatro variables correlacionadas en un solo gradiente interpretable. Esto simplifica el modelo y evita problemas de colinealidad.</li>
+</ol>
+<p>Además se pueden identificar de forma más fácil, qué fases favorecen mayor abundancia y tamaño de los peces, se detectan inversiones de tendencia (fase con índice negativo vs.&nbsp;fase con índice positivo). A nivel estadístico, la función de z-score robusto generada (devuelve 0 si no hay variación) evita NaN y asegura que cada componente aporte de manera equilibrada, mejorando la estabilidad de las técnicas de ordenación - NMDS y RDA.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: &quot;Arial Narrow&quot;, &quot;Source Sans Pro&quot;, sans-serif; width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> ID </th>
+   <th style="text-align:right;"> Moon </th>
+   <th style="text-align:right;"> Ancc </th>
+   <th style="text-align:right;"> Arps </th>
+   <th style="text-align:right;"> Brdr </th>
+   <th style="text-align:right;"> Cnte </th>
+   <th style="text-align:right;"> Cntp </th>
+   <th style="text-align:right;"> Cthm </th>
+   <th style="text-align:right;"> Cths </th>
+   <th style="text-align:right;"> Ctne </th>
+   <th style="text-align:right;"> Dptr </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0.1135092 </td>
+   <td style="text-align:right;"> 1.3308557 </td>
+   <td style="text-align:right;"> -0.4725054 </td>
+   <td style="text-align:right;"> -0.1772639 </td>
+   <td style="text-align:right;"> 0.0236542 </td>
+   <td style="text-align:right;"> -0.1064591 </td>
+   <td style="text-align:right;"> -0.4179427 </td>
+   <td style="text-align:right;"> 0.2031705 </td>
+   <td style="text-align:right;"> -0.3242936 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> -0.0284961 </td>
+   <td style="text-align:right;"> 1.1072087 </td>
+   <td style="text-align:right;"> -0.2462412 </td>
+   <td style="text-align:right;"> -0.0237493 </td>
+   <td style="text-align:right;"> -0.2663702 </td>
+   <td style="text-align:right;"> -0.1825511 </td>
+   <td style="text-align:right;"> -0.5015868 </td>
+   <td style="text-align:right;"> -0.4743711 </td>
+   <td style="text-align:right;"> -0.5160733 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> -0.0834703 </td>
+   <td style="text-align:right;"> 0.8205952 </td>
+   <td style="text-align:right;"> -0.3120521 </td>
+   <td style="text-align:right;"> 0.1324802 </td>
+   <td style="text-align:right;"> -0.2652101 </td>
+   <td style="text-align:right;"> -0.1396045 </td>
+   <td style="text-align:right;"> -0.4980991 </td>
+   <td style="text-align:right;"> 0.6662663 </td>
+   <td style="text-align:right;"> 0.3092830 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0.1233707 </td>
+   <td style="text-align:right;"> 0.7056071 </td>
+   <td style="text-align:right;"> -0.2367564 </td>
+   <td style="text-align:right;"> 0.0092857 </td>
+   <td style="text-align:right;"> -0.1449086 </td>
+   <td style="text-align:right;"> -0.2630678 </td>
+   <td style="text-align:right;"> -0.6679725 </td>
+   <td style="text-align:right;"> 0.1317626 </td>
+   <td style="text-align:right;"> -0.3108604 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>Se ejecutan las librerías necesarias para este análisis.</p>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Moon </th>
+   <th style="text-align:right;"> pH </th>
+   <th style="text-align:right;"> X.OD </th>
+   <th style="text-align:right;"> OD </th>
+   <th style="text-align:right;"> Conduct </th>
+   <th style="text-align:right;"> TDS </th>
+   <th style="text-align:right;"> UPS </th>
+   <th style="text-align:right;"> Temp </th>
+   <th style="text-align:right;"> Ancc </th>
+   <th style="text-align:right;"> Arps </th>
+   <th style="text-align:right;"> Brdr </th>
+   <th style="text-align:right;"> Cnte </th>
+   <th style="text-align:right;"> Cntp </th>
+   <th style="text-align:right;"> Cthm </th>
+   <th style="text-align:right;"> Cths </th>
+   <th style="text-align:right;"> Ctne </th>
+   <th style="text-align:right;"> Dptr </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> 8.108333 </td>
+   <td style="text-align:right;"> 58.85000 </td>
+   <td style="text-align:right;"> 3.951667 </td>
+   <td style="text-align:right;"> 39.53500 </td>
+   <td style="text-align:right;"> 18.17000 </td>
+   <td style="text-align:right;"> 23.97800 </td>
+   <td style="text-align:right;"> 29.69833 </td>
+   <td style="text-align:right;"> 0.1135092 </td>
+   <td style="text-align:right;"> 1.3308557 </td>
+   <td style="text-align:right;"> -0.4725054 </td>
+   <td style="text-align:right;"> -0.1772639 </td>
+   <td style="text-align:right;"> 0.0236542 </td>
+   <td style="text-align:right;"> -0.1064591 </td>
+   <td style="text-align:right;"> -0.4179427 </td>
+   <td style="text-align:right;"> 0.2031705 </td>
+   <td style="text-align:right;"> -0.3242936 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> 7.805000 </td>
+   <td style="text-align:right;"> 61.78333 </td>
+   <td style="text-align:right;"> 4.048333 </td>
+   <td style="text-align:right;"> 37.91333 </td>
+   <td style="text-align:right;"> 19.09833 </td>
+   <td style="text-align:right;"> 24.72333 </td>
+   <td style="text-align:right;"> 30.16167 </td>
+   <td style="text-align:right;"> -0.0284961 </td>
+   <td style="text-align:right;"> 1.1072087 </td>
+   <td style="text-align:right;"> -0.2462412 </td>
+   <td style="text-align:right;"> -0.0237493 </td>
+   <td style="text-align:right;"> -0.2663702 </td>
+   <td style="text-align:right;"> -0.1825511 </td>
+   <td style="text-align:right;"> -0.5015868 </td>
+   <td style="text-align:right;"> -0.4743711 </td>
+   <td style="text-align:right;"> -0.5160733 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 7.878333 </td>
+   <td style="text-align:right;"> 60.86667 </td>
+   <td style="text-align:right;"> 4.285000 </td>
+   <td style="text-align:right;"> 29.41667 </td>
+   <td style="text-align:right;"> 14.19675 </td>
+   <td style="text-align:right;"> 18.75333 </td>
+   <td style="text-align:right;"> 28.31833 </td>
+   <td style="text-align:right;"> -0.0834703 </td>
+   <td style="text-align:right;"> 0.8205952 </td>
+   <td style="text-align:right;"> -0.3120521 </td>
+   <td style="text-align:right;"> 0.1324802 </td>
+   <td style="text-align:right;"> -0.2652101 </td>
+   <td style="text-align:right;"> -0.1396045 </td>
+   <td style="text-align:right;"> -0.4980991 </td>
+   <td style="text-align:right;"> 0.6662663 </td>
+   <td style="text-align:right;"> 0.3092830 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> 7.906667 </td>
+   <td style="text-align:right;"> 64.41667 </td>
+   <td style="text-align:right;"> 4.215000 </td>
+   <td style="text-align:right;"> 34.27833 </td>
+   <td style="text-align:right;"> 17.21833 </td>
+   <td style="text-align:right;"> 21.95833 </td>
+   <td style="text-align:right;"> 29.32333 </td>
+   <td style="text-align:right;"> 0.1233707 </td>
+   <td style="text-align:right;"> 0.7056071 </td>
+   <td style="text-align:right;"> -0.2367564 </td>
+   <td style="text-align:right;"> 0.0092857 </td>
+   <td style="text-align:right;"> -0.1449086 </td>
+   <td style="text-align:right;"> -0.2630678 </td>
+   <td style="text-align:right;"> -0.6679725 </td>
+   <td style="text-align:right;"> 0.1317626 </td>
+   <td style="text-align:right;"> -0.3108604 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell">
+
+</div>
+<p>El código “nmds.r” se usará para ajustar los vaores del índice y que puedan ejecutarse en el NMDS, dado que los negativos pueden generar errores.</p>
+<div class="cell">
+
+</div>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+metaMDS(comm = biol2, distance = "bray", k = 2, trymax = 100,      autotransform = FALSE, trace = FALSE) 
+
+global Multidimensional Scaling using monoMDS
+
+Data:     biol2 
+Distance: bray 
+
+Dimensions: 2 
+Stress:     0 
+Stress type 1, weak ties
+Best solution was not repeated after 100 tries
+The best solution was from try 0 (metric scaling or null solution)
+Scaling: centring, PC rotation 
+Species: expanded scores based on 'biol2' </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+
+<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
+<caption></caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sitio </th>
+   <th style="text-align:right;"> NMDS1 </th>
+   <th style="text-align:right;"> NMDS2 </th>
+   <th style="text-align:left;"> Moon </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Wax.cres </td>
+   <td style="text-align:right;"> -0.0087799 </td>
+   <td style="text-align:right;"> -0.0004399 </td>
+   <td style="text-align:left;"> Wax.cres </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wax.gibb </td>
+   <td style="text-align:right;"> -0.0379416 </td>
+   <td style="text-align:right;"> -0.0257553 </td>
+   <td style="text-align:left;"> Wax.gibb </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.cres </td>
+   <td style="text-align:right;"> 0.0646148 </td>
+   <td style="text-align:right;"> -0.0062096 </td>
+   <td style="text-align:left;"> Wan.cres </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Wan.gibb </td>
+   <td style="text-align:right;"> -0.0178934 </td>
+   <td style="text-align:right;"> 0.0324047 </td>
+   <td style="text-align:left;"> Wan.gibb </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<p>A continuación se extraen las coordenadas de las Moon, Times, Zones, especies y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           NMDS1    NMDS2     r2 Pr(&gt;r)
+pH       0.03158  0.99950 0.0851 0.9583
+%OD     -0.24750  0.96889 0.3570 0.7500
+OD       0.69125  0.72261 0.5359 0.6667
+Conduct -0.93049 -0.36631 0.7492 0.5000
+TDS     -0.95574 -0.29421 0.9621 0.2917
+UPS     -0.90429 -0.42691 0.9184 0.2917
+Temp    -0.88899 -0.45793 0.9770 0.2500
+Permutation: free
+Number of permutations: 23</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-fig29">Figure&nbsp;17</a>, muestra que las cuatro fases lunares se relacionan y se concentran cer al origen del plano cartesiano. No veo un desempeño mejor que el visualizado con datos de abundancia en el primer NMDS realizado (<a href="#fig-fig22">Figure&nbsp;10</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig29" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig29-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;17: ordenación de de las fases lunares, con valores de abundancia de los taxones y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig30" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig30-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;18: ordenación de de las Moon, con las especies</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig31">Figure&nbsp;19</a> complementa a la <a href="#fig-fig30">Figure&nbsp;18</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig31" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig31-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;19: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">————————————————————————</h2>
+</section>
+<section id="rda---índice-multivariante" class="level2">
+<h2 class="anchored" data-anchor-id="rda---índice-multivariante"><strong>RDA - Índice Multivariante</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación - (RDA con el índice multivariante)</strong></li>
+</ul>
+</section>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">————————————————————————</h2>
+<p>Se usarán las bases de datos del anterior NMDS, donde “biol” son las variables biológicas y “amb.log” son las ambientales.</p>
+<p>En el siguiente analisis se relaciona a la matriz de datos biológicos (<strong>índice multivariante</strong>) con la matriz de datos ambientales. A continuación se determinan los insumos generales del análisis.</p>
+<div class="cell">
+
+</div>
+<p>El paso a paso dió resultados inconsistentes, por ello solo se graficará en ggplo2</p>
+<section id="visualización-del-rda-con-ggplot2-1" class="level3">
+<h3 class="anchored" data-anchor-id="visualización-del-rda-con-ggplot2-1">Visualización del RDA con ggplot2</h3>
+<p>Se realizará la figura del RDA con el paquete <code>ggplot2</code>, dada su mejor presentación, comparado a las figuras anteriores, realizadas con el paquete <code>vegan</code>. Los siguientes comandos sirven para identificar las coorddenadas de los sitios (“<code>sites</code>”), los taxones (“<code>sp</code>”) y las variables ambientales (“<code>vectors</code>”).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            RDA1     RDA2     r2 Pr(&gt;r)
+pH      -0.50878 -0.86090 0.0565 0.9583
+%OD      0.19360 -0.98108 0.4338 0.6667
+OD      -0.94829 -0.31742 0.5290 0.6250
+Conduct  0.99993 -0.01202 0.7213 0.5417
+TDS      0.99636 -0.08522 0.9472 0.2917
+UPS      0.99997  0.00740 0.9015 0.2917
+Temp     0.99983  0.01826 0.9678 0.2917
+Permutation: free
+Number of permutations: 23</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-figura32">Figure&nbsp;20</a> muestra los taxones que caracterizan a cada fase lunar, agrupándose en mayor medida con “Wax.cres”.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Taxones  </span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1<span class="sc">*</span><span class="dv">2</span>, </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">yend =</span> RDA2<span class="sc">*</span><span class="dv">2</span>), </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="fl">22.5</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.6</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(RDA1<span class="sc">*</span><span class="dv">2</span>,RDA2<span class="sc">*</span><span class="dv">2</span>,<span class="at">label=</span>especies),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sitios</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.sit)),</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span>   <span class="co"># Muestra el cuadro de la figura</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">colour=</span>sitio),<span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Formato</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>,<span class="at">color=</span><span class="st">"black"</span>),</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>))<span class="sc">+</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-figura32" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura32-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;20: Figuras del RDA con las variables biológicas y los sitios</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-figura33">Figure&nbsp;21</a> muestra “Wax.cres”, se asocia al mayor número de taxones y al <code>pH</code>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Factor </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mark_ellipse</span>(<span class="at">data=</span>coord.sit, <span class="fu">aes</span>(<span class="at">x=</span>RDA1,<span class="at">y=</span>RDA2,<span class="at">fill=</span>sitio,<span class="at">group=</span>sitio),<span class="at">alpha=</span><span class="fl">0.10</span>)  <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sitios</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.sit)),</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span>   <span class="co"># Muestra el cuadro de la figura</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">colour=</span>sitio),<span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># especies  </span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1, <span class="at">yend =</span> RDA2), </span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="dv">0</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">0</span>,<span class="st">"cm"</span>),</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">0</span>,<span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span>especies),<span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ambiental  </span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.amb,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1, <span class="at">yend =</span> RDA2), </span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="fl">22.5</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>),</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.6</span>,<span class="at">colour =</span> <span class="st">"blue"</span>)<span class="sc">+</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.amb,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.amb)),<span class="at">colour =</span> <span class="st">"#00abff"</span>)<span class="sc">+</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>,<span class="at">color=</span><span class="st">"black"</span>),</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>))<span class="sc">+</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-figura33" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura33-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;21: Figuras del RDA con las variables biológicas, las ambientales y los sitios</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="pendientes" class="level3">
+<h3 class="anchored" data-anchor-id="pendientes">Pendientes</h3>
+<p>Probar <strong>RDA con gremios tróficos</strong>, con abundancias, biomasas e índicie de condición, similar a lo realizado con el NMDS.</p>
 </section>
 </section>
 
