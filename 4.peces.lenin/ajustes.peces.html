@@ -242,7 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#nmds---abundancias-de-grem.-trof." id="toc-nmds---abundancias-de-grem.-trof." class="nav-link" data-scroll-target="#nmds---abundancias-de-grem.-trof."><strong>NMDS - Abundancias de Grem. Trof.</strong></a></li>
   <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">————————————————————————</a></li>
   <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">————————————————————————</a></li>
-  <li><a href="#nmds---biom.-gre.-trof.-sin-replicas" id="toc-nmds---biom.-gre.-trof.-sin-replicas" class="nav-link" data-scroll-target="#nmds---biom.-gre.-trof.-sin-replicas"><strong>NMDS - Biom. Gre. Trof. Sin replicas</strong></a></li>
+  <li><a href="#nmds---biom.-grem.-trof." id="toc-nmds---biom.-grem.-trof." class="nav-link" data-scroll-target="#nmds---biom.-grem.-trof."><strong>NMDS - Biom. Grem. Trof.</strong></a></li>
   <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">————————————————————————</a></li>
   <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">————————————————————————</a></li>
   <li><a href="#nmds---índice-multivariante" id="toc-nmds---índice-multivariante" class="nav-link" data-scroll-target="#nmds---índice-multivariante"><strong>NMDS - Índice Multivariante</strong></a></li>
@@ -2224,8 +2224,8 @@ Number of permutations: 23</code></pre>
 <section id="section-10" class="level2">
 <h2 class="anchored" data-anchor-id="section-10">————————————————————————</h2>
 </section>
-<section id="nmds---biom.-gre.-trof.-sin-replicas" class="level2">
-<h2 class="anchored" data-anchor-id="nmds---biom.-gre.-trof.-sin-replicas"><strong>NMDS - Biom. Gre. Trof. Sin replicas</strong></h2>
+<section id="nmds---biom.-grem.-trof." class="level2">
+<h2 class="anchored" data-anchor-id="nmds---biom.-grem.-trof."><strong>NMDS - Biom. Grem. Trof.</strong></h2>
 <ul>
 <li><strong>Técnicas de ordenación - NMDS con Biomasas de Gremios tróficos</strong></li>
 </ul>
@@ -2291,57 +2291,27 @@ Number of permutations: 23</code></pre>
 </div>
 <p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.17</strong> (17%), denotando una buena configuración para este análisis.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in metaMDS(biol[, 2:6], trace = FALSE): stress is (nearly) zero: you
-may have insufficient data</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in postMDS(out$points, dis, plot = max(0, plot - 1), ...): skipping
-half-change scaling: too few points below threshold</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+metaMDS(comm = biol[, 2:6], trace = FALSE) 
+
+global Multidimensional Scaling using monoMDS
+
+Data:     wisconsin(sqrt(biol[, 2:6])) 
+Distance: bray 
+
+Dimensions: 2 
+Stress:     0 
+Stress type 1, weak ties
+Best solution was not repeated after 20 tries
+The best solution was from try 0 (metric scaling or null solution)
+Scaling: centring, PC rotation 
+Species: expanded scores based on 'wisconsin(sqrt(biol[, 2:6]))' </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output-display">
 
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption></caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> sitio </th>
-   <th style="text-align:right;"> NMDS1 </th>
-   <th style="text-align:right;"> NMDS2 </th>
-   <th style="text-align:left;"> Moon </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> -0.0620925 </td>
-   <td style="text-align:right;"> -0.0058242 </td>
-   <td style="text-align:left;"> Wax.cres </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> -0.1412110 </td>
-   <td style="text-align:right;"> -0.0399410 </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:right;"> -0.0225493 </td>
-   <td style="text-align:right;"> 0.0657722 </td>
-   <td style="text-align:left;"> Wan.cres </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> 0.2258528 </td>
-   <td style="text-align:right;"> -0.0200070 </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
 </div>
 <p>A continuación se extraen las coordenadas de las Moon, Times, Zones, especies y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
 <div class="cell">
@@ -2402,8 +2372,8 @@ Number of permutations: 23</code></pre>
 <p>A continuación se realizará un <strong>índice multivariante</strong> con una posible importancia para el NMDS y el RDA, debido a lo siguiente:</p>
 <ol type="a">
 <li>Síntesis de múltiples dimensiones. Al combinar la abundancia (Value), Longitud total (LT), la Longitud estándar (LE) y el peso (Weight) en un único descriptor, convierte a estas cuatro variables correlacionadas en un solo gradiente interpretable. Esto simplifica el modelo y evita problemas de colinealidad.</li>
+<li>Además se pueden identificar de forma más fácil, qué fases favorecen mayor abundancia y tamaño de los peces, se detectan inversiones de tendencia (fase con índice negativo vs.&nbsp;fase con índice positivo). A nivel estadístico, la función de z-score robusto generada (devuelve 0 si no hay variación) evita NaN y asegura que cada componente aporte de manera equilibrada, mejorando la estabilidad de las técnicas de ordenación - NMDS y RDA.</li>
 </ol>
-<p>Además se pueden identificar de forma más fácil, qué fases favorecen mayor abundancia y tamaño de los peces, se detectan inversiones de tendencia (fase con índice negativo vs.&nbsp;fase con índice positivo). A nivel estadístico, la función de z-score robusto generada (devuelve 0 si no hay variación) evita NaN y asegura que cada componente aporte de manera equilibrada, mejorando la estabilidad de las técnicas de ordenación - NMDS y RDA.</p>
 <div class="cell">
 <div class="cell-output-display">
 
@@ -2593,7 +2563,7 @@ Number of permutations: 23</code></pre>
 <div class="cell">
 
 </div>
-<p>El código “nmds.r” se usará para ajustar los vaores del índice y que puedan ejecutarse en el NMDS, dado que los negativos pueden generar errores.</p>
+<p>El código “<strong>nmds.r</strong>” se usará para ajustar los valores del índice y que puedan ejecutarse en el NMDS, dado que los negativos pueden generar errores.</p>
 <div class="cell">
 
 </div>
@@ -2619,47 +2589,7 @@ Species: expanded scores based on 'biol2' </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output-display">
 
-<table class=" lightable-classic" style="font-family: Cambria; width: auto !important; margin-left: auto; margin-right: auto;">
-<caption></caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> sitio </th>
-   <th style="text-align:right;"> NMDS1 </th>
-   <th style="text-align:right;"> NMDS2 </th>
-   <th style="text-align:left;"> Moon </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> Wax.cres </td>
-   <td style="text-align:right;"> -0.0087799 </td>
-   <td style="text-align:right;"> -0.0004399 </td>
-   <td style="text-align:left;"> Wax.cres </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wax.gibb </td>
-   <td style="text-align:right;"> -0.0379416 </td>
-   <td style="text-align:right;"> -0.0257553 </td>
-   <td style="text-align:left;"> Wax.gibb </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.cres </td>
-   <td style="text-align:right;"> 0.0646148 </td>
-   <td style="text-align:right;"> -0.0062096 </td>
-   <td style="text-align:left;"> Wan.cres </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> Wan.gibb </td>
-   <td style="text-align:right;"> -0.0178934 </td>
-   <td style="text-align:right;"> 0.0324047 </td>
-   <td style="text-align:left;"> Wan.gibb </td>
-  </tr>
-</tbody>
-</table>
-
-</div>
 </div>
 <p>A continuación se extraen las coordenadas de las Moon, Times, Zones, especies y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
 <div class="cell">
@@ -2767,27 +2697,27 @@ Number of permutations: 23</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Taxones  </span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1<span class="sc">*</span><span class="dv">2</span>, </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">yend =</span> RDA2<span class="sc">*</span><span class="dv">2</span>), </span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="fl">22.5</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.6</span>,</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(RDA1<span class="sc">*</span><span class="dv">2</span>,RDA2<span class="sc">*</span><span class="dv">2</span>,<span class="at">label=</span>especies),</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sitios</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.sit)),</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span>   <span class="co"># Muestra el cuadro de la figura</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">colour=</span>sitio),<span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span></span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">25</span>))<span class="sc">+</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Formato</span></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>,<span class="at">color=</span><span class="st">"black"</span>),</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>))<span class="sc">+</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Taxones  </span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1<span class="sc">*</span><span class="dv">2</span>, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">yend =</span> RDA2<span class="sc">*</span><span class="dv">2</span>), </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="fl">22.5</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>),</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.6</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(RDA1<span class="sc">*</span><span class="dv">2</span>,RDA2<span class="sc">*</span><span class="dv">2</span>,<span class="at">label=</span>especies),</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>                  <span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sitios</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.sit)),</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span>   <span class="co"># Muestra el cuadro de la figura</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">colour=</span>sitio),<span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Formato</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>,<span class="at">color=</span><span class="st">"black"</span>),</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>))<span class="sc">+</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-figura32" class="quarto-figure quarto-figure-center anchored">
@@ -2802,32 +2732,32 @@ Number of permutations: 23</code></pre>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Factor </span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mark_ellipse</span>(<span class="at">data=</span>coord.sit, <span class="fu">aes</span>(<span class="at">x=</span>RDA1,<span class="at">y=</span>RDA2,<span class="at">fill=</span>sitio,<span class="at">group=</span>sitio),<span class="at">alpha=</span><span class="fl">0.10</span>)  <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sitios</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.sit)),</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span>   <span class="co"># Muestra el cuadro de la figura</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">colour=</span>sitio),<span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">25</span>))<span class="sc">+</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># especies  </span></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1, <span class="at">yend =</span> RDA2), </span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="dv">0</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">0</span>,<span class="st">"cm"</span>),</span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">0</span>,<span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span>especies),<span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ambiental  </span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.amb,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1, <span class="at">yend =</span> RDA2), </span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="fl">22.5</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>),</span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.6</span>,<span class="at">colour =</span> <span class="st">"blue"</span>)<span class="sc">+</span></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.amb,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.amb)),<span class="at">colour =</span> <span class="st">"#00abff"</span>)<span class="sc">+</span></span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>,<span class="at">color=</span><span class="st">"black"</span>),</span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>))<span class="sc">+</span></span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Factor </span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_mark_ellipse</span>(<span class="at">data=</span>coord.sit, <span class="fu">aes</span>(<span class="at">x=</span>RDA1,<span class="at">y=</span>RDA2,<span class="at">fill=</span>sitio,<span class="at">group=</span>sitio),<span class="at">alpha=</span><span class="fl">0.10</span>)  <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sitios</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.sit)),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span>   <span class="co"># Muestra el cuadro de la figura</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> coord.sit,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">colour=</span>sitio),<span class="at">size=</span><span class="dv">4</span>)<span class="sc">+</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">21</span><span class="sc">:</span><span class="dv">25</span>))<span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># especies  </span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1, <span class="at">yend =</span> RDA2), </span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="dv">0</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="dv">0</span>,<span class="st">"cm"</span>),</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">0</span>, <span class="at">size=</span><span class="dv">0</span>,<span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.tax,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span>especies),<span class="at">colour =</span> <span class="st">"red"</span>)<span class="sc">+</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ambiental  </span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="at">data =</span> coord.amb,<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">xend =</span> RDA1, <span class="at">yend =</span> RDA2), </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>               <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">angle=</span><span class="fl">22.5</span>,<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.25</span>,<span class="st">"cm"</span>),</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>                             <span class="at">type =</span> <span class="st">"closed"</span>),<span class="at">linetype=</span><span class="dv">1</span>, <span class="at">size=</span><span class="fl">0.6</span>,<span class="at">colour =</span> <span class="st">"blue"</span>)<span class="sc">+</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">data =</span> coord.amb,<span class="fu">aes</span>(RDA1,RDA2,<span class="at">label=</span><span class="fu">row.names</span>(coord.amb)),<span class="at">colour =</span> <span class="st">"#00abff"</span>)<span class="sc">+</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>,<span class="at">linetype=</span><span class="dv">3</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">shape=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>,<span class="at">color=</span><span class="st">"black"</span>),</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="cn">NULL</span>))<span class="sc">+</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()<span class="sc">+</span><span class="fu">theme</span>(<span class="at">panel.grid=</span><span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div id="fig-figura33" class="quarto-figure quarto-figure-center anchored">
