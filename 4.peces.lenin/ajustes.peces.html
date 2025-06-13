@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Javier Rodríguez Barrios">
-<meta name="dcterms.date" content="2025-06-12">
+<meta name="dcterms.date" content="2025-06-13">
 <meta name="description" content="Ajuste de los análisis a las 4 semanas requeridas para la versión final del manuscrito de peces.">
 
 <title>Asesoría 3. Ajustes requeridos del manuscrito</title>
@@ -78,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 12, 2025</p>
+        <p class="date">June 13, 2025</p>
       </div>
     </div>
     
@@ -161,30 +161,41 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   </ul></li>
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">————————————————————————</a></li>
-  <li><a href="#rda-con-abundancias" id="toc-rda-con-abundancias" class="nav-link" data-scroll-target="#rda-con-abundancias"><strong>RDA con abundancias</strong></a></li>
-  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">————————————————————————</a>
-  <ul>
-  <li><a href="#procedimiento-del-análisis-de-redundancia---rda." id="toc-procedimiento-del-análisis-de-redundancia---rda." class="nav-link" data-scroll-target="#procedimiento-del-análisis-de-redundancia---rda.">Procedimiento del análisis de redundancia - RDA.</a></li>
-  <li><a href="#visualización-del-rda-con-ggplot2" id="toc-visualización-del-rda-con-ggplot2" class="nav-link" data-scroll-target="#visualización-del-rda-con-ggplot2">Visualización del RDA con ggplot2</a></li>
-  </ul></li>
+  <li><a href="#rda-abund.-zonas" id="toc-rda-abund.-zonas" class="nav-link" data-scroll-target="#rda-abund.-zonas"><strong>RDA Abund. + Zonas</strong></a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">————————————————————————</a></li>
   <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">————————————————————————</a></li>
-  <li><a href="#nmds---con-abudancias" id="toc-nmds---con-abudancias" class="nav-link" data-scroll-target="#nmds---con-abudancias"><strong>NMDS - Con abudancias</strong></a></li>
+  <li><a href="#rda-biom.-zonas" id="toc-rda-biom.-zonas" class="nav-link" data-scroll-target="#rda-biom.-zonas"><strong>RDA biom. + Zonas</strong></a></li>
   <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">————————————————————————</a></li>
   <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">————————————————————————</a></li>
-  <li><a href="#nmds---con-biomasas" id="toc-nmds---con-biomasas" class="nav-link" data-scroll-target="#nmds---con-biomasas"><strong>NMDS - Con biomasas</strong></a></li>
+  <li><a href="#nmds---abund.-zonas" id="toc-nmds---abund.-zonas" class="nav-link" data-scroll-target="#nmds---abund.-zonas"><strong>NMDS - Abund. + Zonas</strong></a></li>
   <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">————————————————————————</a></li>
   <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">————————————————————————</a></li>
-  <li><a href="#nmds---abundancias-de-grem.-trof." id="toc-nmds---abundancias-de-grem.-trof." class="nav-link" data-scroll-target="#nmds---abundancias-de-grem.-trof."><strong>NMDS - Abundancias de Grem. Trof.</strong></a></li>
+  <li><a href="#nmds---biom.-zonas" id="toc-nmds---biom.-zonas" class="nav-link" data-scroll-target="#nmds---biom.-zonas"><strong>NMDS - Biom. + Zonas</strong></a></li>
   <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">————————————————————————</a></li>
   <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">————————————————————————</a></li>
-  <li><a href="#nmds---biom.-grem.-trof." id="toc-nmds---biom.-grem.-trof." class="nav-link" data-scroll-target="#nmds---biom.-grem.-trof."><strong>NMDS - Biom. Grem. Trof.</strong></a></li>
-  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">————————————————————————</a></li>
+  <li><a href="#rda-con-abundancias" id="toc-rda-con-abundancias" class="nav-link" data-scroll-target="#rda-con-abundancias"><strong>RDA con abundancias</strong></a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">————————————————————————</a>
+  <ul>
+  <li><a href="#visualización-del-rda-con-ggplot2" id="toc-visualización-del-rda-con-ggplot2" class="nav-link" data-scroll-target="#visualización-del-rda-con-ggplot2">Visualización del RDA con ggplot2</a></li>
+  </ul></li>
   <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">————————————————————————</a></li>
-  <li><a href="#nmds---índice-multivariante" id="toc-nmds---índice-multivariante" class="nav-link" data-scroll-target="#nmds---índice-multivariante"><strong>NMDS - Índice Multivariante</strong></a></li>
+  <li><a href="#nmds---con-abudancias" id="toc-nmds---con-abudancias" class="nav-link" data-scroll-target="#nmds---con-abudancias"><strong>NMDS - Con abudancias</strong></a></li>
   <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">————————————————————————</a></li>
   <li><a href="#section-16" id="toc-section-16" class="nav-link" data-scroll-target="#section-16">————————————————————————</a></li>
+  <li><a href="#nmds---con-biomasas" id="toc-nmds---con-biomasas" class="nav-link" data-scroll-target="#nmds---con-biomasas"><strong>NMDS - Con biomasas</strong></a></li>
+  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">————————————————————————</a></li>
+  <li><a href="#section-18" id="toc-section-18" class="nav-link" data-scroll-target="#section-18">————————————————————————</a></li>
+  <li><a href="#nmds---abundancias-de-grem.-trof." id="toc-nmds---abundancias-de-grem.-trof." class="nav-link" data-scroll-target="#nmds---abundancias-de-grem.-trof."><strong>NMDS - Abundancias de Grem. Trof.</strong></a></li>
+  <li><a href="#section-19" id="toc-section-19" class="nav-link" data-scroll-target="#section-19">————————————————————————</a></li>
+  <li><a href="#section-20" id="toc-section-20" class="nav-link" data-scroll-target="#section-20">————————————————————————</a></li>
+  <li><a href="#nmds---biom.-grem.-trof." id="toc-nmds---biom.-grem.-trof." class="nav-link" data-scroll-target="#nmds---biom.-grem.-trof."><strong>NMDS - Biom. Grem. Trof.</strong></a></li>
+  <li><a href="#section-21" id="toc-section-21" class="nav-link" data-scroll-target="#section-21">————————————————————————</a></li>
+  <li><a href="#section-22" id="toc-section-22" class="nav-link" data-scroll-target="#section-22">————————————————————————</a></li>
+  <li><a href="#nmds---índice-multivariante" id="toc-nmds---índice-multivariante" class="nav-link" data-scroll-target="#nmds---índice-multivariante"><strong>NMDS - Índice Multivariante</strong></a></li>
+  <li><a href="#section-23" id="toc-section-23" class="nav-link" data-scroll-target="#section-23">————————————————————————</a></li>
+  <li><a href="#section-24" id="toc-section-24" class="nav-link" data-scroll-target="#section-24">————————————————————————</a></li>
   <li><a href="#rda---índice-multivariante" id="toc-rda---índice-multivariante" class="nav-link" data-scroll-target="#rda---índice-multivariante"><strong>RDA - Índice Multivariante</strong></a></li>
-  <li><a href="#section-17" id="toc-section-17" class="nav-link" data-scroll-target="#section-17">————————————————————————</a>
+  <li><a href="#section-25" id="toc-section-25" class="nav-link" data-scroll-target="#section-25">————————————————————————</a>
   <ul>
   <li><a href="#visualización-del-rda-con-ggplot2-1" id="toc-visualización-del-rda-con-ggplot2-1" class="nav-link" data-scroll-target="#visualización-del-rda-con-ggplot2-1">Visualización del RDA con ggplot2</a></li>
   <li><a href="#pendientes" id="toc-pendientes" class="nav-link" data-scroll-target="#pendientes">Pendientes</a></li>
@@ -1509,14 +1520,398 @@ TimeNight -0.507</code></pre>
 <section id="section-4" class="level2">
 <h2 class="anchored" data-anchor-id="section-4">————————————————————————</h2>
 </section>
-<section id="rda-con-abundancias" class="level2">
-<h2 class="anchored" data-anchor-id="rda-con-abundancias"><strong>RDA con abundancias</strong></h2>
+<section id="rda-abund.-zonas" class="level2">
+<h2 class="anchored" data-anchor-id="rda-abund.-zonas"><strong>RDA Abund. + Zonas</strong></h2>
 <ul>
 <li><strong>Técnicas de ordenación - (RDA con datos de abundancia)</strong></li>
 </ul>
 </section>
 <section id="section-5" class="level2">
 <h2 class="anchored" data-anchor-id="section-5">————————————————————————</h2>
+<p>Se intenta visualizar el ordenamiento de taxones con las fases lunares, <strong>las tres zonas (replicas) </strong>y variables ambientales, usando los datos de abundancia, linealizados con la transformación de Hellinger y los datos ambientales linealizados con log10+1.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Se realiza un ajuste de la base de datos, primero convirtiendo a la columna <code>Moon</code> como un factor, luego transformando a las variables ambientales <code>amb</code> con logaritmo en base 10 y finalmente ajustando a los taxones <code>tax.hel</code> con la transformación de Hellinger.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Por ser tres replicas por fase lunar, si hay una inercia restrinjida (ajuste del RDA sin corrección) considerable = 0.52 o 52%. Con la corrección de Ezequiel se puede encontrar el ajuste o inercia corregida de esta técnica.</p>
+<div class="cell">
+
+</div>
+<p>Al correr el resto de pasos, no hay un RDA parsimonioso, debido a que con este protocolo, ninguna variable ambiental presenta un efecto significativo, por lo cual se procede al componente gráfico de esta técnica.</p>
+<p>Se realizará la figura del RDA con el paquete <code>ggplot2</code>, dada su mejor presentación, comparado a las figuras anteriores, realizadas con el paquete <code>vegan</code>. Los siguientes comandos sirven para identificar las coorddenadas de los sitios (“<code>sites</code>”), los taxones (“<code>sp</code>”) y las variables ambientales (“<code>vectors</code>”).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que solo la temperatura genera un efecto significativo en la ordenación de las especies de peces (valor p &lt; 0.05), sin embargo se realizará la visualización de este análisis, para visualizar los patrónes.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            RDA1     RDA2     r2 Pr(&gt;r)  
+pH      -0.30872 -0.95115 0.1311  0.542  
+%OD      0.98602  0.16664 0.0007  0.995  
+OD       0.93511 -0.35436 0.0413  0.831  
+Conduct  0.10438  0.99454 0.0161  0.945  
+TDS     -0.10272  0.99471 0.1595  0.476  
+UPS     -0.53601  0.84421 0.1102  0.597  
+Temp    -0.84384  0.53660 0.5317  0.035 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 999</code></pre>
+</div>
+</div>
+<p>En la <a href="#fig-figura20">Figure&nbsp;8</a> se observa que las tres zonas (1, 2 y 3) de <strong>Wax.cres</strong> se separan del resto, caracterizadas por las espcies <em>Mug</em>, <em>Barr</em> y <em>Dasg</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura20" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura20-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;8: RDA figures with biological variables and lunar phases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <a href="#fig-figura21">Figure&nbsp;9</a> muestra otra forma de representan a la figura anterior, donde se observa que las tres zonas (1, 2 y 3) de <strong>Wax.cres</strong> se separan del resto, caracterizadas por las espcies <em>Mug</em>, <em>Barr</em> y <em>Dasg</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura21" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura21-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;9: RDA figures with biological variables and lunar phases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>En la <a href="#fig-figura22">Figure&nbsp;10</a> muestra de una forma más clara, cómo se separa el grupo <strong>Wax.cres</strong> y las variables ambientales que la caracterizan (TDS y Temp), recordando que <strong>Temperatura</strong> es la única variable ambiental con un efecto significativo sobre las especies.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura22" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura22-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;10: RDA figures with biological variables, environmental variables and lunar phases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">————————————————————————</h2>
+</section>
+<section id="rda-biom.-zonas" class="level2">
+<h2 class="anchored" data-anchor-id="rda-biom.-zonas"><strong>RDA biom. + Zonas</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación - (RDA con datos de biomasa x especies)</strong></li>
+</ul>
+</section>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">————————————————————————</h2>
+<p>Se intenta visualizar el ordenamiento de taxones con las fases lunares, <strong>las tres zonas (replicas) </strong>y variables ambientales, usando los datos de biomasa, linealizados con la transformación de Hellinger y los datos ambientales linealizados con log10+1.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Se realiza un ajuste de la base de datos, primero convirtiendo a la columna <code>Moon</code> como un factor, luego transformando a las variables ambientales <code>amb</code> con logaritmo en base 10 y finalmente ajustando a los taxones <code>tax.hel</code> con la transformación de Hellinger.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Por ser tres replicas por fase lunar, si hay una inercia restrinjida (ajuste del RDA sin corrección) considerable = 0.57 o 57%. Con la corrección de Ezequiel se puede encontrar el ajuste o inercia corregida de esta técnica.</p>
+<div class="cell">
+
+</div>
+<p>Al correr el resto de pasos, no hay un RDA parsimonioso, debido a que con este protocolo, ninguna variable ambiental presenta un efecto significativo, por lo cual se procede al componente gráfico de esta técnica.</p>
+<p>Se realizará la figura del RDA con el paquete <code>ggplot2</code>, dada su mejor presentación, comparado a las figuras anteriores, realizadas con el paquete <code>vegan</code>. Los siguientes comandos sirven para identificar las coorddenadas de los sitios (“<code>sites</code>”), los taxones (“<code>sp</code>”) y las variables ambientales (“<code>vectors</code>”).</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>A diferencia del RDA anterior que fue con datos de abundancia, para este caso que es con datos de biomasa, la temperatura presenta un mayor efecto significativo en la ordenación de las especies de peces (valor p &lt; 0.05).</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>            RDA1     RDA2     r2 Pr(&gt;r)  
+pH       0.45099 -0.89253 0.1574  0.457  
+%OD     -0.02098  0.99978 0.0783  0.726  
+OD       0.67313  0.73953 0.1635  0.471  
+Conduct -0.95131 -0.30823 0.1229  0.536  
+TDS     -0.97724 -0.21214 0.2762  0.212  
+UPS     -0.94856 -0.31659 0.3354  0.171  
+Temp    -0.92414 -0.38205 0.5917  0.022 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 999</code></pre>
+</div>
+</div>
+<p>En la <a href="#fig-figura23">Figure&nbsp;11</a> se observa un patrón similar al del RDA con abundancias (<a href="#fig-figura20">Figure&nbsp;8</a>), en donde se observa que las tres zonas (1, 2 y 3) de <strong>Wax.cres</strong> se separan del resto, caracterizadas por las espcies <em>Mug</em>, <em>Barr</em> y <em>Dasg</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura23" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura23-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;11: RDA figures with biological variables and lunar phases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura24" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura24-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;12: RDA figures with biological variables and lunar phases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>Similar a la <a href="#fig-figura22">Figure&nbsp;10</a> con datos de abundancia, en esta <strong>?@fig-gigura25</strong>, se muestra de una forma más clara, cómo se separa el grupo <strong>Wax.cres</strong> y las variables ambientales que la caracterizan (TDS y Temp), recordando que <strong>Temperatura</strong> es la única variable ambiental con un efecto significativo sobre las especies.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-figura25" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-figura25-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;13: RDA figures with biological variables, environmental variables and lunar phases.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">————————————————————————</h2>
+</section>
+<section id="nmds---abund.-zonas" class="level2">
+<h2 class="anchored" data-anchor-id="nmds---abund.-zonas"><strong>NMDS - Abund. + Zonas</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación</strong>. (NMDS con datos de abundancia por especies)</li>
+</ul>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">————————————————————————</h2>
+<p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.14</strong> (14%), Representando un aceptable ajuste o configuración del NMDS.</p>
+<div class="cell">
+
+</div>
+<p>A continuación se extraen las coordenadas de las Moon, Species y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que solo la temperatura genera un efecto significativo en la ordenación de las especies de peces (valor p &lt; 0.05), aunque más bajo que los reportados en los RDA con abundancias y con biomasas.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           NMDS1    NMDS2     r2 Pr(&gt;r)  
+pH      -0.09234 -0.99573 0.0183  0.925  
+%OD     -0.60638 -0.79518 0.0115  0.953  
+OD       0.73989  0.67273 0.0451  0.809  
+Conduct -0.83215  0.55455 0.2119  0.373  
+TDS     -0.96634  0.25727 0.3811  0.125  
+UPS     -0.99412  0.10825 0.3063  0.197  
+Temp    -0.90646 -0.42229 0.5538  0.036 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 999</code></pre>
+</div>
+</div>
+<p>La <strong>?@fig-figura26</strong> muestra un patrón diferente al de los RDA anteriores (<em>Wax.cres</em> es la fase que se separa), debido a que para este caso, la separación se presenta principalmente en la fase <strong>Wax.gibb</strong>, con otro tipo de especies relacionadas, como <em>Eugp, Lutg y Carc</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig26" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig26-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;14: Ordination of lunar phases, with abundance values for taxa</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig27">Figure&nbsp;15</a> Muestra de una forma màs clara la separaciòn de <strong>Wax.gibb</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig27" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig27-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;15: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <strong>?@fig-figura28</strong> muestra las variables ambientales que se relacionan con Wax.gibb.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig28" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig28-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;16: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <a href="#fig-fig30">Figure&nbsp;17</a> complementa a la <strong>?@fig-fig29</strong>, al incorporar las elipses de las diferentes zonas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig30" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig30-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;17: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">————————————————————————</h2>
+</section>
+<section id="nmds---biom.-zonas" class="level2">
+<h2 class="anchored" data-anchor-id="nmds---biom.-zonas"><strong>NMDS - Biom. + Zonas</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación</strong>. (NMDS con datos de biomasa por especies)</li>
+</ul>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">————————————————————————</h2>
+<p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Se utiliza la <strong>distancia Bray Curtis</strong> y el estrés generado es de <strong>0.14</strong> (14%), Representando un aceptable ajuste o configuración del NMDS.</p>
+<div class="cell">
+
+</div>
+<p>A continuación se extraen las coordenadas de las Moon, Species y variables ambientales, para ser ordenadas con la librería <strong>ggplo2</strong>.</p>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<div class="cell">
+
+</div>
+<p>Patrón similar al anterios NMDS con abundancias, en donde Temperatura es la única variable con un efecto significativo en el patrón de distribución de las abundancias de las especies de peces.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>           NMDS1    NMDS2     r2 Pr(&gt;r)  
+pH      -0.59469  0.80395 0.0273  0.884  
+%OD     -0.26693 -0.96371 0.1555  0.456  
+OD       0.50326 -0.86413 0.0901  0.681  
+Conduct -0.68035  0.73289 0.2239  0.298  
+TDS     -0.92794  0.37272 0.2975  0.203  
+UPS     -0.86113  0.50839 0.2825  0.222  
+Temp    -0.94766  0.31927 0.5631  0.027 *
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Permutation: free
+Number of permutations: 999</code></pre>
+</div>
+</div>
+<p>La <a href="#fig-fig31">Figure&nbsp;18</a> muestra un patrón similar al de las figuras del NMDS con abundancias, en donde la separación importante se presenta en la fase <strong>Wax.gibb</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig31" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig31-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;18: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <a href="#fig-fig32">Figure&nbsp;19</a> muestra un patrón más interesante que los anteriores, debido a que a este nivel de biomasas de peces, hay una separación importante de todas las fases lunares.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig32" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig32-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;19: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <a href="#fig-fig33">Figure&nbsp;20</a>, incluye a los vectores de las variables ambientales.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig33" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig33-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;20: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <a href="#fig-fig34">Figure&nbsp;21</a> complementa a la <a href="#fig-fig33">Figure&nbsp;20</a>, al incorporar las elipses asociadas a las zonas evaluadas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig34" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig34-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;21: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">————————————————————————</h2>
+</section>
+<section id="rda-con-abundancias" class="level2">
+<h2 class="anchored" data-anchor-id="rda-con-abundancias"><strong>RDA con abundancias</strong></h2>
+<ul>
+<li><strong>Técnicas de ordenación - (RDA con datos de abundancia)</strong></li>
+</ul>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">————————————————————————</h2>
 <p>Se intenta visualizar el ordenamiento de taxones con las fases lunares y variables ambientales, usando los datos de abundancia, linealizados con la transformación de Hellinger y los datos ambientales linealizados con log10+1.</p>
 <div class="cell">
 
@@ -1531,13 +1926,10 @@ TimeNight -0.507</code></pre>
 <div class="cell">
 
 </div>
-<section id="procedimiento-del-análisis-de-redundancia---rda." class="level4">
-<h4 class="anchored" data-anchor-id="procedimiento-del-análisis-de-redundancia---rda.">Procedimiento del análisis de redundancia - RDA.</h4>
 <p>Por ser muy pocas filas (solo 4 representadas por las fases lunares), los 12 pasos requeridos no se realizarán, dado a que se generar resultados inconsistentes. En ese sentido, se procede directamente al paso 4, relacionado a la visualización del RDA “parsimonioso”.</p>
 <div class="cell">
 
 </div>
-</section>
 <section id="visualización-del-rda-con-ggplot2" class="level4">
 <h4 class="anchored" data-anchor-id="visualización-del-rda-con-ggplot2">Visualización del RDA con ggplot2</h4>
 <p>Se realizará la figura del RDA con el paquete <code>ggplot2</code>, dada su mejor presentación, comparado a las figuras anteriores, realizadas con el paquete <code>vegan</code>. Los siguientes comandos sirven para identificar las coorddenadas de los sitios (“<code>sites</code>”), los taxones (“<code>sp</code>”) y las variables ambientales (“<code>vectors</code>”).</p>
@@ -1553,50 +1945,48 @@ TimeNight -0.507</code></pre>
 <div class="cell">
 
 </div>
-<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05), solo <code>Temp</code> se aproxima (valor p = 0.08)</p>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>            RDA1     RDA2     r2  Pr(&gt;r)  
-pH      -0.37546 -0.92684 0.0025 1.00000  
-%OD      0.66941  0.74289 0.6680 0.58333  
-OD       0.94531 -0.32619 0.7144 0.54167  
-Conduct -0.77536  0.63152 0.8185 0.45833  
-TDS     -0.66577  0.74616 0.9790 0.20833  
-UPS     -0.74391  0.66828 0.9578 0.16667  
-Temp    -0.72704  0.68660 0.9951 0.08333 .
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+<pre><code>            RDA1     RDA2     r2 Pr(&gt;r)
+pH       0.20389 -0.97899 0.0051 1.0000
+%OD      0.97316  0.23014 0.6229 0.5833
+OD       0.54470 -0.83863 0.6503 0.6250
+Conduct -0.21586  0.97642 0.7731 0.5000
+TDS     -0.07280  0.99735 0.9627 0.2500
+UPS     -0.17997  0.98367 0.9332 0.2917
+Temp    -0.16210  0.98677 0.9849 0.1250
 Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>En la <a href="#fig-figura20">Figure&nbsp;8</a> se observa el mayor número de taxones asociados en “Wax.cres” seguido de “Wax.gibb”.</p>
+<p>En la <a href="#fig-figura35">Figure&nbsp;22</a> se observa el mayor número de taxones asociados en “Wax.cres” seguido de “Wax.gibb”.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figura20" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figura35" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figura20-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;8: RDA figures with biological variables and lunar phases.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figura35-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;22: RDA figures with biological variables and lunar phases.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>En la <a href="#fig-figura21">Figure&nbsp;9</a> se observa el mayor número de taxones asociados en “Wax.cres”, asociado al <code>pH</code>.</p>
+<p>En la <a href="#fig-figura36">Figure&nbsp;23</a> se observa el mayor número de taxones asociados en “Wax.cres”, asociado al <code>pH</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figura21" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figura36" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figura21-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;9: RDA figures with biological variables, environmental variables and lunar phases.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figura36-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;23: RDA figures with biological variables, environmental variables and lunar phases.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="section-6" class="level2">
-<h2 class="anchored" data-anchor-id="section-6">————————————————————————</h2>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">————————————————————————</h2>
 </section>
 <section id="nmds---con-abudancias" class="level2">
 <h2 class="anchored" data-anchor-id="nmds---con-abudancias"><strong>NMDS - Con abudancias</strong></h2>
@@ -1604,8 +1994,8 @@ Number of permutations: 23</code></pre>
 <li><strong>Técnicas de ordenación</strong>. (NMDS con datos de abundancia por especies)</li>
 </ul>
 </section>
-<section id="section-7" class="level2">
-<h2 class="anchored" data-anchor-id="section-7">————————————————————————</h2>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">————————————————————————</h2>
 <p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis.</p>
 <div class="cell">
 
@@ -1642,44 +2032,43 @@ Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>La <a href="#fig-fig22">Figure&nbsp;10</a>, muestra un gradiente unimodal interesante, de las especies, con las variables ambientales y las fases lunares, mostrando al igual que en el RDA, que las fases Wax.cres y Wax.gib, son las que agrupan mayor número de especies y se relacionan a mayores valores de pH.</p>
+<p>La <a href="#fig-fig37">Figure&nbsp;24</a> genera un gradiente unimodal interesante, de las especies y las fases lunares, mostrando al igual que en el RDA, que las fases <strong>Wax.cres</strong> y <strong>Wax.gib</strong>, son las que agrupan mayor número de especies.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig22" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig37" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig22-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;10: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig37-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;24: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La <a href="#fig-fig38">Figure&nbsp;25</a>, genera un gradiente unimodal interesante, de las especies, con las <strong>variables ambientales</strong> y las fases lunares, mostrando al igual que en el RDA, que las fases <strong>Wax.cres</strong> y <strong>Wax.gib</strong>, son las que agrupan mayor número de especies y se relacionan a mayores valores de <strong>pH</strong>. es</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig38" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig38-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;25: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>La <a href="#fig-fig23">Figure&nbsp;11</a> no incluye a las variables ambientales.</p>
+<p>La <a href="#fig-fig39">Figure&nbsp;26</a> complementa a la <a href="#fig-fig38">Figure&nbsp;25</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig23" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig39" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig23-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;11: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-<p>La <a href="#fig-fig24a">Figure&nbsp;12</a> complementa a la <a href="#fig-fig22">Figure&nbsp;10</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-fig24a" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig24a-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;12: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig39-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;26: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="section-8" class="level2">
-<h2 class="anchored" data-anchor-id="section-8">————————————————————————</h2>
+<section id="section-16" class="level2">
+<h2 class="anchored" data-anchor-id="section-16">————————————————————————</h2>
 </section>
 <section id="nmds---con-biomasas" class="level2">
 <h2 class="anchored" data-anchor-id="nmds---con-biomasas"><strong>NMDS - Con biomasas</strong></h2>
@@ -1687,8 +2076,8 @@ Number of permutations: 23</code></pre>
 <li><strong>Técnicas de ordenación</strong>. (NMDS con datos de biomasas por especies)</li>
 </ul>
 </section>
-<section id="section-9" class="level2">
-<h2 class="anchored" data-anchor-id="section-9">————————————————————————</h2>
+<section id="section-17" class="level2">
+<h2 class="anchored" data-anchor-id="section-17">————————————————————————</h2>
 <p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis.</p>
 <div class="cell">
 
@@ -1725,44 +2114,56 @@ Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>La <a href="#fig-fig22a">Figure&nbsp;13</a>, muestra un gradiente unimodal interesante, de las especies, con las variables ambientales y las fases lunares, mostrando al igual que en el RDA, que las fases Wax.cres y Wax.gib, son las que agrupan mayor número de especies y se relacionan a mayores valores de pH.</p>
+<p>La <a href="#fig-fig40">Figure&nbsp;27</a>, también genera un gradiente unimodal interesante, de las especies y las fases lunares, pero a diferencia del NMDS con abundancias, aquí <strong>Wax.cres</strong> y <strong>Wan.cres</strong>, son las que agrupan mayor número de especies.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig22a" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig40" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig22a-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;13: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig40-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;27: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>La <a href="#fig-fig23a">Figure&nbsp;14</a> no incluye a las variables ambientales.</p>
+<p>La <a href="#fig-fig41">Figure&nbsp;28</a> muestra otra forma de visualizar la <a href="#fig-fig40">Figure&nbsp;27</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig23a" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig41" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig23a-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;14: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig41-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;28: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>La <a href="#fig-fig24">Figure&nbsp;15</a> complementa a la <a href="#fig-fig22">Figure&nbsp;10</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
+<p>La <a href="#fig-fig42">Figure&nbsp;29</a>, también muestra el gradiente unimodal interesante, de las especies y las fases lunares, con <strong>Wax.cres</strong> y <strong>Wan.cres</strong>, como las que agrupan mayor número de especies y se relacionan a mayores valores de <strong>pH</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig24" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig42" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig24-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;15: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig42-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;29: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>La <a href="#fig-fig43">Figure&nbsp;30</a> complementa a la <a href="#fig-fig42">Figure&nbsp;29</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-fig43" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="ajustes.peces_files/figure-html/fig-fig43-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;30: ordenación de de las Moon, con las especies y las variables ambientales</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="section-10" class="level2">
-<h2 class="anchored" data-anchor-id="section-10">————————————————————————</h2>
+<section id="section-18" class="level2">
+<h2 class="anchored" data-anchor-id="section-18">————————————————————————</h2>
 </section>
 <section id="nmds---abundancias-de-grem.-trof." class="level2">
 <h2 class="anchored" data-anchor-id="nmds---abundancias-de-grem.-trof."><strong>NMDS - Abundancias de Grem. Trof.</strong></h2>
@@ -1770,8 +2171,8 @@ Number of permutations: 23</code></pre>
 <li><strong>Técnicas de ordenación - NMDS con Abundancias de Gremios tróficos</strong></li>
 </ul>
 </section>
-<section id="section-11" class="level2">
-<h2 class="anchored" data-anchor-id="section-11">————————————————————————</h2>
+<section id="section-19" class="level2">
+<h2 class="anchored" data-anchor-id="section-19">————————————————————————</h2>
 <p>El objetivo de este análisis es visualizar gradientes complementarios a los de abundancias de taxones o de especies. En este caso se analizan las abundancias de los gremios tróficos, aprovechando que se cuenta con esa información. Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis. Los datos a evaluar son las <strong>abundancias de los gremios tróficos</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1850,7 +2251,7 @@ half-change scaling: too few points below threshold</code></pre>
 <div class="cell">
 
 </div>
-<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que ninguna presenta un efecto significativo en la ordenación de las especies de peces (valor p &gt; 0.05).</p>
+<p>Con el comando <strong>envfit</strong> del paquete vegan, se obtienen los siguientes valores de cada variable amiental, mostrando que solo UPS muestra un efecto significativo (valor p &lt; 0.05).</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>           NMDS1    NMDS2     r2  Pr(&gt;r)  
@@ -1867,32 +2268,32 @@ Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>La <a href="#fig-fig25">Figure&nbsp;16</a>, muestra un gradiente horizontal de los gremios y de las fases lunares, pero una baja relación con las variables ambientales. En este sentido, no veo un aporte complementario de esta ordenación de abundancias de gremios tróficos con la anterior de abundancias de las especies de peces (<a href="#fig-fig22">Figure&nbsp;10</a>).</p>
+<p>La <a href="#fig-fig44">Figure&nbsp;31</a>, muestra un gradiente horizontal de los gremios y de las fases lunares, pero una baja relación con las variables ambientales. En este sentido, no veo un aporte complementario de esta ordenación de abundancias de gremios tróficos con la anterior de abundancias de las especies de peces (<a href="#fig-fig43">Figure&nbsp;30</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig25" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig44" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig25-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;16: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig44-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;31: Ordination of lunar phases, with abundance values for taxa and environmental variables</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>La <a href="#fig-fig26">Figure&nbsp;17</a> detalla la caracterización de los gremios a las fases lunares. Basicamente cada fase lunar se asocia a un gremio, excepto <em>Wan.gibb</em>.</p>
+<p>La <a href="#fig-fig45">Figure&nbsp;32</a> detalla la caracterización de los gremios a las fases lunares. Basicamente cada fase lunar se asocia a un gremio, excepto <em>Wan.gibb</em>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig26" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig45" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig26-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;17: Ordering of the lunar phases (Moon), with the species.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig45-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;32: Ordering of the lunar phases (Moon), with the species.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="section-12" class="level2">
-<h2 class="anchored" data-anchor-id="section-12">————————————————————————</h2>
+<section id="section-20" class="level2">
+<h2 class="anchored" data-anchor-id="section-20">————————————————————————</h2>
 </section>
 <section id="nmds---biom.-grem.-trof." class="level2">
 <h2 class="anchored" data-anchor-id="nmds---biom.-grem.-trof."><strong>NMDS - Biom. Grem. Trof.</strong></h2>
@@ -1900,8 +2301,8 @@ Number of permutations: 23</code></pre>
 <li><strong>Técnicas de ordenación - NMDS con Biomasas de Gremios tróficos</strong></li>
 </ul>
 </section>
-<section id="section-13" class="level2">
-<h2 class="anchored" data-anchor-id="section-13">————————————————————————</h2>
+<section id="section-21" class="level2">
+<h2 class="anchored" data-anchor-id="section-21">————————————————————————</h2>
 <p>Se utilizará la distancia Bray Curtis, para la asociación de los datos. Se ejecutan las librerías necesarias para este análisis. Los datos a evaluar son las <strong>biomasas de los gremios tróficos</strong>.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -2005,13 +2406,13 @@ Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>La <a href="#fig-fig27">Figure&nbsp;18</a>, muestra un patrón similar al de la ordenación anterior con datos de abundancia (<a href="#fig-fig25">Figure&nbsp;16</a>).</p>
+<p>La <a href="#fig-fig46">Figure&nbsp;33</a>, muestra un patrón similar al de la ordenación anterior con datos de abundancia (<strong>?@fig-fig25</strong>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig27" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig46" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig27-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;18: Ordination of lunar phases, with abundance values for taxa and environmental variables.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig46-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;33: Ordination of lunar phases, with abundance values for taxa and environmental variables.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -2019,17 +2420,17 @@ Number of permutations: 23</code></pre>
 <hr>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig28" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig47" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig28-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;19: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig47-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;34: Ordering of the lunar phases (Moon), with the species</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="section-14" class="level2">
-<h2 class="anchored" data-anchor-id="section-14">————————————————————————</h2>
+<section id="section-22" class="level2">
+<h2 class="anchored" data-anchor-id="section-22">————————————————————————</h2>
 </section>
 <section id="nmds---índice-multivariante" class="level2">
 <h2 class="anchored" data-anchor-id="nmds---índice-multivariante"><strong>NMDS - Índice Multivariante</strong></h2>
@@ -2037,8 +2438,8 @@ Number of permutations: 23</code></pre>
 <li><strong>Índice multivariante que integra a diferentes variables</strong></li>
 </ul>
 </section>
-<section id="section-15" class="level2">
-<h2 class="anchored" data-anchor-id="section-15">————————————————————————</h2>
+<section id="section-23" class="level2">
+<h2 class="anchored" data-anchor-id="section-23">————————————————————————</h2>
 <p>A continuación se realizará un <strong>índice multivariante</strong> con una posible importancia para el NMDS y el RDA, debido a lo siguiente:</p>
 <ol type="a">
 <li>Síntesis de múltiples dimensiones. Al combinar la abundancia (Value), Longitud total (LT), la Longitud estándar (LE) y el peso (Weight) en un único descriptor, convierte a estas cuatro variables correlacionadas en un solo gradiente interpretable. Esto simplifica el modelo y evita problemas de colinealidad.</li>
@@ -2209,13 +2610,13 @@ Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>La <a href="#fig-fig29">Figure&nbsp;20</a>, muestra que las cuatro fases lunares se relacionan y se concentran cer al origen del plano cartesiano. No veo un desempeño mejor que el visualizado con datos de abundancia en el primer NMDS realizado (<a href="#fig-fig22">Figure&nbsp;10</a>).</p>
+<p>La <a href="#fig-fig48">Figure&nbsp;35</a>, muestra que las cuatro fases lunares se relacionan y se concentran cer al origen del plano cartesiano. No veo un desempeño mejor que el visualizado con datos de abundancia en el primer NMDS realizado (<strong>?@fig-fig22</strong>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig29" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig48" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig29-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;20: Ordination of lunar phases, with abundance values for taxa and environmental variables.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig48-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;35: Ordination of lunar phases, with abundance values for taxa and environmental variables.</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -2223,29 +2624,29 @@ Number of permutations: 23</code></pre>
 <hr>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig30" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig49" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig30-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;21: Ordering of the lunar phases (Moon), with the species.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig49-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;36: Ordering of the lunar phases (Moon), with the species.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>La <a href="#fig-fig31">Figure&nbsp;22</a> complementa a la <a href="#fig-fig30">Figure&nbsp;21</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
+<p>La <a href="#fig-fig31">Figure&nbsp;18</a> complementa a la <a href="#fig-fig49">Figure&nbsp;36</a>, al incorporar las variables ambientales en la caracterización de las Moon y de las especies.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-fig31" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-fig50" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-fig31-1.png" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;22: Ordination of lunar phases, with abundance values for taxa and environmental variables.</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-fig50-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;37: Ordination of lunar phases, with abundance values for taxa and environmental variables.</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="section-16" class="level2">
-<h2 class="anchored" data-anchor-id="section-16">————————————————————————</h2>
+<section id="section-24" class="level2">
+<h2 class="anchored" data-anchor-id="section-24">————————————————————————</h2>
 </section>
 <section id="rda---índice-multivariante" class="level2">
 <h2 class="anchored" data-anchor-id="rda---índice-multivariante"><strong>RDA - Índice Multivariante</strong></h2>
@@ -2253,8 +2654,8 @@ Number of permutations: 23</code></pre>
 <li><strong>Técnicas de ordenación - (RDA con el índice multivariante)</strong></li>
 </ul>
 </section>
-<section id="section-17" class="level2">
-<h2 class="anchored" data-anchor-id="section-17">————————————————————————</h2>
+<section id="section-25" class="level2">
+<h2 class="anchored" data-anchor-id="section-25">————————————————————————</h2>
 <p>Se usarán las bases de datos del anterior NMDS, donde “biol” son las variables biológicas y “amb.log” son las ambientales.</p>
 <p>En el siguiente analisis se relaciona a la matriz de datos biológicos (<strong>índice multivariante</strong>) con la matriz de datos ambientales. A continuación se determinan los insumos generales del análisis.</p>
 <div class="cell">
@@ -2291,25 +2692,25 @@ Permutation: free
 Number of permutations: 23</code></pre>
 </div>
 </div>
-<p>La <a href="#fig-figura32">Figure&nbsp;23</a> muestra los taxones que caracterizan a cada fase lunar, agrupándose en mayor medida con “Wax.cres”.</p>
+<p>La <a href="#fig-figura51">Figure&nbsp;38</a> muestra los taxones que caracterizan a cada fase lunar, agrupándose en mayor medida con “Wax.cres”.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figura32" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figura51" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figura32-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;23: Figuras del RDA con las variables biológicas y los sitios</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figura51-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;38: Figuras del RDA con las variables biológicas y los sitios</figcaption><p></p>
 </figure>
 </div>
 </div>
 </div>
 <hr>
-<p>La <a href="#fig-figura33">Figure&nbsp;24</a> muestra “Wax.cres”, se asocia al mayor número de taxones y al <code>pH</code>.</p>
+<p>La <a href="#fig-figura52">Figure&nbsp;39</a> muestra “Wax.cres”, se asocia al mayor número de taxones y al <code>pH</code>.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-figura33" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-figura52" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="ajustes.peces_files/figure-html/fig-figura33-1.svg" class="img-fluid figure-img" width="672"></p>
-<p></p><figcaption class="figure-caption">Figure&nbsp;24: Figuras del RDA con las variables biológicas, las ambientales y los sitios</figcaption><p></p>
+<p><img src="ajustes.peces_files/figure-html/fig-figura52-1.svg" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;39: Figuras del RDA con las variables biológicas, las ambientales y los sitios</figcaption><p></p>
 </figure>
 </div>
 </div>
