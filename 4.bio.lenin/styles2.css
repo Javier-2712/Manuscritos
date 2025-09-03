@@ -8,7 +8,7 @@ h2 { color: #018571; }  /* Rojo */
 h3 { color: #fd8d3c; }  /* Verde */
 h4 { color: #a6611a; }  /* Marrón */
 h5 { color: #d83838; }  /* Naranja */
-h6 { color: #999999; }  /* Gris */
+h6 { color: #685d5d; }  /* Gris */
 
 /* LISTAS */
 ul, ol {
@@ -17,7 +17,7 @@ ul, ol {
 }
 
 ul {
-    color: #4CAF50; /* Verde */
+    color: #867e7e; /* Verde */
     font-family: 'Arial', sans-serif;
 }
 ol {
