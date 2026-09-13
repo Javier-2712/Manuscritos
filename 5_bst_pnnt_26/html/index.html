@@ -100,12 +100,20 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Resumen</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./fase0.html"> 
+<span class="menu-text">Fase 0</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./fase3.html"> 
 <span class="menu-text">Fase 3</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./fase4.html"> 
 <span class="menu-text">Fase 4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./fase5.html"> 
+<span class="menu-text">Fase 5</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -168,10 +176,14 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+<ul>
+<li><p><strong>Base de datos estructural</strong>: <a href="https://javier-2712.github.io/Manuscritos/5_bst_pnnt_26/Datos_estructura_PNNT.xlsx">enlace_xlsx</a></p></li>
+<li><p><strong>Base de datos funcional</strong>: <a href="https://javier-2712.github.io/Manuscritos/5_bst_pnnt_26/Matriz_rasgos_PNNT.xlsx">enlace_xlsx</a></p></li>
+</ul>
 <section id="sobre-este-proyecto" class="level2">
 <h2 class="anchored" data-anchor-id="sobre-este-proyecto">Sobre este proyecto</h2>
 <p>Este estudio caracteriza la diversidad taxonómica (TD) y funcional (FD) del bosque seco tropical asociado al Parque Nacional Natural Tayrona (PNNT), Santa Marta, Colombia, a lo largo de un diseño espacial de <strong>9 parcelas (Sitio) anidadas en 3 Franjas</strong> de un gradiente de precipitación/disponibilidad hídrica (750–850, 850–950 y 950–1050, según la nomenclatura del censo). El proyecto integra dos bases de datos primarias — una de rasgos funcionales foliares/madera y otra de estructura del bosque (4070 individuos con DAP ≥ 10 cm) — y avanza en ocho fases metodológicas, de la auditoría de datos hasta la redacción de resultados del manuscrito (dirigido en principio a <em>Forest Ecology and Management</em>).</p>
-<p>Esta página resume el estado de cada fase. A partir de la Fase 3, cada sección enlaza (o enlazará) con la página de resultados correspondiente, generada directamente desde los scripts <code>.qmd</code> reproducibles en R.</p>
+<p>Esta página resume el estado de cada fase. A partir de la Fase 0, cada sección enlaza (o enlazará) con la página de resultados correspondiente, generada directamente desde los scripts <code>.qmd</code> reproducibles en R.</p>
 <blockquote class="blockquote">
 <p>Última actualización: 12 de septiembre de 2026. Actualizar esta fecha cada vez que se cierre o avance una fase.</p>
 </blockquote>
@@ -194,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>0</td>
-<td>Auditoría de datos</td>
+<td>Diseño exp. y Auditoría de datos</td>
 <td>✅ Cerrada</td>
 </tr>
 <tr class="even">
@@ -220,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>5</td>
 <td>Diversidad funcional (FD): Hill funcional estandarizado por cobertura</td>
-<td>⬜ Pendiente de ejecutar</td>
+<td>🟡 Resultados calculados — pendiente validación con el equipo de trabajo</td>
 </tr>
 <tr class="odd">
 <td>6</td>
@@ -243,9 +255,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="fase-0-auditoría-de-datos" class="level2">
 <h2 class="anchored" data-anchor-id="fase-0-auditoría-de-datos">Fase 0 — Auditoría de datos</h2>
-<p><strong>Estado:</strong> ✅ Cerrada.</p>
-<p>Se revisaron tipos de variable, duplicados, valores faltantes y coherencia de nombres de especie entre la base de rasgos y el censo estructural. Se confirmó que el diseño Sitio(Franja) está <strong>perfectamente balanceado</strong>: 3 Franjas × 3 Sitios × 25 Subparcelas = 225 unidades, con exactamente 25 subparcelas por Sitio — lo que hace viable el anidamiento Sitio(Franja) en los análisis multivariados posteriores, con la Subparcela como unidad de réplica real.</p>
-<p>Se dejó constancia de que el proyecto pasa de trabajar con las 7 especies originalmente seleccionadas por IVI a trabajar con <strong>todas las especies</strong> del censo estructural, siguiendo el objetivo transversal acordado con el equipo de trabajo (enfoque de diversidad multidimensional TD+FD).</p>
+<p><strong>Estado:</strong> ✅ Cerrada · <a href="fase0.html">ver página completa</a></p>
+<p><strong>Diseño experimental:</strong> el proyecto es un estudio observacional/mensurativo (no manipulativo, sentido de Hurlbert 1984) con diseño anidado de muestreo — <strong>9 Sitios (3 por cada una de las 3 Franjas del gradiente hídrico), 25 Subparcelas por Sitio, 225 unidades en total</strong>, perfectamente balanceado. El Sitio es la unidad experimental (réplica real del efecto Franja, n = 9); la Subparcela es la unidad de observación (réplica real del efecto Sitio, n = 225). Para evitar pseudoreplicación, el efecto Franja se prueba con el Sitio como unidad y el efecto Sitio(Franja) con la Subparcela, con permutaciones restringidas dentro de cada Franja — salvaguarda que se aplica de forma consistente desde la Fase 4.</p>
+<p><strong>Hallazgos de auditoría sobre el censo estructural y la matriz de rasgos:</strong></p>
+<ul>
+<li>Coherencia de nombres entre bases: <code>Enneatypus ramiflorus</code> (censo) y <code>Ruprechtia ramiflora</code> (matriz de rasgos) son la misma especie — sinonimia taxonómica confirmada contra GBIF/Catálogo de plantas de Colombia, pendiente de armonizar al nombre aceptado en POWO. <code>Matayba sp.</code> (15 individuos, identificado a género) no tiene fila en la matriz de rasgos — falta real, candidata a imputación futura.</li>
+<li>Se detectaron 37-38 combinaciones exactas de Sitio+Subparcela+Especie+DAP+Altura repetidas — más consistente con doble digitación que con coincidencia biológica; pendiente de verificar contra planillas de campo (afectaría &lt;1 % del censo si se confirma).</li>
+<li>Valores faltantes y outliers univariados de DAP/altura son esperables para un censo forestal y no bloquean el análisis.</li>
+<li>Verificación cruzada de las 7 especies originalmente seleccionadas por IVI: con el censo consolidado, <strong>solo <code>Platymiscium pinnatum</code> sigue presente en las 9 parcelas</strong> (la selección original ya no es plenamente consistente) — esto refuerza, con evidencia, la decisión de trabajar con <strong>todas las especies</strong> del censo estructural en lugar de limitarse a esas 7, siguiendo el enfoque transversal acordado con el equipo de trabajo (diversidad multidimensional TD+FD).</li>
+</ul>
 </section>
 <section id="fase-1-auditoría-del-manuscrito" class="level2">
 <h2 class="anchored" data-anchor-id="fase-1-auditoría-del-manuscrito">Fase 1 — Auditoría del manuscrito</h2>

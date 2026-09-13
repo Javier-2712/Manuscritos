@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Grupo de Investigación GIEN · Universidad del Magdalena">
+<meta name="dcterms.date" content="2026-09-13">
+
+<title>Fase 0 – Manuscrito BST en el PNNT</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Manuscrito BST en el PNNT</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Resumen</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./fase0.html" aria-current="page"> 
+<span class="menu-text">Fase 0</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./fase3.html"> 
+<span class="menu-text">Fase 3</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./fase4.html"> 
+<span class="menu-text">Fase 4</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./fase5.html"> 
+<span class="menu-text">Fase 5</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#nota-sobre-esta-página" id="toc-nota-sobre-esta-página" class="nav-link active" data-scroll-target="#nota-sobre-esta-página"><span class="header-section-number">1</span> Nota sobre esta página</a></li>
+  <li><a href="#propósito" id="toc-propósito" class="nav-link" data-scroll-target="#propósito"><span class="header-section-number">2</span> Propósito</a></li>
+  <li><a href="#paquetes" id="toc-paquetes" class="nav-link" data-scroll-target="#paquetes"><span class="header-section-number">3</span> Paquetes</a></li>
+  <li><a href="#lectura-de-la-base-y-preparación-de-los-datos" id="toc-lectura-de-la-base-y-preparación-de-los-datos" class="nav-link" data-scroll-target="#lectura-de-la-base-y-preparación-de-los-datos"><span class="header-section-number">4</span> Lectura de la base y preparación de los datos</a></li>
+  <li><a href="#diseño-experimental-elementos-principios-y-tipo" id="toc-diseño-experimental-elementos-principios-y-tipo" class="nav-link" data-scroll-target="#diseño-experimental-elementos-principios-y-tipo"><span class="header-section-number">5</span> Diseño experimental: elementos, principios y tipo</a></li>
+  <li><a href="#auditoría-de-los-datos" id="toc-auditoría-de-los-datos" class="nav-link" data-scroll-target="#auditoría-de-los-datos"><span class="header-section-number">6</span> Auditoría de los datos</a>
+  <ul class="collapse">
+  <li><a href="#hallazgo-1-filas-posiblemente-duplicadas-en-el-censo" id="toc-hallazgo-1-filas-posiblemente-duplicadas-en-el-censo" class="nav-link" data-scroll-target="#hallazgo-1-filas-posiblemente-duplicadas-en-el-censo"><span class="header-section-number">6.1</span> Hallazgo 1 — filas posiblemente duplicadas en el censo</a></li>
+  <li><a href="#hallazgo-2-coherencia-de-nombres-entre-censo-y-matriz-de-rasgos" id="toc-hallazgo-2-coherencia-de-nombres-entre-censo-y-matriz-de-rasgos" class="nav-link" data-scroll-target="#hallazgo-2-coherencia-de-nombres-entre-censo-y-matriz-de-rasgos"><span class="header-section-number">6.2</span> Hallazgo 2 — coherencia de nombres entre censo y matriz de rasgos</a></li>
+  <li><a href="#hallazgo-3-valores-faltantes" id="toc-hallazgo-3-valores-faltantes" class="nav-link" data-scroll-target="#hallazgo-3-valores-faltantes"><span class="header-section-number">6.3</span> Hallazgo 3 — valores faltantes</a></li>
+  <li><a href="#hallazgo-4-outliers-univariados-dap-y-altura" id="toc-hallazgo-4-outliers-univariados-dap-y-altura" class="nav-link" data-scroll-target="#hallazgo-4-outliers-univariados-dap-y-altura"><span class="header-section-number">6.4</span> Hallazgo 4 — outliers univariados (DAP y altura)</a></li>
+  <li><a href="#verificación-de-la-selección-histórica-de-7-especies-por-ivi" id="toc-verificación-de-la-selección-histórica-de-7-especies-por-ivi" class="nav-link" data-scroll-target="#verificación-de-la-selección-histórica-de-7-especies-por-ivi"><span class="header-section-number">6.5</span> Verificación de la selección histórica de 7 especies por IVI</a></li>
+  <li><a href="#balance-del-diseño-sitiofranja" id="toc-balance-del-diseño-sitiofranja" class="nav-link" data-scroll-target="#balance-del-diseño-sitiofranja"><span class="header-section-number">6.6</span> Balance del diseño Sitio(Franja)</a></li>
+  <li><a href="#limitación-de-esta-reconstrucción" id="toc-limitación-de-esta-reconstrucción" class="nav-link" data-scroll-target="#limitación-de-esta-reconstrucción"><span class="header-section-number">6.7</span> Limitación de esta reconstrucción</a></li>
+  </ul></li>
+  <li><a href="#síntesis-de-fase-0" id="toc-síntesis-de-fase-0" class="nav-link" data-scroll-target="#síntesis-de-fase-0"><span class="header-section-number">7</span> Síntesis de Fase 0</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Fase 0</h1>
+<p class="subtitle lead">Diseño experimental realizado y aAuditoría de datos — censo estructural y de rasgos</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Grupo de Investigación GIEN · Universidad del Magdalena </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 13, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig_portadas/fase0.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="nota-sobre-esta-página" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="nota-sobre-esta-página"><span class="header-section-number">1</span> Nota sobre esta página</h2>
+<p>Esta página documenta la auditoría de datos que sostiene el resto de las fases del sitio. Se reconstruye aquí sobre los archivos definitivos del proyecto (<code>Datos_estructura_PNNT.xlsx</code> y <code>Matriz_rasgos_PNNT.xlsx</code>, ambos ya cerrados) — dos hallazgos nuevos surgieron al recalcularla con estos archivos finales y se documentan explícitamente más abajo (sinonimia taxonómica y posibles duplicados de digitación), ya que no habían quedado registrados en ninguna fase posterior.</p>
+</section>
+<section id="propósito" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="propósito"><span class="header-section-number">2</span> Propósito</h2>
+<p>Revisar tipos de variable, duplicados, valores faltantes, outliers univariados y coherencia de nombres de especie/código entre el censo estructural y la matriz de rasgos, y confirmar el balance del diseño Sitio(Franja) antes de avanzar a cualquier análisis. Sigue el mandato estándar de auditoría del proyecto: <strong>reportar, no corregir todavía</strong>.</p>
+</section>
+<section id="paquetes" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="paquetes"><span class="header-section-number">3</span> Paquetes</h2>
+</section>
+<section id="lectura-de-la-base-y-preparación-de-los-datos" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="lectura-de-la-base-y-preparación-de-los-datos"><span class="header-section-number">4</span> Lectura de la base y preparación de los datos</h2>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Individuos en el censo: 4070 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Especies en la matriz de rasgos: 71 </code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="diseño-experimental-elementos-principios-y-tipo" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="diseño-experimental-elementos-principios-y-tipo"><span class="header-section-number">5</span> Diseño experimental: elementos, principios y tipo</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig_portadas/diseño_exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%" data-fig-pos="H"></p>
+</figure>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> la dirección del gradiente (mayor precipitación a mayor elevación) es una hipótesis de trabajo del equipo, no un dato confirmado. Tampoco está aún confirmado con el equipo de trabajo si los rangos 750-850 / 850-950 / 950-1050 corresponden a precipitación, elevación, u otra unidad de medida — el censo solo los nombra así.</p>
+</blockquote>
+<p>Antes de auditar los datos vale la pena dejar explícito qué tipo de diseño sostiene todo el proyecto, es la base para interpretar correctamente cada prueba estadística de las fases siguientes, y el punto de partida para explicárselo al equipo de trabajo.</p>
+<section id="naturaleza-del-estudio" class="level4" data-number="5.0.1">
+<h4 data-number="5.0.1" class="anchored" data-anchor-id="naturaleza-del-estudio"><span class="header-section-number">5.0.1</span> Naturaleza del estudio</h4>
+<p>PNNT <strong>no es un experimento manipulativo, es un estudio observacional o mensurativo</strong> (en el sentido de Hurlbert 1984): nadie asignó la Franja a un Sitio; la Franja es un atributo geográfico preexistente del gradiente de precipitación. Esto no es una debilidad del diseño, es simplemente el tipo de estudio que corresponde a una pregunta de gradiente ambiental, similar a p.&nbsp;ej., comparar dos bahías con distinto tráfico de embarcaciones o dos sitios de manglar con y sin restauración.</p>
+</section>
+<section id="unidad-experimental-y-unidad-de-observación" class="level4" data-number="5.0.2">
+<h4 data-number="5.0.2" class="anchored" data-anchor-id="unidad-experimental-y-unidad-de-observación"><span class="header-section-number">5.0.2</span> Unidad experimental y unidad de observación</h4>
+<ul>
+<li><strong>Unidad experimental (unidad de muestreo primaria): el Sitio.</strong> Es la entidad a la que “le corresponde” un nivel de Franja de forma natural, y define el tamaño de muestra real para comparar Franjas (n = 3 por franja, n = 9 en total).</li>
+<li><strong>Unidad de observación: la Subparcela</strong> (25 por sitio). Ahí se cuentan los individuos — puede haber, y hay, varias subparcelas por sitio.</li>
+</ul>
+</section>
+<section id="estructura-del-diseño" class="level4" data-number="5.0.3">
+<h4 data-number="5.0.3" class="anchored" data-anchor-id="estructura-del-diseño"><span class="header-section-number">5.0.3</span> Estructura del diseño</h4>
+<p>Franja (gradiente hídrico, 3 niveles: 750-850, 850-950, 950-1050) └── Sitio (n = 3 por franja) └── Subparcela (n = 25 por sitio; 225 en total)</p>
+</section>
+<section id="principios-de-diseño-aplicados" class="level4" data-number="5.0.4">
+<h4 data-number="5.0.4" class="anchored" data-anchor-id="principios-de-diseño-aplicados"><span class="header-section-number">5.0.4</span> Principios de diseño aplicados</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Principio</th>
+<th>¿Se aplicó?</th>
+<th>Nota</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aleatorización</td>
+<td>Parcial</td>
+<td>No se aleatorizó (ni podía) qué Franja le toca a cada Sitio — es una condición natural del terreno. Queda pendiente confirmar con el equipo de campo si la ubicación de las 25 subparcelas dentro de cada sitio fue aleatoria, sistemática (grilla) o por conveniencia.</td>
+</tr>
+<tr class="even">
+<td>Replicación</td>
+<td>Sí, en dos escalas</td>
+<td>3 Sitios por Franja (réplica real del efecto Franja) y 25 Subparcelas por Sitio (réplica real del efecto Sitio).</td>
+</tr>
+<tr class="odd">
+<td>Bloqueo</td>
+<td>No en el sentido clásico, pero análogo</td>
+<td>El Sitio funciona como un bloque implícito que agrupa 25 subparcelas con condiciones locales compartidas; así se trató estadísticamente (Sitio como estrato al probar el efecto Franja).</td>
+</tr>
+<tr class="even">
+<td>Control</td>
+<td>Ausente, correctamente</td>
+<td>No hay grupo “sin tratamiento” porque no hay tratamiento — hay un gradiente natural. Las 3 Franjas son 3 estados igualmente “naturales” del gradiente, no una intervención frente a su ausencia.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tipo-de-diseño" class="level4" data-number="5.0.5">
+<h4 data-number="5.0.5" class="anchored" data-anchor-id="tipo-de-diseño"><span class="header-section-number">5.0.5</span> Tipo de diseño</h4>
+<p>No encaja de forma limpia en ninguno de los 4 tipos clásicos (CA, bloques al azar, factorial, parcelas divididas) — y es más honesto decirlo así que forzarlo en una casilla:</p>
+<ul>
+<li>No es <strong>CA</strong>: hay estructura jerárquica clara.</li>
+<li>No es <strong>bloques al azar</strong> clásico: Franja no es una variable de estorbo que se bloquea, es la variable de interés.</li>
+<li>No es <strong>factorial</strong>: solo hay un factor de interés (Franja), no dos factores cruzados.</li>
+<li>El más parecido es <strong>parcelas divididas</strong>, pero le falta la pieza que lo definiría como tal: un segundo factor manipulado dentro de la subparcela. Aquí la subparcela es pura sub-réplica de muestreo.</li>
+</ul>
+<p>El nombre técnico correcto es <strong>diseño anidado/jerárquico de muestreo</strong>: Sitio anidado en Franja, Subparcela anidada en Sitio — <code>Sitio(Franja)</code>.</p>
+</section>
+<section id="cómo-se-controla-la-pseudoreplicación" class="level4" data-number="5.0.6">
+<h4 data-number="5.0.6" class="anchored" data-anchor-id="cómo-se-controla-la-pseudoreplicación"><span class="header-section-number">5.0.6</span> Cómo se controla la pseudoreplicación</h4>
+<p>El error clásico (Hurlbert 1984) sería tratar las 225 subparcelas como si fueran 225 réplicas independientes de Franja, cuando la réplica real de Franja es solo 9 (los sitios). Este proyecto lo evita separando la pregunta en dos pruebas, cada una a la escala que le corresponde:</p>
+<ul>
+<li><strong>Efecto Franja</strong> → probado con el <strong>Sitio</strong> como unidad (n = 9).</li>
+<li><strong>Efecto Sitio(Franja)</strong> → probado con la <strong>Subparcela</strong> como unidad (n = 225), con las permutaciones restringidas dentro de cada Franja.</li>
+</ul>
+<p>Esta separación es la salvaguarda contra pseudoreplicación de todo el proyecto, y se aplica de forma consistente desde Fase 4 en adelante.</p>
+<hr>
+</section>
+</section>
+<section id="auditoría-de-los-datos" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="auditoría-de-los-datos"><span class="header-section-number">6</span> Auditoría de los datos</h2>
+<section id="hallazgo-1-filas-posiblemente-duplicadas-en-el-censo" class="level3" data-number="6.1">
+<h3 data-number="6.1" class="anchored" data-anchor-id="hallazgo-1-filas-posiblemente-duplicadas-en-el-censo"><span class="header-section-number">6.1</span> Hallazgo 1 — filas posiblemente duplicadas en el censo</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Filas involucradas: 75  ( 37.5 pares/grupos )</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Grupos duplicados por Sitio</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sitio</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BCC</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BCS</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHG</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CMZ</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GQT</td>
+<td style="text-align: right;">11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GRC</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LEC</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">QRD</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Es una señal de alerta, no una corrección aplicada.</strong> Se encontraron 37-38 combinaciones exactas de Sitio + Subparcela + Especie + DAP + Altura repetidas dos (y en un caso tres) veces — por ejemplo, dos registros idénticos de <em>Cochlospermum vitifolium</em> en BCS-B160 con DAP=33.4 cm y altura=17 m. Que dos árboles distintos coincidan exactamente en DAP (con un decimal) <em>y</em> en altura en una subparcela de 20×20 m es estadísticamente inusual — es más consistente con doble digitación que con coincidencia biológica. Están distribuidas en 8 de los 9 Sitios (GQT es el más afectado, con 11 grupos; PLC no muestra ninguno). <strong>Se recomienda verificar contra las planillas de campo originales antes de decidir si se eliminan</strong> — de confirmarse como duplicados de digitación, afectarían el censo en &lt;1 % de los individuos (37-38 de 4070), sin cambiar de forma apreciable ningún resultado de Fase 4, pero sí conviene dejarlo resuelto antes del manuscrito final.</p>
+</section>
+<section id="hallazgo-2-coherencia-de-nombres-entre-censo-y-matriz-de-rasgos" class="level3" data-number="6.2">
+<h3 data-number="6.2" class="anchored" data-anchor-id="hallazgo-2-coherencia-de-nombres-entre-censo-y-matriz-de-rasgos"><span class="header-section-number">6.2</span> Hallazgo 2 — coherencia de nombres entre censo y matriz de rasgos</h3>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Especies/morfoespecies en el censo: 72 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Especies en la matriz de rasgos: 71 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+En censo, sin fila en la matriz de rasgos:</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Enneatypus ramiflorus" "Matayba sp."          </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+En la matriz de rasgos, sin coincidencia directa en el censo:</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Ruprechtia ramiflora"</code></pre>
+</div>
+</div>
+<p>Dos casos, de naturaleza distinta:</p>
+<ul>
+<li><strong><code>Matayba sp.</code></strong> (15 individuos en 4 Sitios, identificado solo a género) no tiene fila en la matriz de rasgos — falta real, candidata a imputación a nivel de género en una futura revisión de Fase 2.</li>
+<li><strong><code>Enneatypus ramiflorus</code></strong> (censo) y <strong><code>Ruprechtia ramiflora</code></strong> (matriz de rasgos) <strong>son la misma especie</strong> — sinonimia taxonómica confirmada (GBIF / Catálogo de plantas y líquenes de Colombia, Bernal et al.&nbsp;2015): <em>Enneatypus ramiflorus</em> (C.A.Mey.) Roberty &amp; Vautier es sinónimo de <em>Ruprechtia ramiflora</em> (Jacq.) C.A.Mey. No es un dato faltante, es un problema de nomenclatura — se recomienda armonizar ambas bases al nombre que POWO trate como aceptado y dejarlo trazable en la hoja <code>Erratum</code>.</li>
+</ul>
+</section>
+<section id="hallazgo-3-valores-faltantes" class="level3" data-number="6.3">
+<h3 data-number="6.3" class="anchored" data-anchor-id="hallazgo-3-valores-faltantes"><span class="header-section-number">6.3</span> Hallazgo 3 — valores faltantes</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Variables con valores faltantes en el censo</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">N_NA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Nombre.común</td>
+<td style="text-align: right;">674</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Familia</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code>Nombre.común</code> faltante en 674 individuos es esperable (no todas las especies tienen nombre vernáculo registrado en campo) y no afecta ningún análisis. El único <code>Familia</code> faltante corresponde al individuo marcado como <code>Indeterminada</code> (GRC, DAP=10.8 cm) — consistente, ya excluido de las matrices especie × unidad desde Fase 4.</p>
+</section>
+<section id="hallazgo-4-outliers-univariados-dap-y-altura" class="level3" data-number="6.4">
+<h3 data-number="6.4" class="anchored" data-anchor-id="hallazgo-4-outliers-univariados-dap-y-altura"><span class="header-section-number">6.4</span> Hallazgo 4 — outliers univariados (DAP y altura)</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Outliers univariados, criterio 1.5×IQR</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th"></th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Variable</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Limite_superior_IQR</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Maximo_observado</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">N_sobre_limite</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">75%...1</td>
+<td style="text-align: left;">DAP (cm)</td>
+<td style="text-align: right;">38.7</td>
+<td style="text-align: right;">184.6</td>
+<td style="text-align: right;">252</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">75%...2</td>
+<td style="text-align: left;">Altura (m)</td>
+<td style="text-align: right;">19.5</td>
+<td style="text-align: right;">32.0</td>
+<td style="text-align: right;">128</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Los conteos son altos (252 individuos sobre el límite de DAP, 128 sobre el de altura) pero <strong>esperables</strong>: la distribución diamétrica de un bosque natural maduro es marcadamente asimétrica hacia la derecha (muchos individuos pequeños, pocos grandes), y el criterio 1.5×IQR está diseñado para distribuciones simétricas — no se interpreta como error. Vale la pena una verificación puntual del máximo de DAP (184.6 cm) por ser inusualmente grande incluso para un bosque conservado, pero no hay evidencia aquí de que sea un error de dígito (p.&nbsp;ej. 184.6 en vez de 18.46).</p>
+<hr>
+</section>
+<section id="verificación-de-la-selección-histórica-de-7-especies-por-ivi" class="level3" data-number="6.5">
+<h3 data-number="6.5" class="anchored" data-anchor-id="verificación-de-la-selección-histórica-de-7-especies-por-ivi"><span class="header-section-number">6.5</span> Verificación de la selección histórica de 7 especies por IVI</h3>
+<p>El borrador del manuscrito indica que se seleccionaron <strong>siete especies presentes en las 9 parcelas</strong> para la toma de rasgos en campo. Esas siete especies son identificables directamente en la matriz de rasgos por su estado <code>medido_campo</code> (con 29 a 40 individuos medidos cada una):</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Bursera simaruba"            "Calycophyllum candidissimum"
+[3] "Handroanthus billbergii"     "Platymiscium pinnatum"      
+[5] "Pseudobombax septenatum"     "Pterocarpus rohrii"         
+[7] "Ruprechtia ramiflora"       </code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Las 7 especies originales, presencia real en el censo actual</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Especie</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n_individuos_censo</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n_sitios_presente</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Platymiscium pinnatum</td>
+<td style="text-align: right;">279</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bursera simaruba</td>
+<td style="text-align: right;">188</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pseudobombax septenatum</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pterocarpus rohrii</td>
+<td style="text-align: right;">185</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Handroanthus billbergii</td>
+<td style="text-align: right;">319</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Calycophyllum candidissimum</td>
+<td style="text-align: right;">82</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Hallazgo relevante:</strong> con el censo en su estado actual, <strong>solo <code>Platymiscium pinnatum</code> está presente en las 9 parcelas</strong> (además de <code>Astronium graveolens</code>, que no fue parte de la selección original). De las 7 especies históricas, dos (<code>Bursera simaruba</code>, <code>Pseudobombax septenatum</code>) están en 8 sitios, una en 7, una en 6, y <code>Calycophyllum candidissimum</code> en solo 5 — la selección original ya no es plenamente consistente con el censo consolidado. Esto <strong>no invalida</strong> el trabajo de campo (los datos se tomaron correctamente en su momento, posiblemente antes de que el censo estructural se consolidara del todo), pero sí confirma y refuerza la decisión ya tomada por el equipo de trabajar con <strong>todas las especies del censo</strong> en lugar de limitarse a esas 7.</p>
+</section>
+<section id="balance-del-diseño-sitiofranja" class="level3" data-number="6.6">
+<h3 data-number="6.6" class="anchored" data-anchor-id="balance-del-diseño-sitiofranja"><span class="header-section-number">6.6</span> Balance del diseño Sitio(Franja)</h3>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>9 Sitios, 3 por Franja</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sitio</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Franja</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BCC</td>
+<td style="text-align: left;">750-850</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CHG</td>
+<td style="text-align: left;">750-850</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PLC</td>
+<td style="text-align: left;">750-850</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BCS</td>
+<td style="text-align: left;">850-950</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CMZ</td>
+<td style="text-align: left;">850-950</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GRC</td>
+<td style="text-align: left;">850-950</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GQT</td>
+<td style="text-align: left;">950-1050</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LEC</td>
+<td style="text-align: left;">950-1050</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QRD</td>
+<td style="text-align: left;">950-1050</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<table class="table caption-top table-sm table-striped small">
+<caption>Subparcelas por Sitio (25 en todos los casos)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sitio</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">BCC</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">BCS</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CHG</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CMZ</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">GQT</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GRC</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LEC</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PLC</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">QRD</td>
+<td style="text-align: right;">25</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Diseño confirmado: <strong>9 Sitios (3 por cada una de las 3 Franjas de precipitación), 25 Subparcelas por Sitio, 225 unidades en total</strong> — perfectamente balanceado. Esto hace viable el anidamiento Sitio(Franja) en los análisis multivariados de fases posteriores, con la Subparcela como unidad de réplica real (ver Fase 4).</p>
+</section>
+<section id="limitación-de-esta-reconstrucción" class="level3" data-number="6.7">
+<h3 data-number="6.7" class="anchored" data-anchor-id="limitación-de-esta-reconstrucción"><span class="header-section-number">6.7</span> Limitación de esta reconstrucción</h3>
+<p>El protocolo original de Fase 0 incluye verificar si las transformaciones (log, sqrt) aplicadas a los rasgos crudos a nivel de individuo son adecuadas (normalidad/homocedasticidad). Esa verificación requiere el archivo de rasgos <strong>a nivel de individuo</strong> (<code>Datos_rasgos_PNNT.xlsx</code>, 236 individuos), que no está disponible junto con los archivos ya cerrados de Fase 2 en esta reconstrucción. Queda pendiente confirmar con el equipo si ese chequeo ya se hizo sobre el archivo crudo antes del cierre de Fase 2, o si conviene repetirlo.</p>
+<hr>
+</section>
+</section>
+<section id="síntesis-de-fase-0" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="síntesis-de-fase-0"><span class="header-section-number">7</span> Síntesis de Fase 0</h2>
+<p><strong>Lo que queda confirmado y no bloquea el avance:</strong></p>
+<ul>
+<li>Diseño Sitio(Franja) perfectamente balanceado (9/3/225).</li>
+<li>Valores faltantes esperables y sin impacto en el análisis.</li>
+<li>Outliers de DAP/altura consistentes con la estructura natural de un bosque maduro, no con errores de dígito.</li>
+<li>La decisión de trabajar con todas las especies del censo (en vez de las 7 originales) queda confirmada por los datos, no solo por acuerdo del equipo.</li>
+</ul>
+<p><strong>Pendientes reales, para resolver con el equipo:</strong></p>
+<ol type="1">
+<li>Verificar en planillas de campo los 37-38 grupos de posible doble digitación (Hallazgo 1).</li>
+<li>Armonizar <code>Enneatypus ramiflorus</code> / <code>Ruprechtia ramiflora</code> al nombre aceptado en POWO, en censo y matriz de rasgos.</li>
+<li>Confirmar si <code>Matayba sp.</code> puede imputarse a nivel de género en una futura revisión de Fase 2.</li>
+<li>Confirmar si la verificación de transformaciones sobre datos crudos de rasgos individuales ya se hizo en una sesión anterior no documentada aquí.</li>
+</ol>
+<p><strong>Qué heredan las fases siguientes:</strong> el diseño Sitio(Franja) confirmado aquí es la base de Fase 4 (TD) y Fase 5 (FD); la sinonimia Enneatypus/Ruprechtia es relevante para la matriz de rasgos que usa Fase 3 en adelante.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
