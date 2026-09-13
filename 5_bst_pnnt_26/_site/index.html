@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -39,10 +42,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-172ba59bd5e0b52282274ba0c0cc16fc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -207,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 <tr class="even">
 <td>3</td>
 <td>Grupos funcionales y espacio funcional (Gower + PCoA + Ward)</td>
-<td>🟡 Resultados calculados — pendiente validación con la directora</td>
+<td>🟡 Resultados calculados — pendiente validación con el equipo de trabajo</td>
 </tr>
 <tr class="odd">
 <td>4</td>
@@ -242,12 +245,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="fase-0-auditoría-de-datos">Fase 0 — Auditoría de datos</h2>
 <p><strong>Estado:</strong> ✅ Cerrada.</p>
 <p>Se revisaron tipos de variable, duplicados, valores faltantes y coherencia de nombres de especie entre la base de rasgos y el censo estructural. Se confirmó que el diseño Sitio(Franja) está <strong>perfectamente balanceado</strong>: 3 Franjas × 3 Sitios × 25 Subparcelas = 225 unidades, con exactamente 25 subparcelas por Sitio — lo que hace viable el anidamiento Sitio(Franja) en los análisis multivariados posteriores, con la Subparcela como unidad de réplica real.</p>
-<p>Se dejó constancia de que el proyecto pasa de trabajar con las 7 especies originalmente seleccionadas por IVI a trabajar con <strong>todas las especies</strong> del censo estructural, siguiendo el objetivo transversal acordado con la directora (enfoque de diversidad multidimensional TD+FD).</p>
+<p>Se dejó constancia de que el proyecto pasa de trabajar con las 7 especies originalmente seleccionadas por IVI a trabajar con <strong>todas las especies</strong> del censo estructural, siguiendo el objetivo transversal acordado con el equipo de trabajo (enfoque de diversidad multidimensional TD+FD).</p>
 </section>
 <section id="fase-1-auditoría-del-manuscrito" class="level2">
 <h2 class="anchored" data-anchor-id="fase-1-auditoría-del-manuscrito">Fase 1 — Auditoría del manuscrito</h2>
 <p><strong>Estado:</strong> ✅ Cerrada.</p>
-<p>Se revisó la coherencia entre pregunta(s) de investigación, objetivo(s) e hipótesis del <code>Borrador_de_artículo_Rasgos_PNNT.docx</code> frente al diseño real de datos, y se dejó documentada una propuesta de objetivo/hipótesis ajustada (todas las especies, diseño espacial Sitio(Franja), enfoque TD+FD) para validación de la directora antes de avanzar a la Fase 2.</p>
+<p>Se revisó la coherencia entre pregunta(s) de investigación, objetivo(s) e hipótesis del <code>Borrador_de_artículo_Rasgos_PNNT.docx</code> frente al diseño real de datos, y se dejó documentada una propuesta de objetivo/hipótesis ajustada (todas las especies, diseño espacial Sitio(Franja), enfoque TD+FD) para validación del equipo de trabajo antes de avanzar a la Fase 2.</p>
 </section>
 <section id="fase-2-matriz-de-rasgos-por-especie" class="level2">
 <h2 class="anchored" data-anchor-id="fase-2-matriz-de-rasgos-por-especie">Fase 2 — Matriz de rasgos por especie</h2>
@@ -262,7 +265,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="fase-3-grupos-funcionales-y-espacio-funcional" class="level2">
 <h2 class="anchored" data-anchor-id="fase-3-grupos-funcionales-y-espacio-funcional">Fase 3 — Grupos funcionales y espacio funcional</h2>
-<p><strong>Estado:</strong> 🟡 Pipeline corrido y resultados calculados; pendiente de validación por la directora antes de reportarse como resultado oficial.</p>
+<p><strong>Estado:</strong> 🟡 Código ejecutado y resultados calculados; pendiente de validación por el equipo de trabajo antes de reportarse como resultado oficial.</p>
 <p><strong>Qué se hizo:</strong> distancia de Gower sobre los 9 rasgos continuos de economía foliar/madera, ordenación PCoA, clustering jerárquico de Ward, y selección del número de grupos por silueta interna (no existe una clasificación funcional a priori para el PNNT, a diferencia del manuscrito BST).</p>
 <p><strong>Resultados clave:</strong></p>
 <ul>
@@ -273,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Lectura ecológica preliminar: un eje que contrasta un síndrome <strong>adquisitivo/almacenador de agua</strong> frente a uno <strong>conservador de madera densa</strong>.</li>
 <li>Advertencia activa: la razón de autovalores negativos del PCoA (≈0.22) no mejoró con la corrección de unidades — refleja un problema de cobertura de datos que también afectará la Fase 5.</li>
 </ul>
-<p><strong>Pendiente de decidir con la directora:</strong></p>
+<p><strong>Pendiente de decidir con con el equipo de trabajo:</strong></p>
 <ol type="1">
 <li>Adoptar k = 2 (y su lectura adquisitivo/conservador) como resultado oficial de la Fase 3.</li>
 <li>Nombrar formalmente los grupos o mantenerlos como “Grupo 1”/“Grupo 2”.</li>
@@ -292,7 +295,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Se identificaron 16 individuos (todos en el Sitio QRD) levemente bajo el umbral de 10 cm de DAP, coincidentes con límites de clase diamétrica — consistentes con redondeo de campo, no con error de captura.</li>
 <li><strong>Discrepancia relevante:</strong> la PERMANOVA de Franja no es significativa, pero el <code>manyGLM</code> (Binomial Negativa) sí detecta un efecto de Franja (<em>p</em> = 0.002); además, un <code>betadisper</code> significativo coincide con la PERMANOVA de Sitio(Franja), lo que sugiere leer el resultado como un efecto de composición <strong>y</strong> de dispersión, no solo de recambio puro.</li>
 </ul>
-<p><strong>Pendiente de decidir con la directora:</strong></p>
+<p><strong>Pendiente de decidir con el equipo de trabajo:</strong></p>
 <ol type="1">
 <li>Aceptar la Binomial Negativa como modelo principal de <code>manyGLM</code> (Poisson como sensibilidad), dado el patrón esperable de sobredispersión en conteos ecológicos.</li>
 <li>Cómo presentar en el manuscrito la discrepancia PERMANOVA-Franja (no significativa) vs.&nbsp;manyGLM-Franja (<em>p</em> = 0.002).</li>
@@ -315,7 +318,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="fase-7-integración-tdfd-a-lo-largo-del-gradiente" class="level2">
 <h2 class="anchored" data-anchor-id="fase-7-integración-tdfd-a-lo-largo-del-gradiente">Fase 7 — Integración TD–FD a lo largo del gradiente</h2>
 <p><strong>Estado:</strong> ⬜ Pendiente de ejecutar.</p>
-<p>Comparará explícitamente cómo responden la diversidad taxonómica y funcional (alfa y beta) al gradiente hídrico/edáfico, con base en los resultados de las Fases 4, 5 y 6, y explorará al menos una vía adicional de integración (redundancia funcional por sitio, relación FD~TD, o espacio conjunto Hill-TD vs.&nbsp;Hill-FD), presentada con pros/contras para que la directora elija.</p>
+<p>Comparará explícitamente cómo responden la diversidad taxonómica y funcional (alfa y beta) al gradiente hídrico/edáfico, con base en los resultados de las Fases 4, 5 y 6, y explorará al menos una vía adicional de integración (redundancia funcional por sitio, relación FD~TD, o espacio conjunto Hill-TD vs.&nbsp;Hill-FD), presentada con pros/contras para que el equipo de trabajo elija.</p>
 <p><strong>Para el sitio web:</strong> figura(s) de síntesis TD vs.&nbsp;FD a lo largo del gradiente.</p>
 </section>
 <section id="fase-8-redacción-de-resultados-y-discusión" class="level2">
